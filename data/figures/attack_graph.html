@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThreatRank Attack Graph</title>
+<style>
+:root { --bg:#f6f7f9; --panel:#fff; --ink:#1d2433; --muted:#5b6475; --line:#e3e6ec;
+        --accent:#2b6cb0; --goal:#d24a1f; --ok:#1f7a4d; --okbg:#e3f4ea; --kev:#b42318; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14171d; --panel:#1c2029; --ink:#e7eaf0;
+        --muted:#a3abba; --line:#2c3240; --accent:#7fb2f0; --goal:#ff8a65; --ok:#7ed3a4;
+        --okbg:#1d3328; --kev:#ff8a80; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+main { max-width:1400px; margin:0 auto; padding:24px 16px 40px }
+h1 { margin:0; font-size:26px }
+.sub { color:var(--muted); margin:4px 0 16px }
+.bar { display:flex; gap:12px; flex-wrap:wrap; align-items:center; background:var(--panel);
+       border:1px solid var(--line); border-radius:10px; padding:12px 14px }
+.bar label { font-weight:600 }
+.seg button { border:1px solid var(--line); background:var(--bg); color:var(--ink); padding:5px 12px;
+              font:inherit; font-size:14px; cursor:pointer }
+.seg button:first-child { border-radius:6px 0 0 6px } .seg button:last-child { border-radius:0 6px 6px 0 }
+.seg button.on { background:var(--accent); border-color:var(--accent); color:#fff }
+input[type=range] { width:180px; accent-color:var(--accent) }
+.stats { display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:14px; margin:10px 2px }
+.stats b { color:var(--ink) }
+.wrap { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:14px; margin-top:6px }
+@media (max-width:900px) { .wrap { grid-template-columns:1fr } }
+.canvas { background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:auto;
+          max-height:78vh; padding:8px }
+.canvas svg { height:auto; min-width:1100px; width:100% }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px;
+         align-self:start; position:sticky; top:12px; font-size:14px }
+.panel h3 { margin:0 0 6px; font-size:16px }
+.panel .muted { color:var(--muted) }
+.panel code { font-size:12px; word-break:break-all }
+.legend { display:flex; gap:14px; flex-wrap:wrap; font-size:13px; color:var(--muted); margin-top:10px }
+.sw { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:-1px; margin-right:4px; border:1px solid }
+g.node { cursor:pointer; transition:opacity .2s }
+g.node.off, g.edge.off { opacity:.12 }
+g.node.goal polygon, g.node.goal path { stroke:var(--goal); stroke-width:3 }
+g.node.inbudget polygon, g.node.inbudget path { stroke:var(--ok); stroke-width:3.5 }
+g.node.sel polygon, g.node.sel path, g.node.sel ellipse { stroke-dasharray:4 2; stroke-width:3 }
+</style></head>
+<body><main>
+<h1>ThreatRank Attack Graph</h1>
+<p class="sub">The recorded MulVAL graph (357 vertices, 676 arcs) condensed to 43 nodes: rule
+applications with the same conclusion and premises are merged, and vulnerability facts are grouped by
+the remediation action that removes them. Click a node for details.</p>
+<div class="bar">
+  <label>Declared goal</label>
+  <span class="seg" id="goals"></span>
+  <label for="budget" style="margin-left:12px">Plan budget</label>
+  <input type="range" id="budget" min="1" max="100" value="5">
+  <b id="budgetOut"></b>
+</div>
+<div class="stats" id="stats"></div>
+<div class="wrap">
+  <div class="canvas" id="canvas"><svg width="4324pt" height="826pt"
+ viewBox="0.00 0.00 4323.55 825.50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 821.5)">
+<title>G</title>
+<!-- o1 -->
+<g id="o1" class="node">
+<title>o1</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M3934.82,-129C3934.82,-129 3781.82,-129 3781.82,-129 3775.82,-129 3769.82,-123 3769.82,-117 3769.82,-117 3769.82,-105 3769.82,-105 3769.82,-99 3775.82,-93 3781.82,-93 3781.82,-93 3934.82,-93 3934.82,-93 3940.82,-93 3946.82,-99 3946.82,-105 3946.82,-105 3946.82,-117 3946.82,-117 3946.82,-123 3940.82,-129 3934.82,-129"/>
+<text text-anchor="middle" x="3858.32" y="-114.2" font-family="Helvetica,sans-Serif" font-size="11.00">Code execution on Database</text>
+<text text-anchor="middle" x="3858.32" y="-102.2" font-family="Helvetica,sans-Serif" font-size="11.00">as mysql</text>
+</g>
+<!-- r10 -->
+<g id="r10" class="node">
+<title>r10</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="4042.69" cy="-64" rx="55.72" ry="21.43"/>
+<text text-anchor="middle" x="4042.69" y="-67" font-family="Helvetica,sans-Serif" font-size="10.00">local exploit</text>
+<text text-anchor="middle" x="4042.69" y="-56" font-family="Helvetica,sans-Serif" font-size="10.00">×3</text>
+</g>
+<!-- o1&#45;&gt;r10 -->
+<g id="o1__r10" class="edge">
+<title>o1&#45;&gt;r10</title>
+<path fill="none" stroke="#9aa3b2" d="M3929.31,-92.96C3949.43,-87.78 3971.01,-82.21 3989.83,-77.36"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3990.82,-79.28 3996.1,-75.75 3989.77,-75.21 3990.82,-79.28"/>
+</g>
+<!-- o3 -->
+<g id="o3" class="node">
+<title>o3</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M3409.12,-241C3409.12,-241 3256.12,-241 3256.12,-241 3250.12,-241 3244.12,-235 3244.12,-229 3244.12,-229 3244.12,-217 3244.12,-217 3244.12,-211 3250.12,-205 3256.12,-205 3256.12,-205 3409.12,-205 3409.12,-205 3415.12,-205 3421.12,-211 3421.12,-217 3421.12,-217 3421.12,-229 3421.12,-229 3421.12,-235 3415.12,-241 3409.12,-241"/>
+<text text-anchor="middle" x="3332.62" y="-226.2" font-family="Helvetica,sans-Serif" font-size="11.00">Network access to Database</text>
+<text text-anchor="middle" x="3332.62" y="-214.2" font-family="Helvetica,sans-Serif" font-size="11.00">tcp/3306</text>
+</g>
+<!-- r0 -->
+<g id="r0" class="node">
+<title>r0</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="3595.47" cy="-115" rx="134.2" ry="21.43"/>
+<text text-anchor="middle" x="3595.47" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">remote exploit of a server program</text>
+<text text-anchor="middle" x="3595.47" y="-107" font-family="Helvetica,sans-Serif" font-size="10.00">×29</text>
+</g>
+<!-- o3&#45;&gt;r0 -->
+<g id="o3__r0" class="edge">
+<title>o3&#45;&gt;r0</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M3396.13,-204.87C3404.59,-202.08 3413.11,-199.09 3421.12,-196 3465.84,-178.75 3515.22,-155.21 3549.79,-137.96"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="3550.79,-139.81 3555.21,-135.24 3548.91,-136.05 3550.79,-139.81"/>
+</g>
+<!-- l5 -->
+<g id="l5" class="node">
+<title>l5</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="2987.87,-247.5 2861.87,-247.5 2861.87,-206.5 2993.87,-206.5 2993.87,-241.5 2987.87,-247.5"/>
+<polyline fill="none" stroke="#9aa0a8" points="2987.87,-247.5 2987.87,-241.5 "/>
+<polyline fill="none" stroke="#9aa0a8" points="2993.87,-241.5 2987.87,-241.5 "/>
+<text text-anchor="middle" x="2927.87" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00">Firewall allows</text>
+<text text-anchor="middle" x="2927.87" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00">App server → Database</text>
+<text text-anchor="middle" x="2927.87" y="-213.5" font-family="Helvetica,sans-Serif" font-size="10.00">tcp/3306</text>
+</g>
+<!-- r1 -->
+<g id="r1" class="node">
+<title>r1</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="3132" cy="-253" rx="72.25" ry="21.43"/>
+<text text-anchor="middle" x="3132" y="-256" font-family="Helvetica,sans-Serif" font-size="10.00">multi&#45;hop access</text>
+<text text-anchor="middle" x="3132" y="-245" font-family="Helvetica,sans-Serif" font-size="10.00">×1</text>
+</g>
+<!-- l5&#45;&gt;r1 -->
+<g id="l5__r1" class="edge">
+<title>l5&#45;&gt;r1</title>
+<path fill="none" stroke="#9aa3b2" d="M2993.94,-235.37C3014.93,-238.07 3038.31,-241.08 3059.72,-243.83"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3059.49,-245.92 3065.71,-244.6 3060.02,-241.75 3059.49,-245.92"/>
+</g>
+<!-- r8 -->
+<g id="r8" class="node">
+<title>r8</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="3132" cy="-193" rx="72.25" ry="21.43"/>
+<text text-anchor="middle" x="3132" y="-196" font-family="Helvetica,sans-Serif" font-size="10.00">multi&#45;hop access</text>
+<text text-anchor="middle" x="3132" y="-185" font-family="Helvetica,sans-Serif" font-size="10.00">×1</text>
+</g>
+<!-- l5&#45;&gt;r8 -->
+<g id="l5__r8" class="edge">
+<title>l5&#45;&gt;r8</title>
+<path fill="none" stroke="#9aa3b2" d="M2993.94,-216.06C3015.88,-212.36 3040.43,-208.24 3062.62,-204.5"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3063.24,-206.53 3068.81,-203.46 3062.54,-202.39 3063.24,-206.53"/>
+</g>
+<!-- o6 -->
+<g id="o6" class="node">
+<title>o6</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M2632.15,-280C2632.15,-280 2472.15,-280 2472.15,-280 2466.15,-280 2460.15,-274 2460.15,-268 2460.15,-268 2460.15,-256 2460.15,-256 2460.15,-250 2466.15,-244 2472.15,-244 2472.15,-244 2632.15,-244 2632.15,-244 2638.15,-244 2644.15,-250 2644.15,-256 2644.15,-256 2644.15,-268 2644.15,-268 2644.15,-274 2638.15,-280 2632.15,-280"/>
+<text text-anchor="middle" x="2552.15" y="-265.2" font-family="Helvetica,sans-Serif" font-size="11.00">Code execution on App server</text>
+<text text-anchor="middle" x="2552.15" y="-253.2" font-family="Helvetica,sans-Serif" font-size="11.00">as daemon</text>
+</g>
+<!-- o6&#45;&gt;r1 -->
+<g id="o6__r1" class="edge">
+<title>o6&#45;&gt;r1</title>
+<path fill="none" stroke="#9aa3b2" d="M2644.38,-261.21C2738.46,-260.3 2889.43,-258.6 3019.87,-256 3030.86,-255.78 3042.46,-255.51 3053.86,-255.22"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3054.22,-257.32 3060.16,-255.06 3054.11,-253.12 3054.22,-257.32"/>
+</g>
+<!-- r9 -->
+<g id="r9" class="node">
+<title>r9</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="2740.01" cy="-178" rx="55.72" ry="21.43"/>
+<text text-anchor="middle" x="2740.01" y="-181" font-family="Helvetica,sans-Serif" font-size="10.00">local exploit</text>
+<text text-anchor="middle" x="2740.01" y="-170" font-family="Helvetica,sans-Serif" font-size="10.00">×3</text>
+</g>
+<!-- o6&#45;&gt;r9 -->
+<g id="o6__r9" class="edge">
+<title>o6&#45;&gt;r9</title>
+<path fill="none" stroke="#9aa3b2" d="M2593.02,-243.98C2623.85,-230.05 2666.39,-210.82 2697.6,-196.72"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="2698.69,-198.53 2703.29,-194.14 2696.96,-194.7 2698.69,-198.53"/>
+</g>
+<!-- o8 -->
+<g id="o8" class="node">
+<title>o8</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M2099.45,-381C2099.45,-381 1939.45,-381 1939.45,-381 1933.45,-381 1927.45,-375 1927.45,-369 1927.45,-369 1927.45,-357 1927.45,-357 1927.45,-351 1933.45,-345 1939.45,-345 1939.45,-345 2099.45,-345 2099.45,-345 2105.45,-345 2111.45,-351 2111.45,-357 2111.45,-357 2111.45,-369 2111.45,-369 2111.45,-375 2105.45,-381 2099.45,-381"/>
+<text text-anchor="middle" x="2019.45" y="-366.2" font-family="Helvetica,sans-Serif" font-size="11.00">Network access to App server</text>
+<text text-anchor="middle" x="2019.45" y="-354.2" font-family="Helvetica,sans-Serif" font-size="11.00">tcp/80</text>
+</g>
+<!-- r2 -->
+<g id="r2" class="node">
+<title>r2</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="2285.8" cy="-262" rx="134.2" ry="21.43"/>
+<text text-anchor="middle" x="2285.8" y="-265" font-family="Helvetica,sans-Serif" font-size="10.00">remote exploit of a server program</text>
+<text text-anchor="middle" x="2285.8" y="-254" font-family="Helvetica,sans-Serif" font-size="10.00">×22</text>
+</g>
+<!-- o8&#45;&gt;r2 -->
+<g id="o8__r2" class="edge">
+<title>o8&#45;&gt;r2</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M2084.88,-344.89C2093.86,-342.07 2102.92,-339.07 2111.45,-336 2154.08,-320.63 2201.32,-300.24 2235.7,-284.75"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="2236.94,-286.5 2241.54,-282.11 2235.21,-282.67 2236.94,-286.5"/>
+</g>
+<!-- l10 -->
+<g id="l10" class="node">
+<title>l10</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="1673.7,-387.5 1539.7,-387.5 1539.7,-346.5 1679.7,-346.5 1679.7,-381.5 1673.7,-387.5"/>
+<polyline fill="none" stroke="#9aa0a8" points="1673.7,-387.5 1673.7,-381.5 "/>
+<polyline fill="none" stroke="#9aa0a8" points="1679.7,-381.5 1673.7,-381.5 "/>
+<text text-anchor="middle" x="1609.7" y="-375.5" font-family="Helvetica,sans-Serif" font-size="10.00">Firewall allows</text>
+<text text-anchor="middle" x="1609.7" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00">Web server → App server</text>
+<text text-anchor="middle" x="1609.7" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00">tcp/80</text>
+</g>
+<!-- r3 -->
+<g id="r3" class="node">
+<title>r3</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="1815.33" cy="-393" rx="72.25" ry="21.43"/>
+<text text-anchor="middle" x="1815.33" y="-396" font-family="Helvetica,sans-Serif" font-size="10.00">multi&#45;hop access</text>
+<text text-anchor="middle" x="1815.33" y="-385" font-family="Helvetica,sans-Serif" font-size="10.00">×1</text>
+</g>
+<!-- l10&#45;&gt;r3 -->
+<g id="l10__r3" class="edge">
+<title>l10&#45;&gt;r3</title>
+<path fill="none" stroke="#9aa3b2" d="M1679.92,-375.84C1700.18,-378.42 1722.35,-381.26 1742.75,-383.86"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1742.51,-385.95 1748.73,-384.62 1743.05,-381.78 1742.51,-385.95"/>
+</g>
+<!-- r6 -->
+<g id="r6" class="node">
+<title>r6</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="1815.33" cy="-333" rx="72.25" ry="21.43"/>
+<text text-anchor="middle" x="1815.33" y="-336" font-family="Helvetica,sans-Serif" font-size="10.00">multi&#45;hop access</text>
+<text text-anchor="middle" x="1815.33" y="-325" font-family="Helvetica,sans-Serif" font-size="10.00">×1</text>
+</g>
+<!-- l10&#45;&gt;r6 -->
+<g id="l10__r6" class="edge">
+<title>l10&#45;&gt;r6</title>
+<path fill="none" stroke="#9aa3b2" d="M1679.92,-355.44C1701.32,-351.87 1724.86,-347.94 1746.18,-344.38"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1746.55,-346.44 1752.13,-343.39 1745.86,-342.3 1746.55,-346.44"/>
+</g>
+<!-- o11 -->
+<g id="o11" class="node">
+<title>o11</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M1312.48,-434C1312.48,-434 1149.48,-434 1149.48,-434 1143.48,-434 1137.48,-428 1137.48,-422 1137.48,-422 1137.48,-410 1137.48,-410 1137.48,-404 1143.48,-398 1149.48,-398 1149.48,-398 1312.48,-398 1312.48,-398 1318.48,-398 1324.48,-404 1324.48,-410 1324.48,-410 1324.48,-422 1324.48,-422 1324.48,-428 1318.48,-434 1312.48,-434"/>
+<text text-anchor="middle" x="1230.98" y="-419.2" font-family="Helvetica,sans-Serif" font-size="11.00">Code execution on Web server</text>
+<text text-anchor="middle" x="1230.98" y="-407.2" font-family="Helvetica,sans-Serif" font-size="11.00">as www&#45;data</text>
+</g>
+<!-- o11&#45;&gt;r3 -->
+<g id="o11__r3" class="edge">
+<title>o11&#45;&gt;r3</title>
+<path fill="none" stroke="#9aa3b2" d="M1324.57,-412.34C1438.79,-407.83 1630.87,-400.25 1737.37,-396.04"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1737.72,-398.13 1743.63,-395.79 1737.55,-393.93 1737.72,-398.13"/>
+</g>
+<!-- r7 -->
+<g id="r7" class="node">
+<title>r7</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="1420.34" cy="-310" rx="55.72" ry="21.43"/>
+<text text-anchor="middle" x="1420.34" y="-313" font-family="Helvetica,sans-Serif" font-size="10.00">local exploit</text>
+<text text-anchor="middle" x="1420.34" y="-302" font-family="Helvetica,sans-Serif" font-size="10.00">×5</text>
+</g>
+<!-- o11&#45;&gt;r7 -->
+<g id="o11__r7" class="edge">
+<title>o11&#45;&gt;r7</title>
+<path fill="none" stroke="#9aa3b2" d="M1264.19,-397.78C1297.26,-379.07 1348.63,-350 1383.1,-330.5"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1384.29,-332.24 1388.48,-327.46 1382.23,-328.58 1384.29,-332.24"/>
+</g>
+<!-- o13 -->
+<g id="o13" class="node">
+<title>o13</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M667.28,-786C667.28,-786 504.28,-786 504.28,-786 498.28,-786 492.28,-780 492.28,-774 492.28,-774 492.28,-762 492.28,-762 492.28,-756 498.28,-750 504.28,-750 504.28,-750 667.28,-750 667.28,-750 673.28,-750 679.28,-756 679.28,-762 679.28,-762 679.28,-774 679.28,-774 679.28,-780 673.28,-786 667.28,-786"/>
+<text text-anchor="middle" x="585.78" y="-771.2" font-family="Helvetica,sans-Serif" font-size="11.00">Network access to Web server</text>
+<text text-anchor="middle" x="585.78" y="-759.2" font-family="Helvetica,sans-Serif" font-size="11.00">tcp/80</text>
+</g>
+<!-- r4 -->
+<g id="r4" class="node">
+<title>r4</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="963.13" cy="-471" rx="134.2" ry="21.43"/>
+<text text-anchor="middle" x="963.13" y="-474" font-family="Helvetica,sans-Serif" font-size="10.00">remote exploit of a server program</text>
+<text text-anchor="middle" x="963.13" y="-463" font-family="Helvetica,sans-Serif" font-size="10.00">×106</text>
+</g>
+<!-- o13&#45;&gt;r4 -->
+<g id="o13__r4" class="edge">
+<title>o13&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M679.43,-771.89C715.92,-769.44 756.68,-761.41 788.78,-741 881.29,-682.16 934.02,-554.19 953.45,-498.18"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="955.49,-498.7 955.44,-492.35 951.52,-497.35 955.49,-498.7"/>
+</g>
+<!-- l15 -->
+<g id="l15" class="node">
+<title>l15</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="120,-817.5 0,-817.5 0,-776.5 126,-776.5 126,-811.5 120,-817.5"/>
+<polyline fill="none" stroke="#9aa0a8" points="120,-817.5 120,-811.5 "/>
+<polyline fill="none" stroke="#9aa0a8" points="126,-811.5 120,-811.5 "/>
+<text text-anchor="middle" x="63" y="-805.5" font-family="Helvetica,sans-Serif" font-size="10.00">Firewall allows</text>
+<text text-anchor="middle" x="63" y="-794.5" font-family="Helvetica,sans-Serif" font-size="10.00">internet → Web server</text>
+<text text-anchor="middle" x="63" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00">tcp/80</text>
+</g>
+<!-- r5 -->
+<g id="r5" class="node">
+<title>r5</title>
+<ellipse fill="#ffffff" stroke="#7a8597" cx="254.39" cy="-768" rx="88.28" ry="21.43"/>
+<text text-anchor="middle" x="254.39" y="-771" font-family="Helvetica,sans-Serif" font-size="10.00">direct network access</text>
+<text text-anchor="middle" x="254.39" y="-760" font-family="Helvetica,sans-Serif" font-size="10.00">×1</text>
+</g>
+<!-- l15&#45;&gt;r5 -->
+<g id="l15__r5" class="edge">
+<title>l15&#45;&gt;r5</title>
+<path fill="none" stroke="#9aa3b2" d="M126.01,-787.5C141.06,-785.2 157.36,-782.7 173.12,-780.29"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="173.75,-782.32 179.36,-779.34 173.11,-778.17 173.75,-782.32"/>
+</g>
+<!-- l16 -->
+<g id="l16" class="node">
+<title>l16</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="89,-758 31,-758 31,-722 95,-722 95,-752 89,-758"/>
+<polyline fill="none" stroke="#9aa0a8" points="89,-758 89,-752 "/>
+<polyline fill="none" stroke="#9aa0a8" points="95,-752 89,-752 "/>
+<text text-anchor="middle" x="63" y="-743" font-family="Helvetica,sans-Serif" font-size="10.00">Attacker</text>
+<text text-anchor="middle" x="63" y="-732" font-family="Helvetica,sans-Serif" font-size="10.00">(internet)</text>
+</g>
+<!-- l16&#45;&gt;r5 -->
+<g id="l16__r5" class="edge">
+<title>l16&#45;&gt;r5</title>
+<path fill="none" stroke="#9aa3b2" d="M95.27,-744.62C116.37,-747.74 145.24,-752.01 172.54,-756.05"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="172.46,-758.16 178.71,-756.96 173.08,-754 172.46,-758.16"/>
+</g>
+<!-- l17 -->
+<g id="l17" class="node">
+<title>l17</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="653.78,-732 511.78,-732 511.78,-696 659.78,-696 659.78,-726 653.78,-732"/>
+<polyline fill="none" stroke="#9aa0a8" points="653.78,-732 653.78,-726 "/>
+<polyline fill="none" stroke="#9aa0a8" points="659.78,-726 653.78,-726 "/>
+<text text-anchor="middle" x="585.78" y="-717" font-family="Helvetica,sans-Serif" font-size="10.00">Service on Web server</text>
+<text text-anchor="middle" x="585.78" y="-706" font-family="Helvetica,sans-Serif" font-size="10.00">httpd tcp/80, as www&#45;data</text>
+</g>
+<!-- l17&#45;&gt;r4 -->
+<g id="l17__r4" class="edge">
+<title>l17&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M660.11,-717.13C700.41,-715.79 749.95,-708.91 788.78,-687 868.25,-642.16 925.16,-545.09 949.29,-497.88"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="951.23,-498.68 952.06,-492.37 947.49,-496.78 951.23,-498.68"/>
+</g>
+<!-- o230 -->
+<g id="o230" class="node">
+<title>o230</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M1691.2,-328C1691.2,-328 1528.2,-328 1528.2,-328 1522.2,-328 1516.2,-322 1516.2,-316 1516.2,-316 1516.2,-304 1516.2,-304 1516.2,-298 1522.2,-292 1528.2,-292 1528.2,-292 1691.2,-292 1691.2,-292 1697.2,-292 1703.2,-298 1703.2,-304 1703.2,-304 1703.2,-316 1703.2,-316 1703.2,-322 1697.2,-328 1691.2,-328"/>
+<text text-anchor="middle" x="1609.7" y="-313.2" font-family="Helvetica,sans-Serif" font-size="11.00">Code execution on Web server</text>
+<text text-anchor="middle" x="1609.7" y="-301.2" font-family="Helvetica,sans-Serif" font-size="11.00">as root</text>
+</g>
+<!-- o230&#45;&gt;r6 -->
+<g id="o230__r6" class="edge">
+<title>o230&#45;&gt;r6</title>
+<path fill="none" stroke="#9aa3b2" d="M1703.28,-320.46C1716.19,-321.92 1729.3,-323.4 1741.77,-324.8"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1741.64,-326.9 1747.84,-325.49 1742.11,-322.73 1741.64,-326.9"/>
+</g>
+<!-- l241 -->
+<g id="l241" class="node">
+<title>l241</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="2081.95,-327 1950.95,-327 1950.95,-291 2087.95,-291 2087.95,-321 2081.95,-327"/>
+<polyline fill="none" stroke="#9aa0a8" points="2081.95,-327 2081.95,-321 "/>
+<polyline fill="none" stroke="#9aa0a8" points="2087.95,-321 2081.95,-321 "/>
+<text text-anchor="middle" x="2019.45" y="-312" font-family="Helvetica,sans-Serif" font-size="10.00">Service on App server</text>
+<text text-anchor="middle" x="2019.45" y="-301" font-family="Helvetica,sans-Serif" font-size="10.00">httpd tcp/80, as daemon</text>
+</g>
+<!-- l241&#45;&gt;r2 -->
+<g id="l241__r2" class="edge">
+<title>l241&#45;&gt;r2</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M2088.18,-296.96C2119,-291.48 2156.01,-284.9 2189.56,-278.93"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="2190.25,-280.94 2195.79,-277.83 2189.51,-276.81 2190.25,-280.94"/>
+</g>
+<!-- o286 -->
+<g id="o286" class="node">
+<title>o286</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M3007.87,-188C3007.87,-188 2847.87,-188 2847.87,-188 2841.87,-188 2835.87,-182 2835.87,-176 2835.87,-176 2835.87,-164 2835.87,-164 2835.87,-158 2841.87,-152 2847.87,-152 2847.87,-152 3007.87,-152 3007.87,-152 3013.87,-152 3019.87,-158 3019.87,-164 3019.87,-164 3019.87,-176 3019.87,-176 3019.87,-182 3013.87,-188 3007.87,-188"/>
+<text text-anchor="middle" x="2927.87" y="-173.2" font-family="Helvetica,sans-Serif" font-size="11.00">Code execution on App server</text>
+<text text-anchor="middle" x="2927.87" y="-161.2" font-family="Helvetica,sans-Serif" font-size="11.00">as root</text>
+</g>
+<!-- o286&#45;&gt;r8 -->
+<g id="o286__r8" class="edge">
+<title>o286&#45;&gt;r8</title>
+<path fill="none" stroke="#9aa3b2" d="M3019.88,-180.36C3032.76,-181.82 3045.86,-183.31 3058.33,-184.73"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3058.19,-186.83 3064.39,-185.42 3058.67,-182.66 3058.19,-186.83"/>
+</g>
+<!-- l293 -->
+<g id="l293" class="node">
+<title>l293</title>
+<polygon fill="#f3f4f6" stroke="#9aa0a8" points="3401.62,-187 3257.62,-187 3257.62,-151 3407.62,-151 3407.62,-181 3401.62,-187"/>
+<polyline fill="none" stroke="#9aa0a8" points="3401.62,-187 3401.62,-181 "/>
+<polyline fill="none" stroke="#9aa0a8" points="3407.62,-181 3401.62,-181 "/>
+<text text-anchor="middle" x="3332.62" y="-172" font-family="Helvetica,sans-Serif" font-size="10.00">Service on Database</text>
+<text text-anchor="middle" x="3332.62" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">mysqld tcp/3306, as mysql</text>
+</g>
+<!-- l293&#45;&gt;r0 -->
+<g id="l293__r0" class="edge">
+<title>l293&#45;&gt;r0</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M3407.67,-153.67C3438.59,-147.27 3474.73,-139.79 3506.94,-133.12"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="3507.46,-135.16 3512.91,-131.88 3506.61,-131.04 3507.46,-135.16"/>
+</g>
+<!-- o351 -->
+<g id="o351" class="node">
+<title>o351</title>
+<path fill="#e8f0fb" stroke="#2b6cb0" stroke-width="1.4" d="M4303.55,-82C4303.55,-82 4150.55,-82 4150.55,-82 4144.55,-82 4138.55,-76 4138.55,-70 4138.55,-70 4138.55,-58 4138.55,-58 4138.55,-52 4144.55,-46 4150.55,-46 4150.55,-46 4303.55,-46 4303.55,-46 4309.55,-46 4315.55,-52 4315.55,-58 4315.55,-58 4315.55,-70 4315.55,-70 4315.55,-76 4309.55,-82 4303.55,-82"/>
+<text text-anchor="middle" x="4227.05" y="-67.2" font-family="Helvetica,sans-Serif" font-size="11.00">Code execution on Database</text>
+<text text-anchor="middle" x="4227.05" y="-55.2" font-family="Helvetica,sans-Serif" font-size="11.00">as root</text>
+</g>
+<!-- r0&#45;&gt;o1 -->
+<g id="r0__o1" class="edge">
+<title>r0&#45;&gt;o1</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M3729.57,-112.96C3741.02,-112.78 3752.44,-112.61 3763.47,-112.44"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="3763.6,-114.54 3769.57,-112.35 3763.53,-110.34 3763.6,-114.54"/>
+</g>
+<!-- m0 -->
+<g id="m0" class="node">
+<title>m0</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="3386.12,-133 3279.12,-133 3279.12,-97 3386.12,-97 3386.12,-133"/>
+<text text-anchor="middle" x="3332.62" y="-118.2" font-family="Helvetica,sans-Serif" font-size="11.00">1 smaller action</text>
+<text text-anchor="middle" x="3332.62" y="-106.2" font-family="Helvetica,sans-Serif" font-size="11.00">(1 finding)</text>
+</g>
+<!-- m0&#45;&gt;r0 -->
+<g id="m0__r0" class="edge">
+<title>m0&#45;&gt;r0</title>
+<path fill="none" stroke="#9aa3b2" d="M3386.41,-115C3406.52,-115 3430.49,-115 3454.9,-115"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3455.11,-117.1 3461.11,-115 3455.11,-112.9 3455.11,-117.1"/>
+</g>
+<!-- a0 -->
+<g id="a0" class="node">
+<title>a0</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="3400.62,-79 3264.62,-79 3264.62,-43 3400.62,-43 3400.62,-79"/>
+<text text-anchor="middle" x="3332.62" y="-64.2" font-family="Helvetica,sans-Serif" font-size="11.00">Oracle MySQL Server</text>
+<text text-anchor="middle" x="3332.62" y="-52.2" font-family="Helvetica,sans-Serif" font-size="11.00">Database</text>
+</g>
+<!-- a0&#45;&gt;r0 -->
+<g id="a0__r0" class="edge">
+<title>a0&#45;&gt;r0</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M3400.8,-74.91C3433.19,-81.61 3472.45,-89.74 3507.13,-96.92"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="3506.8,-99 3513.1,-98.16 3507.65,-94.88 3506.8,-99"/>
+</g>
+<!-- a0&#45;&gt;r10 -->
+<g id="a0__r10" class="edge">
+<title>a0&#45;&gt;r10</title>
+<path fill="none" stroke="#9aa3b2" d="M3400.87,-61.28C3538.16,-61.87 3848.79,-63.18 3980.65,-63.74"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3980.78,-65.84 3986.79,-63.77 3980.8,-61.64 3980.78,-65.84"/>
+</g>
+<!-- r1&#45;&gt;o3 -->
+<g id="r1__o3" class="edge">
+<title>r1&#45;&gt;o3</title>
+<path fill="none" stroke="#9aa3b2" d="M3196.39,-243.43C3209.6,-241.43 3223.8,-239.29 3237.84,-237.16"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3238.23,-239.23 3243.85,-236.26 3237.6,-235.08 3238.23,-239.23"/>
+</g>
+<!-- r2&#45;&gt;o6 -->
+<g id="r2__o6" class="edge">
+<title>r2&#45;&gt;o6</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M2420.52,-262C2431.76,-262 2442.98,-262 2453.87,-262"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="2453.88,-264.1 2459.88,-262 2453.88,-259.9 2453.88,-264.1"/>
+</g>
+<!-- a1 -->
+<g id="a1" class="node">
+<title>a1</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="2084.95,-219 1953.95,-219 1953.95,-183 2084.95,-183 2084.95,-219"/>
+<text text-anchor="middle" x="2019.45" y="-204.2" font-family="Helvetica,sans-Serif" font-size="11.00">Apache HTTP Server</text>
+<text text-anchor="middle" x="2019.45" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">App server</text>
+</g>
+<!-- a1&#45;&gt;r2 -->
+<g id="a1__r2" class="edge">
+<title>a1&#45;&gt;r2</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M2085.12,-215.92C2120.66,-224.12 2165.12,-234.38 2203.05,-243.14"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="2202.76,-245.22 2209.08,-244.53 2203.71,-241.13 2202.76,-245.22"/>
+</g>
+<!-- a1&#45;&gt;r9 -->
+<g id="a1__r9" class="edge">
+<title>a1&#45;&gt;r9</title>
+<path fill="none" stroke="#9aa3b2" d="M2085.11,-199.28C2198.38,-196.21 2440.08,-189.41 2644.15,-182 2655.13,-181.6 2666.82,-181.14 2678.11,-180.67"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="2678.43,-182.76 2684.34,-180.41 2678.26,-178.57 2678.43,-182.76"/>
+</g>
+<!-- m2 -->
+<g id="m2" class="node">
+<title>m2</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="2072.95,-273 1965.95,-273 1965.95,-237 2072.95,-237 2072.95,-273"/>
+<text text-anchor="middle" x="2019.45" y="-258.2" font-family="Helvetica,sans-Serif" font-size="11.00">1 smaller action</text>
+<text text-anchor="middle" x="2019.45" y="-246.2" font-family="Helvetica,sans-Serif" font-size="11.00">(1 finding)</text>
+</g>
+<!-- m2&#45;&gt;r2 -->
+<g id="m2__r2" class="edge">
+<title>m2&#45;&gt;r2</title>
+<path fill="none" stroke="#9aa3b2" d="M2072.99,-256.39C2094.62,-256.96 2120.78,-257.66 2147.23,-258.36"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="2147.19,-260.46 2153.24,-258.52 2147.3,-256.26 2147.19,-260.46"/>
+</g>
+<!-- r3&#45;&gt;o8 -->
+<g id="r3__o8" class="edge">
+<title>r3&#45;&gt;o8</title>
+<path fill="none" stroke="#9aa3b2" d="M1880,-383.55C1893.16,-381.6 1907.31,-379.5 1921.36,-377.41"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1921.74,-379.48 1927.37,-376.52 1921.12,-375.32 1921.74,-379.48"/>
+</g>
+<!-- r4&#45;&gt;o11 -->
+<g id="r4__o11" class="edge">
+<title>r4&#45;&gt;o11</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M1045.34,-454.2C1074.25,-448.22 1107.04,-441.43 1136.88,-435.26"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="1137.35,-437.31 1142.8,-434.04 1136.5,-433.19 1137.35,-437.31"/>
+</g>
+<!-- a2 -->
+<g id="a2" class="node">
+<title>a2</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="651.28,-678 520.28,-678 520.28,-642 651.28,-642 651.28,-678"/>
+<text text-anchor="middle" x="585.78" y="-663.2" font-family="Helvetica,sans-Serif" font-size="11.00">Apache HTTP Server</text>
+<text text-anchor="middle" x="585.78" y="-651.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a2&#45;&gt;r4 -->
+<g id="a2__r4" class="edge">
+<title>a2&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M651.48,-661.27C692.59,-659.74 745.93,-653.29 788.78,-633 855.76,-601.28 914.22,-534.13 943.04,-497.01"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="944.75,-498.24 946.75,-492.2 941.42,-495.68 944.75,-498.24"/>
+</g>
+<!-- a3 -->
+<g id="a3" class="node">
+<title>a3</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="670.28,-624 501.28,-624 501.28,-588 670.28,-588 670.28,-624"/>
+<text text-anchor="middle" x="585.78" y="-609.2" font-family="Helvetica,sans-Serif" font-size="11.00">WordPress / WordPress MU</text>
+<text text-anchor="middle" x="585.78" y="-597.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a3&#45;&gt;r4 -->
+<g id="a3__r4" class="edge">
+<title>a3&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" d="M670.72,-602.75C707.77,-599.31 751.32,-592.46 788.78,-579 843.1,-559.48 898.43,-521.11 931.52,-495.76"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="933.18,-497.14 936.64,-491.81 930.61,-493.82 933.18,-497.14"/>
+</g>
+<!-- a4 -->
+<g id="a4" class="node">
+<title>a4</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="626.78,-570 544.78,-570 544.78,-534 626.78,-534 626.78,-570"/>
+<text text-anchor="middle" x="585.78" y="-555.2" font-family="Helvetica,sans-Serif" font-size="11.00">WordPress</text>
+<text text-anchor="middle" x="585.78" y="-543.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a4&#45;&gt;r4 -->
+<g id="a4__r4" class="edge">
+<title>a4&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M626.99,-548.65C668.01,-544.75 733.33,-537.25 788.78,-525 827.03,-516.55 868.99,-503.58 902.04,-492.47"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="903.1,-494.33 908.11,-490.42 901.75,-490.35 903.1,-494.33"/>
+</g>
+<!-- m4 -->
+<g id="m4" class="node">
+<title>m4</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="645.78,-516 525.78,-516 525.78,-480 645.78,-480 645.78,-516"/>
+<text text-anchor="middle" x="585.78" y="-501.2" font-family="Helvetica,sans-Serif" font-size="11.00">15 smaller actions</text>
+<text text-anchor="middle" x="585.78" y="-489.2" font-family="Helvetica,sans-Serif" font-size="11.00">(15 findings)</text>
+</g>
+<!-- m4&#45;&gt;r4 -->
+<g id="m4__r4" class="edge">
+<title>m4&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M645.84,-493.75C696.24,-490.13 770.48,-484.79 834.38,-480.19"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="834.69,-482.27 840.52,-479.75 834.39,-478.08 834.69,-482.27"/>
+</g>
+<!-- a5 -->
+<g id="a5" class="node">
+<title>a5</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="626.78,-246 544.78,-246 544.78,-210 626.78,-210 626.78,-246"/>
+<text text-anchor="middle" x="585.78" y="-231.2" font-family="Helvetica,sans-Serif" font-size="11.00">PHP</text>
+<text text-anchor="middle" x="585.78" y="-219.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a5&#45;&gt;r4 -->
+<g id="a5__r4" class="edge">
+<title>a5&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" stroke-width="1.6" d="M626.8,-223.51C670.35,-220.72 740.24,-222.56 788.78,-255 818.25,-274.7 807.86,-295.38 828.78,-324 862.16,-369.69 907.59,-417.25 935.87,-445.48"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" stroke-width="1.6" points="934.52,-447.1 940.26,-449.84 937.48,-444.12 934.52,-447.1"/>
+</g>
+<!-- a5&#45;&gt;r7 -->
+<g id="a5__r7" class="edge">
+<title>a5&#45;&gt;r7</title>
+<path fill="none" stroke="#9aa3b2" d="M626.79,-233.23C717.5,-244.93 945.8,-273.59 1137.48,-291 1213.71,-297.93 1301.74,-303.47 1358.86,-306.74"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1358.87,-308.84 1364.98,-307.09 1359.11,-304.65 1358.87,-308.84"/>
+</g>
+<!-- a6 -->
+<g id="a6" class="node">
+<title>a6</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="788.78,-462 382.78,-462 382.78,-426 788.78,-426 788.78,-462"/>
+<text text-anchor="middle" x="585.78" y="-447.2" font-family="Helvetica,sans-Serif" font-size="11.00">Apache HTTP Server options memory leak vulnerability (optionsbleed)</text>
+<text text-anchor="middle" x="585.78" y="-435.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a6&#45;&gt;r4 -->
+<g id="a6__r4" class="edge">
+<title>a6&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" d="M789.01,-458.55C804.33,-459.65 819.51,-460.74 834.16,-461.79"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="834.27,-463.91 840.4,-462.24 834.57,-459.72 834.27,-463.91"/>
+</g>
+<!-- a7 -->
+<g id="a7" class="node">
+<title>a7</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="626.78,-408 544.78,-408 544.78,-372 626.78,-372 626.78,-408"/>
+<text text-anchor="middle" x="585.78" y="-393.2" font-family="Helvetica,sans-Serif" font-size="11.00">PHP 5.x</text>
+<text text-anchor="middle" x="585.78" y="-381.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a7&#45;&gt;r4 -->
+<g id="a7__r4" class="edge">
+<title>a7&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" d="M626.99,-393.35C668.01,-397.25 733.33,-404.75 788.78,-417 827.03,-425.45 868.99,-438.42 902.04,-449.53"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="901.75,-451.65 908.11,-451.58 903.1,-447.67 901.75,-451.65"/>
+</g>
+<!-- a8 -->
+<g id="a8" class="node">
+<title>a8</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="740.78,-354 430.78,-354 430.78,-318 740.78,-318 740.78,-354"/>
+<text text-anchor="middle" x="585.78" y="-339.2" font-family="Helvetica,sans-Serif" font-size="11.00">WordPress RCE vulnerability (CVE&#45;2019&#45;8942) &#45; Linux</text>
+<text text-anchor="middle" x="585.78" y="-327.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a8&#45;&gt;r4 -->
+<g id="a8__r4" class="edge">
+<title>a8&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" d="M740.9,-349.64C757.3,-353.15 773.54,-357.53 788.78,-363 843.1,-382.52 898.43,-420.89 931.52,-446.24"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="930.61,-448.18 936.64,-450.19 933.18,-444.86 930.61,-448.18"/>
+</g>
+<!-- a9 -->
+<g id="a9" class="node">
+<title>a9</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="723.78,-300 447.78,-300 447.78,-264 723.78,-264 723.78,-300"/>
+<text text-anchor="middle" x="585.78" y="-285.2" font-family="Helvetica,sans-Serif" font-size="11.00">WordPress XSS vulnerability (apr 2024) &#45; Linux</text>
+<text text-anchor="middle" x="585.78" y="-273.2" font-family="Helvetica,sans-Serif" font-size="11.00">Web server</text>
+</g>
+<!-- a9&#45;&gt;r4 -->
+<g id="a9__r4" class="edge">
+<title>a9&#45;&gt;r4</title>
+<path fill="none" stroke="#9aa3b2" d="M724.01,-288.69C746.35,-293.03 768.71,-299.5 788.78,-309 855.76,-340.72 914.22,-407.87 943.04,-444.99"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="941.42,-446.32 946.75,-449.8 944.75,-443.76 941.42,-446.32"/>
+</g>
+<!-- r5&#45;&gt;o13 -->
+<g id="r5__o13" class="edge">
+<title>r5&#45;&gt;o13</title>
+<path fill="none" stroke="#9aa3b2" d="M342.79,-768C386.84,-768 440.43,-768 485.97,-768"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="486.06,-770.1 492.06,-768 486.06,-765.9 486.06,-770.1"/>
+</g>
+<!-- r6&#45;&gt;o8 -->
+<g id="r6__o8" class="edge">
+<title>r6&#45;&gt;o8</title>
+<path fill="none" stroke="#9aa3b2" d="M1880,-342.45C1893.16,-344.4 1907.31,-346.5 1921.36,-348.59"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1921.12,-350.68 1927.37,-349.48 1921.74,-346.52 1921.12,-350.68"/>
+</g>
+<!-- r7&#45;&gt;o230 -->
+<g id="r7__o230" class="edge">
+<title>r7&#45;&gt;o230</title>
+<path fill="none" stroke="#9aa3b2" d="M1476.29,-310C1486.95,-310 1498.43,-310 1510.01,-310"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1510.08,-312.1 1516.08,-310 1510.08,-307.9 1510.08,-312.1"/>
+</g>
+<!-- m7 -->
+<g id="m7" class="node">
+<title>m7</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="1287.48,-282 1174.48,-282 1174.48,-246 1287.48,-246 1287.48,-282"/>
+<text text-anchor="middle" x="1230.98" y="-267.2" font-family="Helvetica,sans-Serif" font-size="11.00">3 smaller actions</text>
+<text text-anchor="middle" x="1230.98" y="-255.2" font-family="Helvetica,sans-Serif" font-size="11.00">(3 findings)</text>
+</g>
+<!-- m7&#45;&gt;r7 -->
+<g id="m7__r7" class="edge">
+<title>m7&#45;&gt;r7</title>
+<path fill="none" stroke="#9aa3b2" d="M1287.68,-277.68C1312.85,-283.86 1342.42,-291.11 1367.15,-297.19"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="1366.67,-299.23 1373,-298.62 1367.67,-295.15 1366.67,-299.23"/>
+</g>
+<!-- r8&#45;&gt;o3 -->
+<g id="r8__o3" class="edge">
+<title>r8&#45;&gt;o3</title>
+<path fill="none" stroke="#9aa3b2" d="M3196.39,-202.57C3209.6,-204.57 3223.8,-206.71 3237.84,-208.84"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3237.6,-210.92 3243.85,-209.74 3238.23,-206.77 3237.6,-210.92"/>
+</g>
+<!-- r9&#45;&gt;o286 -->
+<g id="r9__o286" class="edge">
+<title>r9&#45;&gt;o286</title>
+<path fill="none" stroke="#9aa3b2" d="M2795.77,-175.64C2806.44,-175.18 2817.92,-174.69 2829.49,-174.19"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="2829.65,-176.29 2835.55,-173.93 2829.47,-172.09 2829.65,-176.29"/>
+</g>
+<!-- m9 -->
+<g id="m9" class="node">
+<title>m9</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="2608.65,-173 2495.65,-173 2495.65,-137 2608.65,-137 2608.65,-173"/>
+<text text-anchor="middle" x="2552.15" y="-158.2" font-family="Helvetica,sans-Serif" font-size="11.00">2 smaller actions</text>
+<text text-anchor="middle" x="2552.15" y="-146.2" font-family="Helvetica,sans-Serif" font-size="11.00">(2 findings)</text>
+</g>
+<!-- m9&#45;&gt;r9 -->
+<g id="m9__r9" class="edge">
+<title>m9&#45;&gt;r9</title>
+<path fill="none" stroke="#9aa3b2" d="M2608.66,-161.87C2631.35,-164.68 2657.6,-167.93 2680.57,-170.77"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="2680.44,-172.87 2686.65,-171.52 2680.95,-168.7 2680.44,-172.87"/>
+</g>
+<!-- r10&#45;&gt;o351 -->
+<g id="r10__o351" class="edge">
+<title>r10&#45;&gt;o351</title>
+<path fill="none" stroke="#9aa3b2" d="M4098.89,-64C4109.42,-64 4120.71,-64 4132.05,-64"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="4132.36,-66.1 4138.36,-64 4132.36,-61.9 4132.36,-66.1"/>
+</g>
+<!-- m10 -->
+<g id="m10" class="node">
+<title>m10</title>
+<polygon fill="#fff7e6" stroke="#c27c0e" points="3914.82,-36 3801.82,-36 3801.82,0 3914.82,0 3914.82,-36"/>
+<text text-anchor="middle" x="3858.32" y="-21.2" font-family="Helvetica,sans-Serif" font-size="11.00">2 smaller actions</text>
+<text text-anchor="middle" x="3858.32" y="-9.2" font-family="Helvetica,sans-Serif" font-size="11.00">(2 findings)</text>
+</g>
+<!-- m10&#45;&gt;r10 -->
+<g id="m10__r10" class="edge">
+<title>m10&#45;&gt;r10</title>
+<path fill="none" stroke="#9aa3b2" d="M3915.03,-32.05C3938.88,-38.07 3966.57,-45.05 3989.96,-50.95"/>
+<polygon fill="#9aa3b2" stroke="#9aa3b2" points="3989.48,-53 3995.81,-52.43 3990.51,-48.92 3989.48,-53"/>
+</g>
+</g>
+</svg>
+</div>
+  <aside class="panel" id="panel"><h3>Details</h3><p class="muted">Click a node in the graph.</p>
+    <div class="legend">
+      <span><i class="sw" style="background:#e8f0fb;border-color:#2b6cb0"></i>Conclusion</span>
+      <span><i class="sw" style="background:#fff;border-color:#7a8597;border-radius:50%"></i>Rule (×count)</span>
+      <span><i class="sw" style="background:#fff7e6;border-color:#c27c0e"></i>Remediation action</span>
+      <span><i class="sw" style="background:#f3f4f6;border-color:#9aa0a8"></i>Network fact</span>
+      <span><i class="sw" style="border-color:var(--goal);border-width:2px"></i>Goal</span>
+      <span><i class="sw" style="border-color:var(--ok);border-width:2px"></i>Fixed within budget</span>
+    </div>
+  </aside>
+</div>
+<p class="sub" style="margin-top:14px">Generated by render_graph.py from the recorded graph and plan_lab3.csv.
+Goals and reachability are MulVAL's derivation from the declared topology; the plan is the same
+greedy selection prioritise.py makes.</p>
+</main>
+<script>
+const NODES = {"o1": {"kind": "or", "label": "Code execution on Database\\nas mysql", "facts": ["execCode(vmDb,mysql)"]}, "o3": {"kind": "or", "label": "Network access to Database\\ntcp/3306", "facts": ["netAccess(vmDb,tcp,3306)"]}, "l5": {"kind": "leaf", "label": "Firewall allows\\nApp server \u2192 Database\\ntcp/3306", "facts": ["hacl(vmApp,vmDb,tcp,3306)"]}, "o6": {"kind": "or", "label": "Code execution on App server\\nas daemon", "facts": ["execCode(vmApp,daemon)"]}, "o8": {"kind": "or", "label": "Network access to App server\\ntcp/80", "facts": ["netAccess(vmApp,tcp,80)"]}, "l10": {"kind": "leaf", "label": "Firewall allows\\nWeb server \u2192 App server\\ntcp/80", "facts": ["hacl(vmWeb,vmApp,tcp,80)"]}, "o11": {"kind": "or", "label": "Code execution on Web server\\nas www-data", "facts": ["execCode(vmWeb,'www-data')"]}, "o13": {"kind": "or", "label": "Network access to Web server\\ntcp/80", "facts": ["netAccess(vmWeb,tcp,80)"]}, "l15": {"kind": "leaf", "label": "Firewall allows\\ninternet \u2192 Web server\\ntcp/80", "facts": ["hacl(internet,vmWeb,tcp,80)"]}, "l16": {"kind": "leaf", "label": "Attacker\\n(internet)", "facts": ["attackerLocated(internet)"]}, "l17": {"kind": "leaf", "label": "Service on Web server\\nhttpd tcp/80, as www-data", "facts": ["networkServiceInfo(vmWeb,httpd,tcp,80,'www-data')"]}, "o230": {"kind": "or", "label": "Code execution on Web server\\nas root", "facts": ["execCode(vmWeb,root)"]}, "l241": {"kind": "leaf", "label": "Service on App server\\nhttpd tcp/80, as daemon", "facts": ["networkServiceInfo(vmApp,httpd,tcp,80,daemon)"]}, "o286": {"kind": "or", "label": "Code execution on App server\\nas root", "facts": ["execCode(vmApp,root)"]}, "l293": {"kind": "leaf", "label": "Service on Database\\nmysqld tcp/3306, as mysql", "facts": ["networkServiceInfo(vmDb,mysqld,tcp,3306,mysql)"]}, "o351": {"kind": "or", "label": "Code execution on Database\\nas root", "facts": ["execCode(vmDb,root)"]}, "r0": {"kind": "rule", "label": "remote exploit of a server program\\n\u00d729", "facts": ["RULE 2 (remote exploit of a server program)"], "count": 29}, "m0": {"kind": "action", "label": "1 smaller action\\n(1 finding)", "facts": ["vulExists(vmDb,'CVE-2015-3152',mysqld,remoteExploit,privEscalation)"], "key": null, "rank": null, "cost": null, "kev": 0, "findings": 1, "examples": ["Oracle MySQL backronym vulnerability (jun 2016) - Linux (1 findings)"], "pooled": {"Oracle MySQL backronym vulnerability (jun 2016) - Linux": 1}}, "a0": {"kind": "action", "label": "Oracle MySQL Server\\nDatabase", "facts": ["vulExists(vmDb,'CVE-2018-3123',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-1547',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-1559',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-2534',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-2730',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-2739',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-2922',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2019-2974',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2020-1967',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2021-2144',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2021-22901',mysqld,remoteExploit,privEscalation)", "vulExists(vmDb,'CVE-2021-22946',mysqld,remoteExploit,privEscalation)"], "key": ["172.18.0.112", "3306/tcp", "oracle mysql server"], "rank": 4, "cost": 1.0, "kev": 0, "findings": 47, "examples": ["Oracle MySQL Server <= 5.6.42 / 5.7 <= 5.7.24 / 8.0 <= 8.0.13 Security Update (cpuapr2019) - Linux", "Oracle MySQL Server <= 5.6.42 / 5.7 <= 5.7.24 / 8.0 <= 8.0.13 Security Update (cpujan2019) - Linux", "Oracle MySQL Server <= 5.6.43 / 5.7 <= 5.7.25 / 8.0 <= 8.0.15 Security Update (cpuapr2019) - Linux", "Oracle MySQL Server <= 5.6.44 / 5.7 <= 5.7.18 Security Update (cpujul2019) - Linux", "Oracle MySQL Server <= 5.6.44 / 5.7 <= 5.7.26 / 8.0 <= 8.0.16 Security Update (cpujul2019) - Linux", "Oracle MySQL Server <= 5.6.44 / 5.7 <= 5.7.26 / 8.0 <= 8.0.16 Security Update (cpuoct2019) - Linux", "Oracle MySQL Server <= 5.6.45 / 5.7 <= 5.7.27 / 8.0 <= 8.0.17 Security Update (cpuoct2019) - Linux", "Oracle MySQL Server <= 5.6.45 / 5.7 <= 5.7.27 Security Update (cpuoct2019) - Linux"]}, "r1": {"kind": "rule", "label": "multi-hop access\\n\u00d71", "facts": ["RULE 5 (multi-hop access)"], "count": 1}, "r2": {"kind": "rule", "label": "remote exploit of a server program\\n\u00d722", "facts": ["RULE 2 (remote exploit of a server program)"], "count": 22}, "a1": {"kind": "action", "label": "Apache HTTP Server\\nApp server", "facts": ["vulExists(vmApp,'CVE-2006-20001',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2018-1312',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2018-17199',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2019-0217',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2019-0220',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2019-17567',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2020-1927',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2020-35452',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2021-33193',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2021-34798',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2021-44224',httpd,remoteExploit,privEscalation)", "vulExists(vmApp,'CVE-2021-44790',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.111", "80/tcp", "apache http server"], "rank": 2, "cost": 1.0, "kev": 3, "findings": 31, "examples": ["Apache HTTP Server 2.4.0 - 2.4.40 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.0 - 2.4.46 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.0 - 2.4.55 HTTP Request Smuggling Vulnerability - Linux", "Apache HTTP Server 2.4.0 < 2.4.42 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.17 - 2.4.57 DoS Vulnerability - Linux", "Apache HTTP Server 2.4.17 < 2.4.49 'mod_proxy' HTTP/2 Request Smuggling Vulnerability - Linux", "Apache HTTP Server 2.4.17 < 2.4.64 DoS Vulnerability - Linux", "Apache HTTP Server 2.4.20 - 2.4.39 Multiple Vulnerabilities - Linux"]}, "m2": {"kind": "action", "label": "1 smaller action\\n(1 finding)", "facts": ["vulExists(vmApp,'CVE-2019-10082',httpd,remoteExploit,privEscalation)"], "key": null, "rank": null, "cost": null, "kev": 0, "findings": 1, "examples": ["Apache HTTP Server memory access vulnerability - Linux (1 findings)"], "pooled": {"Apache HTTP Server memory access vulnerability - Linux": 1}}, "r3": {"kind": "rule", "label": "multi-hop access\\n\u00d71", "facts": ["RULE 5 (multi-hop access)"], "count": 1}, "r4": {"kind": "rule", "label": "remote exploit of a server program\\n\u00d7106", "facts": ["RULE 2 (remote exploit of a server program)"], "count": 106}, "a2": {"kind": "action", "label": "Apache HTTP Server\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2006-20001',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2013-5704',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2015-3185',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-7679',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-1312',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-17199',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2019-0217',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2019-0220',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2019-17567',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2020-11985',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2020-1927',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2020-35452',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "apache http server"], "rank": 1, "cost": 1.0, "kev": 2, "findings": 26, "examples": ["Apache HTTP Server 2.4.0 - 2.4.40 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.0 - 2.4.46 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.0 - 2.4.55 HTTP Request Smuggling Vulnerability - Linux", "Apache HTTP Server 2.4.0 < 2.4.42 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.1 < 2.4.24 IP Spoofing Vulnerability - Linux", "Apache HTTP Server 2.4.6 - 2.4.46 Tunneling Misconfiguration Vulnerability - Linux", "Apache HTTP Server 2.4.7 - 2.4.51 Multiple Vulnerabilities - Linux", "Apache HTTP Server 2.4.7 - 2.4.65 Authentication Bypass Vulnerability - Linux"]}, "a3": {"kind": "action", "label": "WordPress / WordPress MU\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2009-2432',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "wordpress / wordpress mu"], "rank": 8, "cost": 1.0, "kev": 0, "findings": 1, "examples": ["WordPress / WordPress MU Multiple Vulnerabilities (Jul 2009)"]}, "a4": {"kind": "action", "label": "WordPress\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2009-2432',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2012-6707',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2016-9263',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-14718',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-17091',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-5493',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-5610',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-6514',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-6804',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-9061',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-14028',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-19296',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "wordpress"], "rank": 3, "cost": 1.0, "kev": 0, "findings": 35, "examples": ["WordPress < 4.7.1 Multiple Security Vulnerabilities - Linux", "WordPress < 4.7.2 Multiple Security Vulnerabilities - Linux", "WordPress < 4.7.5 Multiple Security Vulnerabilities - Linux", "WordPress < 4.8.2 Multiple Vulnerabilities - Linux", "WordPress < 4.9 Multiple Vulnerabilities", "WordPress < 4.9.1 Multiple Vulnerabilities - Linux", "WordPress < 5.1 Path Traversal Vulnerability - Linux", "WordPress < 5.8 Missing 'Update URI' Plugin Header Vulnerability - Linux"]}, "m4": {"kind": "action", "label": "15 smaller actions\\n(15 findings)", "facts": ["vulExists(vmWeb,'CVE-2014-8109',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2016-0736',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2016-5387',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2016-8743',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-16510',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-7189',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-8295',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-9788',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-12895',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2019-13224',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2025-54352',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'oid_1.3.6.1.4.1.25623.1.0.104756',httpd,remoteExploit,privEscalation)"], "key": null, "rank": null, "cost": null, "kev": 0, "findings": 15, "examples": ["Apache HTTP Server 'mod_auth_digest' (1 findings)", "Apache HTTP Server 'mod_lua' denial of service vulnerability (may 2015) (1 findings)", "Apache HTTP Server 'whitespace defects' (1 findings)", "Apache HTTP Server man-in-the-middle attack vulnerability (jul 2016) - Linux (1 findings)", "Apache HTTP Server mod_session_crypto vulnerability (dec 2016) - Linux (1 findings)", "PHP 'cve-2017-7189' improper input validation vulnerability - Linux (1 findings)", "PHP 'cve-2019-13224' use-after-free vulnerability - Linux (1 findings)", "PHP end of life (EOL) detection - Linux (1 findings)", "PHP heap use-after-free vulnerability (sep 2019) - Linux (1 findings)", "Unprotected web app / device installers (HTTP) (1 findings)", "WordPress 'esc_sql' function SQL injection vulnerability (nov 2017) - Linux (1 findings)", "WordPress arbitrary file deletion vulnerability (jun 2018) - Linux (1 findings)", "WordPress information disclosure vulnerability (jul 2025) - Linux (1 findings)", "WordPress password reset CVE-2017-8295 security bypass vulnerability - Linux (1 findings)", "WordPress unspecified vulnerability (may 2023) - Linux (1 findings)"], "pooled": {"Apache HTTP Server 'mod_lua' denial of service vulnerability (may 2015)": 1, "Apache HTTP Server mod_session_crypto vulnerability (dec 2016) - Linux": 1, "Apache HTTP Server man-in-the-middle attack vulnerability (jul 2016) - Linux": 1, "Apache HTTP Server 'whitespace defects'": 1, "WordPress 'esc_sql' function SQL injection vulnerability (nov 2017) - Linux": 1, "PHP 'cve-2017-7189' improper input validation vulnerability - Linux": 1, "WordPress password reset CVE-2017-8295 security bypass vulnerability - Linux": 1, "Apache HTTP Server 'mod_auth_digest'": 1, "WordPress arbitrary file deletion vulnerability (jun 2018) - Linux": 1, "PHP 'cve-2019-13224' use-after-free vulnerability - Linux": 1, "WordPress information disclosure vulnerability (jul 2025) - Linux": 1, "WordPress unspecified vulnerability (may 2023) - Linux": 1, "PHP end of life (EOL) detection - Linux": 1, "Unprotected web app / device installers (HTTP)": 1, "PHP heap use-after-free vulnerability (sep 2019) - Linux": 1}}, "a5": {"kind": "action", "label": "PHP\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2016-10166',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2016-7480',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-16642',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-7890',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2017-8923',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-10546',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-14851',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2018-19395',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2019-11043',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2019-11045',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2020-7059',httpd,remoteExploit,privEscalation)", "vulExists(vmWeb,'CVE-2020-7062',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "php"], "rank": 5, "cost": 1.0, "kev": 2, "findings": 46, "examples": ["PHP 5.3.7 - 7.3.31, 7.4.x < 7.4.25, 8.0.x < 8.0.12 Security Update (Oct 2021) - Linux", "PHP 5.6.x < 5.6.38, 7.x < 7.0.33, 7.1.x < 7.1.25, 7.2.x < 7.2.13 Multiple Vulnerabilities (Dec 2018) - Linux", "PHP < 5.6.31 DoS Vulnerability - Linux", "PHP < 5.6.31, 7.0.x < 7.0.21, 7.1.x < 7.1.7 Multiple Vulnerabilities (Jul 2017) - Linux", "PHP < 5.6.31, 7.x < 7.0.17, 7.1.x < 7.1.3 DoS Vulnerability (Jul 2017) - Linux", "PHP < 5.6.32, 7.x < 7.0.24, 7.1.x < 7.1.11 Heap Based Buffer Overflow Vulnerability - Linux", "PHP < 5.6.33, 7.x < 7.0.27, 7.1.x < 7.1.13, 7.2.x < 7.2.1 Multiple Vulnerabilities - Linux", "PHP < 5.6.35, 7.x < 7.0.29, 7.1.x < 7.1.16, 7.2.x < 7.2.4 Security Bypass Vulnerability (May 2018) - Linux"]}, "a6": {"kind": "action", "label": "Apache HTTP Server options memory leak vulnerability (optionsbleed)\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2017-9798',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "apache http server options memory leak vulnerability (optionsbleed)"], "rank": 6, "cost": 1.0, "kev": 0, "findings": 1, "examples": ["Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed) - Version Check"]}, "a7": {"kind": "action", "label": "PHP 5.x\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2018-7584',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "php 5.x"], "rank": 7, "cost": 1.0, "kev": 0, "findings": 3, "examples": ["PHP 5.x < 5.6.34, 7.x < 7.0.28, 7.1.x < 7.1.15, 7.2.x < 7.2.3 Stack Buffer Overflow Vulnerability (Mar 2018) - Linux", "PHP 5.x < 5.6.39, 7.x < 7.0.33, 7.1.x < 7.1.26, 7.2.x < 7.2.14 DoS Vulnerability - Linux", "PHP 5.x < 7.1.20, 7.2.x < 7.2.8, 7.3.0alpha1 < 7.3.0alpha3 DoS Vulnerability - Linux"]}, "a8": {"kind": "action", "label": "WordPress RCE vulnerability (CVE-2019-8942) - Linux\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2019-8942',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "wordpress rce vulnerability (cve-2019-8942) - linux"], "rank": 9, "cost": 1.0, "kev": 0, "findings": 1, "examples": ["WordPress RCE Vulnerability (CVE-2019-8942) - Linux"]}, "a9": {"kind": "action", "label": "WordPress XSS vulnerability (apr 2024) - Linux\\nWeb server", "facts": ["vulExists(vmWeb,'CVE-2024-4439',httpd,remoteExploit,privEscalation)"], "key": ["172.18.0.110", "80/tcp", "wordpress xss vulnerability (apr 2024) - linux"], "rank": 10, "cost": 1.0, "kev": 0, "findings": 1, "examples": ["WordPress XSS Vulnerability (Apr 2024) - Linux"]}, "r5": {"kind": "rule", "label": "direct network access\\n\u00d71", "facts": ["RULE 6 (direct network access)"], "count": 1}, "r6": {"kind": "rule", "label": "multi-hop access\\n\u00d71", "facts": ["RULE 5 (multi-hop access)"], "count": 1}, "r7": {"kind": "rule", "label": "local exploit\\n\u00d75", "facts": ["RULE 1 (local exploit)"], "count": 5}, "m7": {"kind": "action", "label": "3 smaller actions\\n(3 findings)", "facts": ["vulExists(vmWeb,'CVE-1999-0524',ubuntu,localExploit,privEscalation)", "vulExists(vmWeb,'oid_1.3.6.1.4.1.25623.1.0.103674',ubuntu,localExploit,privEscalation)", "vulExists(vmWeb,'oid_1.3.6.1.4.1.25623.1.0.80091',ubuntu,localExploit,privEscalation)"], "key": null, "rank": null, "cost": null, "kev": 0, "findings": 3, "examples": ["ICMP timestamp reply information disclosure (1 findings)", "Operating system (OS) end of life (EOL) detection (1 findings)", "TCP timestamps information disclosure (1 findings)"], "pooled": {"ICMP timestamp reply information disclosure": 1, "Operating system (OS) end of life (EOL) detection": 1, "TCP timestamps information disclosure": 1}}, "r8": {"kind": "rule", "label": "multi-hop access\\n\u00d71", "facts": ["RULE 5 (multi-hop access)"], "count": 1}, "r9": {"kind": "rule", "label": "local exploit\\n\u00d73", "facts": ["RULE 1 (local exploit)"], "count": 3}, "m9": {"kind": "action", "label": "2 smaller actions\\n(2 findings)", "facts": ["vulExists(vmApp,'CVE-1999-0524',ubuntu,localExploit,privEscalation)", "vulExists(vmApp,'oid_1.3.6.1.4.1.25623.1.0.80091',ubuntu,localExploit,privEscalation)"], "key": null, "rank": null, "cost": null, "kev": 0, "findings": 2, "examples": ["ICMP timestamp reply information disclosure (1 findings)", "TCP timestamps information disclosure (1 findings)"], "pooled": {"ICMP timestamp reply information disclosure": 1, "TCP timestamps information disclosure": 1}}, "r10": {"kind": "rule", "label": "local exploit\\n\u00d73", "facts": ["RULE 1 (local exploit)"], "count": 3}, "m10": {"kind": "action", "label": "2 smaller actions\\n(2 findings)", "facts": ["vulExists(vmDb,'CVE-1999-0524',ubuntu,localExploit,privEscalation)", "vulExists(vmDb,'oid_1.3.6.1.4.1.25623.1.0.80091',ubuntu,localExploit,privEscalation)"], "key": null, "rank": null, "cost": null, "kev": 0, "findings": 2, "examples": ["ICMP timestamp reply information disclosure (1 findings)", "TCP timestamps information disclosure (1 findings)"], "pooled": {"ICMP timestamp reply information disclosure": 1, "TCP timestamps information disclosure": 1}}}, GOALS = {"vmDb": {"label": "Database", "active": ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "l10", "l15", "l16", "l17", "l241", "l293", "l5", "m0", "m10", "m2", "m4", "m7", "m9", "o1", "o11", "o13", "o230", "o286", "o3", "o351", "o6", "o8", "r0", "r1", "r10", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9"], "goal_nodes": ["o1", "o351"], "unreachable_actions": 13, "actions": 47, "unreachable_cost": 17.0, "total_cost": 68.0}, "vmApp": {"label": "App server", "active": ["a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "l10", "l15", "l16", "l17", "l241", "m2", "m4", "m7", "m9", "o11", "o13", "o230", "o286", "o6", "o8", "r2", "r3", "r4", "r5", "r6", "r7", "r9"], "goal_nodes": ["o6", "o286"], "unreachable_actions": 17, "actions": 47, "unreachable_cost": 23.0, "total_cost": 68.0}, "vmWeb": {"label": "Web server", "active": ["a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "l15", "l16", "l17", "m4", "m7", "o11", "o13", "o230", "r4", "r5", "r7"], "goal_nodes": ["o11", "o230"], "unreachable_actions": 21, "actions": 47, "unreachable_cost": 29.0, "total_cost": 68.0}}, PLAN = [{"key": ["172.18.0.110", "80/tcp", "apache http server"], "cost": 1.0}, {"key": ["172.18.0.111", "80/tcp", "apache http server"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress"], "cost": 1.0}, {"key": ["172.18.0.112", "3306/tcp", "oracle mysql server"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "php"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server options memory leak vulnerability (optionsbleed)"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "php 5.x"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress / wordpress mu"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress rce vulnerability (cve-2019-8942) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress xss vulnerability (apr 2024) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress arbitrary file deletion vulnerability (jun 2018) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server 'mod_auth_digest'"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server man-in-the-middle attack vulnerability (jul 2016) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server mod_session_crypto vulnerability (dec 2016) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server 'mod_lua' denial of service vulnerability (may 2015)"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "php end of life (eol) detection - linux"], "cost": 1.0}, {"key": ["172.18.0.111", "80/tcp", "apache http server memory access vulnerability - linux"], "cost": 1.0}, {"key": ["172.18.0.111", "general/icmp", "icmp timestamp reply information disclosure"], "cost": 2.0}, {"key": ["172.18.0.112", "general/icmp", "icmp timestamp reply information disclosure"], "cost": 2.0}, {"key": ["172.18.0.110", "general/icmp", "icmp timestamp reply information disclosure"], "cost": 2.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress password reset cve-2017-8295 security bypass vulnerability - linux"], "cost": 2.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server 'whitespace defects'"], "cost": 1.0}, {"key": ["172.18.0.110", "general/tcp", "operating system (os) end of life (eol) detection"], "cost": 2.0}, {"key": ["172.18.0.112", "3306/tcp", "oracle mysql backronym vulnerability (jun 2016) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress 'esc_sql' function sql injection vulnerability (nov 2017) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "unprotected web app / device installers (http)"], "cost": 2.0}, {"key": ["172.18.0.110", "general/tcp", "tcp timestamps information disclosure"], "cost": 2.0}, {"key": ["172.18.0.112", "general/tcp", "tcp timestamps information disclosure"], "cost": 2.0}, {"key": ["172.18.0.111", "general/tcp", "tcp timestamps information disclosure"], "cost": 2.0}, {"key": ["172.18.0.110", "80/tcp", "php 'cve-2019-13224' use-after-free vulnerability - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress unspecified vulnerability (may 2023) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "php heap use-after-free vulnerability (sep 2019) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "php 'cve-2017-7189' improper input validation vulnerability - linux"], "cost": 5.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress information disclosure vulnerability (jul 2025) - linux"], "cost": 5.0}, {"key": ["172.18.0.111", "80/tcp", "apache http server 'http/2 connection' dos vulnerability"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server denial of service vulnerability-02 (apr 2018) - linux"], "cost": 1.0}, {"key": ["172.18.0.111", "80/tcp", "apache http server denial of service vulnerability-02 (apr 2018) - linux"], "cost": 1.0}, {"key": ["172.18.0.112", "3306/tcp", "oracle mysql denial of service vulnerability (feb 2017) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress 'load-scripts.php' dos vulnerability - linux"], "cost": 5.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server 'mod_auth_digest' dos vulnerability - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server crlf injection vulnerability (dec 2016) - linux"], "cost": 1.0}, {"key": ["172.18.0.111", "80/tcp", "apache http server http/2 'settings' data processing dos vulnerability - linux"], "cost": 1.0}, {"key": ["172.18.0.111", "80/tcp", "apache http server denial of service vulnerability (apr 2018) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "wordpress xss vulnerability (may 2020) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server 'mod_proxy_fcgi' denial of service vulnerability (may 2015)"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server dos vulnerability (sep 2014) - linux"], "cost": 1.0}, {"key": ["172.18.0.110", "80/tcp", "apache http server 'mod_lua' denial of service vulnerability -01 (may 2015)"], "cost": 1.0}], TOTAL = 68.0;
+const svg = document.querySelector("#canvas svg");
+let goal = "vmDb", sel = null;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const keyStr = k => k ? k.join("|") : "";
+
+function inBudget() {
+  const b = TOTAL * (+document.getElementById("budget").value) / 100, chosen = new Map();
+  let spent = 0;
+  PLAN.forEach((p, i) => { if (spent + p.cost <= b + 1e-9) { spent += p.cost; chosen.set(keyStr(p.key), i + 1); } });
+  return chosen;
+}
+function render() {
+  const g = GOALS[goal], act = new Set(g.active), chosen = inBudget();
+  svg.querySelectorAll("g.node").forEach(el => {
+    const n = NODES[el.id]; if (!n) return;
+    el.classList.toggle("off", !act.has(el.id));
+    el.classList.toggle("goal", g.goal_nodes.includes(el.id));
+    el.classList.toggle("inbudget", n.kind === "action" && chosen.has(keyStr(n.key)));
+    el.classList.toggle("sel", el.id === sel);
+  });
+  svg.querySelectorAll("g.edge").forEach(el => {
+    const [a, b] = el.id.split("__"); el.classList.toggle("off", !(act.has(a) && act.has(b)));
+  });
+  const pct = document.getElementById("budget").value;
+  document.getElementById("budgetOut").textContent = pct + "%";
+  let kev = 0; Object.values(NODES).forEach(n => { if (n.kind === "action" && chosen.has(keyStr(n.key))) kev += n.kev; });
+  document.getElementById("stats").innerHTML =
+    `<span>Goal: <b>code execution on the ${esc(g.label)}</b></span>` +
+    `<span>Work that cannot reach it: <b>${g.unreachable_actions} / ${g.actions}</b> actions, ` +
+    `<b>${g.unreachable_cost} / ${g.total_cost}</b> cost units</span>` +
+    `<span>Plan at ${pct}%: <b>${chosen.size}</b> actions selected</span>`;
+  document.querySelectorAll("#goals button").forEach(b => b.classList.toggle("on", b.dataset.g === goal));
+}
+function show(id) {
+  const n = NODES[id]; if (!n) return; sel = id; const p = document.getElementById("panel");
+  const kindName = {or:"Conclusion", rule:"Rule application", action:"Remediation action", leaf:"Network fact"}[n.kind];
+  let h = `<h3>${esc(n.label.replace(/\\n/g, " "))}</h3><p class="muted">${kindName}</p>`;
+  if (n.kind === "action" && !n.key) {
+    h += `<p>${n.examples.length} smaller actions outside the top ${10} of the plan, with no KEV-listed finding, pooled to keep the graph readable.</p><ul>` +
+         n.examples.map(e => `<li>${esc(e)}</li>`).join("") + "</ul>";
+  } else if (n.kind === "action") {
+    const chosen = inBudget().has(keyStr(n.key));
+    h += `<p>Plan rank <b>${n.rank ?? "–"}</b> · cost <b>${n.cost ?? "–"}</b> · ` +
+         `<b>${n.findings}</b> findings · <b style="color:var(--kev)">${n.kev} KEV</b><br>` +
+         `${chosen ? '<b style="color:var(--ok)">Fixed within the selected budget</b>' : "Not within the selected budget"}</p>` +
+         `<p class="muted">Host ${esc(n.key[0])} ${esc(n.key[1])}</p><p><b>Example findings</b></p><ul>` +
+         n.examples.map(e => `<li>${esc(e)}</li>`).join("") + "</ul>";
+  }
+  if (n.kind === "rule") h += `<p>${n.count} rule applications merged into this node.</p>`;
+  h += `<p><b>MulVAL facts</b></p>` + n.facts.map(f => `<code>${esc(f)}</code><br>`).join("");
+  p.innerHTML = h; render();
+}
+Object.entries(GOALS).forEach(([k, g]) => {
+  const b = document.createElement("button"); b.textContent = g.label; b.dataset.g = k;
+  b.onclick = () => { goal = k; render(); }; document.getElementById("goals").appendChild(b);
+});
+svg.querySelectorAll("g.node").forEach(el => el.addEventListener("click", () => show(el.id)));
+document.getElementById("budget").addEventListener("input", render);
+render();
+</script>
+</body></html>

@@ -182,6 +182,23 @@ Open [`data/figures/plan_report.html`](data/figures/plan_report.html) in a brows
 first if you are viewing this on GitHub). At a 5% budget it shows 3 actions, 58% of exposure
 removed and 5 of 7 KEV findings closed.
 
+### The attack graph, interactively
+
+`render_graph.py` draws the recorded MulVAL graph (357 vertices) as an interactive page of 43
+nodes: conclusions are kept, rule applications with the same conclusion and premises are merged
+with a count, and vulnerability facts are grouped by the remediation action that removes them. You
+can switch the declared goal (database, application or web server), set a plan budget to highlight
+the actions it fixes, and click any node for its MulVAL facts and findings. Needs Graphviz
+(`sudo apt install graphviz`; included in the Docker image).
+
+```bash
+python3 render_graph.py --graph ../mulval/cases/lab3/out --topology topology_lab3.json \
+    --findings processed/findings_openvas_b2.csv --plan processed/plan_lab3.csv \
+    -o figures/attack_graph.html
+```
+
+Open [`data/figures/attack_graph.html`](data/figures/attack_graph.html) in a browser.
+
 ### 3. Prioritisation under a budget (Experiment 3)
 
 Produced by `make_figures.py` (`figures/fig1_budget_risk.pdf`, `fig2_budget_kev.pdf`, and the

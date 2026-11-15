@@ -55,6 +55,13 @@ step "prioritise.py, attack-graph corpus" $PY prioritise.py $GRAPH \
     --findings processed/findings_openvas_b2.csv -o processed/plan_lab3.csv
 step "render_plan.py  (HTML report, 5% budget)" $PY render_plan.py processed/plan_lab3.csv \
     --budget 0.05 -o figures/plan_report.html
+if command -v dot >/dev/null; then
+    step "render_graph.py (interactive attack graph)" $PY render_graph.py $GRAPH \
+        --findings processed/findings_openvas_b2.csv --plan processed/plan_lab3.csv \
+        -o figures/attack_graph.html
+else
+    echo "render_graph.py skipped: Graphviz (dot) is not installed"
+fi
 
 echo "== 3. Tables (Experiments 3 and 4, corpus)"
 step "corpus_table.py"      $PY corpus_table.py -o figures/tab_corpus.tex
