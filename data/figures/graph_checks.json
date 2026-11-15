@@ -1,0 +1,97 @@
+{
+ "goal": "execCode(vmDb, _)",
+ "held": 10,
+ "total": 10,
+ "checks": [
+  {
+   "check": "control, nothing changed",
+   "lines_removed": 0,
+   "expected_goal": true,
+   "goal_reached": true,
+   "vertices": 357,
+   "held": true,
+   "because": "the recorded graph derives the goal, so anything else here would be a broken run"
+  },
+  {
+   "check": "attacker position removed",
+   "lines_removed": 1,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "with no attacker anywhere, no chain can start"
+  },
+  {
+   "check": "attacker's entry edge removed",
+   "lines_removed": 1,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "the attacker reaches only the web tier, so removing that edge strands them"
+  },
+  {
+   "check": "last hop to the database removed",
+   "lines_removed": 1,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "the goal is on vmDb and the application tier is the only declared way in"
+  },
+  {
+   "check": "middle hop removed",
+   "lines_removed": 1,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "the chain is three tiers and this is the second of them"
+  },
+  {
+   "check": "every weakness on the app tier removed",
+   "lines_removed": 38,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "the attacker must execute code on vmApp to reach the database from it"
+  },
+  {
+   "check": "every weakness on the web tier removed",
+   "lines_removed": 139,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "the attacker's only entry is the web tier, so nothing follows without it"
+  },
+  {
+   "check": "every weakness on the database removed",
+   "lines_removed": 51,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "the goal is code execution on the database itself"
+  },
+  {
+   "check": "service descriptions removed",
+   "lines_removed": 3,
+   "expected_goal": false,
+   "goal_reached": false,
+   "vertices": 0,
+   "held": true,
+   "because": "a remote exploit rule needs the service it runs against"
+  },
+  {
+   "check": "unrelated hop removed",
+   "lines_removed": 1,
+   "expected_goal": true,
+   "goal_reached": true,
+   "vertices": 357,
+   "held": true,
+   "because": "the self-reachability line is not on the path, so removing it must change nothing"
+  }
+ ]
+}

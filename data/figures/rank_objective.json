@@ -1,0 +1,32 @@
+{
+ "pointwise, boosted tree": {
+  "spearman": 0.6088,
+  "ndcg@5": 0.6156,
+  "ndcg@10": 0.6798
+ },
+ "pointwise, linear": {
+  "spearman": 0.4532,
+  "ndcg@5": 0.5215,
+  "ndcg@10": 0.5737
+ },
+ "pairwise, linear": {
+  "spearman": 0.432,
+  "ndcg@5": 0.5228,
+  "ndcg@10": 0.5862
+ },
+ "pointwise, XGBRegressor": {
+  "spearman": 0.5446,
+  "ndcg@5": 0.5985,
+  "ndcg@10": 0.6708
+ },
+ "LambdaMART, rank:ndcg": {
+  "spearman": 0.493,
+  "ndcg@5": 0.6479,
+  "ndcg@10": 0.699
+ },
+ "severity alone": {
+  "spearman": 0.4463,
+  "ndcg@5": 0.6952,
+  "ndcg@10": 0.7103
+ }
+}

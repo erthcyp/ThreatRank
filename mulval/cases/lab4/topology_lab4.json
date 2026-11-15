@@ -1,0 +1,46 @@
+{
+  "_comment": [
+    "EXPLOITABLE CHAIN, declared for walking the attack graph end to end.",
+    "Three vulhub services on one isolated bridge, each with a published, well-known",
+    "unauthenticated path to code execution, chained web -> app -> db:",
+    "  vmWeb  .102  Struts2 2.3.30 showcase on 8080  (CVE-2017-5638, S2-045)",
+    "  vmApp  .103  CouchDB 2.1.0 on 5984            (CVE-2017-12635 / -12636)",
+    "  vmDb   .104  Redis 4.0.14 on 6379, unauthenticated",
+    "",
+    "SERVICE ACCOUNTS CHECKED AGAINST THE RUNNING CONTAINERS ON 1 OCTOBER 2026 by",
+    "reading /proc/*/status: the Struts2 JVM and the CouchDB beam.smp both run as uid 0",
+    "(root), and redis-server as uid 999 (redis). Recheck after any image change.",
+    "",
+    "REACHABILITY CHECKED the same day by opening a socket along each declared edge:",
+    "internet->vmWeb:8080, vmWeb->vmApp:5984, vmApp->vmDb:6379 all connect.",
+    "",
+    "SOFTWARE NAMES below are provisional and must be reconciled with what the scanners",
+    "actually report once .102-.104 are rescanned, because MulVAL matches vulExists to",
+    "networkServiceInfo on the software string. This file is the declared environment;",
+    "the vulExists facts come from the rescan, not from here."
+  ],
+  "attacker_zone": "internet",
+  "hosts": {
+    "172.18.0.102": {
+      "atom": "vmWeb",
+      "host_software": "ubuntu",
+      "services": { "8080/tcp": { "software": "tomcat", "account": "root" } }
+    },
+    "172.18.0.103": {
+      "atom": "vmApp",
+      "host_software": "ubuntu",
+      "services": { "5984/tcp": { "software": "couchdb", "account": "root" } }
+    },
+    "172.18.0.104": {
+      "atom": "vmDb",
+      "host_software": "ubuntu",
+      "services": { "6379/tcp": { "software": "redis", "account": "redis" } }
+    }
+  },
+  "hacl": [
+    ["internet", "vmWeb", "tcp", 8080],
+    ["vmWeb", "vmApp", "tcp", 5984],
+    ["vmApp", "vmDb", "tcp", 6379]
+  ],
+  "goal": "execCode(vmDb, _)"
+}

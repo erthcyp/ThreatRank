@@ -1,0 +1,10 @@
+% generated from chain_walk.json by walk_chain.py --table
+\begin{tabular}{llll}
+\toprule
+Tier, service & Vulnerability & Graph derives & Confirmed in the lab \\
+\midrule
+web, Struts2 & S2-045 (CVE-2017-5638) & \texttt{execCode(vmWeb,root)} & \checkmark~ OGNL code execution, as root \\
+app, CouchDB & CVE-2017-12635, -12636 & \texttt{execCode(vmApp,root)} & \checkmark~ admin takeover then RCE, \texttt{id} = uid 0 (root) \\
+db, Redis & unauthenticated access & \texttt{execCode(vmDb,\_)} & \checkmark~ unauthenticated full control \\
+\bottomrule
+\end{tabular}

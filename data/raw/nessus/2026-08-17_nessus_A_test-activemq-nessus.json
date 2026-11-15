@@ -1,0 +1,3030 @@
+{
+  "scan": {
+    "info": {
+      "name": "test-activemq-nessus",
+      "scan_type": "local",
+      "no_target": false,
+      "hasaudittrail": true,
+      "severity_processed": "202608171103",
+      "alt_targets_used": null,
+      "migrated": 0,
+      "targets": "172.18.0.17",
+      "scanner_end": 1786992156,
+      "scanner_start": 1786991295,
+      "severity_base_selections": [
+        {
+          "display": "CVSS v2.0",
+          "value": "cvss_v2"
+        },
+        {
+          "display": "CVSS v3.0",
+          "value": "cvss_v3"
+        },
+        {
+          "display": "CVSS v4.0",
+          "value": "cvss_v4"
+        },
+        {
+          "display": "Default (CVSS v3.0)",
+          "value": "system_default"
+        }
+      ],
+      "haskb": true,
+      "offline": false,
+      "node_name": null,
+      "scan_start_timestamp": "1786991295",
+      "control": true,
+      "policy_template_uuid": "731a8e52-3ea6-a291-ec0a-d2ff0619c19d7bd788d6be818b65",
+      "uuid": "b390aef7-00f6-bca3-67a4-f9289564af379c118d3c4639541e",
+      "node_host": null,
+      "current_severity_base_display": "CVSS v3.0",
+      "timestamp": 1786992159,
+      "policy": "Basic Network Scan",
+      "hostcount": 1,
+      "folder_id": 3,
+      "current_severity_base": "cvss_v3",
+      "license_info": {
+        "trimmed": "0",
+        "limit": "20"
+      },
+      "status": "completed",
+      "scan_start": 1786991295,
+      "scan_end": 1786992159,
+      "isWas": null,
+      "object_id": 5,
+      "node_id": null,
+      "edit_allowed": true,
+      "acls": [
+        {
+          "permissions": 0,
+          "owner": null,
+          "display_name": null,
+          "name": null,
+          "id": null,
+          "type": "default"
+        },
+        {
+          "permissions": 128,
+          "owner": 1,
+          "display_name": "threatrank",
+          "name": "threatrank",
+          "id": 2,
+          "type": "user"
+        }
+      ],
+      "selected_severity_base": "system_default",
+      "scan_end_timestamp": "1786992156",
+      "scanner_name": "Local Scanner",
+      "user_permissions": 128,
+      "scan_group": null
+    },
+    "compliance": [],
+    "filters": [
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "true",
+            "false"
+          ]
+        },
+        "name": "asset_inventory",
+        "readable_name": "Asset Inventory"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "NUMBER",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^[0-9]+$"
+        },
+        "name": "bid",
+        "readable_name": "Bugtraq ID"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "Cert VU reference (ie: 10031)",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^[0-9]+$"
+        },
+        "name": "cert",
+        "readable_name": "CERT Vulnerability ID"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "cpe",
+        "readable_name": "CPE"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "CVE-YYYY-ID (ie: CVE-2011-0018)",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(CVE|CAN)-(1999|20[0-9][0-9])-[0-9]{4,}$"
+        },
+        "name": "cve",
+        "readable_name": "CVE"
+      },
+      {
+        "operators": [
+          "lt",
+          "gt",
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "7.5",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(10(\\.0)?|[0-9](\\.[0-9])?)$"
+        },
+        "name": "cvss_base_score",
+        "readable_name": "CVSS v2.0 Base Score"
+      },
+      {
+        "operators": [
+          "lt",
+          "gt",
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "4.2",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(10(\\.0)?|[0-9](\\.[0-9])?)$"
+        },
+        "name": "cvss_temporal_score",
+        "readable_name": "CVSS v2.0 Temporal Score"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "cvss_temporal_vector",
+        "readable_name": "CVSS v2.0 Temporal Vector"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "cvss_vector",
+        "readable_name": "CVSS v2.0 Vector"
+      },
+      {
+        "operators": [
+          "lt",
+          "gt",
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "7.5",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(10(\\.0)?|[0-9](\\.[0-9])?)$"
+        },
+        "name": "cvss3_base_score",
+        "readable_name": "CVSS v3.0 Base Score"
+      },
+      {
+        "operators": [
+          "lt",
+          "gt",
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "4.2",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(10(\\.0)?|[0-9](\\.[0-9])?)$"
+        },
+        "name": "cvss3_temporal_score",
+        "readable_name": "CVSS v3.0 Temporal Score"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "cvss3_temporal_vector",
+        "readable_name": "CVSS v3.0 Temporal Vector"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "cvss3_vector",
+        "readable_name": "CVSS v3.0 Vector"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "CWE reference (ie: 200)",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^([0-9]+)$"
+        },
+        "name": "cwe",
+        "readable_name": "CWE"
+      },
+      {
+        "operators": [
+          "lt",
+          "gt",
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "0.0014",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(0+\\.?|0*\\.\\d+|0*1(\\.0*)?)$"
+        },
+        "name": "epss_score",
+        "readable_name": "EPSS Score"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "true",
+            "false"
+          ]
+        },
+        "name": "exploit_available",
+        "readable_name": "Exploit Available"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "Exploits are available",
+            "No exploit is required",
+            "No known exploits are available"
+          ]
+        },
+        "name": "exploitability_ease",
+        "readable_name": "Exploitability Ease"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "hostname",
+        "readable_name": "Hostname"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "IAVT reference (ie: 2011-A-0151)",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^[0-9]+-[A-Za-z]-[0-9]+$"
+        },
+        "name": "iavt",
+        "readable_name": "IAVT ID"
+      },
+      {
+        "operators": [
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "description",
+        "readable_name": "Plugin Description"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "AIX Local Security Checks",
+            "Alibaba Cloud Linux Local Security Checks",
+            "Alma Linux Local Security Checks",
+            "Amazon Linux Local Security Checks",
+            "Artificial Intelligence",
+            "Azure Linux Local Security Checks",
+            "Backdoors",
+            "Brute force attacks",
+            "CGI abuses",
+            "CGI abuses : XSS",
+            "CISCO",
+            "CentOS Local Security Checks",
+            "DNS",
+            "Databases",
+            "Debian Local Security Checks",
+            "Default Unix Accounts",
+            "Denial of Service",
+            "F5 Networks Local Security Checks",
+            "FTP",
+            "Fedora Local Security Checks",
+            "Firewalls",
+            "FreeBSD Local Security Checks",
+            "Gain a shell remotely",
+            "General",
+            "Gentoo Local Security Checks",
+            "HP-UX Local Security Checks",
+            "Huawei Local Security Checks",
+            "Junos Local Security Checks",
+            "MacOS X Local Security Checks",
+            "Mandriva Local Security Checks",
+            "MarinerOS Local Security Checks",
+            "Miracle Linux Local Security Checks",
+            "Misc.",
+            "Mobile Devices",
+            "Netware",
+            "NewStart CGSL Local Security Checks",
+            "Oracle Linux Local Security Checks",
+            "OracleVM Local Security Checks",
+            "Palo Alto Local Security Checks",
+            "Peer-To-Peer File Sharing",
+            "PhotonOS Local Security Checks",
+            "Policy Compliance",
+            "Port scanners",
+            "RPC",
+            "Red Hat Local Security Checks",
+            "Rocky Linux Local Security Checks",
+            "SCADA",
+            "SMTP problems",
+            "SNMP",
+            "Scientific Linux Local Security Checks",
+            "Service detection",
+            "Settings",
+            "Slackware Local Security Checks",
+            "Solaris Local Security Checks",
+            "SuSE Local Security Checks",
+            "Tenable.ot",
+            "Tenable.ot Violation",
+            "Tencent Local Security Checks",
+            "Ubuntu Local Security Checks",
+            "Unity Linux Local Security Checks",
+            "VMware ESX Local Security Checks",
+            "Virtuozzo Local Security Checks",
+            "Web Servers",
+            "Windows",
+            "Windows : Microsoft Bulletins",
+            "Windows : User management"
+          ]
+        },
+        "name": "plugin_family",
+        "readable_name": "Plugin Family"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "NUMBER",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^[0-9, ]+$"
+        },
+        "name": "plugin_id",
+        "readable_name": "Plugin ID"
+      },
+      {
+        "operators": [
+          "date-lt",
+          "date-gt",
+          "date-eq",
+          "date-neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "YYYY-MM-DD",
+          "prefix": "filter",
+          "type": "datefield",
+          "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "name": "plugin_modification_date",
+        "readable_name": "Plugin Modification Date"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "plugin_name",
+        "readable_name": "Plugin Name"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "plugin_output",
+        "readable_name": "Plugin Output"
+      },
+      {
+        "operators": [
+          "date-lt",
+          "date-gt",
+          "date-eq",
+          "date-neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "YYYY-MM-DD",
+          "prefix": "filter",
+          "type": "datefield",
+          "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "name": "plugin_publication_date",
+        "readable_name": "Plugin Publication Date"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "local",
+            "remote"
+          ]
+        },
+        "name": "plugin_type",
+        "readable_name": "Plugin Type"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "80",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^[0-9]+$"
+        },
+        "name": "port",
+        "readable_name": "Port"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "tcp",
+            "udp",
+            "icmp"
+          ]
+        },
+        "name": "protocol",
+        "readable_name": "Protocol"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq"
+        ],
+        "control": {
+          "prefix": "filter",
+          "type": "dropdown",
+          "list": [
+            "None",
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ]
+        },
+        "name": "risk_factor",
+        "readable_name": "Risk Factor"
+      },
+      {
+        "operators": [
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "see_also",
+        "readable_name": "See Also"
+      },
+      {
+        "operators": [
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "solution",
+        "readable_name": "Solution"
+      },
+      {
+        "operators": [
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "TEXT",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": ".*"
+        },
+        "name": "synopsis",
+        "readable_name": "Synopsis"
+      },
+      {
+        "operators": [
+          "lt",
+          "gt",
+          "eq",
+          "neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "7.5",
+          "prefix": "filter",
+          "type": "entry",
+          "regex": "^(10(\\.0)?|[0-9](\\.[0-9])?|0(\\.0)?)$"
+        },
+        "name": "vpr_score",
+        "readable_name": "VPR Score"
+      },
+      {
+        "operators": [
+          "date-lt",
+          "date-gt",
+          "date-eq",
+          "date-neq",
+          "match",
+          "nmatch"
+        ],
+        "control": {
+          "readable_regex": "YYYY-MM-DD",
+          "prefix": "filter",
+          "type": "datefield",
+          "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "name": "vuln_publication_date",
+        "readable_name": "Vulnerability Publication Date"
+      }
+    ],
+    "comphosts": [],
+    "saved_filters": [],
+    "history": [
+      {
+        "alt_targets_used": false,
+        "scheduler": 0,
+        "node_uuid": null,
+        "node_name": null,
+        "node_host": null,
+        "scan_group": null,
+        "node_id": null,
+        "schedule_type": "manual",
+        "status": "completed",
+        "type": "local",
+        "uuid": "847c89e8-d69f-cabc-354e-f08aecd6f124d37942994155b992",
+        "last_modification_date": 1786991049,
+        "creation_date": 1786990197,
+        "owner": "threatrank",
+        "owner_id": 2,
+        "history_id": 6
+      },
+      {
+        "alt_targets_used": true,
+        "scheduler": 0,
+        "node_uuid": null,
+        "node_name": null,
+        "node_host": null,
+        "scan_group": null,
+        "node_id": null,
+        "schedule_type": "manual",
+        "status": "completed",
+        "type": "local",
+        "uuid": "b390aef7-00f6-bca3-67a4-f9289564af379c118d3c4639541e",
+        "last_modification_date": 1786992159,
+        "creation_date": 1786991295,
+        "owner": "threatrank",
+        "owner_id": 2,
+        "history_id": 7
+      }
+    ],
+    "notes": null,
+    "hosts": [
+      {
+        "totalchecksconsidered": 314432,
+        "numchecksconsidered": 314432,
+        "scanprogresstotal": 100,
+        "scanprogresscurrent": 100,
+        "host_index": 0,
+        "score": 238,
+        "severitycount": {
+          "item": [
+            {
+              "count": 28,
+              "severitylevel": 0
+            },
+            {
+              "count": 1,
+              "severitylevel": 1
+            },
+            {
+              "count": 2,
+              "severitylevel": 2
+            },
+            {
+              "count": 0,
+              "severitylevel": 3
+            },
+            {
+              "count": 0,
+              "severitylevel": 4
+            },
+            {
+              "count": 0,
+              "severitylevel": 5
+            },
+            {
+              "count": 0,
+              "severitylevel": 6
+            },
+            {
+              "count": 0,
+              "severitylevel": 7
+            },
+            {
+              "count": 0,
+              "severitylevel": 8
+            },
+            {
+              "count": 0,
+              "severitylevel": 9
+            }
+          ]
+        },
+        "credential": "false",
+        "progress": "100-100/314432-314432",
+        "offline_critical": 0,
+        "offline_high": 0,
+        "offline_medium": 0,
+        "offline_low": 0,
+        "offline_info": 0,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1,
+        "info": 28,
+        "severity": 31,
+        "host_id": 2,
+        "hostname": "172.18.0.17"
+      }
+    ],
+    "remediations": {
+      "remediations": null,
+      "num_hosts": 1,
+      "num_cves": 5,
+      "num_impacted_hosts": 0,
+      "num_remediated_cves": 0
+    },
+    "prioritization": {
+      "plugins": [
+        {
+          "hosts": [
+            {
+              "host_ip": "172.18.0.17",
+              "host_fqdn": null,
+              "hostname": "172.18.0.17",
+              "id": 2
+            }
+          ],
+          "severity": 2,
+          "pluginname": "HTTP TRACE / TRACK Methods Allowed",
+          "pluginattributes": {
+            "threat_intensity_last_28": "Very Low",
+            "synopsis": "Debugging functions are enabled on the remote web server.",
+            "script_copyright": "This script is Copyright (C) 2003-2024 E-Soft Inc.",
+            "cvss_score_rationale": "Tenable believes the XST vulnerability only affects Confidentiality, not Integrity (reflected in NVD's score for CVE-2010-0386)",
+            "description": "The remote web server supports the TRACE and/or TRACK methods. TRACE and TRACK are HTTP methods that are used to debug web server connections.",
+            "cert": "867593",
+            "risk_information": {
+              "cvss_temporal_vector": "CVSS2#E:U/RL:OF/RC:C",
+              "risk_factor": "Medium",
+              "cvss_vector": "CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N",
+              "cvss3_base_score": "5.3",
+              "cvss_temporal_score": "3.7",
+              "cvss_base_score": "5.0",
+              "cvss3_temporal_vector": "CVSS:3.0/E:U/RL:O/RC:C",
+              "cvss3_temporal_score": "4.6",
+              "cvss3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+            },
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "cwe",
+                  "values": {
+                    "value": [
+                      "16",
+                      "200"
+                    ]
+                  },
+                  "url": "http://cwe.mitre.org/data/definitions/"
+                },
+                {
+                  "name": "cert",
+                  "values": {
+                    "value": [
+                      "288308",
+                      "867593"
+                    ]
+                  },
+                  "url": "http://www.kb.cert.org/vuls/id/"
+                },
+                {
+                  "name": "bid",
+                  "values": {
+                    "value": [
+                      "9506",
+                      "9561",
+                      "11604",
+                      "33374",
+                      "37995"
+                    ]
+                  },
+                  "url": "http://www.securityfocus.com/bid/"
+                },
+                {
+                  "name": "cve",
+                  "values": {
+                    "value": [
+                      "CVE-2003-1567",
+                      "CVE-2004-2320",
+                      "CVE-2010-0386"
+                    ]
+                  },
+                  "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId="
+                }
+              ]
+            },
+            "threat_sources_last_28": "No recorded events",
+            "plugin_name": "HTTP TRACE / TRACK Methods Allowed",
+            "vpr_score": "4.3",
+            "cvss_score_source": "CVE-2004-2320",
+            "see_also": [
+              "http://www.nessus.org/u?e979b5cb",
+              "http://www.apacheweek.com/issues/03-01-24",
+              "https://download.oracle.com/sunalerts/1000718.1.html"
+            ],
+            "product_coverage": "Low",
+            "threat_recency": "No recorded events",
+            "fname": "xst_http_trace.nasl",
+            "cvssV3_impactScore": "5.2",
+            "plugin_information": {
+              "plugin_version": "1.75",
+              "plugin_id": 11213,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2003/01/23",
+              "plugin_family": "Web Servers",
+              "plugin_modification_date": "2024/04/09"
+            },
+            "required_port": "80",
+            "dependency": "http_version.nasl",
+            "cwe": "200",
+            "solution": "Disable these HTTP methods. Refer to the plugin output for more information.",
+            "vuln_information": {
+              "exploitability_ease": "No known exploits are available",
+              "exploit_available": "false",
+              "vuln_publication_date": "2003/01/20"
+            },
+            "age_of_vuln": "730 days +",
+            "exploit_code_maturity": "Unproven"
+          },
+          "pluginfamily": "Web Servers",
+          "host_count": 1,
+          "pluginid": "11213"
+        },
+        {
+          "hosts": [
+            {
+              "host_ip": "172.18.0.17",
+              "host_fqdn": null,
+              "hostname": "172.18.0.17",
+              "id": 2
+            }
+          ],
+          "severity": 2,
+          "pluginname": "IP Forwarding Enabled",
+          "pluginattributes": {
+            "threat_intensity_last_28": "Very Low",
+            "synopsis": "The remote host has IP forwarding enabled.",
+            "script_copyright": "This script is Copyright (C) 2010-2023 Tenable Network Security, Inc.",
+            "description": "The remote host has IP forwarding enabled. An attacker can exploit this to route packets through the host and potentially bypass some firewalls / routers / NAC filtering.\n\nUnless the remote host is a router, it is recommended that you disable IP forwarding.",
+            "risk_information": {
+              "cvss3_vector": "CVSS:3.0/AV:A/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+              "risk_factor": "Medium",
+              "cvss_vector": "CVSS2#AV:A/AC:L/Au:N/C:P/I:P/A:P",
+              "cvss_base_score": "5.8",
+              "cvss3_base_score": "6.5"
+            },
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "cve",
+                  "values": {
+                    "value": [
+                      "CVE-1999-0511"
+                    ]
+                  },
+                  "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId="
+                }
+              ]
+            },
+            "threat_sources_last_28": "No recorded events",
+            "plugin_name": "IP Forwarding Enabled",
+            "vpr_score": "4.3",
+            "cvss_score_source": "CVE-1999-0511",
+            "product_coverage": "Medium",
+            "threat_recency": "No recorded events",
+            "fname": "ip_forwarding_enabled.nasl",
+            "cvssV3_impactScore": "5.2",
+            "plugin_information": {
+              "plugin_version": "1.16",
+              "plugin_id": 50686,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2010/11/23",
+              "plugin_family": "Firewalls",
+              "plugin_modification_date": "2023/10/17"
+            },
+            "solution": "On Linux, you can disable IP forwarding by doing :\n\necho 0 > /proc/sys/net/ipv4/ip_forward\n\nOn Windows, set the key 'IPEnableRouter' to 0 under\n\nHKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters\n\nOn Mac OS X, you can disable IP forwarding by executing the command :\n\nsysctl -w net.inet.ip.forwarding=0\n\nFor other systems, check with your vendor.",
+            "vuln_information": {
+              "vuln_publication_date": "1997/01/01"
+            },
+            "age_of_vuln": "730 days +",
+            "exploit_code_maturity": "Unproven"
+          },
+          "pluginfamily": "Firewalls",
+          "host_count": 1,
+          "pluginid": "50686"
+        },
+        {
+          "hosts": [
+            {
+              "host_ip": "172.18.0.17",
+              "host_fqdn": null,
+              "hostname": "172.18.0.17",
+              "id": 2
+            }
+          ],
+          "severity": 1,
+          "pluginname": "ICMP Timestamp Request Remote Date Disclosure",
+          "pluginattributes": {
+            "threat_intensity_last_28": "Very Low",
+            "synopsis": "It is possible to determine the exact time set on the remote host.",
+            "script_copyright": "This script is Copyright (C) 1999-2024 Tenable Network Security, Inc.",
+            "description": "The remote host answers to an ICMP timestamp request.  This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols.\n\nTimestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time.",
+            "risk_information": {
+              "risk_factor": "Low",
+              "cvss_vector": "CVSS2#AV:L/AC:L/Au:N/C:P/I:N/A:N",
+              "cvss_base_score": "2.1"
+            },
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "cwe",
+                  "values": {
+                    "value": [
+                      "200"
+                    ]
+                  },
+                  "url": "http://cwe.mitre.org/data/definitions/"
+                },
+                {
+                  "name": "cve",
+                  "values": {
+                    "value": [
+                      "CVE-1999-0524"
+                    ]
+                  },
+                  "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId="
+                }
+              ]
+            },
+            "threat_sources_last_28": "No recorded events",
+            "plugin_name": "ICMP Timestamp Request Remote Date Disclosure",
+            "vpr_score": "3.2",
+            "cvss_score_source": "CVE-1999-0524",
+            "product_coverage": "Very High",
+            "threat_recency": "No recorded events",
+            "fname": "icmp_timestamp.nasl",
+            "cvssV3_impactScore": "1.4",
+            "plugin_information": {
+              "plugin_version": "1.56",
+              "plugin_id": 10114,
+              "plugin_type": "remote",
+              "plugin_publication_date": "1999/08/01",
+              "plugin_family": "General",
+              "plugin_modification_date": "2024/10/07"
+            },
+            "cwe": "200",
+            "solution": "Filter out the ICMP timestamp requests (13), and the outgoing ICMP timestamp replies (14).",
+            "vuln_information": {
+              "vuln_publication_date": "1997/08/01"
+            },
+            "age_of_vuln": "730 days +",
+            "exploit_code_maturity": "PoC"
+          },
+          "pluginfamily": "General",
+          "host_count": 1,
+          "pluginid": "10114"
+        }
+      ],
+      "threat_level": 2
+    },
+    "vulnerabilities": [
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 39,
+        "plugin_name": "Traceroute Information",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 10287,
+        "severity_index": 0,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 38,
+        "plugin_name": "TCP/IP Timestamps Supported",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 25220,
+        "severity_index": 1,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 35,
+        "plugin_name": "OS Identification",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 11936,
+        "severity_index": 2,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 34,
+        "plugin_name": "OS Fingerprints Detected",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 209654,
+        "severity_index": 3,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 33,
+        "plugin_name": "Oracle PeopleSoft PeopleTools Remote HTTP Detection",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 330337,
+        "severity_index": 4,
+        "cpe": "cpe:/a:oracle:peoplesoft_enterprise_peopletools",
+        "offline": false,
+        "plugin_family": "Service detection",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 31,
+        "plugin_name": "Nessus Scan Information",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 19506,
+        "severity_index": 5,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Settings",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 25,
+        "plugin_name": "HTTP Methods Allowed (per directory)",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 43111,
+        "severity_index": 6,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Web Servers",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 24,
+        "plugin_name": "Ethernet MAC Addresses",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 86420,
+        "severity_index": 7,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 22,
+        "plugin_name": "Device Type",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 54615,
+        "severity_index": 8,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 21,
+        "plugin_name": "Common Platform Enumeration (CPE)",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 45590,
+        "severity_index": 9,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 1,
+        "score": null,
+        "vuln_index": 20,
+        "plugin_name": "Advanced Message Queuing Protocol Detection",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 62349,
+        "severity_index": 10,
+        "cpe": "cpe:/a:spring-amqp_project:spring-amqp",
+        "offline": false,
+        "plugin_family": "Service detection",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 2,
+        "score": null,
+        "vuln_index": 37,
+        "plugin_name": "Service Detection (GET request)",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 17975,
+        "severity_index": 11,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Service detection",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 2,
+        "score": null,
+        "vuln_index": 36,
+        "plugin_name": "Service Detection",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 22964,
+        "severity_index": 12,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Service detection",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 2,
+        "score": null,
+        "vuln_index": 28,
+        "plugin_name": "HyperText Transfer Protocol (HTTP) Information",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 24260,
+        "severity_index": 13,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Web Servers",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 2,
+        "score": null,
+        "vuln_index": 26,
+        "plugin_name": "HTTP Server Type and Version",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 10107,
+        "severity_index": 14,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Web Servers",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 2,
+        "score": null,
+        "vuln_index": 23,
+        "plugin_name": "Eclipse Jetty Web Server Detection",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 194915,
+        "severity_index": 15,
+        "cpe": "cpe:/a:eclipse:jetty",
+        "offline": false,
+        "plugin_family": "Web Servers",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "count": 7,
+        "score": null,
+        "vuln_index": 32,
+        "plugin_name": "Nessus SYN scanner",
+        "severity": 0,
+        "vpr_score": null,
+        "plugin_id": 11219,
+        "severity_index": 16,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Port scanners",
+        "snoozed": 0,
+        "epss_score": null
+      },
+      {
+        "isFallBackScore": true,
+        "count": 1,
+        "score": "2.1",
+        "vuln_index": 29,
+        "plugin_name": "ICMP Timestamp Request Remote Date Disclosure",
+        "severity": 1,
+        "vpr_score": "3.2",
+        "plugin_id": 10114,
+        "severity_index": 17,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "General",
+        "snoozed": 0,
+        "epss_score": "0.3159",
+        "fallBackScoreTip": "CVSS v2.0 score"
+      },
+      {
+        "count": 1,
+        "score": "6.5",
+        "vuln_index": 30,
+        "plugin_name": "IP Forwarding Enabled",
+        "severity": 2,
+        "vpr_score": "4.3",
+        "plugin_id": 50686,
+        "severity_index": 18,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Firewalls",
+        "snoozed": 0,
+        "epss_score": "0.0596"
+      },
+      {
+        "count": 1,
+        "score": "5.3",
+        "vuln_index": 27,
+        "plugin_name": "HTTP TRACE / TRACK Methods Allowed",
+        "severity": 2,
+        "vpr_score": "4.3",
+        "plugin_id": 11213,
+        "severity_index": 19,
+        "cpe": null,
+        "offline": false,
+        "plugin_family": "Web Servers",
+        "snoozed": 0,
+        "epss_score": "0.2506"
+      }
+    ]
+  },
+  "hosts": {
+    "2": {
+      "vulnerabilities": [
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 39,
+          "plugin_name": "Traceroute Information",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 10287,
+          "severity_index": 0,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 38,
+          "plugin_name": "TCP/IP Timestamps Supported",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 25220,
+          "severity_index": 1,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 35,
+          "plugin_name": "OS Identification",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 11936,
+          "severity_index": 2,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 34,
+          "plugin_name": "OS Fingerprints Detected",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 209654,
+          "severity_index": 3,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 33,
+          "plugin_name": "Oracle PeopleSoft PeopleTools Remote HTTP Detection",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 330337,
+          "severity_index": 4,
+          "cpe": "cpe:/a:oracle:peoplesoft_enterprise_peopletools",
+          "offline": false,
+          "plugin_family": "Service detection",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 31,
+          "plugin_name": "Nessus Scan Information",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 19506,
+          "severity_index": 5,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Settings",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 25,
+          "plugin_name": "HTTP Methods Allowed (per directory)",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 43111,
+          "severity_index": 6,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Web Servers",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 24,
+          "plugin_name": "Ethernet MAC Addresses",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 86420,
+          "severity_index": 7,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 22,
+          "plugin_name": "Device Type",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 54615,
+          "severity_index": 8,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 21,
+          "plugin_name": "Common Platform Enumeration (CPE)",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 45590,
+          "severity_index": 9,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": null,
+          "vuln_index": 20,
+          "plugin_name": "Advanced Message Queuing Protocol Detection",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 62349,
+          "severity_index": 10,
+          "cpe": "cpe:/a:spring-amqp_project:spring-amqp",
+          "offline": false,
+          "plugin_family": "Service detection",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 2,
+          "score": null,
+          "vuln_index": 37,
+          "plugin_name": "Service Detection (GET request)",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 17975,
+          "severity_index": 11,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Service detection",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 2,
+          "score": null,
+          "vuln_index": 36,
+          "plugin_name": "Service Detection",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 22964,
+          "severity_index": 12,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Service detection",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 2,
+          "score": null,
+          "vuln_index": 28,
+          "plugin_name": "HyperText Transfer Protocol (HTTP) Information",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 24260,
+          "severity_index": 13,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Web Servers",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 2,
+          "score": null,
+          "vuln_index": 26,
+          "plugin_name": "HTTP Server Type and Version",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 10107,
+          "severity_index": 14,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Web Servers",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 2,
+          "score": null,
+          "vuln_index": 23,
+          "plugin_name": "Eclipse Jetty Web Server Detection",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 194915,
+          "severity_index": 15,
+          "cpe": "cpe:/a:eclipse:jetty",
+          "offline": false,
+          "plugin_family": "Web Servers",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "count": 7,
+          "score": null,
+          "vuln_index": 32,
+          "plugin_name": "Nessus SYN scanner",
+          "severity": 0,
+          "vpr_score": null,
+          "plugin_id": 11219,
+          "severity_index": 16,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Port scanners",
+          "snoozed": 0,
+          "epss_score": null,
+          "host_id": 2
+        },
+        {
+          "isFallBackScore": true,
+          "count": 1,
+          "score": "2.1",
+          "vuln_index": 29,
+          "plugin_name": "ICMP Timestamp Request Remote Date Disclosure",
+          "severity": 1,
+          "vpr_score": "3.2",
+          "plugin_id": 10114,
+          "severity_index": 17,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "General",
+          "snoozed": 0,
+          "epss_score": "0.3159",
+          "host_id": 2,
+          "fallBackScoreTip": "CVSS v2.0 score"
+        },
+        {
+          "count": 1,
+          "score": "6.5",
+          "vuln_index": 30,
+          "plugin_name": "IP Forwarding Enabled",
+          "severity": 2,
+          "vpr_score": "4.3",
+          "plugin_id": 50686,
+          "severity_index": 18,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Firewalls",
+          "snoozed": 0,
+          "epss_score": "0.0596",
+          "host_id": 2
+        },
+        {
+          "count": 1,
+          "score": "5.3",
+          "vuln_index": 27,
+          "plugin_name": "HTTP TRACE / TRACK Methods Allowed",
+          "severity": 2,
+          "vpr_score": "4.3",
+          "plugin_id": 11213,
+          "severity_index": 19,
+          "cpe": null,
+          "offline": false,
+          "plugin_family": "Web Servers",
+          "snoozed": 0,
+          "epss_score": "0.2506",
+          "host_id": 2
+        }
+      ],
+      "compliance": [],
+      "info": {
+        "host_start": "Mon Aug 17 18:28:15 2026",
+        "mac-address": "66:01:C9:1A:44:64",
+        "host_end": "Mon Aug 17 18:42:36 2026",
+        "operating-system": "Linux Kernel 2.6",
+        "credentialed_scan": "false",
+        "host-ip": "172.18.0.17"
+      }
+    }
+  },
+  "plugins": {
+    "2:10287": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / udp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "For your information, here is the traceroute from 172.18.0.1 to 172.18.0.17 : \n172.18.0.1\n172.18.0.17\n\nHop Count: 1\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Traceroute Information",
+          "pluginattributes": {
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Traceroute Information",
+            "plugin_information": {
+              "plugin_version": "1.72",
+              "plugin_id": 10287,
+              "plugin_type": "remote",
+              "plugin_publication_date": "1999/11/27",
+              "plugin_family": "General",
+              "plugin_modification_date": "2026/04/27"
+            },
+            "solution": null,
+            "fname": "traceroute.nasl",
+            "synopsis": "It was possible to obtain traceroute information.",
+            "script_copyright": "This script is Copyright (C) 1999-2026 Tenable Network Security, Inc.",
+            "description": "Makes a traceroute to the remote host."
+          },
+          "pluginfamily": "General",
+          "pluginid": "10287"
+        }
+      }
+    },
+    "2:25220": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": null
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "TCP/IP Timestamps Supported",
+          "pluginattributes": {
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "see_also": [
+              "http://www.ietf.org/rfc/rfc1323.txt"
+            ],
+            "plugin_name": "TCP/IP Timestamps Supported",
+            "plugin_information": {
+              "plugin_version": "1.22",
+              "plugin_id": 25220,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2007/05/16",
+              "plugin_family": "General",
+              "plugin_modification_date": "2023/10/17"
+            },
+            "solution": null,
+            "fname": "tcp_timestamps.nasl",
+            "synopsis": "The remote service implements TCP timestamps.",
+            "script_copyright": "This script is Copyright (C) 2007-2023 Tenable Network Security, Inc.",
+            "description": "The remote host implements TCP timestamps, as defined by RFC1323.  A side effect of this feature is that the uptime of the remote host can sometimes be computed."
+          },
+          "pluginfamily": "General",
+          "pluginid": "25220"
+        }
+      }
+    },
+    "2:11936": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\nRemote operating system : Linux Kernel 2.6\nConfidence level : 65\nMethod : SinFP\n\n \nThe remote host is running Linux Kernel 2.6"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "OS Identification",
+          "pluginattributes": {
+            "agent": "all",
+            "script_copyright": "This script is Copyright (C) 2004-2025 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "It is possible to guess the remote operating system.",
+            "description": "Using a combination of remote probes (e.g., TCP/IP, SMB, HTTP, NTP, SNMP, etc.), it is possible to guess the name of the remote operating system in use. It is also possible sometimes to guess the version of the operating system.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "OS Identification",
+            "os_identification": "True",
+            "fname": "os_fingerprint.nasl",
+            "plugin_information": {
+              "plugin_version": "2.74",
+              "plugin_id": 11936,
+              "plugin_type": "combined",
+              "plugin_publication_date": "2003/12/09",
+              "plugin_family": "General",
+              "plugin_modification_date": "2025/06/03"
+            },
+            "dependency": "junos_version.nasl",
+            "solution": null,
+            "vuln_information": {
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "General",
+          "pluginid": "11936"
+        }
+      }
+    },
+    "2:209654": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\nFollowing OS Fingerprints were found\n\nRemote operating system : Linux Kernel 5.x on CentOS Linux\nConfidence level : 56\nMethod : MLSinFP\nType : unknown\nFingerprint : unknown\n\nRemote operating system : Linux Kernel 2.6\nConfidence level : 65\nMethod : SinFP\nType : general-purpose\nFingerprint : SinFP:\n   P1:B10113:F0x12:W64240:O0204ffff:M1460:\n   P2:B10113:F0x12:W65160:O0204ffff0402080affffffff4445414401030307:M1460:\n   P3:B00000:F0x00:W0:O0:M0\n   P4:191802_7_p=61616\n\nFollowing fingerprints could not be used to determine OS : \n HTTP:!:Server: Jetty(8.1.16.v20140903)\r\n\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "OS Fingerprints Detected",
+          "pluginattributes": {
+            "agent": "all",
+            "script_copyright": "This script is Copyright (C) 2025 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "Multiple OS fingerprints were detected.",
+            "description": "Using a combination of remote probes (TCP/IP, SMB, HTTP, NTP, SNMP, etc), it was possible to gather one or more fingerprints from the remote system. While the highest-confidence result was reported in plugin 11936, “OS Identification”, the complete set of fingerprints detected are reported here.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "OS Fingerprints Detected",
+            "os_identification": "True",
+            "fname": "os_fingerprints_detected.nasl",
+            "plugin_information": {
+              "plugin_version": "1.3",
+              "plugin_id": 209654,
+              "plugin_type": "combined",
+              "plugin_publication_date": "2025/02/26",
+              "plugin_family": "General",
+              "plugin_modification_date": "2025/03/03"
+            },
+            "dependency": "os_fingerprint.nasl",
+            "solution": null,
+            "vuln_information": {
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "General",
+          "pluginid": "209654"
+        }
+      }
+    },
+    "2:330337": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\n  URL     : http://172.18.0.17:61614/psp/\n  Version : unknown\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Oracle PeopleSoft PeopleTools Remote HTTP Detection",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2026 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "Oracle PeopleSoft is running on the remote host.",
+            "description": "A web server is running Oracle PeopleSoft on the remote host.\nDetection was performed by probing well-known PeopleSoft HTTP paths and checking for PeopleSoft-specific response headers and body content.",
+            "asset_inventory_category": "software_enumeration",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Oracle PeopleSoft PeopleTools Remote HTTP Detection",
+            "see_also": [
+              "https://www.oracle.com/applications/peoplesoft/"
+            ],
+            "fname": "oracle_peoplesoft_web_detect.nbin",
+            "plugin_information": {
+              "plugin_version": "1.2",
+              "plugin_id": 330337,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2026/07/28",
+              "plugin_family": "Service detection",
+              "plugin_modification_date": "2026/08/10"
+            },
+            "dependency": "http_version.nasl",
+            "required_port": "8443",
+            "solution": null,
+            "vuln_information": {
+              "cpe": "cpe:/a:oracle:peoplesoft_enterprise_peopletools",
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "Service detection",
+          "pluginid": "330337"
+        }
+      }
+    },
+    "2:19506": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Information about this scan : \n\nNessus version : 10.12.3\nNessus build : 20032\nPlugin feed version : 202608171103\nScanner edition used : Nessus\nScanner OS : LINUX\nScanner distribution : ubuntu1604-x86-64\nScan type : Normal\nScan name : test-activemq-nessus\nScan policy used : Basic Network Scan\nScanner IP : 172.18.0.1\nPort scanner(s) : nessus_syn_scanner \nPort range : 1-65535\nPing RTT : 38.453 ms\nThorough tests : no\nExperimental tests : no\nScan for Unpatched Vulnerabilities : no\nPlugin debugging enabled : no\nParanoia level : 1\nAssess component installs : yes\nReport verbosity : 1\nSafe checks : yes\nOptimize the test : yes\nCredentialed checks : no\nPatch management checks : None\nDisplay superseded patches : yes (supersedence plugin did not launch)\nCGI scanning : disabled\nWeb application tests : disabled\nMax hosts : 30\nMax checks : 4\nRecv timeout : 5\nBackports : None\nAllow post-scan editing : Yes\nNessus Plugin Signature Checking : Enabled\nAudit File Signature Checking : Disabled\nScan Start Date : 2026/8/17 18:28 UTC \nScan duration : 856 sec\nScan for malware : no\nFully Scan Operational Technology devices : no\nSafely Scan Operational Technology devices with OT Discovery : no\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Nessus Scan Information",
+          "pluginattributes": {
+            "agent": "all",
+            "script_copyright": "This script is Copyright (C) 2005-2026 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "This plugin displays information about the Nessus scan.",
+            "description": "This plugin displays, for each tested host, information about the scan itself :\n\n  - The version of the plugin set.\n  - The type of scanner (Nessus or Nessus Home).\n  - The version of the Nessus Engine.\n  - The port scanner(s) used.\n  - The port range scanned.\n  - The ping round trip time \n  - Whether credentialed or third-party patch management     checks are possible.\n  - Whether the display of superseded patches is enabled\n  - The date of the scan.\n  - The duration of the scan.\n  - The number of hosts scanned in parallel.\n  - The number of checks done in parallel.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "always_run": "1",
+            "plugin_name": "Nessus Scan Information",
+            "fname": "scan_info.nasl",
+            "plugin_information": {
+              "plugin_version": "2.138",
+              "plugin_id": 19506,
+              "plugin_type": "summary",
+              "plugin_publication_date": "2005/08/26",
+              "plugin_family": "Settings",
+              "plugin_modification_date": "2026/07/10"
+            },
+            "dependency": "patches_summary.nbin",
+            "thorough_tests": "true",
+            "solution": null
+          },
+          "pluginfamily": "Settings",
+          "pluginid": "19506"
+        }
+      }
+    },
+    "2:43111": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Based on the response to an OPTIONS request :\n\n  - HTTP methods  HEAD  OPTIONS  TRACE GET are allowed on : \n\n    /\n\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "HTTP Methods Allowed (per directory)",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2009-2022 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "This plugin determines which HTTP methods are allowed on various CGI directories.",
+            "description": "By calling the OPTIONS method, it is possible to determine which HTTP methods are allowed on each directory.\n\nThe following HTTP methods are considered insecure:\n  PUT, DELETE, CONNECT, TRACE, HEAD\n\nMany frameworks and languages treat 'HEAD' as a 'GET' request, albeit one without any body in the response. If a security constraint was set on 'GET' requests such that only 'authenticatedUsers' could access GET requests for a particular servlet or resource, it would be bypassed for the 'HEAD' version. This allowed unauthorized blind submission of any privileged GET request.\n\nAs this list may be incomplete, the plugin also tests - if 'Thorough tests' are enabled or 'Enable web applications tests' is set to 'yes' in the scan policy - various known HTTP methods on each directory and considers them as unsupported if it receives a response code of 400, 403, 405, or 501.\n\nNote that the plugin output is only informational and does not necessarily indicate the presence of any security vulnerabilities.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "HTTP Methods Allowed (per directory)",
+            "see_also": [
+              "http://www.nessus.org/u?d9c03a9a",
+              "http://www.nessus.org/u?b019cbdb",
+              "https://www.owasp.org/index.php/Test_HTTP_Methods_(OTG-CONFIG-006)"
+            ],
+            "fname": "web_directory_options.nasl",
+            "plugin_information": {
+              "plugin_version": "1.12",
+              "plugin_id": 43111,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2009/12/10",
+              "plugin_family": "Web Servers",
+              "plugin_modification_date": "2022/04/11"
+            },
+            "dependency": "webmirror.nasl",
+            "required_port": "80",
+            "thorough_tests": "true",
+            "solution": null
+          },
+          "pluginfamily": "Web Servers",
+          "pluginid": "43111"
+        }
+      }
+    },
+    "2:86420": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "The following is a consolidated list of detected MAC addresses:\n  - 66:01:C9:1A:44:64\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Ethernet MAC Addresses",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2015-2025 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "This plugin gathers MAC addresses from various sources and consolidates them into a list.",
+            "description": "This plugin gathers MAC addresses discovered from both remote probing of the host (e.g. SNMP and Netbios) and from running local checks (e.g. ifconfig). It then consolidates the MAC addresses into a single, unique, and uniform list.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Ethernet MAC Addresses",
+            "fname": "report_hw_macs.nasl",
+            "dependency": "traceroute.nasl",
+            "plugin_information": {
+              "plugin_version": "1.8",
+              "plugin_id": 86420,
+              "plugin_type": "combined",
+              "plugin_publication_date": "2015/10/16",
+              "plugin_family": "General",
+              "plugin_modification_date": "2025/06/10"
+            },
+            "solution": null
+          },
+          "pluginfamily": "General",
+          "pluginid": "86420"
+        }
+      }
+    },
+    "2:54615": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Remote device type : general-purpose\nConfidence level : 65\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Device Type",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2011-2025 Tenable Network Security, Inc.",
+            "synopsis": "It is possible to guess the remote device type.",
+            "description": "Based on the remote operating system, it is possible to determine what the remote system type is (eg: a printer, router, general-purpose computer, etc).",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "required_key": "Host/OS/Type",
+            "plugin_name": "Device Type",
+            "fname": "device_type.nasl",
+            "dependency": "os_fingerprint.nasl",
+            "plugin_information": {
+              "plugin_version": "1.3",
+              "plugin_id": 54615,
+              "plugin_type": "combined",
+              "plugin_publication_date": "2011/05/23",
+              "plugin_family": "General",
+              "plugin_modification_date": "2025/03/12"
+            },
+            "solution": null
+          },
+          "pluginfamily": "General",
+          "pluginid": "54615"
+        }
+      }
+    },
+    "2:45590": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\nThe remote operating system matched the following CPE : \n\n  cpe:/o:linux:linux_kernel -> Linux Kernel\n\nFollowing application CPE's matched on the remote system : \n\n  cpe:/a:eclipse:jetty:8.1.16 -> Eclipse Jetty\n  cpe:/a:oracle:peoplesoft_enterprise_peopletools -> Oracle PeopleSoft Enterprise PeopleTools\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Common Platform Enumeration (CPE)",
+          "pluginattributes": {
+            "agent": "all",
+            "script_copyright": "This script is Copyright (C) 2010-2026 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "It was possible to enumerate CPE names that matched on the remote system.",
+            "description": "By using information obtained from a Nessus scan, this plugin reports CPE (Common Platform Enumeration) matches for various hardware and software products found on a host. \n\nNote that if an official CPE is not available for the product, this plugin computes the best possible CPE based on the information available from the scan.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Common Platform Enumeration (CPE)",
+            "see_also": [
+              "http://cpe.mitre.org/",
+              "https://nvd.nist.gov/products/cpe"
+            ],
+            "fname": "cpe.nbin",
+            "plugin_information": {
+              "plugin_version": "1.187",
+              "plugin_id": 45590,
+              "plugin_type": "combined",
+              "plugin_publication_date": "2010/04/21",
+              "plugin_family": "General",
+              "plugin_modification_date": "2026/06/16"
+            },
+            "solution": null
+          },
+          "pluginfamily": "General",
+          "pluginid": "45590"
+        }
+      }
+    },
+    "2:62349": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "5672 / tcp / amqp": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\nAn AMQP server with the following characteristics was found :\n\n  Protocol : Basic (0)\n  Version  : 1.0.0\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Advanced Message Queuing Protocol Detection",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2012-2022 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "A messaging service is listening on the remote host.",
+            "description": "The remote host is running an AMQP server, which provides messaging and queuing services for other applications.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Advanced Message Queuing Protocol Detection",
+            "see_also": [
+              "http://www.amqp.org/",
+              "http://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf",
+              "http://www.nessus.org/u?388dd79c"
+            ],
+            "fname": "amqp_detect.nasl",
+            "plugin_information": {
+              "plugin_version": "1.5",
+              "plugin_id": 62349,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2012/09/27",
+              "plugin_family": "Service detection",
+              "plugin_modification_date": "2022/04/11"
+            },
+            "dependency": "find_service1.nasl",
+            "required_port": "5672",
+            "thorough_tests": "true",
+            "solution": null,
+            "vuln_information": {
+              "cpe": "cpe:/a:spring-amqp_project:spring-amqp",
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "Service detection",
+          "pluginid": "62349"
+        }
+      }
+    },
+    "2:17975": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "5672 / tcp / amqp": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "The remote service supports the Advanced Message Queuing Protocol\n(AMQP), an open standard for passing business messages between\napplications or organizations."
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61616 / tcp / activemq": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "An ActiveMQ OpenWire transport connector is listening on this port."
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Service Detection (GET request)",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2005-2021 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "The remote service could be identified.",
+            "description": "It was possible to identify the remote service by its banner or by looking at the error message it sends when it receives an HTTP request.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "iavt": "0001-T-0935",
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "iavt",
+                  "values": {
+                    "value": [
+                      "0001-T-0935"
+                    ]
+                  }
+                }
+              ]
+            },
+            "plugin_name": "Service Detection (GET request)",
+            "fname": "find_service1.nasl",
+            "plugin_information": {
+              "plugin_version": "1.395",
+              "plugin_id": 17975,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2005/04/06",
+              "plugin_family": "Service detection",
+              "plugin_modification_date": "2021/10/27"
+            },
+            "dependency": "cifs445.nasl",
+            "solution": null
+          },
+          "pluginfamily": "Service detection",
+          "pluginid": "17975"
+        }
+      }
+    },
+    "2:22964": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "8161 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ],
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "A web server is running on this port."
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Service Detection",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2004-2026 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "The remote service could be identified.",
+            "description": "Nessus was able to identify the remote service by its banner or by looking at the error message it sends when it receives an HTTP request.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Service Detection",
+            "fname": "find_service.nasl",
+            "dependency": "dont_scan_ot.nasl",
+            "plugin_information": {
+              "plugin_version": "1.198",
+              "plugin_id": 22964,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2007/08/19",
+              "plugin_family": "Service detection",
+              "plugin_modification_date": "2026/03/23"
+            },
+            "solution": null
+          },
+          "pluginfamily": "Service detection",
+          "pluginid": "22964"
+        }
+      }
+    },
+    "2:24260": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "8161 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\nResponse Code : HTTP/1.1 200 OK\r\n\nProtocol version : HTTP/1.1\nHTTP/2 TLS Support: No\nHTTP/2 Cleartext Support: No\nSSL : no\nKeep-Alive : no\nOptions allowed : (Not implemented)\nHeaders :\n\n  Content-Type: text/html\n  Content-Length: 6047\n  Last-Modified: Fri, 13 Feb 2015 18:05:11 GMT\n  Server: Jetty(8.1.16.v20140903)\n  \nResponse Body :\n\n<!--\n  Licensed to the Apache Software Foundation (ASF) under one or more\n  contributor license agreements.  See the NOTICE file distributed with\n  this work for additional information regarding copyright ownership.\n  The ASF licenses this file to You under the Apache License, Version 2.0\n  (the \"License\"); you may not use this file except in compliance with\n  the License.  You may obtain a copy of the License at\n  \n  http://www.apache.org/licenses/LICENSE-2.0\n  \n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n-->\n \n \n \n \n \n \n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> \n \n<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> \n<html> \n<head> \n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" /> \n    <title>Apache ActiveMQ</title> \n    <style type=\"text/css\" media=\"screen\"> \n        @import url(/styles/sorttable.css);\n        @import url(/styles/type-settings.css);\n        @import url(/styles/site.css);\n        @import url(/styles/prettify.css);\n    </style> \n</head> \n \n<body> \n \n \n<div class=\"white_box\"> \n    <div class=\"header\"> \n        <div class=\"header_l\"> \n            <div class=\"header_r\"> \n            </div> \n        </div> \n    </div> \n    <div class=\"content\"> \n        <div class=\"content_l\"> \n            <div class=\"content_r\"> \n \n                <div> \n \n                    <!-- Banner --> \n                    <div id=\"asf_logo\"> \n                        <div id=\"activemq_logo\"> \n                            <a style=\"float:left; width:280px;display:block;text-indent:-5000px;text-decoration:none;line-height:60px; margin-top:10px; margin-left:100px;\"\n                               href=\"http://activemq.apache.org/\"\n                               title=\"The most popular and powerful open source Message Broker\">ActiveMQ</a> \n                            <a style=\"float:right; width:210px;display:block;text-indent:-5000px;text-decoration:none;line-height:60px; margin-top:15px; margin-right:10px;\"\n                               href=\"http://www.apache.org/\" title=\"The Apache Software Foundation\">ASF</a> \n                        </div> \n                    </div> \n \n \n                    <div class=\"top_red_bar\"> \n                        <div id=\"site-breadcrumbs\"> \n                        </div> \n                        <div id=\"site-quicklinks\"><P> \n                            <a href=\"http://activemq.apache.org/support.html\"\n                               title=\"Get help and support using Apache ActiveMQ\">Support</a></p> \n                        </div> \n                    </div> \n \n                    <table border=\"0\"> \n                        <tbody> \n                            <tr> \n                                <td valign=\"top\" width=\"100%\" style=\"overflow:hidden;\"> \n                                    <div class=\"body-content\"> \n                                        <h2>Welcome to the Apache ActiveMQ!</h2> \n                                            \n                                                <p>What do you want to do next?</p>\n                                                <ul class=\"alternate\" type=\"square\"> \n                                                    <li><a title=\"Manage ActiveMQ broker\" href=\"/admin/\">Manage ActiveMQ broker</a></li> \n                                                    <li><a title=\"See some Web demos\" href=\"/demo/\">See some Web demos (demos not included in default configuration)</a></li>  \n                                                </ul> \n                                    </div> \n                                </td> \n                                <td valign=\"top\"> \n \n                                    <div class=\"navigation\"> \n                                        <div class=\"navigation_top\"> \n                                            <div class=\"navigation_bottom\"> \n                                                <H3>Useful Links</H3> \n \n                                                <ul class=\"alternate\" type=\"square\"> \n                                                    <li><a href=\"http://activemq.apache.org/\"\n                                                           title=\"The most popular and powerful open source Message Broker\">Documentation</a></li> \n                                                    <li><a href=\"http://activemq.apache.org/faq.html\">FAQ</a></li> \n                                                    <li><a href=\"http://activemq.apache.org/download.html\">Downloads</a> \n                                                    </li> \n                                                    <li><a href=\"http://activemq.apache.org/discussion-forums.html\">Forums</a> \n                                                    </li> \n                                                </ul> \n                                            </div> \n                                        </div> \n                                    </div> \n                                </td> \n                            </tr> \n                        </tbody> \n                    </table> \n \n \n                    <div class=\"bottom_red_bar\"></div> \n                </div> \n            </div> \n        </div> \n    </div> \n    <div class=\"black_box\"> \n        <div class=\"footer\"> \n            <div class=\"footer_l\"> \n                <div class=\"footer_r\"> \n                    <div> \n                        Copyright 2005-2013 The Apache Software Foundation.\n                    </div> \n                </div> \n            </div> \n        </div> \n    </div> \n</div> \n<div class=\"design_attribution\"><a href=\"http://hiramchirino.com/\">Graphic Design By Hiram</a></div> \n \n</body> \n</html> "
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\nResponse Code : HTTP/1.1 500 Server Error\r\n\nProtocol version : HTTP/1.1\nHTTP/2 TLS Support: No\nHTTP/2 Cleartext Support: No\nSSL : no\nKeep-Alive : no\nOptions allowed : GET, HEAD, TRACE, OPTIONS\nHeaders :\n\n  Cache-Control: must-revalidate,no-cache,no-store\n  Content-Type: text/html;charset=ISO-8859-1\n  Content-Length: 1273\n  Server: Jetty(8.1.16.v20140903)\n  \nResponse Body :\n\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=ISO-8859-1\"/>\n<title>Error 500 Server Error</title>\n</head>\n<body>\n<h2>HTTP ERROR: 500</h2>\n<p>Problem accessing /. Reason:\n<pre>    Server Error</pre></p>\n<hr /><i><small>Powered by Jetty://</small></i>\n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n                                                \n</body>\n</html>\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "HyperText Transfer Protocol (HTTP) Information",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2007-2026 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "Some information about the remote HTTP configuration can be extracted.",
+            "description": "This test gives some information about the remote HTTP protocol - the version used, whether HTTP Keep-Alive is enabled, etc...\n\nThis test is informational only and does not denote any security problem.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "HyperText Transfer Protocol (HTTP) Information",
+            "fname": "http_info.nasl",
+            "dependency": "dotnet_framework_handlers.nasl",
+            "required_port": "80",
+            "plugin_information": {
+              "plugin_version": "1.16",
+              "plugin_id": 24260,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2007/01/30",
+              "plugin_family": "Web Servers",
+              "plugin_modification_date": "2026/08/10"
+            },
+            "solution": null,
+            "vuln_information": {
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "Web Servers",
+          "pluginid": "24260"
+        }
+      }
+    },
+    "2:10107": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "8161 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ],
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "The remote web server type is :\n\nJetty(8.1.16.v20140903)"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "HTTP Server Type and Version",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2000-2020 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "A web server is running on the remote host.",
+            "description": "This plugin attempts to determine the type and the version of the   remote web server.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "iavt": "0001-T-0931",
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "iavt",
+                  "values": {
+                    "value": [
+                      "0001-T-0931"
+                    ]
+                  }
+                }
+              ]
+            },
+            "plugin_name": "HTTP Server Type and Version",
+            "fname": "http_version.nasl",
+            "plugin_information": {
+              "plugin_version": "1.141",
+              "plugin_id": 10107,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2000/01/04",
+              "plugin_family": "Web Servers",
+              "plugin_modification_date": "2020/10/30"
+            },
+            "dependency": "restricted_web_pages.nasl",
+            "required_port": "80",
+            "solution": null,
+            "vuln_information": {
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "Web Servers",
+          "pluginid": "10107"
+        }
+      }
+    },
+    "2:194915": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\n  URL     : http://172.18.0.17:8161/\n  Version : 8.1.16\n  Source  : Server: Jetty(8.1.16.v20140903)\n"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "\n  URL     : http://172.18.0.17:61614/\n  Version : 8.1.16\n  Source  : Server: Jetty(8.1.16.v20140903)\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Eclipse Jetty Web Server Detection",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2024-2026 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "The Eclipse Jetty web server was detected on the remote host.",
+            "description": "The Eclipse Jetty web server was detected on the remote host.",
+            "asset_inventory_category": "software_enumeration",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Eclipse Jetty Web Server Detection",
+            "see_also": [
+              "https://eclipse.dev/jetty/"
+            ],
+            "fname": "eclipse_jetty_detect.nbin",
+            "plugin_information": {
+              "plugin_version": "1.35",
+              "plugin_id": 194915,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2024/05/02",
+              "plugin_family": "Web Servers",
+              "plugin_modification_date": "2026/08/10"
+            },
+            "dependency": "http_version.nasl",
+            "required_port": "443",
+            "solution": null,
+            "vuln_information": {
+              "cpe": "cpe:/a:eclipse:jetty",
+              "asset_inventory": "True"
+            }
+          },
+          "pluginfamily": "Web Servers",
+          "pluginid": "194915"
+        }
+      }
+    },
+    "2:11219": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "1883 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 1883/tcp was found to be open"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "5672 / tcp / amqp": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 5672/tcp was found to be open"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "8161 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 8161/tcp was found to be open"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "32933 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 32933/tcp was found to be open"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61613 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 61613/tcp was found to be open"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 61614/tcp was found to be open"
+        },
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61616 / tcp / activemq": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 0,
+          "plugin_output": "Port 61616/tcp was found to be open"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 0,
+          "pluginname": "Nessus SYN scanner",
+          "pluginattributes": {
+            "script_copyright": "This script is Copyright (C) 2008-2025 and is owned by Tenable, Inc. or an Affiliate thereof.",
+            "synopsis": "It is possible to determine which TCP ports are open.",
+            "description": "This plugin is a SYN 'half-open' port scanner.  It shall be reasonably quick even against a firewalled target. \n\nNote that SYN scans are less intrusive than TCP (full connect) scans against broken services, but they might cause problems for less robust firewalls and also leave unclosed connections on the remote target, if the network is loaded.",
+            "risk_information": {
+              "risk_factor": "None"
+            },
+            "plugin_name": "Nessus SYN scanner",
+            "fname": "nessus_syn_scanner.nbin",
+            "dependency": "portscanners_settings.nasl",
+            "plugin_information": {
+              "plugin_version": "1.65",
+              "plugin_id": 11219,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2009/02/04",
+              "plugin_family": "Port scanners",
+              "plugin_modification_date": "2025/07/14"
+            },
+            "solution": "Protect your target with an IP filter."
+          },
+          "pluginfamily": "Port scanners",
+          "pluginid": "11219"
+        }
+      }
+    },
+    "2:10114": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / icmp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 1,
+          "plugin_output": "The remote clock is synchronized with the local clock.\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 1,
+          "pluginname": "ICMP Timestamp Request Remote Date Disclosure",
+          "pluginattributes": {
+            "threat_intensity_last_28": "Very Low",
+            "synopsis": "It is possible to determine the exact time set on the remote host.",
+            "script_copyright": "This script is Copyright (C) 1999-2024 Tenable Network Security, Inc.",
+            "description": "The remote host answers to an ICMP timestamp request.  This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols.\n\nTimestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time.",
+            "risk_information": {
+              "risk_factor": "Low",
+              "cvss_vector": "CVSS2#AV:L/AC:L/Au:N/C:P/I:N/A:N",
+              "cvss_base_score": "2.1"
+            },
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "cwe",
+                  "values": {
+                    "value": [
+                      "200"
+                    ]
+                  },
+                  "url": "http://cwe.mitre.org/data/definitions/"
+                },
+                {
+                  "name": "cve",
+                  "values": {
+                    "value": [
+                      "CVE-1999-0524"
+                    ]
+                  },
+                  "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId="
+                }
+              ]
+            },
+            "threat_sources_last_28": "No recorded events",
+            "plugin_name": "ICMP Timestamp Request Remote Date Disclosure",
+            "vpr_score": "3.2",
+            "cvss_score_source": "CVE-1999-0524",
+            "product_coverage": "Very High",
+            "threat_recency": "No recorded events",
+            "fname": "icmp_timestamp.nasl",
+            "cvssV3_impactScore": "1.4",
+            "plugin_information": {
+              "plugin_version": "1.56",
+              "plugin_id": 10114,
+              "plugin_type": "remote",
+              "plugin_publication_date": "1999/08/01",
+              "plugin_family": "General",
+              "plugin_modification_date": "2024/10/07"
+            },
+            "epss_score": "0.3159",
+            "cwe": "200",
+            "solution": "Filter out the ICMP timestamp requests (13), and the outgoing ICMP timestamp replies (14).",
+            "vuln_information": {
+              "vuln_publication_date": "1997/08/01"
+            },
+            "age_of_vuln": "730 days +",
+            "exploit_code_maturity": "PoC"
+          },
+          "pluginfamily": "General",
+          "pluginid": "10114"
+        }
+      }
+    },
+    "2:50686": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "0 / tcp / ": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 2,
+          "plugin_output": "IP forwarding appears to be enabled on the remote host.\n\n Detected local MAC Address        : a6c60a647ff6\n Response from local MAC Address   : a6c60a647ff6\n\n Detected Gateway MAC Address      : 6601c91a4464\n Response from Gateway MAC Address : 6601c91a4464"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 2,
+          "pluginname": "IP Forwarding Enabled",
+          "pluginattributes": {
+            "threat_intensity_last_28": "Very Low",
+            "synopsis": "The remote host has IP forwarding enabled.",
+            "script_copyright": "This script is Copyright (C) 2010-2023 Tenable Network Security, Inc.",
+            "description": "The remote host has IP forwarding enabled. An attacker can exploit this to route packets through the host and potentially bypass some firewalls / routers / NAC filtering.\n\nUnless the remote host is a router, it is recommended that you disable IP forwarding.",
+            "risk_information": {
+              "cvss3_vector": "CVSS:3.0/AV:A/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+              "risk_factor": "Medium",
+              "cvss_vector": "CVSS2#AV:A/AC:L/Au:N/C:P/I:P/A:P",
+              "cvss_base_score": "5.8",
+              "cvss3_base_score": "6.5"
+            },
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "cve",
+                  "values": {
+                    "value": [
+                      "CVE-1999-0511"
+                    ]
+                  },
+                  "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId="
+                }
+              ]
+            },
+            "threat_sources_last_28": "No recorded events",
+            "plugin_name": "IP Forwarding Enabled",
+            "vpr_score": "4.3",
+            "cvss_score_source": "CVE-1999-0511",
+            "product_coverage": "Medium",
+            "threat_recency": "No recorded events",
+            "fname": "ip_forwarding_enabled.nasl",
+            "cvssV3_impactScore": "5.2",
+            "plugin_information": {
+              "plugin_version": "1.16",
+              "plugin_id": 50686,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2010/11/23",
+              "plugin_family": "Firewalls",
+              "plugin_modification_date": "2023/10/17"
+            },
+            "epss_score": "0.0596",
+            "solution": "On Linux, you can disable IP forwarding by doing :\n\necho 0 > /proc/sys/net/ipv4/ip_forward\n\nOn Windows, set the key 'IPEnableRouter' to 0 under\n\nHKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Tcpip\\Parameters\n\nOn Mac OS X, you can disable IP forwarding by executing the command :\n\nsysctl -w net.inet.ip.forwarding=0\n\nFor other systems, check with your vendor.",
+            "vuln_information": {
+              "vuln_publication_date": "1997/01/01"
+            },
+            "age_of_vuln": "730 days +",
+            "exploit_code_maturity": "Unproven"
+          },
+          "pluginfamily": "Firewalls",
+          "pluginid": "50686"
+        }
+      }
+    },
+    "2:11213": {
+      "outputs": [
+        {
+          "max_attachments_exceeded": true,
+          "ports": {
+            "61614 / tcp / www": [
+              {
+                "hostname": "172.18.0.17"
+              }
+            ]
+          },
+          "has_attachment": null,
+          "hosts": null,
+          "severity": 2,
+          "plugin_output": "\nNessus sent the following TRACE request : \\n\\n------------------------------ snip ------------------------------\\nTRACE /Nessus484384534.html HTTP/1.1\nConnection: Close\nHost: 172.18.0.17\nPragma: no-cache\nUser-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)\nAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\nAccept-Language: en\nAccept-Charset: iso-8859-1,*,utf-8\n\n------------------------------ snip ------------------------------\\n\\nand received the following response from the remote server :\\n\\n------------------------------ snip ------------------------------\\nHTTP/1.1 200 OK\nContent-Type: message/http\nContent-Length: 305\nConnection: close\nServer: Jetty(8.1.16.v20140903)\n\nTRACE /Nessus484384534.html HTTP/1.1\nHost: 172.18.0.17\nAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\nAccept-Charset: iso-8859-1,*,utf-8\nAccept-Language: en\nPragma: no-cache\nUser-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)\nConnection: close\n------------------------------ snip ------------------------------\\n"
+        }
+      ],
+      "info": {
+        "plugindescription": {
+          "severity": 2,
+          "pluginname": "HTTP TRACE / TRACK Methods Allowed",
+          "pluginattributes": {
+            "threat_intensity_last_28": "Very Low",
+            "synopsis": "Debugging functions are enabled on the remote web server.",
+            "script_copyright": "This script is Copyright (C) 2003-2024 E-Soft Inc.",
+            "cvss_score_rationale": "Tenable believes the XST vulnerability only affects Confidentiality, not Integrity (reflected in NVD's score for CVE-2010-0386)",
+            "description": "The remote web server supports the TRACE and/or TRACK methods. TRACE and TRACK are HTTP methods that are used to debug web server connections.",
+            "cert": "867593",
+            "risk_information": {
+              "cvss_temporal_vector": "CVSS2#E:U/RL:OF/RC:C",
+              "risk_factor": "Medium",
+              "cvss_vector": "CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N",
+              "cvss3_base_score": "5.3",
+              "cvss_temporal_score": "3.7",
+              "cvss_base_score": "5.0",
+              "cvss3_temporal_vector": "CVSS:3.0/E:U/RL:O/RC:C",
+              "cvss3_temporal_score": "4.6",
+              "cvss3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+            },
+            "ref_information": {
+              "ref": [
+                {
+                  "name": "cwe",
+                  "values": {
+                    "value": [
+                      "16",
+                      "200"
+                    ]
+                  },
+                  "url": "http://cwe.mitre.org/data/definitions/"
+                },
+                {
+                  "name": "cert",
+                  "values": {
+                    "value": [
+                      "288308",
+                      "867593"
+                    ]
+                  },
+                  "url": "http://www.kb.cert.org/vuls/id/"
+                },
+                {
+                  "name": "bid",
+                  "values": {
+                    "value": [
+                      "9506",
+                      "9561",
+                      "11604",
+                      "33374",
+                      "37995"
+                    ]
+                  },
+                  "url": "http://www.securityfocus.com/bid/"
+                },
+                {
+                  "name": "cve",
+                  "values": {
+                    "value": [
+                      "CVE-2003-1567",
+                      "CVE-2004-2320",
+                      "CVE-2010-0386"
+                    ]
+                  },
+                  "url": "http://web.nvd.nist.gov/view/vuln/detail?vulnId="
+                }
+              ]
+            },
+            "threat_sources_last_28": "No recorded events",
+            "plugin_name": "HTTP TRACE / TRACK Methods Allowed",
+            "vpr_score": "4.3",
+            "cvss_score_source": "CVE-2004-2320",
+            "see_also": [
+              "http://www.nessus.org/u?e979b5cb",
+              "http://www.apacheweek.com/issues/03-01-24",
+              "https://download.oracle.com/sunalerts/1000718.1.html"
+            ],
+            "product_coverage": "Low",
+            "threat_recency": "No recorded events",
+            "fname": "xst_http_trace.nasl",
+            "cvssV3_impactScore": "5.2",
+            "plugin_information": {
+              "plugin_version": "1.75",
+              "plugin_id": 11213,
+              "plugin_type": "remote",
+              "plugin_publication_date": "2003/01/23",
+              "plugin_family": "Web Servers",
+              "plugin_modification_date": "2024/04/09"
+            },
+            "required_port": "80",
+            "dependency": "http_version.nasl",
+            "epss_score": "0.2506",
+            "cwe": "200",
+            "solution": "Disable these HTTP methods. Refer to the plugin output for more information.",
+            "vuln_information": {
+              "exploitability_ease": "No known exploits are available",
+              "exploit_available": "false",
+              "vuln_publication_date": "2003/01/20"
+            },
+            "exploit_code_maturity": "Unproven",
+            "age_of_vuln": "730 days +"
+          },
+          "pluginfamily": "Web Servers",
+          "pluginid": "11213"
+        }
+      }
+    }
+  }
+}

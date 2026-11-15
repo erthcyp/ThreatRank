@@ -1,0 +1,48 @@
+# Credentials. API keys are read from a dotfile or an environment variable, never committed.
+data/.nvd_api_key
+data/.vulncheck_api_key
+*_api_key
+*.key
+*.pem
+
+# Python and environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~
+*.bak
+
+# Generated or third-party data that is rebuilt rather than stored (see README, "What is not in
+# this repository"): MITRE's CWE catalogue, the VulnCheck KEV snapshot, and the bulk NVD and
+# scanner-feed training caches.
+data/cwec_latest.xml.zip
+data/cwec_v*.xml
+data/vulncheck_kev.json
+data/nvd_bulk.json
+data/nvd_impact.json
+data/processed/nvt_corpus.csv
+data/processed/*.tmp
+*.nessus
+
+# MulVAL working files written beside the input when the graph is rebuilt; the recorded run
+# is kept in mulval/cases/<name>/out/.
+mulval/cases/*/VERTICES.CSV
+mulval/cases/*/ARCS.CSV
+mulval/cases/*/AttackGraph.*
+mulval/cases/*/*.xwam
+mulval/cases/*/dynamic_decl.gen
+mulval/cases/*/environment.P
+mulval/cases/*/metric.P
+mulval/cases/*/run.P
+mulval/cases/*/running_rules.P
+mulval/cases/*/trace_output.P
+mulval/cases/*/translated_rules.P
+mulval/cases/*/xsb_log.txt

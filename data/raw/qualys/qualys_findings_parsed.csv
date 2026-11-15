@@ -1,0 +1,88 @@
+ip,type,severity,qid,port,proto,title,cves
+172.18.0.102,INFO,info,82040,,,ICMP Replies Received,
+172.18.0.102,INFO,info,82056,,,Host Name Not Available,
+172.18.0.102,INFO,info,82042,,,Option to Use Three-Way Handshake TCP Port Scanning Enabled,
+172.18.0.102,INFO,info,6,,,DNS Host Name,
+172.18.0.102,INFO,info,45038,,,Host Scan Time - Scanner,
+172.18.0.102,INFO,info,45426,,,Scan Activity per Port,
+172.18.0.102,INFO,info,12230,8080,tcp,Default Web Page,
+172.18.0.102,INFO,info,13910,8080,tcp,Default Web Page ( Follow HTTP Redirection),
+172.18.0.102,INFO,info,86672,8080,tcp,List of Web Directories,
+172.18.0.102,INFO,info,86565,8080,tcp,Web Server Supports HTTP Request Pipelining,
+172.18.0.102,INFO,low,45266,8080,tcp,Web Server HTTP Protocol Versions,
+172.18.0.102,INFO,info,48118,8080,tcp,HTTP Response Method and Header Information Collected,
+172.18.0.102,INFO,info,48131,8080,tcp,Referrer-Policy HTTP Security Header Not Detected,
+172.18.0.102,INFO,med,48001,8080,tcp,Content-Security-Policy HTTP Security Header Not Detected,
+172.18.0.102,SERVICE,info,82023,,,Open TCP Services List,
+172.18.0.102,VULN,crit,11771,8080,tcp,Apache Struts Jakarta Multipart parser Remote Code Execution Vulnerability (S2-045),CVE-2017-5638
+172.18.0.102,VULN,low,13162,8080,tcp,"Session Cookie Does Not Contain the ""Secure"" Attribute",
+172.18.0.102,PRACTICE,high,13181,8080,tcp,Eclipse Jetty Multiple Vulnerabilities,"CVE-2017-7656,CVE-2017-7657,CVE-2017-7658,CVE-2018-12536,CVE-2018-12538"
+172.18.0.102,PRACTICE,med,13485,8080,tcp,Eclipse Jetty XSS Vulnerability(Bug 546121),CVE-2019-10241
+172.18.0.102,PRACTICE,med,13487,8080,tcp,Eclipse Jetty Information Reveal Default Handler Vulnerability(Bug 546577 ),CVE-2019-10247
+172.18.0.102,PRACTICE,med,730265,8080,tcp,"Eclipse Jetty Multiple Security Vulnerabilities (Bug 573389,574146)","CVE-2021-28169,CVE-2021-34428"
+172.18.0.102,PRACTICE,med,730281,8080,tcp,Eclipse Jetty Directory Hijacking Vulnerability (Bug 567921),CVE-2020-27216
+172.18.0.103,INFO,info,82040,,,ICMP Replies Received,
+172.18.0.103,INFO,info,82056,,,Host Name Not Available,
+172.18.0.103,INFO,info,82042,,,Option to Use Three-Way Handshake TCP Port Scanning Enabled,
+172.18.0.103,INFO,info,6,,,DNS Host Name,
+172.18.0.103,INFO,info,45038,,,Host Scan Time - Scanner,
+172.18.0.103,INFO,info,45426,,,Scan Activity per Port,
+172.18.0.103,INFO,info,86264,5984,tcp,Microsoft Frontpage Extensions Directory _vti_cnf Present,
+172.18.0.103,INFO,info,12230,5984,tcp,Default Web Page,
+172.18.0.103,INFO,info,13910,5984,tcp,Default Web Page ( Follow HTTP Redirection),
+172.18.0.103,INFO,info,86047,5984,tcp,Frontpage Extensions Directory _vti_pvt Present,
+172.18.0.103,INFO,info,86672,5984,tcp,List of Web Directories,
+172.18.0.103,INFO,info,86048,5984,tcp,Frontpage Extensions Directory _vti_bin Present,
+172.18.0.103,INFO,info,86263,5984,tcp,Frontpage Extensions Directory _vti_log Present,
+172.18.0.103,INFO,info,86565,5984,tcp,Web Server Supports HTTP Request Pipelining,
+172.18.0.103,INFO,low,45266,5984,tcp,Web Server HTTP Protocol Versions,
+172.18.0.103,INFO,info,48118,5984,tcp,HTTP Response Method and Header Information Collected,
+172.18.0.103,INFO,info,48131,5984,tcp,Referrer-Policy HTTP Security Header Not Detected,
+172.18.0.103,INFO,med,48001,5984,tcp,Content-Security-Policy HTTP Security Header Not Detected,
+172.18.0.103,INFO,info,86565,5986,tcp,Web Server Supports HTTP Request Pipelining,
+172.18.0.103,INFO,info,86672,5986,tcp,List of Web Directories,
+172.18.0.103,INFO,info,12230,5986,tcp,Default Web Page,
+172.18.0.103,INFO,info,13910,5986,tcp,Default Web Page ( Follow HTTP Redirection),
+172.18.0.103,INFO,low,45266,5986,tcp,Web Server HTTP Protocol Versions,
+172.18.0.103,INFO,info,48118,5986,tcp,HTTP Response Method and Header Information Collected,
+172.18.0.103,INFO,info,48131,5986,tcp,Referrer-Policy HTTP Security Header Not Detected,
+172.18.0.103,INFO,med,48001,5986,tcp,Content-Security-Policy HTTP Security Header Not Detected,
+172.18.0.103,SERVICE,info,82023,,,Open TCP Services List,
+172.18.0.103,VULN,high,13229,5984,tcp,Apache CouchDB Arbitrary Remote Code Execution Vulnerability,CVE-2018-11769
+172.18.0.103,VULN,high,13254,5984,tcp,Apache CouchDB Arbitrary Privilege Escalation Vulnerability,CVE-2018-8007
+172.18.0.103,VULN,high,13229,5986,tcp,Apache CouchDB Arbitrary Remote Code Execution Vulnerability,CVE-2018-11769
+172.18.0.103,VULN,high,13254,5986,tcp,Apache CouchDB Arbitrary Privilege Escalation Vulnerability,CVE-2018-8007
+172.18.0.103,PRACTICE,med,730467,5984,tcp,Apache CouchDB Remote Privilege Escalation Vulnerability,CVE-2022-24706
+172.18.0.103,PRACTICE,med,731122,5984,tcp,Apache CouchDB Privilege Escalation Vulnerability,CVE-2023-45725
+172.18.0.103,PRACTICE,med,731127,5984,tcp,Apache CouchDB Information Disclosure Vulnerability,CVE-2023-26268
+172.18.0.103,PRACTICE,high,731156,5984,tcp,Apache CouchDB Privilege Escalation Vulnerability,CVE-2021-38295
+172.18.0.103,PRACTICE,med,13383,5984,tcp,Apache CouchDB Remote Privilege Escalation Vulnerability,CVE-2018-17188
+172.18.0.103,PRACTICE,high,20056,5984,tcp,Apache CouchDB Multiple Vulnerabilities.,"CVE-2017-12635,CVE-2017-12636"
+172.18.0.103,PRACTICE,med,13383,5986,tcp,Apache CouchDB Remote Privilege Escalation Vulnerability,CVE-2018-17188
+172.18.0.103,PRACTICE,med,730467,5986,tcp,Apache CouchDB Remote Privilege Escalation Vulnerability,CVE-2022-24706
+172.18.0.103,PRACTICE,med,731122,5986,tcp,Apache CouchDB Privilege Escalation Vulnerability,CVE-2023-45725
+172.18.0.103,PRACTICE,med,731127,5986,tcp,Apache CouchDB Information Disclosure Vulnerability,CVE-2023-26268
+172.18.0.103,PRACTICE,high,731156,5986,tcp,Apache CouchDB Privilege Escalation Vulnerability,CVE-2021-38295
+172.18.0.103,PRACTICE,high,20056,5986,tcp,Apache CouchDB Multiple Vulnerabilities.,"CVE-2017-12635,CVE-2017-12636"
+172.18.0.104,INFO,info,82040,,,ICMP Replies Received,
+172.18.0.104,INFO,info,82056,,,Host Name Not Available,
+172.18.0.104,INFO,info,82042,,,Option to Use Three-Way Handshake TCP Port Scanning Enabled,
+172.18.0.104,INFO,info,6,,,DNS Host Name,
+172.18.0.104,INFO,info,45310,,,Redis Server Not Bound to Localhost,
+172.18.0.104,INFO,info,45312,,,Redis Server Version Detected,
+172.18.0.104,INFO,info,45038,,,Host Scan Time - Scanner,
+172.18.0.104,INFO,info,45426,,,Scan Activity per Port,
+172.18.0.104,SERVICE,info,82023,,,Open TCP Services List,
+172.18.0.104,VULN,crit,105751,,,EOL/Obsolete Software: Unsupported Redis Server Prior to 5.0 Detected,
+172.18.0.104,VULN,crit,19994,6379,tcp,Redis Server Accessible Without Authentication,
+172.18.0.104,VULN,med,20075,6379,tcp,Redis Server Config Command Not Renamed,
+172.18.0.104,VULN,high,732735,6379,tcp,Redis Server Denial of Service (DoS) Vulnerability (GHSA-4q32-c38c-pwgq),CVE-2025-48367
+172.18.0.104,VULN,high,732736,6379,tcp,Redis Server Remote Code Execution (RCE) Vulnerability,CVE-2025-32023
+172.18.0.104,VULN,crit,734820,6379,tcp,Redis Remote Code Execution (RCE) Vulnerability,CVE-2026-66373
+172.18.0.104,VULN,med,730240,6379,tcp,Redis Server Arbitrary File Read Vulnerability,CVE-2021-32672
+172.18.0.104,PRACTICE,high,732158,6379,tcp,Redis Server Remote Code Execution (RCE) Vulnerability,CVE-2024-46981
+172.18.0.104,PRACTICE,med,732457,6379,tcp,Redis Server Denial of Service (DoS) Vulnerability (GHSA-r67f-p999-2gff),CVE-2025-21605
+172.18.0.104,PRACTICE,med,730745,6379,tcp,Redis Server Multiple Vulnerabilities (GHSA-vw22-qm3h-49pr),"CVE-2021-32628,CVE-2021-32687,CVE-2021-32675"
+172.18.0.104,PRACTICE,med,730746,6379,tcp,Redis Server Heap-based Buffer Overflow Vulnerability (GHSA-p486-xggp-782c),CVE-2021-32626
+172.18.0.104,PRACTICE,med,731821,6379,tcp,Redis Server Remote Code Execution (RCE) Vulnerability (GHSA-whxg-wx83-85p5),CVE-2024-31449
+172.18.0.104,PRACTICE,med,731824,6379,tcp,Redis Server Denial of Service (DoS) Vulnerability (GHSA-66gq-c942-6976),CVE-2024-31228

@@ -1,0 +1,509 @@
+source_file,group,scanner,host,hostname,port,nvt_oid,nvt_name,nvt_family,threat,severity,qod,solution_type,cve_count,cves,has_cve,generic_nvt,kev_cves,has_kev,cert_ref_count,description,solution
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:82040,ICMP Replies Received,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+<P>
+We have sent the following types of packets to trigger the host to send us ICMP replies: 
+<P>
+Echo Request (to trigger Echo Reply)<br>
+Timestamp Request (to trigger Timestamp Reply)<br>
+Address Mask Request (to trigger Address Mask Reply)<br>
+UDP Packet (to trigger Port Unreachable Reply)<br>
+IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+<P>
+Listed in the ""Result"" section are the ICMP replies that we have received.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:82056,Host Name Not Available,TCP/IP,Log,2.0,,,0,,False,False,,False,0,Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.,
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:82042,Option to Use Three-Way Handshake TCP Port Scanning Enabled,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"You have enabled three-way handshake TCP port scanning. This option may be selected to protect the host against some potential issues with half-open TCP port scanning.
+<P>
+When this option is enabled, you may experience some increase in the scanning time. No attempt is made to detect the presence of a firewall and the version of the operating system. Consequently, the host is not tested for vulnerabilities, whose detection is dependent on the detection of a firewall or the operating system.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:6,DNS Host Name,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:45038,Host Scan Time - Scanner,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+<P>
+The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.
+<P>",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:45426,Scan Activity per Port,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Scan activity per port is an estimate of the amount of internal process time the scanner engine spent scanning a particular TCP or UDP port. This information can be useful to determine the reason for long scan times. The individual time values represent internal process time, not elapsed time, and can be longer than the total scan time because of internal parallelism. High values are often caused by slowly responding services or services on which requests time out.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:12230,Default Web Page,CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server.,N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:13910,Default Web Page ( Follow HTTP Redirection),CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server following HTTP redirections.,N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:86672,List of Web Directories,Web server,Log,2.0,,,0,,False,False,,False,0,"Based largely on the HTTP reply code, the following directories are most likely present on the host.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:86565,Web Server Supports HTTP Request Pipelining,Web server,Log,2.0,,,0,,False,False,,False,0,"Version 1.1 of the HTTP protocol supports URL-Request Pipelining. This means that instead of using the &quot;Keep-Alive&quot; method to keep the TCP connection alive over multiple requests, the protocol allows multiple HTTP URL requests to be made in the same TCP packet. Any Web server which is HTTP 1.1 compliant should then process all the URLs requested in the single TCP packet and respond as usual.
+<P>
+The target Web server was found to support this functionality of the HTTP 1.1 protocol.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:45266,Web Server HTTP Protocol Versions,Information gathering,Log,4.0,,,0,,False,False,,False,0,This QID lists supported HTTP protocol (HTTP 1.x or HTTP 2) from remote web server.,N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:48118,HTTP Response Method and Header Information Collected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"This QID prints the information, in the form of a text record, that a web server sends back to a client's browser in response to receiving a single HTTP GET request. <P>
+QID Detection Logic:<BR>
+This QID returns the HTTP response method and header information returned by a web server.<P>",N/A<P>
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:48131,Referrer-Policy HTTP Security Header Not Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"No Referrer Policy is specified for the link. It checks for one of the following Referrer Policy in the response headers:<P>
+1) no-referrer<BR>
+2) no-referrer-when-downgrade<BR>
+3) same-origin<BR>
+4) origin<BR>
+5) origin-when-cross-origin<BR>
+6) strict-origin<BR>
+7) strict-origin-when-cross-origin<BR><P>
+
+QID Detection Logic(Unauthenticated):<BR>
+If the Referrer Policy header is not found , checks in response body for meta tag containing tag name as &quot;referrer&quot; and one of the above Referrer Policy.","Referrer Policy header improves security by ensuring websites don't leak sensitive information via the referrer header. It's recommended to add secure Referrer Policies as a part of a defense-in-depth approach.<P>
+
+References:<BR>
+- <A HREF=""https://www.w3.org/TR/referrer-policy/"" TARGET=""_blank"">https://www.w3.org/TR/referrer-policy/</A><BR>
+- <A HREF=""https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"" TARGET=""_blank"">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:48001,Content-Security-Policy HTTP Security Header Not Detected,Information gathering,Log,6.0,,,0,,False,False,,False,0,"The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. This helps guard against cross-site scripting attacks (XSS).<P>
+QID Detection Logic:<BR>
+This QID detects the absence of the Content-Security-Policy HTTP header by transmitting a GET request.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,general/tcp,qualys:82023,Open TCP Services List,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+<P>
+The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected).","Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF=""http://www.cert.org"" TARGET=""_blank"">CERT Web site</A>."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:11771,Apache Struts Jakarta Multipart parser Remote Code Execution Vulnerability (S2-045),CGI,High,10.0,,,1,CVE-2017-5638,True,False,CVE-2017-5638,True,0,"Apache Struts is a framework for building web applications. A vulnerability exists due to improper handling of requests with a malicious Content-Type value. If the Content-Type value isn't valid an exception is thrown which is then used to display an error message to a user.<P>
+Affected software:<BR>
+Apache Struts 2.3.5 to 2.3.31<BR>
+Apache Struts 2.5 to 2.5.10<BR>
+
+<P>
+QID Detection Logic (Unauthenticated):<BR>
+The QID has two type of signatures. In the first type the scanner send a custom <B>Content-Type</B> header to check for command execution to the .action, .go,.do and other common files. In the second type the scanner asks the target to perform an arithmetic operation via the <B>Content-Type</B> header to check for command execution. Since this is an active check the scanner should be able to invoke the vulnerable struts configuration for the check to work.
+
+<P>Please note:
+<BR>1) If there is an authentication scheme configured for the server, then VM scanner will not be able to detect this QID. In such cases we recommend using the WAS QID 150173 as WAS has support for authentication as well as in-dept crawling. Please refer to the Qualys Apache Struts blog:
+<BR>
+<A HREF=""https://blog.qualys.com/securitylabs/2017/03/14/apache-struts-cve-2017-5638-vulnerability-and-the-qualys-solution"" TARGET=""_blank"">https://blog.qualys.com/securitylabs/2017/03/14/apache-struts-cve-2017-5638-vulnerability-and-the-qualys-solution</A>
+<BR>2) The requests sent by the scanner should be able to invoke the vulnerable struts configuration. If the vulnerable behavior is triggered in a nested directory which the scanner cannot find then this QID will not be posted.
+<P>
+QID detection logic (Authenticated):<BR>
+Detection looks for &quot;struts core&quot; jar files in deployed web applications directories and lib folder of Tomcat server. Once it successfully finds the jar file, version information is extracted from that jar files and compared.<BR>
+Please note: Our detection does not supp","The vendor has released advisories and updates to fix these vulnerabilities. Refer to the following link for further details:
+<A HREF=""https://cwiki.apache.org/confluence/display/WW/Version+Notes+2.3.32"" TARGET=""_blank"">Apache Struts 2.3.32</A>
+<A HREF=""https://cwiki.apache.org/confluence/display/WW/Version+Notes+2.5.10.1"" TARGET=""_blank"">Apache Struts 2.5.10.1</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://cwiki.apache.org/confluence/display/WW/S2-045"" TARGET=""_blank"">S2-045</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:13162,"Session Cookie Does Not Contain the ""Secure"" Attribute",CGI,Low,4.0,,,0,,False,False,,False,0,"The secure cookie flag is an option that can be set by the application server when sending a new cookie to the user within an HTTP Response. The purpose of the secure flag is to prevent cookies from being observed by unauthorized parties due to the transmission of a the cookie in clear text. By setting the secure flag, the browser will prevent the transmission of a cookie over an unencrypted channel.<P>
+A cookie with the secure attribute was not detected in the scan.<P>
+QID Detection Logic:<BR>
+This unauthenticated QID checks for the existence of the &quot;secure&quot; cookie flag.",Apply the &quot;secure&quot; attribute to session cookies to ensure that they are sent via HTTPS only. More information about this flag can be found here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie.
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:13181,Eclipse Jetty Multiple Vulnerabilities,CGI,High,8.0,,,5,CVE-2017-7656;CVE-2017-7657;CVE-2017-7658;CVE-2018-12536;CVE-2018-12538,True,False,,False,0,"Eclipse Jetty is a Java HTTP server and Java Servlet container.While Web Servers are usually associated with serving documents to people, Jetty is now often used for machine to machine communications, usually within larger software frameworks.<P>
+
+CVE-2017-7656 - A remote user can submit a specially crafted HTTP/0.9 request containing invalid request headers to cause Jetty and an upstream HTTP agent (such as an origin server or another proxy) to interpret the boundary of the HTTP request differently. As a result, a malicious request may be embedded within another request as processed by the subsequent system. This allows a remote user to potentially poison the cache.<BR>
+
+CVE-2017-7657 - A remote user can submit a specially crafted HTTP request containing invalid Chunked Transfer-Encoding headers to cause Jetty and an upstream HTTP agent (such as an origin server or another proxy) to interpret the boundary of the HTTP request differently. As a result, a malicious request may be embedded within another request as processed by the subsequent system. This allows a remote user to potentially poison the cache.<BR>
+
+CVE-2017-7658 - A remote user can submit a specially crafted HTTP request containing more than one Content-Length header to cause Jetty and an upstream HTTP agent (such as an origin server or another proxy) to interpret the boundary of the HTTP request differently. As a result, a malicious request may be embedded within another request as processed by the subsequent system. This allows a remote user to potentially poison the cache.<BR>
+
+CVE-2018-12536 - A remote user can submit a specially crafted query to trigger a 'java.nio.file.InvalidPathException' that displays the installation path.<BR>
+
+CVE-2018-12538 - A remote user can exploit a flaw in the FileSessionDataStor to hijack an existing HttpSession and delete other sessions. Systems using the org.eclipse.jetty.server.session.FileSessionDataStore class are affected. Systems using jetty-distribution/jetty-ho","The vendor has releassed patches which can be found <A HREF=""http://dev.eclipse.org/mhonarc/lists/jetty-announce/msg00123.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""http://dev.eclipse.org/mhonarc/lists/jetty-announce/msg00123.html"" TARGET=""_blank"">msg00123</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:13485,Eclipse Jetty XSS Vulnerability(Bug 546121),CGI,Medium,6.0,,,1,CVE-2019-10241,True,False,,False,0,"Eclipse Jetty is a Java HTTP server and Java Servlet container. While Web Servers are usually associated with serving documents to people, Jetty is now often used for machine to machine communications, usually within larger software frameworks.<P>
+
+CVE-2019-10241: the server is vulnerable to XSS conditions if a remote client USES a specially formatted URL against the DefaultServlet or ResourceHandler that is configured for showing a Listing of directory contents.<P>
+
+Versions Affected:<BR>
+9.2.26 and older <BR>
+9.3.25 and older<BR>
+9.4.15 and older<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+It looks at http banner to check for vulnerable version of Jetty.","<P>Customers are advised to refer to <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=546121"" TARGET=""_blank"">Bug 546121</A> for more information.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=546121"" TARGET=""_blank"">Bug 546121</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:13487,Eclipse Jetty Information Reveal Default Handler Vulnerability(Bug 546577 ),CGI,Medium,6.0,,,1,CVE-2019-10247,True,False,,False,0,"Eclipse Jetty is a Java HTTP server and Java Servlet container.While Web Servers are usually associated with serving documents to people, Jetty is now often used for machine to machine communications, usually within larger software frameworks.<P>
+The server running on any OS and Jetty version combination will reveal the configured fully qualified directory base resource location on the output of the 404 error for not finding a Context that matches the requested path. The default server behavior on jetty-distribution and jetty-home will include at the end of the Handler tree a Default Handler, which is responsible for reporting this 404 error, it presents the various configured contexts as HTML for users to click through to. This produced HTML includes output that contains the configured fully qualified directory base resource location for each context.<BR>
+
+<P>Versions Affected:<BR>
+7.x (all versions)
+8.x (all versions)
+9.2.27.v20190403 and older
+9.3.26.v20190403 and older
+9.4.16.v20190411 and older
+
+QID Detection Logic:(Unauthenticated)<BR>
+It looks at http banner to check for vulnerable version of Jetty.","<P>Customers are advised to refer to <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=546577"" TARGET=""_blank"">Bug 546577</A> for more information.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=546577"" TARGET=""_blank"">Bug 546577 </A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:730265,"Eclipse Jetty Multiple Security Vulnerabilities (Bug 573389,574146)",CGI,Medium,6.0,,,2,CVE-2021-28169;CVE-2021-34428,True,False,,False,0,"Eclipse Jetty is a Java HTTP server and Java Servlet container. While Web Servers are usually associated with serving documents to people, Jetty is now often used for machine to machine communications, usually within larger software frameworks.<P>
+
+CVE-2021-28169: ConcatServlet with a doubly encoded path to access protected resources within the WEB-INF directory.This can reveal sensitive information regarding the implementation of a web application.<BR>
+CVE-2021-34428: On deployments with clustered sessions and multiple contexts this can result in a session not being invalidated.<P>
+
+Versions Affected:<BR>
+Jetty versions prior to 9.4.41<BR>
+Jetty versions from 10.0.0 to 10.0.2<BR>
+Jetty versions from 11.0.0 to 11.0.2<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+It looks at http banner to check for vulnerable version of Jetty","<P>Customers are advised to refer to <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=573389"" TARGET=""_blank"">Bug 573389</A> and <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=574146"" TARGET=""_blank"">Bug 574146</A> for more information.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=573389"" TARGET=""_blank"">Bug 573389</A><P> <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=574146"" TARGET=""_blank"">Bug 574146</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.102,,8080/tcp,qualys:730281,Eclipse Jetty Directory Hijacking Vulnerability (Bug 567921),CGI,Medium,6.0,,,1,CVE-2020-27216,True,False,,False,0,"Eclipse Jetty is a Java HTTP server and Java Servlet container. While Web Servers are usually associated with serving documents to people, Jetty is now often used for machine to machine communications, usually within larger software frameworks.<P>
+
+CVE-2020-27216: A vulnerability in jetty has been reported where it's creation of a temporary directory can be hijacked by a local attacker with access to /tmp.<P>
+
+Versions Affected:<BR>
+Jetty versions 1.0 thru 9.4.32.v20200930<BR>
+Jetty versions from 10.0.0.alpha1 thru 10.0.0.beta2<BR>
+Jetty versions from 11.0.0.alpha1 thru 11.0.0.beta2<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+It looks at http banner to check for vulnerable version of Jetty","<P>Customers are advised to refer to <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=567921"" TARGET=""_blank"">Bug 567921</A> for more information.Workaround:<BR>Set a temporary directory, either for the server or the context, to a directory outside of the shared temporary file system.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://bugs.eclipse.org/bugs/show_bug.cgi?id=567921"" TARGET=""_blank"">Bug 567921</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:82040,ICMP Replies Received,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+<P>
+We have sent the following types of packets to trigger the host to send us ICMP replies: 
+<P>
+Echo Request (to trigger Echo Reply)<br>
+Timestamp Request (to trigger Timestamp Reply)<br>
+Address Mask Request (to trigger Address Mask Reply)<br>
+UDP Packet (to trigger Port Unreachable Reply)<br>
+IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+<P>
+Listed in the ""Result"" section are the ICMP replies that we have received.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:82056,Host Name Not Available,TCP/IP,Log,2.0,,,0,,False,False,,False,0,Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.,
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:82042,Option to Use Three-Way Handshake TCP Port Scanning Enabled,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"You have enabled three-way handshake TCP port scanning. This option may be selected to protect the host against some potential issues with half-open TCP port scanning.
+<P>
+When this option is enabled, you may experience some increase in the scanning time. No attempt is made to detect the presence of a firewall and the version of the operating system. Consequently, the host is not tested for vulnerabilities, whose detection is dependent on the detection of a firewall or the operating system.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:6,DNS Host Name,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:45038,Host Scan Time - Scanner,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+<P>
+The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.
+<P>",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:45426,Scan Activity per Port,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Scan activity per port is an estimate of the amount of internal process time the scanner engine spent scanning a particular TCP or UDP port. This information can be useful to determine the reason for long scan times. The individual time values represent internal process time, not elapsed time, and can be longer than the total scan time because of internal parallelism. High values are often caused by slowly responding services or services on which requests time out.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:86264,Microsoft Frontpage Extensions Directory _vti_cnf Present,CGI,Log,2.0,,,0,,False,False,,False,0,"The remote Web server appears to be running with Frontpage Extensions.
+<P>
+On a default installation of Frontpage Extensions, a virtual directory  /_vti_cnf/ is created. This directory contains various site-specific configuration files. It's not uncommon for scanner tools to scan this directory because there have been vulnerabilities found in it that allow the disclosure of sensitive information.","Disable anonymous browsing in the security for the /_vti_cnf/ directory.
+<P>
+You can also apply the latest Frontpage Service Pack from <a href=""http://www.microsoft.com"" target=""_blank"">Microsoft's Web site</a>."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:12230,Default Web Page,CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server.,N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:13910,Default Web Page ( Follow HTTP Redirection),CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server following HTTP redirections.,N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:86047,Frontpage Extensions Directory _vti_pvt Present,Web server,Log,2.0,,,0,,False,False,,False,0,"The remote Web server appears to be running with Frontpage Extensions. On a default installation of Frontpage Extensions, a virtual directory /_vti_pvt/ is created. It may contain configuration files and encrypted password files.
+<P>
+Unspecified versions of Frontpage Extensions for Unix have been reported to create a readable (and occasionally writable) file called &quot;services.pwd&quot;, which contains encrypted password and account information. 
+<P>
+There are also unspecified versions of Frontpage Extensions that create a file &quot;/_vti_pvt/administrators.pwd&quot;, which often has improper permissions set. Unauthorized users could retrieve this file via the following URL:
+<P>
+http://www.example.org/_vti_pvt/administrators.pwd&quot;
+
+<P>
+Note that the detection of the presence of a directory is for the most part based on the return code in the HTTP responses to the HTTP requests such as &quot;GET /directory/ HTTP/1.0&quot; and may at times be unreliable.","You should check your configuration because several security problems have been discovered with FrontPage when the configuration file is not well set up. Apply better permissions on the Frontpage Extension Directories.
+<P>
+You should also make sure that you're using a strong password. Use the following guidelines to create a strong password: 
+<UL> 
+<LI>Use at least eight characters. 
+<LI>Use a mix of four different types of characters (upper case letters, lower case letters, numbers and special characters, such as !@#$%^&amp;*,;&quot;).
+<LI>If you're only using one special character, then it should not be the first or last character in the password. 
+<LI>Do not use a name, slang word, or any word in the dictionary.
+<LI>Do not include any part of your name or your e-mail address.
+</UL>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:86672,List of Web Directories,Web server,Log,2.0,,,0,,False,False,,False,0,"Based largely on the HTTP reply code, the following directories are most likely present on the host.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:86048,Frontpage Extensions Directory _vti_bin Present,Web server,Log,2.0,,,0,,False,False,,False,0,"The remote Web server appears to be running with Frontpage Extensions. On a default installation of Frontpage Extensions, a virtual directory ""/_vti_bin/"" is created. Most scanner tools scan this directory because vulnerabilities have been found in Frontpage scripts.
+
+<P>
+Note that the detection of the presence of a directory is for the most part based on the return code in the HTTP responses to the HTTP requests such as ""GET /directory/ HTTP/1.0"" and may at times be unreliable.","Remove all scripts that you do not need from the ""/_vti_bin/"" directory.
+<P>To best secure your server, you should also apply the latest Frontpage Service Pack, which is available for download from <a href=""http://www.microsoft.com"" target=""_blank"">Microsoft's Web site</a>."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:86263,Frontpage Extensions Directory _vti_log Present,Web server,Log,2.0,,,0,,False,False,,False,0,"The remote Web server appears to be running with Frontpage Extensions.
+<P>
+On a default installation of Frontpage Extensions, a virtual directory  /_vti_log/ is created. This directory contains the log file for administration and authoring of the Web site. It's not uncommon for scanner tools to scan this directory because there have been vulnerabilities found in it that allow the disclosure of sensitive information.
+<P>
+Note that the detection of the presence of a directory is for the most part based on the return code in the HTTP responses to the HTTP requests such as ""GET /directory/ HTTP/1.0"" and may at times be unreliable.","Disable anonymous browsing in the security for the /_vti_log/ directory. 
+<P>
+You can also apply the latest Frontpage Service Pack from <a href=""http://www.microsoft.com"" target=""_blank"">Microsoft's Web site</a>."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:86565,Web Server Supports HTTP Request Pipelining,Web server,Log,2.0,,,0,,False,False,,False,0,"Version 1.1 of the HTTP protocol supports URL-Request Pipelining. This means that instead of using the &quot;Keep-Alive&quot; method to keep the TCP connection alive over multiple requests, the protocol allows multiple HTTP URL requests to be made in the same TCP packet. Any Web server which is HTTP 1.1 compliant should then process all the URLs requested in the single TCP packet and respond as usual.
+<P>
+The target Web server was found to support this functionality of the HTTP 1.1 protocol.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:45266,Web Server HTTP Protocol Versions,Information gathering,Log,4.0,,,0,,False,False,,False,0,This QID lists supported HTTP protocol (HTTP 1.x or HTTP 2) from remote web server.,N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:48118,HTTP Response Method and Header Information Collected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"This QID prints the information, in the form of a text record, that a web server sends back to a client's browser in response to receiving a single HTTP GET request. <P>
+QID Detection Logic:<BR>
+This QID returns the HTTP response method and header information returned by a web server.<P>",N/A<P>
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:48131,Referrer-Policy HTTP Security Header Not Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"No Referrer Policy is specified for the link. It checks for one of the following Referrer Policy in the response headers:<P>
+1) no-referrer<BR>
+2) no-referrer-when-downgrade<BR>
+3) same-origin<BR>
+4) origin<BR>
+5) origin-when-cross-origin<BR>
+6) strict-origin<BR>
+7) strict-origin-when-cross-origin<BR><P>
+
+QID Detection Logic(Unauthenticated):<BR>
+If the Referrer Policy header is not found , checks in response body for meta tag containing tag name as &quot;referrer&quot; and one of the above Referrer Policy.","Referrer Policy header improves security by ensuring websites don't leak sensitive information via the referrer header. It's recommended to add secure Referrer Policies as a part of a defense-in-depth approach.<P>
+
+References:<BR>
+- <A HREF=""https://www.w3.org/TR/referrer-policy/"" TARGET=""_blank"">https://www.w3.org/TR/referrer-policy/</A><BR>
+- <A HREF=""https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"" TARGET=""_blank"">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:48001,Content-Security-Policy HTTP Security Header Not Detected,Information gathering,Log,6.0,,,0,,False,False,,False,0,"The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. This helps guard against cross-site scripting attacks (XSS).<P>
+QID Detection Logic:<BR>
+This QID detects the absence of the Content-Security-Policy HTTP header by transmitting a GET request.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,general/tcp,qualys:82023,Open TCP Services List,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+<P>
+The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected).","Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF=""http://www.cert.org"" TARGET=""_blank"">CERT Web site</A>."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:13229,Apache CouchDB Arbitrary Remote Code Execution Vulnerability,CGI,High,8.0,,,1,CVE-2018-11769,True,False,,False,0,"Apache CouchDB is a free open source document oriented database written in the Erlang programming language.<P>
+
+This Apache CouchDB update fixes the following vulnerabilities:<P>
+CouchDB administrative users can configure the database server via HTTP(S). Due to insufficient validation of administrator-supplied configuration settings via the HTTP API, it is possible for a CouchDB administrator user to escalate their privileges to that of the operating system's user under which CouchDB runs, by bypassing the blacklist of configuration settings that are not allowed to be modified via the HTTP API.<BR>
+This privilege escalation effectively allows a CouchDB admin user to gain arbitrary remote code execution bypassing mitigations for CVE-2017-12636 and CVE-2018-8007.<P>
+
+Affected Versions:<BR>
+Apache CouchDB 1.x<BR>
+Apache CouchDB upto 2.1.2<P>
+
+QID Detection Logic(Remote) <BR>
+It checks for vulnerable version of Apache CouchDB.<P>","The vendor has released patch.
+ Customers are advised to upgrade to <A HREF=""http://couchdb.apache.org/"" TARGET=""_blank"">ApacheCouchDb</A>Workaround:<BR>Please visit <A HREF=""https://lists.apache.org/thread.html/1052ad7a1b32b9756df4f7860f5cb5a96b739f444117325a19a4bf75@%3Cdev.couchdb.apache.org%3E"" TARGET=""_blank"">Apache CouchDB</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://lists.apache.org/thread.html/1052ad7a1b32b9756df4f7860f5cb5a96b739f444117325a19a4bf75@%3Cdev.couchdb.apache.org%3E"" TARGET=""_blank"">Apache CouchDB</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:13254,Apache CouchDB Arbitrary Privilege Escalation Vulnerability,CGI,High,8.0,,,1,CVE-2018-8007,True,False,,False,0,"<P>CouchDB administrative users can configure the database server via HTTP(S). Due to insufficient validation of administrator-supplied configuration settings via the HTTP API, it is possible for a CouchDB administrator user to escalate their privileges to that of the operating systems user that CouchDB runs under, by bypassing the blacklist of configuration settings that are not allowed to be modified via the HTTP API.
+
+Affected Versions:<BR>
+Apache CouchDB  versions prior to 1.7.2 and 2.1.2<BR>
+
+QID Detection Logic(Remote) <BR>
+It checks for vulnerable version of Apache CouchDB by sending a GET request to the target and matches the vulnerable version<P>","The vendor has already released the patch to fix the vulnerability.Customers are advised to upgrade to <A HREF=""http://couchdb.apache.org/"" TARGET=""_blank"">ApacheCouchDb</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://blog.couchdb.org/2018/07/10/cve-2018-8007/"" TARGET=""_blank"">Apache CouchDB</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:730467,Apache CouchDB Remote Privilege Escalation Vulnerability,CGI,Medium,6.0,,,1,CVE-2022-24706,True,False,CVE-2022-24706,True,0,"Apache CouchDB is a free open source document-oriented database written in the Erlang programming language. 
+<P>In Apache CouchDB prior to 3.2.2, an attacker can access an improperly secured default installation without authenticating and gain admin privileges. 
+<P>
+Affected Versions:<BR>
+Apache CouchDB  versions prior to 3.2.2<P>
+
+QID Detection Logic(Remote) <BR>
+It checks for vulnerable version of Apache CouchDB by sending a GET request to the target and matches the vulnerable version.<P>","The vendor has already released the patch to fix the vulnerability. Customers are advised to upgrade to <A HREF=""https://couchdb.apache.org/"" TARGET=""_blank"">Apache CouchDB</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://couchdb.apache.org/"" TARGET=""_blank"">Apache CouchDB</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:731122,Apache CouchDB Privilege Escalation Vulnerability,CGI,Medium,6.0,,,1,CVE-2023-45725,True,False,,False,0,"Apache CouchDB is a free open source document-oriented database written in the Erlang programming language. 
+<P>Design document functions which receive a user http request object may expose authorization or session cookie headers of the user who accesses the document.
+For the attack to succeed the attacker has to be able to insert the design documents into the database, then manipulate a user to access a function from that design document.
+<P>
+Affected Versions:<BR>
+Apache CouchDB versions prior to version 3.3.3<P>
+
+QID Detection Logic(Remote) <BR>
+It checks for vulnerable version of Apache CouchDB by sending a GET request to the target and matches the vulnerable version.<P>
+
+Note: Avoid using design documents from untrusted sources which may attempt to access or manipulate request object's headers.<P>","The vendor has already released the patch to fix the vulnerability. Customers are advised to upgrade to <A HREF=""https://couchdb.apache.org/"" TARGET=""_blank"">Apache CouchDB</A>.Workaround:<BR>Avoid using design documents from untrusted sources which may attempt to access or manipulate request object's headers
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://couchdb.apache.org/"" TARGET=""_blank"">Apache CouchDB</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:731127,Apache CouchDB Information Disclosure Vulnerability,CGI,Medium,6.0,,,1,CVE-2023-26268,True,False,,False,0,"Apache CouchDB is a free open source document-oriented database written in the Erlang programming language. 
+<P>Design documents with matching document IDs, from databases on the same cluster, may share a mutable Javascript environment when using these design document functions: validate_doc_update, list, filter, filter views (using view functions as filters), rewrite, update.
+This doesn't affect map/reduce or search (Dreyfus) index functions.
+<P>
+Affected Versions:<BR>
+Apache CouchDB versions prior to version 3.2.3<BR>
+Apache CouchDB versions 3.3.0 and 3.3.1<P>
+
+QID Detection Logic(Remote) <BR>
+It checks for vulnerable version of Apache CouchDB by sending a GET request to the target and matches the vulnerable version.<P>
+
+Note: Avoid using design documents from untrusted sources which may attempt to cache or store data in the Javascript environment.<P>","The vendor has already released the patch to fix the vulnerability. Customers are advised to upgrade to <A HREF=""https://couchdb.apache.org/"" TARGET=""_blank"">Apache CouchDB</A>.Workaround:<BR>Avoid using design documents from untrusted sources which may attempt to cache or store data in the Javascript environment.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://couchdb.apache.org/"" TARGET=""_blank"">Apache CouchDB</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.103,,5984/tcp,qualys:20056,Apache CouchDB Multiple Vulnerabilities.,Database,High,8.0,,,2,CVE-2017-12635;CVE-2017-12636,True,False,,False,0,"<P>Apache CouchDB is a free open source document oriented database written in the Erlang programming language.<BR>
+<P><P>This Apache CouchDB update fixes the following vulnerabilities:<BR>
+CVE-2017-12635:Remote Code Execution.<BR>
+CVE-2017-12636:Execution of arbitrary shell commands as the CouchDB user, including downloading and executing scripts from the public internet.<BR>
+<P>Affected Versions:<BR>
+<P>Apache CouchDB prior to 1.7.0 and 2.x prior to 2.1.1]<BR>
+<P>QID Detection Logic(Remote) <BR>
+It checks for vulnerable version of Apache CouchDB.","Customers are advised to upgrade to <A HREF=""http://couchdb.apache.org/"" TARGET=""_blank"">ApacheCouchDb</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://lists.apache.org/thread.html/6c405bf3f8358e6314076be9f48c89a2e0ddf00539906291ebdf0c67@%3Cdev.couchdb.apache.org%3E"" TARGET=""_blank"">Apache CouchDb</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:82040,ICMP Replies Received,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+<P>
+We have sent the following types of packets to trigger the host to send us ICMP replies: 
+<P>
+Echo Request (to trigger Echo Reply)<br>
+Timestamp Request (to trigger Timestamp Reply)<br>
+Address Mask Request (to trigger Address Mask Reply)<br>
+UDP Packet (to trigger Port Unreachable Reply)<br>
+IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+<P>
+Listed in the ""Result"" section are the ICMP replies that we have received.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:82056,Host Name Not Available,TCP/IP,Log,2.0,,,0,,False,False,,False,0,Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.,
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:82042,Option to Use Three-Way Handshake TCP Port Scanning Enabled,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"You have enabled three-way handshake TCP port scanning. This option may be selected to protect the host against some potential issues with half-open TCP port scanning.
+<P>
+When this option is enabled, you may experience some increase in the scanning time. No attempt is made to detect the presence of a firewall and the version of the operating system. Consequently, the host is not tested for vulnerabilities, whose detection is dependent on the detection of a firewall or the operating system.",
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:6,DNS Host Name,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:45310,Redis Server Not Bound to Localhost,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Redis server is running and not bound to Localhost.
+
+<P>QID Detection Logic:<BR>
+<P>This QID will post if Redis service is detected.<BR>",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:45312,Redis Server Version Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The target is running Redis Server.<P>
+Result section of this QID contains the redis server's version and running port.
+<P>QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of redis server then sends a &quot;info&quot; to get the version.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:45038,Host Scan Time - Scanner,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+<P>
+The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.
+<P>",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:45426,Scan Activity per Port,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Scan activity per port is an estimate of the amount of internal process time the scanner engine spent scanning a particular TCP or UDP port. This information can be useful to determine the reason for long scan times. The individual time values represent internal process time, not elapsed time, and can be longer than the total scan time because of internal parallelism. High values are often caused by slowly responding services or services on which requests time out.",N/A
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:82023,Open TCP Services List,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+<P>
+The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected).","Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF=""http://www.cert.org"" TARGET=""_blank"">CERT Web site</A>."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,general/tcp,qualys:105751,EOL/Obsolete Software: Unsupported Redis Server Prior to 5.0 Detected,Security Policy,High,10.0,,,0,,False,False,,False,0,"Redis is an open-source in-memory database project.<P>
+Redis only supports one stable release and &quot;one previous stable release&quot;. 
+The latest stable release is 6.2.<P>
+<P>QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of Redis server then sends a &quot;info&quot; to get the version.","Users are advised to upgrade to latest supported version from the <A HREF=""https://redis.io/download"" TARGET=""_blank"">Redis Downloads</A> web page.<P>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:19994,Redis Server Accessible Without Authentication,Database,High,10.0,,,0,,False,False,,False,0,"Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker. It's possible to access the target Redis server without any authentication.","Enable the authentication of Redis Server, if possible.
+
+
+
+
+
+
+Workaround:<BR>
+Bind Redis Sever to 127.0.0.1."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:20075,Redis Server Config Command Not Renamed,Database,Medium,6.0,,,0,,False,False,,False,0,"The target is running Redis Server.<P>
+The Redis Server doesn't rename Config Command.
+<P>QID Detection Logic (Remote): <BR> 
+This QID sends a &quot;config no_such_command&quot; to check if the config command is renamed.","Rename the command
+
+
+
+
+
+Workaround:<BR>
+Bind Redis Sever to 127.0.0.1."
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:732735,Redis Server Denial of Service (DoS) Vulnerability (GHSA-4q32-c38c-pwgq),CGI,High,8.0,,,1,CVE-2025-48367,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+CVE-2025-48367 : An unauthenticated connection can cause repeated IP protocol errors, leading to client starvation and, ultimately, a denial of service.<P>
+
+Affected Versions:<BR>
+All versions of Redis Server. <P>
+
+Patched Versions:<BR>
+Redis Server versions 6.2.19, 7.2.10, 7.4.5 and 8.0.3<P>
+
+QID Detection Logic (Unauthenticated): <BR>
+This QID tries to authenticate to a Redis Server with default credentials and executes the 'info' command to check the Redis version. <P>","Vendor has released patches addressing the vulnerability. For more information, please refer to the <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-4q32-c38c-pwgq"" TARGET=""_BLANK""> Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-4q32-c38c-pwgq"" TARGET=""_blank"">GHSA-4q32-c38c-pwgq</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:732736,Redis Server Remote Code Execution (RCE) Vulnerability,CGI,High,8.0,,,1,CVE-2025-32023,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+CVE-2025-48367 : An unauthenticated connection can cause repeated IP protocol errors, leading to client starvation and, ultimately, a denial of service.<P>
+
+Affected Versions:<BR>
+Redis Server above 2.7. <P>
+
+Patched Versions:<BR>
+Redis Server versions 6.2.19, 7.2.10, 7.4.5 and 8.0.3<P>
+
+QID Detection Logic (Unauthenticated): <BR>
+This QID tries to authenticate to a Redis Server with default credentials and executes the 'info' command to check the Redis version. <P>","Vendor has released patches addressing the vulnerability. For more information, please refer to the <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-rp2m-q4j6-gr43"" TARGET=""_BLANK""> Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-rp2m-q4j6-gr43"" TARGET=""_blank"">GHSA-rp2m-q4j6-gr43</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:734820,Redis Remote Code Execution (RCE) Vulnerability,CGI,High,10.0,,,1,CVE-2026-66373,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+An authenticated with sufficient privileges may create a malformed ACL selector which, when accessed, triggers a server panic and subsequent denial of service.<P>
+Affected Versions:<BR>
+All versions of Redis Server. <P>
+Patched Versions:<BR>
+Redis Server versions prior to 8.8.1, 8.6.5, 8.4.5, 8.2.8, 7.4.10, 7.2.15 and 6.2.23<P>
+QID Detection Logic (Unauthenticated): <BR>
+The unauthenticated detection has two variants: <BR>
+- Authenticate to a Redis Server with a default credential - foobared and executes the 'info' command to check the Redis version. <BR>
+- Connect to a Redis Server without credentials and executes the 'info' command to check the Redis version. <P>","Vendor has released patches addressing the vulnerability. For more information, please refer to the <A HREF=""https://github.com/redis/redis/releases"" TARGET=""_BLANK""> Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/releases"" TARGET=""_blank"">Redis</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:730240,Redis Server Arbitrary File Read Vulnerability,CGI,Medium,6.0,,,1,CVE-2021-32672,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+When using the Redis Lua Debugger, users can send malformed requests that cause the debugger's protocol parser to read data beyond the actual buffer.<P>
+
+Affected Versions:<BR>
+Redis  Server versions prior to 3.2 or newer.<P>
+
+Patched Versions:<BR>
+Redis  Server versions 6.2.6, 6.0.16 and 5.0.14<P>
+
+<P>QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of redis server then sends a &quot;info&quot; to get the version.","Customers are advised to update to the latest patch version of Redis Server. For more information, Please refer to <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-9mj9-xx53-qmxm"" TARGET=""_blank"">Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-9mj9-xx53-qmxm"" TARGET=""_blank"">Redis Security Advisory</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:732457,Redis Server Denial of Service (DoS) Vulnerability (GHSA-r67f-p999-2gff),CGI,Medium,6.0,,,1,CVE-2025-21605,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+CVE-2025-21605: An unauthenticated client can cause unlimited growth of output buffers, until the server runs out of memory or is killed.<P>
+
+Affected Versions:<BR>
+All versions of Redis Server from 2.6. <P>
+
+Patched Versions:<BR>
+Redis Server versions 7.4.3, 7.2.8, and 6.2.18 or above<P>
+
+QID Detection Logic (Unauthenticated): <BR>
+This QID tries to authenticate to a Redis Server with default credentials and executes the 'info' command to check the Redis version. <P>","Vendor has released patches addressing the vulnerability. For more information, please refer to the <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-39h2-x6c4-6w4c"" TARGET=""_BLANK""> Redis Security Advisory</A><P>Workaround:<BR>An additional workaround to mitigate this problem without patching the redis-server executable is to block access to prevent unauthenticated users from connecting to Redis. This can be done in different ways:<P>
+
+1. Using network access control tools like firewalls, iptables, security groups, etc.<BR>
+2. Enabling TLS and requiring users to authenticate using client side certificates.<BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-r67f-p999-2gff"" TARGET=""_blank"">GHSA-r67f-p999-2gff</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:730745,Redis Server Multiple Vulnerabilities (GHSA-vw22-qm3h-49pr),CGI,Medium,6.0,,,3,CVE-2021-32628;CVE-2021-32687;CVE-2021-32675,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+When using the Redis Lua Debugger, users can send malformed requests that cause the debugger's protocol parser to read data beyond the actual buffer.<P>
+
+Affected Versions:<BR>
+Redis  Server versions  prior to 5.0.14<BR>
+Redis  Server versions 6.0.x prior to 6.0.16<BR>
+Redis  Server versions 6.2.x prior to 6.2.6<BR>
+
+<P>QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of redis server then sends a &quot;info&quot; to get the version.","Customers are advised to update to the latest patch version of Redis Server. For more information, Please refer to <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-m3mf-8x9w-r27q"" TARGET=""_blank"">Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-vw22-qm3h-49pr"" TARGET=""_blank"">GHSA-vw22-qm3h-49pr</A><P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-m3mf-8x9w-r27q"" TARGET=""_blank"">GHSA-m3mf-8x9w-r27q </A><P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-f6pw-v9gw-v64p"" TARGET=""_blank"">GHSA-f6pw-v9gw-v64p</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:730746,Redis Server Heap-based Buffer Overflow Vulnerability (GHSA-p486-xggp-782c),CGI,Medium,6.0,,,1,CVE-2021-32626,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+
+Affected Versions:<BR>
+Redis  Server versions 2.6  prior to 5.0.14<BR>
+Redis  Server versions 6.0.x prior to 6.0.16<BR>
+Redis  Server versions 6.2.x prior to 6.2.6<BR>
+
+<P>QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of redis server then sends a &quot;info&quot; to get the version.","Customers are advised to update to the latest patch version of Redis Server. For more information, Please refer to <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-p486-xggp-782c"" TARGET=""_blank"">Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-p486-xggp-782c"" TARGET=""_blank"">GHSA-p486-xggp-782c</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:731821,Redis Server Remote Code Execution (RCE) Vulnerability (GHSA-whxg-wx83-85p5),CGI,Medium,6.0,,,1,CVE-2024-31449,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+An authenticated user may use a specially crafted Lua script to trigger a stack buffer overflow in the bit library, which may potentially lead to remote code execution.<P>
+
+Affected Versions:<BR>
+Redis Server versions 2.6 or newer.<P>
+
+Patched Versions:<BR>
+Redis Server versions 6.2.16, 7.2.6 and 7.4.1<P>
+
+<P>QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of redis server then sends a &quot;info&quot; to get the version.","Customers are advised to update to the latest patch version of Redis Server. For more information, Please refer to <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-whxg-wx83-85p5"" TARGET=""_blank"">Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-whxg-wx83-85p5"" TARGET=""_blank"">Redis Security Advisory</A>"
+2026-10-06_qualys_chain.xml,d,qualys,172.18.0.104,,6379/tcp,qualys:731824,Redis Server Denial of Service (DoS) Vulnerability (GHSA-66gq-c942-6976),CGI,Medium,6.0,,,1,CVE-2024-31228,True,False,,False,0,"Redis is an open source, in-memory database that persists on disk.<P>
+
+CVE-2024-31228: Authenticated users can trigger a denial-of-service by using specially crafted, long string match patterns on supported commands such as KEYS, SCAN, PSUBSCRIBE, FUNCTION LIST, COMMAND LIST, and ACL definitions.<P>
+
+Affected Versions:<BR>
+Redis Server version 2.2.5 to prior to 6.2.16.<BR>
+Redis Server version 7.2.0 to prior to 7.2.6<BR>
+Redis Server version 7.4.0 to prior to 7.4.1<P>
+
+Patched Versions:<BR>
+Redis Server versions 6.2.16, 7.2.6 and 7.4.1<P>
+
+QID Detection Logic (Remote): <BR> 
+This QID tries to authenticate with the default credential of redis server then sends a &quot;info&quot; to get the version.<P>","Customers are advised to update to the latest patch version of Redis Server. For more information, please refer to <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-66gq-c942-6976"" TARGET=""_blank"">Redis Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://github.com/redis/redis/security/advisories/GHSA-66gq-c942-6976"" TARGET=""_blank"">Redis Security Advisory</A>"

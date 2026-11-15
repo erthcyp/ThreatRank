@@ -1,0 +1,37 @@
+rank,host,port,product,tier,cost,findings_closed,known_exploited,risk_removed,cumulative_cost,remote_exploit,priv_escalation,reaches_goal,likelihood_from,scanners,top_finding
+1,172.18.0.110,80/tcp,apache:http_server,patch available,1,37,2,14.7899,1,35,31,29/37,epss 37,openvas,Apache HTTP Server < 2.4.49 Multiple Vulnerabilities - Linux
+2,172.18.0.110,80/tcp,wordpress:wordpress,patch available,1,38,0,11.2545,2,33,37,32/38,epss 38,openvas,WordPress Multiple Vulnerabilities (Jan 2022) - Linux
+3,172.18.0.111,80/tcp,apache:http_server,patch available,1,35,2,11.0044,3,34,23,22/35,epss 35,openvas,Apache HTTP Server < 2.4.49 Multiple Vulnerabilities - Linux
+4,172.18.0.110,80/tcp,php:php,patch available,1,57,1,8.0469,4,44,50,38/57,epss 56+surrogate 1,nessus+openvas,"PHP < 8.1.29, 8.2.x < 8.2.20, 8.3.x < 8.3.8 Multiple Vulnerabilities -"
+5,172.18.0.112,3306/tcp,oracle:mysql,patch available,1,37,0,5.4490,5,36,21,21/37,epss 37,openvas,Oracle MySQL Server <= 5.7.35 / 8.0 <= 8.0.26 Security Update (cpuoct2
+6,172.18.0.110,80/tcp,php,patch available,1,7,2,2.1348,6,2,2,5/7,surrogate 5+epss 2,nessus+openvas,"PHP < 7.1.33, 7.2.x < 7.2.24, 7.3.x < 7.3.11 RCE Vulnerability - Versi"
+7,172.18.0.112,3306/tcp,oracle:mysql_server,patch available,1,8,0,1.5044,7,8,5,5/8,epss 8,openvas,Oracle MySQL Server <= 5.7.38 / 8.0 <= 8.0.29 Security Update (cpujul2
+8,172.18.0.112,3306/tcp,openssl:openssl,patch available,1,2,0,0.8130,8,2,2,2/2,epss 2,openvas,"Oracle MySQL Server <= 5.7.42, 8.x <= 8.0.33 Security Update (cpuoct20"
+9,172.18.0.111,80/tcp,apache http server,patch available,1,1,1,0.6501,9,,1,1/1,epss 1,openvas,Apache HTTP Server < 2.4.39 Privilege Escalation Vulnerability - Linux
+10,172.18.0.110,80/tcp,apache http server man-in-the-middle attack vulnerability (jul 2016) - linux,patch available,1,1,0,0.5572,10,1,1,1/1,epss 1,openvas,Apache HTTP Server Man-in-the-Middle Attack Vulnerability (Jul 2016) -
+11,172.18.0.110,80/tcp,php end of life (eol) detection - linux,patch available,1,1,0,0.1862,11,,,1/1,surrogate 1,openvas,PHP End of Life (EOL) Detection - Linux
+12,172.18.0.112,3306/tcp,oracle mysql server,patch available,1,1,0,0.1785,12,1,1,1/1,epss 1,openvas,"Oracle MySQL Server <= 5.7.41, 8.x <= 8.0.31 Security Update (cpuapr20"
+13,172.18.0.111,general/icmp,icmp timestamp reply information disclosure,configuration change,2,1,0,0.3215,14,,1,1/1,epss 1,openvas,ICMP Timestamp Reply Information Disclosure
+14,172.18.0.112,general/icmp,icmp timestamp reply information disclosure,configuration change,2,1,0,0.3215,16,,1,1/1,epss 1,openvas,ICMP Timestamp Reply Information Disclosure
+15,172.18.0.110,general/icmp,icmp timestamp reply information disclosure,configuration change,2,1,0,0.3215,18,,1,1/1,epss 1,openvas,ICMP Timestamp Reply Information Disclosure
+16,172.18.0.110,general/icmp,icmp timestamp request remote date disclosure,configuration change,2,1,0,0.3215,20,,1,1/1,epss 1,nessus,ICMP Timestamp Request Remote Date Disclosure
+17,172.18.0.111,general/icmp,icmp timestamp request remote date disclosure,configuration change,2,1,0,0.3215,22,,1,1/1,epss 1,nessus,ICMP Timestamp Request Remote Date Disclosure
+18,172.18.0.112,general/icmp,icmp timestamp request remote date disclosure,configuration change,2,1,0,0.3215,24,,1,1/1,epss 1,nessus,ICMP Timestamp Request Remote Date Disclosure
+19,172.18.0.110,80/tcp,wordpress,patch available,1,4,0,0.1002,25,3,3,4/4,epss 3+surrogate 1,openvas,WordPress Multiple Vulnerabilities (May 2017) - Linux
+20,172.18.0.110,general/tcp,operating system (os) end of life (eol) detection,configuration change,2,1,0,0.1969,27,,,1/1,surrogate 1,openvas,Operating System (OS) End of Life (EOL) Detection
+21,172.18.0.110,80/tcp,unprotected web app / device installers (http),configuration change,2,1,0,0.1695,29,,,1/1,surrogate 1,openvas,Unprotected Web App / Device Installers (HTTP)
+22,172.18.0.110,general/tcp,tcp timestamps information disclosure,configuration change,2,1,0,0.1345,31,,,1/1,surrogate 1,openvas,TCP Timestamps Information Disclosure
+23,172.18.0.112,general/tcp,tcp timestamps information disclosure,configuration change,2,1,0,0.1345,33,,,1/1,surrogate 1,openvas,TCP Timestamps Information Disclosure
+24,172.18.0.111,general/tcp,tcp timestamps information disclosure,configuration change,2,1,0,0.1345,35,,,1/1,surrogate 1,openvas,TCP Timestamps Information Disclosure
+25,172.18.0.112,3306/tcp,haxx:curl,patch available,1,1,0,0.0432,36,1,1,1/1,epss 1,openvas,"Oracle MySQL Server <= 5.7.40, 8.x <= 8.0.31 Security Update (cpujan20"
+26,172.18.0.110,80/tcp,jquery-plugin-query-object_project:jquery-plugin-query-object,patch available,1,1,0,0.0419,37,1,1,1/1,epss 1,openvas,WordPress Multiple Vulnerabilities (Mar 2022) - Linux
+27,172.18.0.110,80/tcp,wordpress unspecified vulnerability (may 2023) - linux,patch available,1,1,0,0.0417,38,,,1/1,surrogate 1,openvas,WordPress Unspecified Vulnerability (May 2023) - Linux
+28,172.18.0.110,80/tcp,php heap use-after-free vulnerability (sep 2019) - linux,patch available,1,1,0,0.0257,39,,,1/1,surrogate 1,openvas,PHP Heap Use-After-Free Vulnerability (Sep 2019) - Linux
+29,172.18.0.110,80/tcp,wordpress information disclosure vulnerability (jul 2025) - linux,no fix available,5,1,0,0.0032,44,1,1,1/1,epss 1,openvas,WordPress Information Disclosure Vulnerability (Jul 2025) - Linux
+30,172.18.0.110,80/tcp,jquery,configuration change,2,1,1,0.0000,46,,1,0/1,surrogate 1,nessus,JQuery 1.2 < 3.5.0 Multiple XSS
+31,172.18.0.110,general/tcp,ip forwarding enabled,configuration change,2,1,0,0.0000,48,1,1,0/1,epss 1,nessus,IP Forwarding Enabled
+32,172.18.0.110,80/tcp,php unsupported,configuration change,2,1,0,0.0000,50,,,0/1,surrogate 1,nessus,PHP Unsupported Version Detection
+33,172.18.0.110,80/tcp,debian linux seol (8.x),configuration change,2,1,0,0.0000,52,,,0/1,surrogate 1,nessus,Debian Linux SEoL (8.x)
+34,172.18.0.111,general/tcp,ip forwarding enabled,configuration change,2,1,0,0.0000,54,1,1,0/1,epss 1,nessus,IP Forwarding Enabled
+35,172.18.0.111,80/tcp,bea:weblogic_server,configuration change,2,1,0,0.0000,56,1,1,0/1,epss 1,nessus,HTTP TRACE / TRACK Methods Allowed
+36,172.18.0.112,general/tcp,ip forwarding enabled,configuration change,2,1,0,0.0000,58,1,1,0/1,epss 1,nessus,IP Forwarding Enabled

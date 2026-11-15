@@ -1,0 +1,21 @@
+source_file,group,scanner,host,hostname,port,nvt_oid,nvt_name,nvt_family,threat,severity,qod,solution_type,cve_count,cves,has_cve,generic_nvt,kev_cves,has_kev,cert_ref_count
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / udp / ,10287,Traceroute Information,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,25220,TCP/IP Timestamps Supported,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,11936,OS Identification,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,209654,OS Fingerprints Detected,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,61614 / tcp / www,330337,Oracle PeopleSoft PeopleTools Remote HTTP Detection,Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,19506,Nessus Scan Information,Settings,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,61614 / tcp / www,43111,HTTP Methods Allowed (per directory),Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,86420,Ethernet MAC Addresses,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,54615,Device Type,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,45590,Common Platform Enumeration (CPE),General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,5672 / tcp / amqp,62349,Advanced Message Queuing Protocol Detection,Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,5672 / tcp / amqp,17975,Service Detection (GET request),Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,8161 / tcp / www,22964,Service Detection,Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,8161 / tcp / www,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,8161 / tcp / www,10107,HTTP Server Type and Version,Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,194915,Eclipse Jetty Web Server Detection,Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,1883 / tcp / ,11219,Nessus SYN scanner,Port scanners,Log,0.0,,,0,,False,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / icmp / ,10114,ICMP Timestamp Request Remote Date Disclosure,General,Low,2.1,,,1,CVE-1999-0524,True,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,0 / tcp / ,50686,IP Forwarding Enabled,Firewalls,Medium,6.5,,,1,CVE-1999-0511,True,False,,False,0
+nessus-api:test-activemq-nessus,A,nessus,172.18.0.17,,61614 / tcp / www,11213,HTTP TRACE / TRACK Methods Allowed,Web Servers,Medium,5.3,,,3,CVE-2003-1567;CVE-2004-2320;CVE-2010-0386,True,False,,False,2

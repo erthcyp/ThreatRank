@@ -1,0 +1,1072 @@
+{
+ "goal": "execCode(vmDb, _)",
+ "total_cost": 68.0,
+ "actions": 47,
+ "findings": 229,
+ "cheapest_cut": {
+  "R = L x C": 0.26,
+  "severity": 0.18,
+  "EPSS": 0.34,
+  "most findings": 0.18,
+  "ungrouped R": 0.4,
+  "ungrouped sev": 0.2
+ },
+ "detail": {
+  "R = L x C": {
+   "0.04": {
+    "goal_reached": true,
+    "vertices": 265,
+    "facts_removed": 57,
+    "actions": 2
+   },
+   "0.06": {
+    "goal_reached": true,
+    "vertices": 145,
+    "facts_removed": 139,
+    "actions": 4
+   },
+   "0.08": {
+    "goal_reached": true,
+    "vertices": 77,
+    "facts_removed": 185,
+    "actions": 5
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 186,
+    "actions": 6
+   },
+   "0.12": {
+    "goal_reached": true,
+    "vertices": 73,
+    "facts_removed": 189,
+    "actions": 8
+   },
+   "0.14": {
+    "goal_reached": true,
+    "vertices": 71,
+    "facts_removed": 190,
+    "actions": 9
+   },
+   "0.16": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 191,
+    "actions": 10
+   },
+   "0.18": {
+    "goal_reached": true,
+    "vertices": 65,
+    "facts_removed": 193,
+    "actions": 12
+   },
+   "0.2": {
+    "goal_reached": true,
+    "vertices": 63,
+    "facts_removed": 194,
+    "actions": 13
+   },
+   "0.22": {
+    "goal_reached": true,
+    "vertices": 61,
+    "facts_removed": 195,
+    "actions": 14
+   },
+   "0.24": {
+    "goal_reached": true,
+    "vertices": 57,
+    "facts_removed": 197,
+    "actions": 16
+   },
+   "0.26": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 198,
+    "actions": 17
+   },
+   "0.28": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 199,
+    "actions": 18
+   },
+   "0.3": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 200,
+    "actions": 19
+   },
+   "0.32": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 200,
+    "actions": 19
+   },
+   "0.34": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 201,
+    "actions": 20
+   },
+   "0.36": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 202,
+    "actions": 21
+   },
+   "0.38": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 202,
+    "actions": 21
+   },
+   "0.4": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 204,
+    "actions": 23
+   },
+   "0.42": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 204,
+    "actions": 23
+   },
+   "0.44": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 24
+   },
+   "0.46": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 26
+   },
+   "0.48": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 26
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 27
+   },
+   "0.52": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 28
+   },
+   "0.54": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 28
+   },
+   "0.56": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 210,
+    "actions": 29
+   },
+   "0.58": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 211,
+    "actions": 30
+   },
+   "0.6": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 212,
+    "actions": 31
+   }
+  },
+  "severity": {
+   "0.04": {
+    "goal_reached": true,
+    "vertices": 287,
+    "facts_removed": 47,
+    "actions": 2
+   },
+   "0.06": {
+    "goal_reached": true,
+    "vertices": 195,
+    "facts_removed": 104,
+    "actions": 4
+   },
+   "0.08": {
+    "goal_reached": true,
+    "vertices": 193,
+    "facts_removed": 105,
+    "actions": 5
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 131,
+    "facts_removed": 140,
+    "actions": 6
+   },
+   "0.12": {
+    "goal_reached": true,
+    "vertices": 71,
+    "facts_removed": 188,
+    "actions": 8
+   },
+   "0.14": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 191,
+    "actions": 9
+   },
+   "0.16": {
+    "goal_reached": true,
+    "vertices": 67,
+    "facts_removed": 192,
+    "actions": 10
+   },
+   "0.18": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 194,
+    "actions": 12
+   },
+   "0.2": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 195,
+    "actions": 13
+   },
+   "0.22": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 196,
+    "actions": 14
+   },
+   "0.24": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 198,
+    "actions": 16
+   },
+   "0.26": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 199,
+    "actions": 17
+   },
+   "0.28": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 201,
+    "actions": 19
+   },
+   "0.3": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 202,
+    "actions": 20
+   },
+   "0.32": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 203,
+    "actions": 21
+   },
+   "0.34": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 23
+   },
+   "0.36": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 206,
+    "actions": 24
+   },
+   "0.38": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 25
+   },
+   "0.4": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 27
+   },
+   "0.42": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 210,
+    "actions": 28
+   },
+   "0.44": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 211,
+    "actions": 29
+   },
+   "0.46": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 212,
+    "actions": 30
+   },
+   "0.48": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 213,
+    "actions": 31
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 215,
+    "actions": 33
+   },
+   "0.52": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 216,
+    "actions": 34
+   },
+   "0.54": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 216,
+    "actions": 35
+   },
+   "0.56": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 217,
+    "actions": 36
+   },
+   "0.58": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 218,
+    "actions": 37
+   },
+   "0.6": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 218,
+    "actions": 37
+   }
+  },
+  "EPSS": {
+   "0.04": {
+    "goal_reached": true,
+    "vertices": 265,
+    "facts_removed": 57,
+    "actions": 2
+   },
+   "0.06": {
+    "goal_reached": true,
+    "vertices": 135,
+    "facts_removed": 138,
+    "actions": 4
+   },
+   "0.08": {
+    "goal_reached": true,
+    "vertices": 133,
+    "facts_removed": 139,
+    "actions": 5
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 186,
+    "actions": 6
+   },
+   "0.12": {
+    "goal_reached": true,
+    "vertices": 73,
+    "facts_removed": 189,
+    "actions": 8
+   },
+   "0.14": {
+    "goal_reached": true,
+    "vertices": 71,
+    "facts_removed": 190,
+    "actions": 9
+   },
+   "0.16": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 191,
+    "actions": 10
+   },
+   "0.18": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 193,
+    "actions": 12
+   },
+   "0.2": {
+    "goal_reached": true,
+    "vertices": 67,
+    "facts_removed": 194,
+    "actions": 13
+   },
+   "0.22": {
+    "goal_reached": true,
+    "vertices": 65,
+    "facts_removed": 195,
+    "actions": 14
+   },
+   "0.24": {
+    "goal_reached": true,
+    "vertices": 63,
+    "facts_removed": 197,
+    "actions": 16
+   },
+   "0.26": {
+    "goal_reached": true,
+    "vertices": 61,
+    "facts_removed": 198,
+    "actions": 17
+   },
+   "0.28": {
+    "goal_reached": true,
+    "vertices": 59,
+    "facts_removed": 200,
+    "actions": 19
+   },
+   "0.3": {
+    "goal_reached": true,
+    "vertices": 59,
+    "facts_removed": 201,
+    "actions": 20
+   },
+   "0.32": {
+    "goal_reached": true,
+    "vertices": 59,
+    "facts_removed": 202,
+    "actions": 21
+   },
+   "0.34": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 204,
+    "actions": 23
+   },
+   "0.36": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 24
+   },
+   "0.38": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 24
+   },
+   "0.4": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 206,
+    "actions": 25
+   },
+   "0.42": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 26
+   },
+   "0.44": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 26
+   },
+   "0.46": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 28
+   },
+   "0.48": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 28
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 27
+   },
+   "0.52": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 28
+   },
+   "0.54": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 210,
+    "actions": 29
+   },
+   "0.56": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 211,
+    "actions": 30
+   },
+   "0.58": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 212,
+    "actions": 31
+   },
+   "0.6": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 213,
+    "actions": 32
+   }
+  },
+  "most findings": {
+   "0.04": {
+    "goal_reached": true,
+    "vertices": 231,
+    "facts_removed": 93,
+    "actions": 2
+   },
+   "0.06": {
+    "goal_reached": true,
+    "vertices": 125,
+    "facts_removed": 159,
+    "actions": 4
+   },
+   "0.08": {
+    "goal_reached": true,
+    "vertices": 77,
+    "facts_removed": 185,
+    "actions": 5
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 188,
+    "actions": 6
+   },
+   "0.12": {
+    "goal_reached": true,
+    "vertices": 71,
+    "facts_removed": 190,
+    "actions": 8
+   },
+   "0.14": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 191,
+    "actions": 9
+   },
+   "0.16": {
+    "goal_reached": true,
+    "vertices": 67,
+    "facts_removed": 192,
+    "actions": 10
+   },
+   "0.18": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 194,
+    "actions": 12
+   },
+   "0.2": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 195,
+    "actions": 13
+   },
+   "0.22": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 196,
+    "actions": 14
+   },
+   "0.24": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 198,
+    "actions": 16
+   },
+   "0.26": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 199,
+    "actions": 17
+   },
+   "0.28": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 201,
+    "actions": 19
+   },
+   "0.3": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 202,
+    "actions": 20
+   },
+   "0.32": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 203,
+    "actions": 21
+   },
+   "0.34": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 23
+   },
+   "0.36": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 206,
+    "actions": 24
+   },
+   "0.38": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 25
+   },
+   "0.4": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 27
+   },
+   "0.42": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 210,
+    "actions": 28
+   },
+   "0.44": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 211,
+    "actions": 29
+   },
+   "0.46": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 213,
+    "actions": 31
+   },
+   "0.48": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 214,
+    "actions": 32
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 215,
+    "actions": 34
+   },
+   "0.52": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 216,
+    "actions": 35
+   },
+   "0.54": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 216,
+    "actions": 35
+   },
+   "0.56": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 217,
+    "actions": 36
+   },
+   "0.58": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 218,
+    "actions": 37
+   },
+   "0.6": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 218,
+    "actions": 37
+   }
+  },
+  "ungrouped R": {
+   "0.04": {
+    "goal_reached": true,
+    "vertices": 265,
+    "facts_removed": 57,
+    "actions": 2
+   },
+   "0.06": {
+    "goal_reached": true,
+    "vertices": 135,
+    "facts_removed": 138,
+    "actions": 4
+   },
+   "0.08": {
+    "goal_reached": true,
+    "vertices": 133,
+    "facts_removed": 139,
+    "actions": 5
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 186,
+    "actions": 6
+   },
+   "0.12": {
+    "goal_reached": true,
+    "vertices": 73,
+    "facts_removed": 189,
+    "actions": 8
+   },
+   "0.14": {
+    "goal_reached": true,
+    "vertices": 71,
+    "facts_removed": 190,
+    "actions": 9
+   },
+   "0.16": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 191,
+    "actions": 10
+   },
+   "0.18": {
+    "goal_reached": true,
+    "vertices": 65,
+    "facts_removed": 193,
+    "actions": 12
+   },
+   "0.2": {
+    "goal_reached": true,
+    "vertices": 63,
+    "facts_removed": 194,
+    "actions": 13
+   },
+   "0.22": {
+    "goal_reached": true,
+    "vertices": 61,
+    "facts_removed": 195,
+    "actions": 14
+   },
+   "0.24": {
+    "goal_reached": true,
+    "vertices": 59,
+    "facts_removed": 196,
+    "actions": 15
+   },
+   "0.26": {
+    "goal_reached": true,
+    "vertices": 57,
+    "facts_removed": 197,
+    "actions": 16
+   },
+   "0.28": {
+    "goal_reached": true,
+    "vertices": 55,
+    "facts_removed": 198,
+    "actions": 17
+   },
+   "0.3": {
+    "goal_reached": true,
+    "vertices": 55,
+    "facts_removed": 198,
+    "actions": 17
+   },
+   "0.32": {
+    "goal_reached": true,
+    "vertices": 53,
+    "facts_removed": 199,
+    "actions": 18
+   },
+   "0.34": {
+    "goal_reached": true,
+    "vertices": 51,
+    "facts_removed": 200,
+    "actions": 19
+   },
+   "0.36": {
+    "goal_reached": true,
+    "vertices": 49,
+    "facts_removed": 201,
+    "actions": 20
+   },
+   "0.38": {
+    "goal_reached": true,
+    "vertices": 49,
+    "facts_removed": 201,
+    "actions": 20
+   },
+   "0.4": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 203,
+    "actions": 22
+   },
+   "0.42": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 204,
+    "actions": 23
+   },
+   "0.44": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 24
+   },
+   "0.46": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 206,
+    "actions": 25
+   },
+   "0.48": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 206,
+    "actions": 25
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 26
+   },
+   "0.52": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 27
+   },
+   "0.54": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 27
+   },
+   "0.56": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 210,
+    "actions": 29
+   },
+   "0.58": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 211,
+    "actions": 30
+   },
+   "0.6": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 212,
+    "actions": 31
+   }
+  },
+  "ungrouped sev": {
+   "0.04": {
+    "goal_reached": true,
+    "vertices": 355,
+    "facts_removed": 1,
+    "actions": 1
+   },
+   "0.06": {
+    "goal_reached": true,
+    "vertices": 285,
+    "facts_removed": 48,
+    "actions": 3
+   },
+   "0.08": {
+    "goal_reached": true,
+    "vertices": 237,
+    "facts_removed": 74,
+    "actions": 4
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 193,
+    "facts_removed": 105,
+    "actions": 5
+   },
+   "0.12": {
+    "goal_reached": true,
+    "vertices": 129,
+    "facts_removed": 141,
+    "actions": 7
+   },
+   "0.14": {
+    "goal_reached": true,
+    "vertices": 71,
+    "facts_removed": 188,
+    "actions": 8
+   },
+   "0.16": {
+    "goal_reached": true,
+    "vertices": 69,
+    "facts_removed": 189,
+    "actions": 9
+   },
+   "0.18": {
+    "goal_reached": true,
+    "vertices": 65,
+    "facts_removed": 193,
+    "actions": 11
+   },
+   "0.2": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 194,
+    "actions": 12
+   },
+   "0.22": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 195,
+    "actions": 13
+   },
+   "0.24": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 197,
+    "actions": 15
+   },
+   "0.26": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 198,
+    "actions": 16
+   },
+   "0.28": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 200,
+    "actions": 18
+   },
+   "0.3": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 201,
+    "actions": 19
+   },
+   "0.32": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 202,
+    "actions": 20
+   },
+   "0.34": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 200,
+    "actions": 18
+   },
+   "0.36": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 201,
+    "actions": 19
+   },
+   "0.38": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 202,
+    "actions": 20
+   },
+   "0.4": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 204,
+    "actions": 22
+   },
+   "0.42": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 23
+   },
+   "0.44": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 206,
+    "actions": 24
+   },
+   "0.46": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 26
+   },
+   "0.48": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 205,
+    "actions": 23
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 25
+   },
+   "0.52": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 26
+   },
+   "0.54": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 209,
+    "actions": 27
+   },
+   "0.56": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 211,
+    "actions": 29
+   },
+   "0.58": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 212,
+    "actions": 30
+   },
+   "0.6": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 213,
+    "actions": 31
+   }
+  }
+ }
+}

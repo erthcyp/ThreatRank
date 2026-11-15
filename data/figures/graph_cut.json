@@ -1,0 +1,316 @@
+{
+ "goal": "execCode(vmDb, _)",
+ "total_cost": 68.0,
+ "actions": 47,
+ "findings": 229,
+ "cheapest_cut": {
+  "R = L x C": 0.25,
+  "severity": 0.25,
+  "EPSS": 0.5,
+  "most findings": 0.25,
+  "ungrouped R": 0.5,
+  "ungrouped sev": 0.25
+ },
+ "detail": {
+  "R = L x C": {
+   "0.01": {
+    "goal_reached": true,
+    "vertices": 357,
+    "facts_removed": 0,
+    "actions": 0
+   },
+   "0.02": {
+    "goal_reached": true,
+    "vertices": 309,
+    "facts_removed": 26,
+    "actions": 1
+   },
+   "0.03": {
+    "goal_reached": true,
+    "vertices": 265,
+    "facts_removed": 57,
+    "actions": 2
+   },
+   "0.05": {
+    "goal_reached": true,
+    "vertices": 203,
+    "facts_removed": 92,
+    "actions": 3
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 186,
+    "actions": 6
+   },
+   "0.25": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 198,
+    "actions": 17
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 27
+   },
+   "1.0": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 228,
+    "actions": 47
+   }
+  },
+  "severity": {
+   "0.01": {
+    "goal_reached": true,
+    "vertices": 357,
+    "facts_removed": 0,
+    "actions": 0
+   },
+   "0.02": {
+    "goal_reached": true,
+    "vertices": 355,
+    "facts_removed": 1,
+    "actions": 1
+   },
+   "0.03": {
+    "goal_reached": true,
+    "vertices": 287,
+    "facts_removed": 47,
+    "actions": 2
+   },
+   "0.05": {
+    "goal_reached": true,
+    "vertices": 239,
+    "facts_removed": 73,
+    "actions": 3
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 131,
+    "facts_removed": 140,
+    "actions": 6
+   },
+   "0.25": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 199,
+    "actions": 17
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 215,
+    "actions": 33
+   },
+   "1.0": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 228,
+    "actions": 47
+   }
+  },
+  "EPSS": {
+   "0.01": {
+    "goal_reached": true,
+    "vertices": 357,
+    "facts_removed": 0,
+    "actions": 0
+   },
+   "0.02": {
+    "goal_reached": true,
+    "vertices": 309,
+    "facts_removed": 26,
+    "actions": 1
+   },
+   "0.03": {
+    "goal_reached": true,
+    "vertices": 265,
+    "facts_removed": 57,
+    "actions": 2
+   },
+   "0.05": {
+    "goal_reached": true,
+    "vertices": 197,
+    "facts_removed": 103,
+    "actions": 3
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 186,
+    "actions": 6
+   },
+   "0.25": {
+    "goal_reached": true,
+    "vertices": 61,
+    "facts_removed": 198,
+    "actions": 17
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 208,
+    "actions": 27
+   },
+   "1.0": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 228,
+    "actions": 47
+   }
+  },
+  "most findings": {
+   "0.01": {
+    "goal_reached": true,
+    "vertices": 357,
+    "facts_removed": 0,
+    "actions": 0
+   },
+   "0.02": {
+    "goal_reached": true,
+    "vertices": 299,
+    "facts_removed": 47,
+    "actions": 1
+   },
+   "0.03": {
+    "goal_reached": true,
+    "vertices": 231,
+    "facts_removed": 93,
+    "actions": 2
+   },
+   "0.05": {
+    "goal_reached": true,
+    "vertices": 169,
+    "facts_removed": 128,
+    "actions": 3
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 188,
+    "actions": 6
+   },
+   "0.25": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 199,
+    "actions": 17
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 215,
+    "actions": 34
+   },
+   "1.0": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 228,
+    "actions": 47
+   }
+  },
+  "ungrouped R": {
+   "0.01": {
+    "goal_reached": true,
+    "vertices": 357,
+    "facts_removed": 0,
+    "actions": 0
+   },
+   "0.02": {
+    "goal_reached": true,
+    "vertices": 309,
+    "facts_removed": 26,
+    "actions": 1
+   },
+   "0.03": {
+    "goal_reached": true,
+    "vertices": 265,
+    "facts_removed": 57,
+    "actions": 2
+   },
+   "0.05": {
+    "goal_reached": true,
+    "vertices": 197,
+    "facts_removed": 103,
+    "actions": 3
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 75,
+    "facts_removed": 186,
+    "actions": 6
+   },
+   "0.25": {
+    "goal_reached": true,
+    "vertices": 57,
+    "facts_removed": 197,
+    "actions": 16
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 26
+   },
+   "1.0": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 228,
+    "actions": 47
+   }
+  },
+  "ungrouped sev": {
+   "0.01": {
+    "goal_reached": true,
+    "vertices": 357,
+    "facts_removed": 0,
+    "actions": 0
+   },
+   "0.02": {
+    "goal_reached": true,
+    "vertices": 355,
+    "facts_removed": 1,
+    "actions": 1
+   },
+   "0.03": {
+    "goal_reached": true,
+    "vertices": 355,
+    "facts_removed": 1,
+    "actions": 1
+   },
+   "0.05": {
+    "goal_reached": true,
+    "vertices": 353,
+    "facts_removed": 2,
+    "actions": 2
+   },
+   "0.1": {
+    "goal_reached": true,
+    "vertices": 193,
+    "facts_removed": 105,
+    "actions": 5
+   },
+   "0.25": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 198,
+    "actions": 16
+   },
+   "0.5": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 207,
+    "actions": 25
+   },
+   "1.0": {
+    "goal_reached": false,
+    "vertices": 0,
+    "facts_removed": 228,
+    "actions": 47
+   }
+  }
+ }
+}

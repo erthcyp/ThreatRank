@@ -1,0 +1,59 @@
+{
+  "_comment": [
+    "Three-tier topology over three hosts already scanned, so the multi-hop rule has",
+    "something to match. Everything here is DECLARED by us, which is why",
+    "findings_to_mulval.py requires this file instead of guessing: no scanner reports",
+    "who may reach whom, what account a service runs as, or where an attacker starts.",
+    "",
+    "WHY THE DECLARED REACHABILITY IS NOT THE SCANNING PATH, AND WHY THAT IS FINE.",
+    "All three containers sit on one Docker bridge and the scanner reaches all of them",
+    "directly; it has to, or there would be no findings to score. The attacker modelled",
+    "here reaches only the web tier. Those are different questions. Scan reachability is",
+    "an artefact of how the measurement was taken, attacker reachability is a property of",
+    "the network being assessed, and conflating them is what makes a consequence score",
+    "fiction. Until the segmentation below is enforced in Docker, this file states a",
+    "modelled topology rather than an observed one, and any result from it must say so.",
+    "",
+    "THE APP TIER IS AN APACHE INSTANCE. It stands in for an application server because",
+    "that is what was scanned; the graph cares about reachability and privilege, not",
+    "about what the middle tier is called.",
+    "",
+    "THE SERVICE ACCOUNTS ARE DISTRIBUTION DEFAULTS, NOT MEASUREMENTS. They decide the",
+    "privilege the attacker is modelled as gaining, so check them against the running",
+    "containers before trusting any number derived from this graph."
+  ],
+
+  "attacker_zone": "internet",
+
+  "hosts": {
+    "172.18.0.110": {
+      "atom": "vmWeb",
+      "host_software": "ubuntu",
+      "services": {
+        "80/tcp": { "software": "httpd", "account": "www-data" }
+      }
+    },
+    "172.18.0.111": {
+      "atom": "vmApp",
+      "host_software": "ubuntu",
+      "services": {
+        "80/tcp": { "software": "httpd", "account": "daemon" }
+      }
+    },
+    "172.18.0.112": {
+      "atom": "vmDb",
+      "host_software": "ubuntu",
+      "services": {
+        "3306/tcp": { "software": "mysqld", "account": "mysql" }
+      }
+    }
+  },
+
+  "hacl": [
+    ["internet", "vmWeb", "tcp", 80],
+    ["vmWeb", "vmApp", "tcp", 80],
+    ["vmApp", "vmDb", "tcp", 3306]
+  ],
+
+  "goal": "execCode(vmDb, _)"
+}

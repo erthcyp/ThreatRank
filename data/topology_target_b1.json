@@ -1,0 +1,33 @@
+{
+  "_comment": [
+    "Topology for target-b1. Everything here is DECLARED by us, not observed by a",
+    "scanner, which is why findings_to_mulval.py requires this file rather than",
+    "guessing. Check the two service accounts against the machine before trusting",
+    "any graph built from this: they decide the privilege the attacker is modelled",
+    "as gaining, and they are the standard Ubuntu defaults rather than a measurement.",
+    "",
+    "The lab is one flat network with one target, so the only reachability that can",
+    "honestly be declared is attacker -> target. Lateral movement cannot be modelled",
+    "until VM-WEB / VM-APP / VM-DB exist on separate segments."
+  ],
+
+  "attacker_zone": "internet",
+
+  "hosts": {
+    "192.168.194.150": {
+      "atom": "targetB1",
+      "host_software": "ubuntu2004",
+      "services": {
+        "80/tcp": { "software": "httpd", "account": "www-data" },
+        "22/tcp": { "software": "sshd",  "account": "root" }
+      }
+    }
+  },
+
+  "hacl": [
+    ["internet", "targetB1", "tcp", 80],
+    ["internet", "targetB1", "tcp", 22]
+  ],
+
+  "goal": "execCode(targetB1, _)"
+}

@@ -1,0 +1,32 @@
+source_file,group,scanner,host,hostname,port,nvt_oid,nvt_name,nvt_family,threat,severity,qod,solution_type,cve_count,cves,has_cve,generic_nvt,kev_cves,has_kev,cert_ref_count
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,20094,VMware Virtual Machine Detection,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / udp / ,10287,Traceroute Information,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,25220,TCP/IP Timestamps Supported,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,110723,Target Credential Status by Authentication Protocol - No Credentials Provided,Settings,Log,0.0,,,0,,False,False,,False,1
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,153588,SSH SHA-1 HMAC Algorithms Enabled,Misc.,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,10267,SSH Server Type and Version Information,Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,10881,SSH Protocol Versions Supported,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,149334,SSH Password Authentication Accepted,Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,70657,SSH Algorithms and Languages Supported,Misc.,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,298387,Shor's Harvest Now Decrypt Later,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,277650,Remote Services Not Using Post-Quantum Ciphers,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,66334,Patch Report,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,117886,OS Security Patch Assessment Not Available,Settings,Log,0.0,,,0,,False,False,,False,1
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,11936,OS Identification,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,209654,OS Fingerprints Detected,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,181418,OpenSSH Detection,Misc.,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,19506,Nessus Scan Information,Settings,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,80 / tcp / www,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,80 / tcp / www,10107,HTTP Server Type and Version,Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,80 / tcp / www,43111,HTTP Methods Allowed (per directory),Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,86420,Ethernet MAC Addresses,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,35716,Ethernet Card Manufacturer Detection,Misc.,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,54615,Device Type,General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / tcp / ,45590,Common Platform Enumeration (CPE),General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,80 / tcp / www,39521,Backported Security Patch Detection (WWW),General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,39520,Backported Security Patch Detection (SSH),General,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,80 / tcp / www,48204,Apache HTTP Server Version,Web Servers,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,22964,Service Detection,Service detection,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,11219,Nessus SYN scanner,Port scanners,Log,0.0,,,0,,False,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,0 / icmp / ,10114,ICMP Timestamp Request Remote Date Disclosure,General,Low,2.1,,,1,CVE-1999-0524,True,False,,False,0
+nessus-api:scan-b1-ubuntu2004-nessus,B,nessus,192.168.194.150,,22 / tcp / ssh,187315,SSH Terrapin Prefix Truncation Weakness (CVE-2023-48795),Misc.,Medium,5.9,,,1,CVE-2023-48795,True,False,,False,0

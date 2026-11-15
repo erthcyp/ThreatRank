@@ -1,0 +1,10 @@
+{
+ "scan_only": 0.5679,
+ "feed_only": 0.5242,
+ "scan_only_leave_one_family_out": 0.4058,
+ "severity_baseline": 0.4393,
+ "feed_rows": 19909,
+ "scan_rows": 375,
+ "feed_families": 44,
+ "scan_families": 9
+}

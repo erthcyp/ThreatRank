@@ -1,0 +1,1900 @@
+source_file,group,scanner,host,hostname,port,nvt_oid,nvt_name,nvt_family,threat,severity,qod,solution_type,cve_count,cves,has_cve,generic_nvt,kev_cves,has_kev,cert_ref_count,description,solution
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:82040,ICMP Replies Received,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+<P>
+We have sent the following types of packets to trigger the host to send us ICMP replies: 
+<P>
+Echo Request (to trigger Echo Reply)<br>
+Timestamp Request (to trigger Timestamp Reply)<br>
+Address Mask Request (to trigger Address Mask Reply)<br>
+UDP Packet (to trigger Port Unreachable Reply)<br>
+IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+<P>
+Listed in the ""Result"" section are the ICMP replies that we have received.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:82056,Host Name Not Available,TCP/IP,Log,2.0,,,0,,False,False,,False,0,Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.,
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:82042,Option to Use Three-Way Handshake TCP Port Scanning Enabled,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"You have enabled three-way handshake TCP port scanning. This option may be selected to protect the host against some potential issues with half-open TCP port scanning.
+<P>
+When this option is enabled, you may experience some increase in the scanning time. No attempt is made to detect the presence of a firewall and the version of the operating system. Consequently, the host is not tested for vulnerabilities, whose detection is dependent on the detection of a firewall or the operating system.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:6,DNS Host Name,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:45110,PHP Server Detected,Information gathering,Log,4.0,,,0,,False,False,,False,0,PHP is a general purpose scripting language that is especially suited for Web development and can be embedded in HTML.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:45391,Apache HTTP Server Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. The goal of this project is to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards.<P>
+
+Apache HTTP Server was detected on the target.<P>
+QID Detection Logic (Authenticated):<BR>
+Operating System: Linux<BR>
+The detection looks for Apache HTTP Server installation path using ps command. The version is extracted from the Apache HTTP Server's binary.<BR>
+Operating System: Windows<BR>
+This QID checks Windows registry to see if Apache HTTP Server is installed. If found, it displays the installed version.<BR>
+
+QID Detection Logic (Unauthenticated):<BR>
+This QID checks the HTTP response headers if the Apache web server is running on the target system.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:45038,Host Scan Time - Scanner,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+<P>
+The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.
+<P>",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:45426,Scan Activity per Port,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Scan activity per port is an estimate of the amount of internal process time the scanner engine spent scanning a particular TCP or UDP port. This information can be useful to determine the reason for long scan times. The individual time values represent internal process time, not elapsed time, and can be longer than the total scan time because of internal parallelism. High values are often caused by slowly responding services or services on which requests time out.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:12230,Default Web Page,CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13910,Default Web Page ( Follow HTTP Redirection),CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server following HTTP redirections.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13061,WordPress Present,CGI,Log,2.0,,,0,,False,False,,False,0,"WordPress is an open source blogging tool and a content management system (CMS).
+WordPress is present on the target.",n/a
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:86672,List of Web Directories,Web server,Log,2.0,,,0,,False,False,,False,0,"Based largely on the HTTP reply code, the following directories are most likely present on the host.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:86565,Web Server Supports HTTP Request Pipelining,Web server,Log,2.0,,,0,,False,False,,False,0,"Version 1.1 of the HTTP protocol supports URL-Request Pipelining. This means that instead of using the &quot;Keep-Alive&quot; method to keep the TCP connection alive over multiple requests, the protocol allows multiple HTTP URL requests to be made in the same TCP packet. Any Web server which is HTTP 1.1 compliant should then process all the URLs requested in the single TCP packet and respond as usual.
+<P>
+The target Web server was found to support this functionality of the HTTP 1.1 protocol.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:45266,Web Server HTTP Protocol Versions,Information gathering,Log,4.0,,,0,,False,False,,False,0,This QID lists supported HTTP protocol (HTTP 1.x or HTTP 2) from remote web server.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:48118,HTTP Response Method and Header Information Collected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"This QID prints the information, in the form of a text record, that a web server sends back to a client's browser in response to receiving a single HTTP GET request. <P>
+QID Detection Logic:<BR>
+This QID returns the HTTP response method and header information returned by a web server.<P>",N/A<P>
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:48131,Referrer-Policy HTTP Security Header Not Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"No Referrer Policy is specified for the link. It checks for one of the following Referrer Policy in the response headers:<P>
+1) no-referrer<BR>
+2) no-referrer-when-downgrade<BR>
+3) same-origin<BR>
+4) origin<BR>
+5) origin-when-cross-origin<BR>
+6) strict-origin<BR>
+7) strict-origin-when-cross-origin<BR><P>
+
+QID Detection Logic(Unauthenticated):<BR>
+If the Referrer Policy header is not found , checks in response body for meta tag containing tag name as &quot;referrer&quot; and one of the above Referrer Policy.","Referrer Policy header improves security by ensuring websites don't leak sensitive information via the referrer header. It's recommended to add secure Referrer Policies as a part of a defense-in-depth approach.<P>
+
+References:<BR>
+- <A HREF=""https://www.w3.org/TR/referrer-policy/"" TARGET=""_blank"">https://www.w3.org/TR/referrer-policy/</A><BR>
+- <A HREF=""https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"" TARGET=""_blank"">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:48001,Content-Security-Policy HTTP Security Header Not Detected,Information gathering,Log,6.0,,,0,,False,False,,False,0,"The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. This helps guard against cross-site scripting attacks (XSS).<P>
+QID Detection Logic:<BR>
+This QID detects the absence of the Content-Security-Policy HTTP header by transmitting a GET request.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:45114,Web Applications and Plugins Detected,Information gathering,Log,4.0,,,0,,False,False,,False,0,"The result section of this QID lists web applications and plugins that were detected on the target using web application fingerprinting. This technique compares static files at known locations against precomputed hashes for versions of those files in all available releases. The technique is fast, low-bandwidth, non-invasive, generic, and highly automatable.
+<P>Following open source and free applications are currently supported:
+<BR>Joomla!
+<BR>MediaWiki
+<BR>WordPress
+<BR>phpBB
+<BR>MovableType
+<BR>Drupal
+<BR>osCommerce
+<BR>PHP-Nuke
+<BR>Moodle
+<BR>Liferay
+<BR>Tikiwiki
+<BR>Twiki
+<BR>phpmyadmin
+<BR>SPIP
+<BR>Confluence(free versions)
+<BR>Wikka
+<BR>Wacko
+<BR>Usemod
+<BR>e107
+<BR>Flyspray
+<BR>AppRain
+<BR>V-CMS
+<BR>AjaxPlorer/Pydio
+<BR>eFront Learning Management System
+<BR>vTigerCRM (Open source versions)
+<BR>MyBB
+<BR>WebCalendar
+<BR>PivotX WebLog
+<BR>DokuWiki
+<BR>MODX Revolution
+<BR>MODX Evolution
+<BR>Collabtive
+<BR>Achievo
+<BR>Magento 1.x CE
+<BR>iCE Hrm (Opensource Version)
+<BR>AdaptCMS
+<BR>ownCloud
+<BR>HumHub
+<BR>Redaxscript
+<BR>phpwcms
+<BR>Wolf CMS
+<BR>Pligg CMS
+<BR>Zen Cart
+<BR>Xoops
+<BR>TYPO3
+<BR>Microweber
+<BR>
+<P>This QID is based on the <A HREF=""http://blindelephant.sourceforge.net/"" TARGET=""_blank"">Blind Elephant project</A>. For a complete list of supported web applications and plugins, please check the following link: <A HREF=""https://community.qualys.com/docs/DOC-5480"" TARGET=""_blank"">DOC-5480</A>.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:82023,Open TCP Services List,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+<P>
+The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected).","Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF=""http://www.cert.org"" TARGET=""_blank"">CERT Web site</A>."
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:86000,Web Server Version,Web server,Log,2.0,,,0,,False,False,,False,0,"A web server is server software, or hardware dedicated to running this software, that can satisfy client requests on the World Wide Web. <P>",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:11845,PHP gd_gif_in.c Memory Corruption Vulnerability,CGI,Medium,6.0,,,1,CVE-2017-7890,True,False,,False,0,"PHP is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.<P>
+The vulnerability exists because the gdImageCreateFromGifCtx() GIF decoding function implemented in in gd_gif_in.c source file uses constant-sized color tables of size 3 * 256, but does not zero-out these arrays before use. An  unauthenticated, remote attacker could exploit this vulnerability by enticing a targeted user into visiting a malicious image and access sensitive information such as private keys.<P>
+Affected Versions:<BR>
+PHP versions prior to 5.6.31, 7.0.21 and 7.1.7<P>
+QID Detection Login:<BR>
+This unauthenticated detection remotely detects the version of PHP and the authenticated detection obtains PHP version by running &quot;php -v&quot; command.","Customers are advised to upgrade to <A HREF=""http://php.net/downloads.php"" TARGET=""_blank"">PHP 5.6.31, 7.0.21, 7.1.7</A> or later versions to remediate this vulnerability.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""http://php.net/downloads.php"" TARGET=""_blank"">PHP 5.6.31, 7.0.21, 7.1.7 or later</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:11827,HTTP Security Header Not Detected,CGI,Low,4.0,,,0,,False,False,,False,0,"This QID reports the absence of the following <A HREF=""https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#tab=Headers"" TARGET=""_blank"">HTTP headers</A> according to <A HREF=""https://cwe.mitre.org/data/definitions/693.html"" TARGET=""_blank"">CWE-693: Protection Mechanism Failure</A>:<BR>
+
+X-Content-Type-Options: This HTTP header will prevent the browser from interpreting files as a different MIME type to what is specified in the Content-Type HTTP header. <BR>
+Strict-Transport-Security: The HTTP Strict-Transport-Security response header (HSTS) allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections, and never via the insecure HTTP protocol.<P>
+
+<P>QID Detection Logic:<BR>
+This unauthenticated QID will send a GET request sent to '/' (default) endpoint and looks for the presence of the following HTTP Headers in the received response:<BR>
+The Valid directives are as belows:
+X-Content-Type-Options: nosniff<P>
+Strict-Transport-Security: max-age=&lt; [;includeSubDomains]<P>","<B>Note:</B> To better debug the results of this QID, it is requested that customers execute commands to simulate the following functionality: curl -lkL --verbose.<P>
+CWE-693: Protection Mechanism Failure mentions the following - The product does not use or incorrectly uses a protection mechanism that provides sufficient defense against directed attacks against the product. A &quot;missing&quot; protection mechanism occurs when the application does not define any mechanism against a certain class of attack. An &quot;insufficient&quot; protection mechanism might provide some defenses - for example, against the most common attacks - but it does not protect against everything that is intended. Finally, an &quot;ignored&quot; mechanism occurs when a mechanism is available and in active use within the product, but the developer has not applied it in some code path.<P>
+Customers are advised to set proper <A HREF=""https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Option"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730869,jQuery Cross-Site Scripting (XSS) Vulnerability,CGI,Medium,6.0,,,1,CVE-2015-9251,True,False,,False,0,"jQuery before 3.0.0 is vulnerable to Cross-site Scripting (XSS) attacks when a cross-domain Ajax request is performed without the dataType option, causing text/javascript responses to be executed.<P>
+Affected Versions:<BR>
+jQuery versions before 3.0<P>
+
+QID Detection Logic (un-Authenticated):<BR>
+This QID checks version of jquery.js file","The vendor has released a fix to resolve the vulnerability. Refer to <A HREF=""https://jquery.com/download/"" TARGET=""_blank"">jQuery downloads</A> to obtain additional details.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://jquery.com/download/"" TARGET=""_blank"">jQuery</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:11861,WordPress Prior to 4.8.2 Multiple Security Vulnerabilities,CGI,Medium,6.0,,,10,CVE-2017-14718;CVE-2017-14719;CVE-2017-14720;CVE-2017-14721;CVE-2017-14722;CVE-2017-14723;CVE-2017-14724;CVE-2017-14725;CVE-2017-14726;CVE-2017-14990,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+WordPress versions prior to 4.8.2 contain the following SQL injection, directory traversal and cross-site scripting vulnerabilities:<BR>
+$wpdb-&gt;prepare() can create unexpected and unsafe queries leading to potential SQL injection (SQLi).<BR>
+A cross-site scripting (XSS) vulnerability was discovered in the oEmbed discovery.<BR>
+A cross-site scripting (XSS) vulnerability was discovered in the visual editor.<BR>
+A path traversal vulnerability was discovered in the file unzipping code.<BR>
+A cross-site scripting (XSS) vulnerability was discovered in the plugin editor.<BR>
+An open redirect was discovered on the user and term edit screens.<BR>
+A path traversal vulnerability was discovered in the customizer.<BR>
+A cross-site scripting (XSS) vulnerability was discovered in template names.<BR>
+A cross-site scripting (XSS) vulnerability was discovered in the link modal.<P>
+Affected Versions:<BR>
+WordPress prior to 4.8.2<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.","Customers are advised to install <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.8.2</A> or later versions to remediate the vulnerabilities.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.8.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:11878,WordPress Prior to 4.8.3 Multiple Security Vulnerabilities,CGI,High,8.0,,,3,CVE-2017-16510;CVE-2016-9263;CVE-2012-6707,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+WordPress versions prior to 4.8.2 contain a potential SQL injection (SQLi) because $wpdb-&gt;prepare() can create unexpected and unsafe queries.<P>
+Affected Versions:<BR>
+WordPress prior to 4.8.2<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.","Customers are advised to install <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.8.3</A> or later versions to remediate the vulnerabilities.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.8.3</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:11914,WordPress Prior to 4.9.2 Cross-Site Scripting Vulnerability,CGI,Medium,6.0,,,1,CVE-2018-5776,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+A cross-site scripting (XSS) flaw exists in the implemented Flash fallback files in MediaElement (wp-includes/js/mediaelement) due to insufficient sanitization of user supplied input. This could allow an attacker to execute arbitrary HTML and script code in a user's browser session under the context of the site.<P>
+Affected Versions:<BR>
+WordPress prior to 4.9.2<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.","Customers are advised to install <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.9.2</A> or later versions to remediate the vulnerabilities.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.9.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13157,WordPress Prior to 4.9.5 Multiple Security Vulnerabilities,CGI,High,8.0,,,3,CVE-2018-10100;CVE-2018-10101;CVE-2018-10102,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+WordPress contains the following vulnerabilities:<BR>
+CVE-2018-10100: The redirection URL for the login page was not validated or sanitized if forced to use HTTPS.<BR>
+CVE-2018-10101: The URL validator assumed URLs with the hostname localhost were on the same host as the WordPress server. <BR>
+CVE-2018-10102: The version string was not escaped in the get_the_generator function, and could lead to XSS in a generator tag. P&gt;
+Affected Versions:<BR>
+WordPress prior to 4.9.5<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.","Customers are advised to install <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.9.5</A> or later versions to remediate the vulnerabilities.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.9.5 or later</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13158,WordPress Prior to 4.9.1 Multiple Security Vulnerabilities,CGI,High,8.0,,,4,CVE-2017-17091;CVE-2017-17092;CVE-2017-17093;CVE-2017-17094,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+WordPress contains the following vulnerabilities:<BR>
+CVE-2017-17091: The implemented wp-admin/user-new.php source file sets the newbloguser key to a string that can be directly derived from the user ID, which allows remote attackers to bypass intended access restrictions by entering this string. <BR>
+CVE-2017-17092: The implemented wp-includes/functions.php source file does not require the unfiltered_html capability for upload of .js files, which might allow remote attackers to conduct XSS attacks via a crafted file.<BR>
+CVE-2017-17093: The implemented wp-includes/general-template.php source file does not properly restrict the lang attribute of an HTML element, which might allow attackers to conduct XSS attacks via the language setting of a site. <BR>
+CVE-2017-17094: The implemented wp-includes/feed.php source file does not properly restrict enclosures in RSS and Atom fields, which might allow attackers to conduct XSS attacks via a crafted URL. <P>
+Affected Versions:<BR>
+WordPress prior to 4.9.1<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.","Customers are advised to install <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.9.1</A> or later versions to remediate the vulnerabilities.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress 4.9.1 or later</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13177,WordPress wp_delete_attachment() Code Execution Vulnerability,CGI,High,8.0,,,1,CVE-2018-12895,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+WordPress versions 4.9.6 and prior allow remote attackers with &quot;Author&quot; privileges users to execute arbitrary code by leveraging directory traversal in the wp-admin/post.php thumb parameter, which is passed to the PHP unlink() function and can delete the wp-config.php file. This is related to missing filename validation in the wp-includes/post.php wp_delete_attachment() function. <P>
+Affected Versions:<BR>
+WordPress versions 4.9.6 and prior<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.","We are not aware of any solution for this issue.
+<P>
+
+Workaround:<BR>Customers are advised to contact WordPress for updates pertaining to this vulnerability.<BR>
+Customers are advised to review accounts that have Author, Editor, and Administrator roles."
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13365,WordPress Prior to 5.0.1 Multiple Security Vulnerability,CGI,High,8.0,,,10,CVE-2017-1000600;CVE-2018-1000773;CVE-2019-8942;CVE-2018-20153;CVE-2018-20152;CVE-2018-20151;CVE-2018-20150;CVE-2018-20149;CVE-2018-20148;CVE-2018-20147,True,False,,False,0,"<P>WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<BR>
+
+<P>Affected Versions:<BR>
+WordPress versions prior to 5.0.1.<BR>
+
+<P>QID Detection Logic:<BR>
+This unauthenticated QID detects vulnerable installations based on the BlindElephant fingerprinting engine.","Refer to WordPress security advisory <A HREF=""https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/"" TARGET=""_blank"">WordPress</A> to address this issue and obtain further details.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2018/12/wordpress-5-0-1-security-release/"" TARGET=""_blank"">WordPress</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13423,WordPress Local File Inclusion and Remote Code Execution Vulnerability,CGI,Medium,6.0,,,1,CVE-2019-8942,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<P>
+
+A combination of a Path Traversal and Local File Inclusion vulnerability lead to Remote Code Execution in the WordPress core.<BR>
+An attacker who gains access to an account with at least author privileges on a target WordPress site can execute arbitrary PHP code on the underlying server, leading to a full remote takeover.<P>
+
+Affected Versions:<BR>
+WordPress versions prior to 4.9.9 and prior to 5.0.1<P>
+
+QID Detection Logic(Unauthenticated):<BR>
+This unauthenticated QID detects vulnerable installations based on the BlindElephant fingerprinting engine.","The vendor has received patch version 4.9.9 and 5.0.1. Please visit <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">wordpress site</A> for more details.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">wordpress</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13426,WordPress Directory Traversal Vulnerability,CGI,Medium,6.0,,,1,CVE-2019-8943,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<P>
+
+<P>WordPress is prone to a directory-traversal vulnerability because the application fails to sufficiently sanitize user-supplied input.<BR>
+Remote attackers may use a specially crafted request with directory-traversal sequences ('../') to retrieve sensitive information or execute arbitrary code. This may aid in further attacks. <P>
+
+Affected Versions:<BR>
+WordPress version 5.0.3 and prior <P>
+
+QID Detection Logic(Unauthenticated):<BR>
+This unauthenticated QID detects vulnerable installations based on the BlindElephant fingerprinting engine.","Currently vendor has not released any patch to address this vulnerability. For more Information Please visit <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">wordpress site</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13443,WordPress Prior to 5.1.1 Remote Code Execution Vulnerability,CGI,Medium,6.0,,,1,CVE-2019-9787,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<P>
+
+WordPress does not properly filter comment content, leading to Remote Code Execution by unauthenticated users in a default configuration. This occurs because CSRF protection is mishandled, and because Search Engine Optimization of A elements is performed incorrectly, leading to XSS. The XSS results in administrative access, which allows arbitrary changes to .php files. This is related to wp-admin/includes/ajax-actions.php and wp-includes/comment.php.<P>
+
+Affected Versions:<BR>
+WordPress versions prior to 5.1.1<P>
+
+QID Detection Logic(Unauthenticated):<BR>
+This unauthenticated QID detects vulnerable installations based on the BlindElephant fingerprinting engine.","Customers are advised to upgrade to the fixed versions 5.1.1 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/support/wordpress-version/version-5-1-1/"" TARGET=""_blank"">WordPress 5.1.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13629,WordPress Prior to 5.2.4 Multiple Security Vulnerabilities,CGI,High,8.0,,,7,CVE-2019-17670;CVE-2019-17669;CVE-2019-17671;CVE-2019-17672;CVE-2019-17673;CVE-2019-17674;CVE-2019-17675,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<P>
+
+WordPress is affected by multiple vulnerabilities that could allow Server Side Request Forgery (SSRF), unauthenticated viewing of certain content, XSS,  poisoning of the cache, CSRF.<P>
+
+Affected Versions:<BR>
+WordPress versions prior to 5.2.4<P>
+
+QID Detection Logic(Unauthenticated):<BR>
+This unauthenticated QID detects vulnerable installations based on the BlindElephant fingerprinting engine.","Customers are advised to upgrade to the fixed versions 5.2.4 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2019/10/wordpress-5-2-4-security-release/"" TARGET=""_blank"">WordPress 5.2.4 Security Release</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13645,WordPress Prior to 5.3.1 Multiple Security Vulnerabilities,CGI,High,8.0,,,5,CVE-2019-20042;CVE-2019-16781;CVE-2019-16780;CVE-2019-20041;CVE-2019-20043,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<P>
+
+An issue where an unprivileged user could make a post sticky via the REST API. Furhter, an issue where cross-site scripting (XSS) could be stored in well-crafted links as well as wp_kses_bad_protocol() to ensure that it is aware of the named colon attribute. A stored XSS vulnerability using block editor content.<P>
+
+Affected Versions:<BR>
+WordPress versions prior to 5.3.1<P>
+
+QID Detection Logic(Unauthenticated):<BR>
+This unauthenticated QID detects vulnerable installations based on the BlindElephant fingerprinting engine.","Customers are advised to upgrade to the fixed versions 5.3.1 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2019/12/wordpress-5-3-1-security-and-maintenance-release/"" TARGET=""_blank"">WordPress 5.3.1</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2019/12/wordpress-5-3-1-security-and-maintenance-release/"" TARGET=""_blank"">WordPress 5.3.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730052,WordPress Prior to 5.7.1 Multiple Vulnerabilities,CGI,Medium,6.0,,,2,CVE-2021-29450;CVE-2021-29447,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+Affected Versions:<BR>
+Prior to WordPress version  5.7.1<P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 5.7.1 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2021/04/wordpress-5-7-1-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2021/04/wordpress-5-7-1-security-and-maintenance-release/"" TARGET=""_blank"">WordPress 5.7.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730078,WordPress Prior to 5.7.2 Multiple Vulnerabilities,CGI,Medium,6.0,,,2,CVE-2018-19296;CVE-2020-36326,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+Affected Versions:<BR>
+WordPress versions from 3.7 to 5.7.1<P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 5.7.2 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2021/05/wordpress-5-7-2-security-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2021/05/wordpress-5-7-2-security-release/"" TARGET=""_blank"">WordPress 5.7.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730084,WordPress Prior to 5.5.2 Multiple Vulnerabilities,CGI,Medium,6.0,,,9,CVE-2020-28032;CVE-2020-28033;CVE-2020-28034;CVE-2020-28035;CVE-2020-28036;CVE-2020-28037;CVE-2020-28038;CVE-2020-28039;CVE-2020-28040,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+Affected Versions:<BR>
+Prior to WordPress version  5.5.2<P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 5.5.2 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2020/10/wordpress-5-5-2-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2020/10/wordpress-5-5-2-security-and-maintenance-release/"" TARGET=""_blank"">WordPress 5.5.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13751,WordPress Prior to 5.2.3 Multiple Security Vulnerabilities,CGI,Medium,6.0,,,7,CVE-2019-16217;CVE-2019-16218;CVE-2019-16219;CVE-2019-16220;CVE-2019-16221;CVE-2019-16222;CVE-2019-16223,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use&gt;<P>
+
+WordPress is affected by multiple vulnerabilities that could allow open redirect and multiple XSS.<P>
+
+Affected Versions:<BR>
+WordPress versions prior to 5.2.3<P>
+
+QID Detection Logic (Unauthenticated):<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 5.2.3 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2019/09/wordpress-5-2-3-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">WordPress</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13830,WordPress prior to 5.4.2 Multiple Vulnerabilities,CGI,Medium,6.0,,,6,CVE-2020-25286;CVE-2020-4046;CVE-2020-4047;CVE-2020-4048;CVE-2020-4049;CVE-2020-4050,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+WordPress is affected with multiple vulnerabilities.<P>
+
+Affected Versions:<BR>
+WordPress 3.7 fixed in version 3.7.34<BR>
+WordPress 3.8 fixed in version 3.8.34<BR>
+WordPress 3.9 fixed in version 3.9.32<BR>
+WordPress 4.0 fixed in version 4.0.31<BR>
+WordPress 4.1 fixed in version 4.1.31<BR>
+WordPress 4.2 fixed in version 4.2.28<BR>
+WordPress 4.3 fixed in version 4.3.24<BR>
+WordPress 4.4 fixed in version 4.4.23<BR>
+WordPress 4.5 fixed in version 4.5.22<BR>
+WordPress 4.6 fixed in version 4.6.19<BR>
+WordPress 4.7 fixed in version 4.7.18<BR>
+WordPress 4.8 fixed in version 4.8.19<BR>
+WordPress 4.9 fixed in version 4.9.15<BR>
+WordPress 5.0 fixed in version 5.0.10<BR>
+WordPress 5.1 fixed in version 5.1.6<BR>
+WordPress 5.2 fixed in version 5.2.7<BR>
+WordPress 5.3 fixed in version 5.3.4<BR>
+WordPress 5.4 fixed in version 5.4.2<BR>
+
+QID Detection Logic (Unauthenticated):<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 5.4.2 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2020/06/wordpress-5-4-2-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2020/06/wordpress-5-4-2-security-and-maintenance-release/"" TARGET=""_blank"">WordPress 5.4.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13930,WordPress Prior to 4.9.7 Privilege Escalation Vulnerability,CGI,Medium,6.0,,,0,,False,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+WordPress is affected with privilege escalation vulnerability.<P>
+
+Affected Versions:<BR>
+Prior to WordPress 4.9.7 <P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 4.9.7 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2018/07/wordpress-4-9-7-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2018/07/wordpress-4-9-7-security-and-maintenance-release/"" TARGET=""_blank"">WordPress 4.9.7</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730333,WordPress Prior to 4.1.34 and 5.8.3 SQL Injection Vulnerability,CGI,High,8.0,,,1,CVE-2022-21664,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+CVE-2022-21664: Due to lack of proper sanitization in one of the classes, there's potential for unintended SQL queries to be executed.<P>
+
+Affected Versions:<BR>
+WordPress versions from 4.1.x prior to 4.1.34<BR>
+WordPress versions from 5.0.0 prior to 5.8.3<P>
+
+QID Detection Logic: (Unauthenticated)
+This QID sends an HTTP GET request to &quot;wp-login.php&quot; and if it returns with status code 200, then grabs the version number via the meta generator tag from the HTTP response.<P>","Customers are advised to upgrade to the fixed versions 5.8.3 to remediate these vulnerabilities:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2022/01/wordpress-5-8-3-security-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2022/01/wordpress-5-8-3-security-release/"" TARGET=""_blank"">WordPress 5.8.3</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730480,WordPress Prior to 5.9.2 Multiple Vulnerabilities,CGI,High,8.0,,,1,CVE-2021-20083,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 5.9.2<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 5.9.2 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2022/03/wordpress-5-9-2-security-maintenance-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2022/03/wordpress-5-9-2-security-maintenance-release/"" TARGET=""_blank"">Wordpress 5.9.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730619,WordPress Prior to 6.0.2 Multiple Vulnerabilities,CGI,High,8.0,,,0,,False,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 6.0.2<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.0.2 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/"" TARGET=""_blank"">Wordpress 6.0.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730625,WordPress Prior to 6.0.3 Multiple Vulnerabilities,CGI,High,8.0,,,3,CVE-2022-43497;CVE-2022-43500;CVE-2022-43504,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 6.0.3<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.0.3 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2022/10/wordpress-6-0-3-security-release/"" TARGET=""_blank"">Wordpress 6.0.3</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730641,WordPress Prior to 5.4.1 Multiple Security Vulnerabilities,CGI,Medium,6.0,,,6,CVE-2020-11025;CVE-2020-11026;CVE-2020-11027;CVE-2020-11028;CVE-2020-11029;CVE-2020-11030,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+CVE-2020-11025: Authenticated users could corrupt JSON data in the Customizer of other users' to inject malicious JavaScript.<BR>
+CVE-2020-11026: Authenticated users with the capability to upload files could upload files with specially crafted names containing utf8 characters to execute JavaScript when later viewed.<BR>
+CVE-2020-11027: When a user requested a password reset link, but did not use it and instead reset their password by logging in, the password reset link would still be usable.<BR>
+CVE-2020-11028: This could have allowed unauthenticated users to view private posts by manipulating time and date queries.<BR>
+CVE-2020-11029: WordPress' Object Cache that caches data from the database did not validate or encode the cache key. If an attacker managed to inject a malicious cache key that was then output in a third party plugin, it could lead to XSS.<BR>
+CVE-2020-11030: An authenticated user could customise the class of the search block, leading to Cross-Site Scripting (XSS).<P>
+
+Affected Versions:<BR>
+WordPress versions Prior to 5.4.1<BR>
+<BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag and also using Blind Elephant DB to fingerprint the version.<P>","Customers are advised to upgrade to the fixed versions 5.4.1 or later to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2020/04/wordpress-5-4-1/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2020/04/wordpress-5-4-1/"" TARGET=""_blank"">Wordpress 5.4.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730803,WordPress Prior to 6.2.1 Multiple Vulnerabilities,CGI,High,8.0,,,1,CVE-2023-2745,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 6.2.1<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.2.1 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2023/05/wordpress-6-2-1-maintenance-security-release/"" TARGET=""_blank"">Wordpress 6.2.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731004,WordPress Prior to 6.4.2 Multiple Vulnerabilities,CGI,High,8.0,,,1,CVE-2024-31211,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions 6.4 prior to 6.4.2<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.4.2 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2023/12/wordpress-6-4-2-maintenance-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2023/12/wordpress-6-4-2-maintenance-security-release/"" TARGET=""_blank"">Wordpress 6.4.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730941,WordPress Prior to 6.3.2 Multiple Vulnerabilities,CGI,High,8.0,,,1,CVE-2023-39999,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 6.3.2<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.3.2 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"" TARGET=""_blank"">Wordpress 6.3.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731124,WordPress Prior to 6.4.3 Multiple Vulnerabilities,CGI,High,8.0,,,1,CVE-2024-31210,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 6.4.3<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.4.3 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2024/01/wordpress-6-4-3-maintenance-and-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2024/01/wordpress-6-4-3-maintenance-and-security-release/"" TARGET=""_blank"">Wordpress 6.4.3</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731599,WordPress Prior to 6.5.5 Multiple Vulnerabilities,CGI,High,8.0,,,1,CVE-2024-6307,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<BR><BR>
+
+Affected Versions:<BR>
+WordPress versions Prior to 6.5.5<BR><BR>
+
+QID Detection Logic:<BR>The QID checks for the version via the meta generator tag and also the installed vulnerable Wordpress version using Blind Elephant Fingerprint technique.<P>","Customers are advised to upgrade to the fixed versions 6.5.5 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2024/06/wordpress-6-5-5/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2024/06/wordpress-6-5-5/"" TARGET=""_blank"">Wordpress 6.5.5</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731603,WordPress Prior to 6.1.2 Denial of Service (DoS) Vulnerability,CGI,Medium,6.0,,,1,CVE-2023-22622,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+Affected Versions:<BR>
+WordPress versions Prior to 6.1.2 <P>
+
+QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.1.2 or above to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/download/releases/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/releases/"" TARGET=""_blank"">Wordpress 6.1.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731624,WordPress Prior to 6.4.4 Sensitive Information Exposure Vulnerability,CGI,Medium,6.0,,,1,CVE-2023-5692,True,False,,False,0,"WordPress Core is vulnerable to Sensitive Information Exposure in versions up to, and including, 6.4.3 via the redirect_guess_404_permalink function.  <P>
+
+Affected Versions:<BR>
+WordPress versions Prior to 6.4.4 <P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.4.4 or above to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/download/releases/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/releases/"" TARGET=""_blank"">ordpress 6.4.3</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731643,WordPress Unauthenticated Blind Server-Side Request Forgery (SSRF) Vulnerability,CGI,Medium,6.0,,,1,CVE-2022-3590,True,False,,False,0,"WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database.<P>
+
+WordPress is affected by an unauthenticated blind SSRF in the pingback feature. Because of a TOCTOU race condition between the validation checks and the HTTP request, attackers can reach internal hosts that are explicitly forbidden.<P>
+
+Affected Versions:<BR>
+WordPress versions 6.1.1 and prior<P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 6.1.2 or above to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/download/releases/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/download/releases/"" TARGET=""_blank"">Wordpress 6.1.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732489,WordPress Authenticated Stored Cross-Site Scripting Vulnerability,CGI,Medium,6.0,,,1,CVE-2022-4973,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+Affected Versions:<BR>
+WordPress versions through to 6.0.2<BR>
+
+<P>QID Detection Logic: (Unauthenticated)<BR>
+This QID sends an HTTP GET request to &quot;wp-login.php&quot; and then grabs the version number via the meta generator tag from the HTTP response.<P>","Customers are advised to refer to:<BR>
+For more Information Please visit <A HREF=""https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/"" TARGET=""_blank"">WordPress site</A> 
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2022/08/wordpress-6-0-2-security-and-maintenance-release/"" TARGET=""_blank"">CVE-2022-4973</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731066,WordPress Email ID Information Disclosure Vulnerability,CGI,Medium,6.0,,,1,CVE-2023-5561,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+CVE-2023-5561: Vulnerable to Email ID Information Disclosure vulnerability using Brute-force technique.<P>
+
+Affected Versions:<BR>
+WordPress versions form 4.7 prior to 6.3.2<P>
+
+QID Detection Logic:<BR>
+The QID issues a GET request using a wildcard (@) and verifies the POC by inspecting the target.<P>","Customers are advised to upgrade to the fixed versions 6.3.2 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2023/10/wordpress-6-3-2-maintenance-and-security-release/"" TARGET=""_blank"">Wordpress 6.3.2</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732799,WordPress Core Information Disclosure Vulnerability (CVE-2025-54352),CGI,Low,4.0,,,1,CVE-2025-54352,True,False,,False,0,"WordPress Core allows remote attackers to guess titles of private and draft posts via pingback.ping XML-RPC requests. <P>
+
+Affected Versions:<BR>
+WordPress versions 3.5 through 6.8.2<P>
+
+NOTE: the Supplier is not changing this behavior.<P>
+
+QID Detection Logic:<BR>
+The QID checks for the version via the meta generator tag.<P>","Customers are advised to refer <A HREF=""https://www.imperva.com/blog/beware-a-threat-actor-could-steal-the-titles-of-your-private-and-draft-wordpress-posts/"" TARGET=""_blank"">WordPress regarding blog</A> for more information."
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:87310,Apache httpd Server Information Disclosure Vulnerability (OptionsBleed),Web server,High,8.0,,,1,CVE-2017-9798,True,False,,False,0,"Apache Web Server is an open-source web server.<P>
+On systems with the Limit directive set within a '.htaccess' file and set to an invalid HTTP method, a remote user can send a specially crafted HTTP OPTIONS request for a path to trigger a use-after-free memory error and view potentially sensitive information from process memory on the target system.<BR>
+This vulnerability is referred to as &quot;Optionsbleed&quot;.<BR>
+Apache HTTP Server through 2.2.34 and 2.4.x through 2.4.27<P>
+QID Detection Logic (Un-authenticated)<BR>
+This will check for vulnerable versions of Apache httpd server remotely by reviewing the httpd banner. <P>","The Apache HTTP Project released patch version (2.4.28) to resolve this issue. <BR>
+Refer to Apache security advisory <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">CVE-2017-9798.</A> <BR>
+If you are using a Linux distribution, please refer to your Linux vendor for further information and updates.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd 2.4.28: Apache</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:87322,Apache httpd Server ap_get_basic_auth_pw() Authentication Bypass Vulnerability,Web server,Medium,6.0,,,2,CVE-2017-3167;CVE-2017-3169,True,False,,False,0,"Apache Web Server is an open-source web server.<P>
+The use of the ap_get_basic_auth_pw() by third-party modules outside of the authentication phase may lead to authentication requirements being bypassed in vulnerable Apache httpd versions.<P>
+Affected Versions:<BR>
+Apache httpd 2.2.x before 2.2.33<BR>
+Apache httpd 2.4.x before 2.4.26<P>
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+The authenticated detections reviews Apache version from the command &quot;httpd -v&quot;.<P>","Customers are advised to upgrade to <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache httpd 2.2.33, 2.4.26</A> or later versions to remediate this vulnerability.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache httpd 2.2.33, 2.4.26 or later</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:89009,Apache HTTP Server mod_mime Buffer Overread,Web server,High,8.0,,,1,CVE-2017-7679,True,False,,False,0,"The Apache Module mod_mime is used to assign content metadata to the content selected for an HTTP response by mapping patterns in the URI or filenames to the metadata values.<P>
+
+In Apache httpd 2.2.x before 2.2.33 and 2.4.x before 2.4.26, mod_mime can read one byte past the end of a buffer when sending a malicious Content-Type response header.<P>
+
+<P>
+QID Detection Logic (Unauthenticated):<BR>
+This QID matches vulnerable versions based on the exposed banner information under the HTTP service.<P>","These vulnerabilities have been patched in Apache. Refer to  <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd 2.4.27 Changelog</A>, 
+<A HREF=""https://httpd.apache.org/security/vulnerabilities_22.html"" TARGET=""_blank"">Apache httpd 2.2.34 Changelog</A>, or your Linux distro for further details.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_22.html"" TARGET=""_blank"">CVE-2017-7679: Apache 2.2.x</A><P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">CVE-2017-7679: Apache 2.4.x</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,general/tcp,qualys:105780,EOL/Obsolete Software: Hypertext Preprocessor (PHP) 5.6.x Detected,Security Policy,High,10.0,,,0,,False,False,,False,0,"<P>PHP is a general purpose scripting language that is suited for web development and can be embedded in HTML.
+
+<P>PHP 5.6 series reached End of Life in its support cycle on December 31, 2018.
+
+<P>Since there are no further bug fixes or security updates for PHP 5.6 series, it's highly recommended to migrate from version 5.6 to newer supported versions.
+
+<P>Affected Versions:<BR>
+PHP 5.6.x versions
+
+<P>QID Detection Logic (Unauthenticated):<BR>
+This QID looks for PHP banner to detect affected versions remotely.<BR>",<P>Customers are advised to upgrade to the latest version of PHP.
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:38806,PHP Multiple Security Vulnerabilities,General remote services,High,8.0,,,2,CVE-2018-20783;CVE-2018-19518,True,False,,False,0,"PHP is a general purpose scripting language that is especially suited for web development and can be embedded into HTML.<P>
+PHP is exposed to the following vulnerabilities:<P>
+Heap Buffer Overflow (READ: 4) in &quot;phar_parse_pharfile&quot;. (CVE-2018-20783)
+imap_open allows to run arbitrary shell commands via mailbox parameter). (CVE-2018-19518)<P>
+Affected Versions:<BR>
+PHP before 5.6.39, 7.x before 7.0.33, 7.1.x before 7.1.25, and 7.2.x before 7.2.13.<P>
+QID Detection Logic<BR>
+The QID checks the php version via banner.<P>","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/downloads"" TARGET=""_blank"">php download</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:38809,PHP Heap Based Buffer Overflow Vulnerability,General remote services,High,8.0,,,1,CVE-2017-16642,True,False,,False,0,"PHP is a general purpose scripting language that is especially suited for web development and can be embedded into HTML.<P>
+PHP is exposed to an Out-Of-Bounds Read vulnerability in &quot;timelib_meridian&quot; (CVE-2017-16642)<P>
+
+Affected Versions:<BR>
+PHP before 5.6.32, 7.x before 7.0.25, and 7.1.x before 7.1.11<P>
+QID Detection Logic<BR>
+The QID checks the php version via banner.<P>","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/downloads"" TARGET=""_blank"">php download</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:38816,PHP Unauthenticated Arbitrary File Disclosure,General remote services,Medium,6.0,,,1,CVE-2020-11579,True,False,,False,0,"PHP is a general purpose scripting language that is especially suited for web development and can be embedded into HTML.<P>
+
+Affected Versions:<BR>
+PHP versions before 7.2.16<P>
+
+QID Detection Logic<BR>
+The qid checks the php version via banner.<P>","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/downloads"" TARGET=""_blank"">php downloads</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:38851,Hypertext Preprocessor (PHP) Security Update,General remote services,Medium,6.0,,,1,CVE-2021-21706,True,False,,False,0,"PHP is a general purpose scripting language that is especially suited for web development and can be embedded into HTML.<P>
+
+PHP is affected by multiple vulnerabilities.<P>
+
+Affected Versions:<BR>
+PHP versions prior to 7.4.24<BR>
+PHP versions 7.3.x prior to 7.3.31<BR>
+PHP versions 8.0.x prior to 8.0.11<BR>
+
+QID Detection Logic<BR>
+The qid checks the php version via banner.<P>","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/ChangeLog-7.php#PHP_7_4"" TARGET=""_blank"">PHP Changelog Version 7.4.24</A><P> <A HREF=""https://www.php.net/ChangeLog-7.php#PHP_7_3"" TARGET=""_blank"">PHP Changelog Version 7.3.31</A><P> <A HREF=""https://www.php.net/ChangeLog-8.php"" TARGET=""_blank"">PHP Changelog Version 8.0.11</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:38880,"Hypertext Preprocessor (PHP) Multiple Security Vulnerabilities (81738, 81739)",General remote services,High,10.0,,,2,CVE-2022-31630;CVE-2022-37454,True,False,,False,0,"PHP is a programming language originally designed for use in web-based applications with HTML content. PHP supports a wide variety of platforms and is used by numerous web-based software applications.<P>
+
+CVE-2022-31630: In installed version of PHP, when using imageloadfont() function in gd extension, it is possible to supply a specially crafted font file, such as if the loaded font is used with imagechar() function, the read outside allocated buffer will be used. This can lead to crashes or disclosure of confidential information.<BR>
+CVE-2022-37454: The Keccak XKCP SHA-3 reference implementation before fdc6fef has an integer overflow and resultant buffer overflow that allows attackers to execute arbitrary code or eliminate expected cryptographic properties.<P> 
+
+Affected Versions:<BR>
+PHP versions before 7.4.33<BR>
+PHP versions 8.0.0 prior to 8.0.25<BR>
+PHP versions 8.1.0 prior to 8.1.12<P>
+
+QID Detection Logic (Unauthenticated):<BR>
+This QID checks the HTTP Server header to see if the server is running a vulnerable version of PHP.<P>","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A><BR>
+For more information please refer to <A HREF=""https://bugs.php.net/bug.php?id=81739"" TARGET=""_blank"">Sec Bug 81739</A> .<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://bugs.php.net/bug.php?id=81739"" TARGET=""_blank"">81739</A><P> <A HREF=""http://bugs.php.net/81738"" TARGET=""_blank"">81738</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:38881,"Hypertext Preprocessor (PHP) Multiple Security Vulnerabilities (81726, 81727)",General remote services,Medium,6.0,,,2,CVE-2022-31628;CVE-2022-31629,True,False,,False,0,"PHP is a programming language originally designed for use in web-based applications with HTML content. PHP supports a wide variety of platforms and is used by numerous web-based software applications.<P>
+
+Affected versions of PHP has multiple vulnerabilities:<BR>
+CVE-2022-31628 : The vulnerability exists due to infinite loop within the phar uncompressor code when processing &quot;quines&quot; gzip files. A remote attacker can pass a specially crafted archive to the application, consume all available system resources and cause denial of service conditions.<P>
+
+CVE-2022-31629: The vulnerability exists due to the way PHP handles HTTP variable names. A remote attacker can set a standard insecure cookie in the victim's browser which is treated as a '__Host-' or '__Secure-' cookie by PHP applications.<P>
+
+Affected Versions:<BR>
+PHP versions before 7.4.31<BR>
+PHP versions 8.0.0 prior to 8.0.24<BR>
+PHP versions 8.1.0 prior to 8.1.11<P>
+
+QID Detection Logic (Unauthenticated):<BR>
+This QID checks the HTTP Server header to see if the server is running a vulnerable version of PHP.<P>","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A><BR>
+For more information please refer to <A HREF=""https://bugs.php.net/bug.php?id=81726"" TARGET=""_blank"">Sec Bug 81726</A> and <A HREF=""https://bugs.php.net/bug.php?id=81727"" TARGET=""_blank"">Sec Bug 81727</A> .<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://bugs.php.net/bug.php?id=81727"" TARGET=""_blank"">81727</A><P> <A HREF=""https://bugs.php.net/bug.php?id=81726"" TARGET=""_blank"">81726</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13817,PHP Multiple Denial of Service Vulnerabilities,CGI,Medium,6.0,,,2,CVE-2018-19396;CVE-2018-19395,True,False,,False,0,"PHP is a general purpose scripting language that is especially suited for web development and can be embedded into HTML. <P>
+Multiple vulnerabilities have been discovered in PHP :<BR>
+
+Affected Version:<BR>
+PHP 5.x through 7.1.24 
+
+QID Detection Logic(Unauth):<BR>
+The QID will try to find the Vulnerable version of the PHP from the Banner.","Vendor has Released the patch to addressed the vulnerability. Please update to <A HREF=""https://www.php.net/releases/7_1_25.php"" TARGET=""_blank"">PHP 7.1.25</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/releases/7_1_25.php"" TARGET=""_blank"">Version 7.1.25</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13818,PHP Arbitrary Code Execution Vulnerability,CGI,Medium,6.0,,,1,CVE-2018-19520,True,False,,False,0,"PHP is a general purpose scripting language that is especially suited for web development and can be embedded into HTML. <P>
+Multiple vulnerabilities have been discovered in PHP:<BR>
+
+Affected Version:<BR>
+PHP 5.x through 5_6_38
+
+QID Detection Logic(Unauth):<BR>
+The QID will try to find the Vulnerable version of the PHP from the HTTP banner.","The vendor has advised to update PHP to version 5_6_39 or latest version.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/releases/5_6_39.php"" TARGET=""_blank"">PHP 5.6.39</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730109,Apache HTTP Server Multiple Vulnerabilities,CGI,High,8.0,,,7,CVE-2019-17567;CVE-2020-13938;CVE-2020-13950;CVE-2020-35452;CVE-2021-26690;CVE-2021-26691;CVE-2021-30641,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.46.<P>
+
+<B>NOTE:</B><BR>
+CVE-2021-26691, CVE-2021-26690, CVE-2020-35452, CVE-2020-13938 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41, 2.4.39, 2.4.38, 2.4.37, 2.4.35, 2.4.34, 2.4.33, 2.4.29, 2.4.28, 2.4.27, 2.4.26, 2.4.25, 2.4.23, 2.4.20, 2.4.18, 2.4.17, 2.4.16, 2.4.12, 2.4.10, 2.4.9, 2.4.7, 2.4.6, 2.4.4, 2.4.3, 2.4.2, 2.4.1, 2.4.0.<BR>
+CVE-2019-17567 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41, 2.4.39, 2.4.38, 2.4.37, 2.4.35, 2.4.34, 2.4.33, 2.4.29, 2.4.28, 2.4.27, 2.4.26, 2.4.25, 2.4.23, 2.4.20, 2.4.18, 2.4.17, 2.4.16, 2.4.12, 2.4.10, 2.4.9, 2.4.7, 2.4.6<BR>
+CVE-2021-30641 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41, 2.4.39<BR>
+CVE-2020-13950 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41<BR>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd. The version is identified based on network-visible behavior and based on the web server banner<P>","Customers are advised to update Apache httpd 2.4.48.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server 2.4.47</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13745,Apache HTTP Server multiple vulnerabilities,CGI,Medium,6.0,,,2,CVE-2020-1934;CVE-2020-1927,True,False,,False,0,"<P>Apache HTTP Server is an HTTP web server application.
+
+<P>CVE-2020-1934: In Apache HTTP Server, mod_proxy_ftp may use uninitialized memory when proxying to a malicious FTP server.<BR>
+<P>CVE-2020-1927: In Apache HTTP Server, redirects configured with mod_rewrite that were intended to be self-referential might be fooled by encoded newlines and redirect instead to an an unexpected URL within the request URL.<BR>
+
+<P>Affected Versions:<BR>
+Apache httpd 2.4.0 to 2.4.41<BR>
+
+<P>QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<BR>","Customers are advised to update Apache httpd to 2.4.42 or later.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache httpd 2.4.42 or later 2.4.</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730313,Apache Hypertext Transfer Protocol (HTTP) Server NULL Pointer Dereference and Server Side Request Forgery (SSRF) Vulnerability,CGI,High,8.0,,,1,CVE-2021-44224,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+A crafted URI sent to httpd configured as a forward proxy (ProxyRequests on) can cause a crash (NULL pointer dereference) or, for configurations mixing forward and reverse proxy declarations, can allow for requests to be directed to a declared Unix Domain Socket endpoint (Server Side Request Forgery).<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.7 - 2.4.51<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for vulnerable Apache Version by grabbing the banner from HTTP response<P>","Customers are advised to update to Apache HTTP Server 2.4.52 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730312,Apache Hypertext Transfer Protocol (HTTP) Server Buffer Overflow Vulnerability,CGI,High,8.0,,,1,CVE-2021-44790,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+A carefully crafted request body can cause a buffer overflow in the mod_lua multipart parser (r:parsebody() called from Lua scripts).<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.51 and earlier<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for vulnerable Apache Version by grabbing the banner from HTTP response<P>","Customers are advised to update to Apache HTTP Server 2.4.52 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730403,Apache Hypertext Transfer Protocol (HTTP) Server Out-of-bounds Write Vulnerability,CGI,High,8.0,,,4,CVE-2022-23943;CVE-2022-22721;CVE-2022-22720;CVE-2022-22719,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+CVE-2022-22719 - A carefully crafted request body can cause a read to a random memory area which could cause the process to crash. <BR>
+CVE-2022-22720 - Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are encountered discarding the request body, exposing the server to HTTP Request Smuggling <BR>
+CVE-2022-22721 - If LimitXMLRequestBody is set to allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later causes out of bounds writes.<BR>
+CVE-2022-23943 - Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows an attacker to overwrite heap memory with possibly attacker provided data.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4 - 2.4.52<P>","Customers are advised to update to Apache HTTP Server 2.4.53 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730529,Apache Hypertext Transfer Protocol Server (HTTP Server) mod_proxy X-Forwarded-For dropped by hop-by-hop mechanism Vulnerability,CGI,High,10.0,,,1,CVE-2022-31813,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.53 and earlier <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730758,Apache Hypertext Transfer Protocol (HTTP) Server Request Smuggling Vulnerability,CGI,High,8.0,,,1,CVE-2023-25690,True,False,,False,0,"Some mod_proxy configurations on Apache HTTP Server versions 2.4.0 through 2.4.55 allow a HTTP Request Smuggling attack.<P>
+Configurations are affected when mod_proxy is enabled along with some form of RewriteRule or ProxyPassMatch in which a non-specific pattern matches some portion of the user-supplied request-target (URL) data and is then re-inserted into the proxied request-target using variable substitution.<P><P>
+
+Affected Versions:<BR>
+Apache HTTP Server Versions 2.4.0 through 2.4.55 (including)<P>
+
+QID Detection Logic(Unauthenticated): <BR>
+This QID checks for vulnerable version of Apache HTTP Server by sending a GET request to a target and extracting the version from the response header. <P>","Customers are advised to upgrade to Apache HTTP Server version 2.4.56 or later. For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html#2.4.56"" TARGET=""_BLANK""> Apache HTTP Server Security Advisory</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html#2.4.56"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730846,Apache HTTP Server CRLF Injection Vulnerability (CVE-2016-4975),CGI,Medium,6.0,,,1,CVE-2016-4975,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.1-2.4.23<BR>
+Apache HTTP Server versions 2.2.0-2.2.31<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd 2.4.25 and 2.2.32 for 2.4.x and 2.2.x versions respectively.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_22.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html#CVE-2016-4975"" TARGET=""_blank"">Apache HTTP Server 2.4.25</A><P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_22.html#CVE-2016-4975"" TARGET=""_blank"">Apache HTTP Server 2.2.32</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731355,"Apache Hypertext Transfer Protocol Server (HTTP Server) Multiple Security Vulnerabilities (CVE-2023-38709, CVE-2024-24795)",CGI,Medium,6.0,,,2,CVE-2023-38709;CVE-2024-24795,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2023-38709: Faulty input validation in the core of Apache allows malicious or exploitable backend/content generators to split HTTP responses.<BR>
+CVE-2024-24795: HTTP Response splitting in multiple modules in Apache HTTP Server allows an attacker that can inject malicious response headers into backend applications to cause an HTTP desynchronization attack.<BR><P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.59<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache versions respectively.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731513,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.55 Multiple Security Vulnerabilities,CGI,High,8.0,,,2,CVE-2006-20001;CVE-2022-37436,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2006-20001: A carefully crafted If: request header can cause a memory read, or write of a single zero byte, in a pool (heap) memory location beyond the header value sent. This could cause the process to crash.<BR>
+CVE-2022-37436: A malicious backend can cause the response headers to be truncated early, resulting in some headers being incorporated into the response body. If the later headers have any security purpose, they will not be interpreted by the client.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.55<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache HTTP Server versions 2.4.55 or later.<BR>
+For further information, please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731514,"Apache Hypertext Transfer Protocol Server (HTTP Server) Multiple Security Vulnerabilities (CVE-2022-28330, CVE-2022-28614, CVE-2022-28615, CVE-2022-29404, CVE-2022-30556)",CGI,High,10.0,,,5,CVE-2022-28330;CVE-2022-28614;CVE-2022-28615;CVE-2022-29404;CVE-2022-30556,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2022-28330: Apache HTTP Server 2.4.53 and earlier on Windows may read beyond bounds when configured to process requests with the mod_isapi module.<BR>
+CVE-2022-28614: The ap_rwrite() function in Apache HTTP Server 2.4.53 and earlier may read unintended memory if an attacker can cause the server to reflect very large input using ap_rwrite() or ap_rputs(), such as with mod_luas r:puts() function.<BR>
+CVE-2022-28615: Apache HTTP Server 2.4.53 and earlier may crash or disclose information due to a read beyond bounds in ap_strcmp_match() when provided with an extremely large input buffer.<BR>
+CVE-2022-29404: In Apache HTTP Server 2.4.53 and earlier, a malicious request to a lua script that calls r:parsebody(0) may cause a denial of service due to no default limit on possible input size.<BR>
+CVE-2022-30556: Apache HTTP Server 2.4.53 and earlier may return lengths to applications calling r:wsread() that point past the end of the storage allocated for the buffer.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.53 and earlier <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banners to detect if the target is running the vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731521,Apache Hypertext Transfer Protocol Server (HTTP Server) Request Smuggling Vulnerability (CVE-2022-26377),CGI,High,8.0,,,1,CVE-2022-26377,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2022-26377: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4 to 2.4.53 <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banners to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731520,Apache Hypertext Transfer Protocol Server (HTTP Server) Request Smuggling Vulnerability (CVE-2022-36760),CGI,High,8.0,,,1,CVE-2022-36760,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2022-36760: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to. <P>
+
+Affected Versions:<BR>
+Apache HTTP Server from 2.4 through 2.4.54 <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache HTTP Server versions 2.4.55 or later.<BR>
+For further information, please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731517,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.58 Multiple Security Vulnerabilities,CGI,High,8.0,,,2,CVE-2023-31122;CVE-2023-45802,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2023-31122: Out-of-bounds Read vulnerability in mod_macro of Apache HTTP Server.This issue affects Apache HTTP Server<BR>
+CVE-2023-45802: A client could send new requests and resets, keeping the connection busy and open and causing the memory footprint to keep on growing. On connection close, all resources were reclaimed, but the process might run out of memory before that.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.58<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache HTTP Server versions 2.4.58 or later.<BR>
+For further information, please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:731613,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.60 Multiple Security Vulnerabilities,CGI,High,8.0,,,7,CVE-2024-38472;CVE-2024-38473;CVE-2024-38474;CVE-2024-38475;CVE-2024-38476;CVE-2024-38477;CVE-2024-39573,True,False,CVE-2024-38475,True,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2024-38472: SSRF in Apache HTTP Server on Windows allows to potentially leak NTML hashes to a malicious server via SSRF and malicious requests or content<P>
+CVE-2024-38473: Apache HTTP Server proxy encoding problem<P>
+CVE-2024-38474: Apache HTTP Server weakness with encoded question marks in backreferences<P>
+CVE-2024-38475: Apache HTTP Server weakness in mod_rewrite when first segment of substitution matches filesystem path.<P>
+CVE-2024-38476: Apache HTTP Server may use exploitable/malicious backend application output to run local handlers via internal redirect<P>
+CVE-2024-38477: Apache HTTP Server Crash resulting in Denial of Service in mod_proxy via a malicious request<P>
+CVE-2024-39573: Apache HTTP Server mod_rewrite proxy handler substitution<BR>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.60<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banners to detect if the target is running the vulnerable version of apache httpd.<P>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732749,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2025-49812),CGI,Medium,6.0,,,1,CVE-2025-49812,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2025-49812:  Apache HTTP Server: mod_ssl TLS upgrade attack<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732750,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-47252),CGI,High,8.0,,,1,CVE-2024-47252,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2024-47252:  Apache HTTP Server: mod_ssl error log variable escaping<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732752,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-43394),CGI,Medium,6.0,,,1,CVE-2024-43394,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2024-43394:  Apache HTTP Server: SSRF on Windows due to UNC paths<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732754,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-43204),CGI,Low,4.0,,,1,CVE-2024-43204,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2024-43204:  Apache HTTP Server: SSRF with mod_headers setting Content-Type header<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:732756,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-42516),CGI,Medium,6.0,,,1,CVE-2024-42516,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2024-42516:  Apache HTTP Server: HTTP response splitting<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:733485,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.66 Security Vulnerabilities,CGI,Medium,6.0,,,1,CVE-2025-58098,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2025-58098:  Apache HTTP Server: Server Side Includes adds query string to #exec cmd=...<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.66<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734123,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.67 Security Vulnerabilities,CGI,Low,4.0,,,1,CVE-2026-34032,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2026-34032:  Apache HTTP Server: mod_proxy_ajp: Heap Buffer Over-Read Due to Missing Null-Termination Check (ajp_msg_get_string)<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.67<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+<B>Note</B>: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734375,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-29170),CGI,Low,4.0,,,1,CVE-2026-29170,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-29170:  mod_proxy_ftp XSS<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734376,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44119),CGI,Medium,6.0,,,1,CVE-2026-44119,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44119:  escalation of privilege through expressions in .htaccess in multiple modules<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734377,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-29167),CGI,Low,4.0,,,1,CVE-2026-29167,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-29167:  mod_ldap per-dir use-after-free<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734378,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-42536),CGI,Low,4.0,,,1,CVE-2026-42536,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-42536:  mod_xml2enc heap overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734379,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44185),CGI,Low,4.0,,,1,CVE-2026-44185,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44185:  Stack Buffer Over-Read in mod_ssl OCSP `send_request`<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734380,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44186),CGI,Medium,6.0,,,1,CVE-2026-44186,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44186:  Loop in `proxy_ftp_handler` in mod_proxy_ftp<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734382,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-34355),CGI,Medium,6.0,,,1,CVE-2026-34355,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-34355:  mod_proxy_html buffer overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734383,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-43951),CGI,Medium,6.0,,,1,CVE-2026-43951,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-43951:  OOB Read in `merge_response_headers` can cause crash<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734385,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-42535),CGI,Medium,6.0,,,1,CVE-2026-42535,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-42535:  mod_dav_fs protected directory access<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734386,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-34356),CGI,Low,4.0,,,1,CVE-2026-34356,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-34356:  ProxyPassReverseCookieMap buffer overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734387,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44631),CGI,Low,4.0,,,1,CVE-2026-44631,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44631:  Heap Underflow in `ap_regname` via Signed Char Overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:735677,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.69 Security Vulnerabilities,CGI,High,10.0,,,1,CVE-2026-56154,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2026-56154:  mod_rewrite use-after-free via %{LA-U:HTTP:...}<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.69<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+The authenticated detections reviews Apache version from the command &quot;httpd -v&quot;.<P>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13770,jQuery Versions Greater than or Equal to 1.2 and Before 3.5.0 Cross-Site Scripting Vulnerability,CGI,Medium,6.0,,,1,CVE-2020-11022,True,False,,False,0,"JQuery is prone to a cross-site-scripting vulnerability because it fails to sufficiently sanitize user-supplied input.<P>
+
+Affected Versions: <BR>
+jQuery versions greater than or equal to 1.2 and before 3.5.0.
+
+<P>QID Detection Logic(Unauthenticated): <BR>
+It checks for vulnerable versions of jQuery from default web page.<P>","Vendor has advised to Upgrade jquery to version 3.5.0
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://jquery.com/download/"" TARGET=""_blank"">jQuery</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:13772,jQuery Cross-Site Scripting Vulnerability,CGI,Medium,6.0,,,1,CVE-2020-11023,True,False,CVE-2020-11023,True,0,"JQuery is prone to a cross-site-scripting vulnerability because it fails to sufficiently sanitize user-supplied input.<P>
+
+Affected Versions: <BR>
+jQuery versions greater than or equal to 1.0.3 and before 3.5.0.
+
+<P>QID Detection Logic(Unauthenticated): <BR>
+It checks for vulnerable versions of jQuery from default web page.<P>","Vendor has advised to Upgrade jquery to version 3.5.0
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://jquery.com/download/"" TARGET=""_blank"">jQuery</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:730209,Apache Hypertext Transfer Protocol Server (HTTP Server) Multiple Vulnerabilities,CGI,High,8.0,,,3,CVE-2021-34798;CVE-2021-39275;CVE-2021-40438,True,False,CVE-2021-40438,True,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.48 and earlier<P>
+
+QID Detection Logic:(Unauthenticated)
+This QID sends an HTTP GET request to the default page and checks for a match for a string &quot;(Server:.*)(Apache)&quot;; then checks for vulnerable versions of Apache HTTP.","Customers are advised to update to Apache HTTP Server 2.4.49 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:11924,WordPress load-scripts.php Denial of Service Vulnerability,CGI,Medium,6.0,,,1,CVE-2018-6389,True,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+Application-level denial of service (DoS) vulnerability has been discovered in WordPress CMS platform that could allow anyone to take down most WordPress websites even with a single machine.<P>
+Affected Versions:<BR>
+WordPress  4.9.3 and prior.<P>
+QID Detection Logic:<BR>
+This QID depends on BlindElephant engine to detect the version of the WordPress installation as active attacks could potentially harm live installations.",No solution is available at the time of entry.
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:734908,WordPress Prior to 7.0.4 Multiple Vulnerabilities,CGI,Medium,6.0,,,1,CVE-2026-65640,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P><BR><BR>Affected Versions:<BR>WordPress versions Prior to 7.0.4<BR><BR>QID Detection Logic:<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 7.0.4 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2026/08/wordpress-7-0-4-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2026/08/wordpress-7-0-4-release/"" TARGET=""_blank"">Wordpress 7.0.4</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:735540,WordPress Prior to 7.1.1 Multiple Vulnerabilities,CGI,Medium,6.0,,,1,CVE-2026-93485,True,False,,False,0,"WordPress is software designed for everyone, emphasizing accessibility, performance, security, and ease of use.<P>
+
+<BR><BR>Affected Versions:
+WordPress Version 7.1 and prior to 7.1.1<BR>
+WordPress Version 7.0 and prior to 7.0.4<BR>
+WordPress Version 6.9 and prior to 6.9.7<BR>
+WordPress Version 6.8 and prior to 6.8.8<BR>
+WordPress Version 6.7 and prior to 6.7.7<BR>
+WordPress Version 6.6 and prior to 6.6.7<BR>
+WordPress Version 6.5 and prior to 6.5.10<BR>
+WordPress Version 6.4 and prior to 6.4.10<BR>
+WordPress Version 6.3 and prior to 6.3.10<BR>
+WordPress Version 6.2 and prior to 6.2.11<BR>
+WordPress Version 6.1 and prior to 6.1.12<BR>
+WordPress Version 6.0 and prior to 6.0.14<BR>
+WordPress Version 5.9 and prior to 5.9.16<BR>
+WordPress Version 5.8 and prior to 5.8.15<BR>
+WordPress Version 5.7 and prior to 5.7.17<BR>
+WordPress Version 5.6 and prior to 5.6.19<BR>
+WordPress Version 5.5 and prior to 5.5.20<BR>
+WordPress Version 5.4 and prior to 5.4.21<BR>
+WordPress Version 5.3 and prior to 5.3.23<BR>
+WordPress Version 5.2 and prior to 5.2.26<BR>
+WordPress Version 5.1 and prior to 5.1.24<BR>
+WordPress Version 5.0 and prior to 5.0.27<BR>
+WordPress Version 4.9 and prior to 4.9.31<BR>
+WordPress Version 4.8 and prior to 4.8.30<BR>
+WordPress Version 4.7 and prior to 4.7.35<P>
+
+<BR><BR>QID Detection Logic:
+<BR>The QID checks for the version via the meta generator tag.<P>","Customers are advised to upgrade to the fixed versions 7.1.1 to remediate these vulnerabilities:<BR>For more Information Please visit <A HREF=""https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/"" TARGET=""_blank"">WordPress site</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://wordpress.org/news/2026/09/wordpress-7-1-1-maintenance-and-security-release/"" TARGET=""_blank"">Wordpress 7.1.1</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:86172,Apache HTTP Server Prior to 2.4.16/2.2.31 Multiple Vulnerabilities,Web server,Medium,6.0,,,4,CVE-2015-0228;CVE-2015-0253;CVE-2015-3183;CVE-2015-3185,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.
+<P>
+Apache HTTP Server is exposed to following vulnerabilities:
+<BR><BR>
+-  Crash in ErrorDocument 400 handling (CVE-2015-0253).
+-  HTTP request smuggling attack against chunked request parser (CVE-2015-3183).
+-  ap_some_auth_required API unusable (CVE-2015-3185).
+-  Crash in websockets PING handling (CVE-2015-0228)
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.x prior to 2.4.16 are affected.
+Apache HTTP Server versions 2.2.x prior to 2.2.31 are affected.","These vulnerabilities have been patched in Apache. Refer to <A HREF=""http://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd 2.4.16 Changelog</A> and <A HREF=""http://httpd.apache.org/security/vulnerabilities_22.html"" TARGET=""_blank"">Apache httpd 2.2.31 Changelog</A> or your Linux distro for further details.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""http://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache 2.4.16/2.2.31: Apache</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:87555,Apache httpd Server Uninitialized memory reflection in mod_auth_digest Information Disclosure Vulnerability,Web server,High,10.0,,,1,CVE-2017-9788,True,False,,False,0,"Apache Web Server is an open-source web server.<P>
+Uninitialized memory reflection in mod_auth_digest leading to leakage of potentially confidential information, and a segfault.<P>
+
+Affected Versions:<BR>
+Apache httpd 2.2.x before 2.2.34<BR>
+Apache httpd 2.4.x before 2.4.27<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+The authenticated detections reviews Apache version from the command &quot;httpd -v&quot;.<P>","Customers are advised to upgrade to <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache httpd 2.2.34, 2.4.27</A> or later versions to remediate this vulnerability.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache httpd 2.2.34, 2.4.27 or later</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:87296,Apache HTTP Server Prior to 2.4.25 Multiple Vulnerabilities,Web server,High,8.0,,,5,CVE-2016-8743;CVE-2016-8740;CVE-2016-2161;CVE-2016-0736;CVE-2016-5387,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.
+<P>
+Apache HTTP Server is exposed to following vulnerabilities:
+<BR>
+ - Apache HTTP Request Parsing Whitespace Defects (CVE-2016-8743).
+ - HTTP/2 CONTINUATION denial of service (CVE-2016-8740).
+ - DoS vulnerability in mod_auth_digest (CVE-2016-2161).
+ - Padding Oracle in Apache mod_session_crypto (CVE-2016-0736)
+ - HTTP_PROXY environment variable &quot;httpoxy&quot; mitigation (CVE-2016-5387)
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.x prior to 2.4.25
+
+QID Detection Logic (Unauthenticated):<BR>
+This QID matches vulnerable versions based on the exposed banner information under the HTTP service<P>","These vulnerabilities have been patched in Apache. Refer to  <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd 2.4.25 Changelog</A> or your Linux distro for further details.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache 2.4.25: Apache 2.4.x</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:87379,PHP Multiple Versions Arbitrary Code Execution Vulnerability,Web server,High,8.0,,,4,CVE-2019-9638;CVE-2019-9639;CVE-2019-9640;CVE-2019-9641,True,False,,False,0,"PHP is a programming language originally designed for use in web-based applications with HTML content. PHP supports a wide variety of platforms and is used by numerous web-based software applications.<P>
+Vulnerability Detected:<BR>
+EXIF component of PHP could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system.<BR>
+CVE-2019-9638 - An uninitialized read in exif_process_IFD_in_MAKERNOTE because of mishandling the maker_note-&gt;offset relationship to value_len.<BR>
+CVE-2019-9639 - An uninitialized read in exif_process_IFD_in_MAKERNOTE because of mishandling the data_len variable.<BR>
+CVE-2019-9640 - An Invalid Read in exif_process_SOFn.<BR>
+CVE-2019-9641 - An uninitialized read in exif_process_IFD_in_TIFF.<P>
+Affected Versions:<BR>
+PHP before 7.1.27, 7.2.x before 7.2.16, and 7.3.x before 7.3.3<P>
+<P>QID Detection Logic (Unauthenticated):<BR>
+This QID checks the HTTP Server header to see if the server is running a vulnerable version of PHP.","Customers are advised to upgrade to the latest version of <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP.</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://www.php.net/downloads.php"" TARGET=""_blank"">PHP</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.110,,80/tcp,qualys:105667,EOL/Obsolete Software: Wordpress Version Prior to 4.9.8 Detected,Security Policy,High,10.0,,,0,,False,False,,False,0,"WordPress is an open source blogging tool and content management system based on PHP and MySQL. It has many features including a plug-in architecture and a template system.<P>
+WordPress mentions that the only current officially supported version is WordPress 4.9.8. There are no fixed period of support nor Long Term Support (LTS) version such as Ubuntu and none of them are safe to use, except the latest series, which is actively maintained. <P>","Customers are advised to update to the latest WordPress version from <A HREF=""https://wordpress.org/download/"" TARGET=""_blank"">here</A>."
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:82040,ICMP Replies Received,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+<P>
+We have sent the following types of packets to trigger the host to send us ICMP replies: 
+<P>
+Echo Request (to trigger Echo Reply)<br>
+Timestamp Request (to trigger Timestamp Reply)<br>
+Address Mask Request (to trigger Address Mask Reply)<br>
+UDP Packet (to trigger Port Unreachable Reply)<br>
+IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+<P>
+Listed in the ""Result"" section are the ICMP replies that we have received.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:82056,Host Name Not Available,TCP/IP,Log,2.0,,,0,,False,False,,False,0,Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.,
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:82042,Option to Use Three-Way Handshake TCP Port Scanning Enabled,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"You have enabled three-way handshake TCP port scanning. This option may be selected to protect the host against some potential issues with half-open TCP port scanning.
+<P>
+When this option is enabled, you may experience some increase in the scanning time. No attempt is made to detect the presence of a firewall and the version of the operating system. Consequently, the host is not tested for vulnerabilities, whose detection is dependent on the detection of a firewall or the operating system.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:6,DNS Host Name,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:45391,Apache HTTP Server Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows. The goal of this project is to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards.<P>
+
+Apache HTTP Server was detected on the target.<P>
+QID Detection Logic (Authenticated):<BR>
+Operating System: Linux<BR>
+The detection looks for Apache HTTP Server installation path using ps command. The version is extracted from the Apache HTTP Server's binary.<BR>
+Operating System: Windows<BR>
+This QID checks Windows registry to see if Apache HTTP Server is installed. If found, it displays the installed version.<BR>
+
+QID Detection Logic (Unauthenticated):<BR>
+This QID checks the HTTP response headers if the Apache web server is running on the target system.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:45038,Host Scan Time - Scanner,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+<P>
+The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.
+<P>",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:45426,Scan Activity per Port,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Scan activity per port is an estimate of the amount of internal process time the scanner engine spent scanning a particular TCP or UDP port. This information can be useful to determine the reason for long scan times. The individual time values represent internal process time, not elapsed time, and can be longer than the total scan time because of internal parallelism. High values are often caused by slowly responding services or services on which requests time out.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:12230,Default Web Page,CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:13910,Default Web Page ( Follow HTTP Redirection),CGI,Log,2.0,,,0,,False,False,,False,0,The Result section displays the default Web page for the Web server following HTTP redirections.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:87089,Web Server Unconfigured - Default Install Page Present,Web server,Log,2.0,,,0,,False,False,,False,0,"The web server uses its default welcome page. 
+<P>This may mean that the web server is not used or is not properly configured.
+<P>
+QID Detection Logic (unauthenticated):<BR>
+The Detection reviews the default page.<BR>
+<P>",Configure the web server to not display the default welcome page or disable the HTTP service if you do not use it.
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:86565,Web Server Supports HTTP Request Pipelining,Web server,Log,2.0,,,0,,False,False,,False,0,"Version 1.1 of the HTTP protocol supports URL-Request Pipelining. This means that instead of using the &quot;Keep-Alive&quot; method to keep the TCP connection alive over multiple requests, the protocol allows multiple HTTP URL requests to be made in the same TCP packet. Any Web server which is HTTP 1.1 compliant should then process all the URLs requested in the single TCP packet and respond as usual.
+<P>
+The target Web server was found to support this functionality of the HTTP 1.1 protocol.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:45033,HTTP method TRACE and/or TRACK Enabled,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The target Web server supports the TRACE and/or TRACK HTTP methods. These methods allow debugging and connection trace analysis for connections from the client to the Web server. Per the HTTP specification, when this method is used, the Web server echoes back the information sent to it by the client unmodified and unfiltered. Microsoft IIS Web server uses an alias TRACK for the TRACE method, and is functionally the same.
+<P>
+The exact method(s) used are shown in the Results section.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:45266,Web Server HTTP Protocol Versions,Information gathering,Log,4.0,,,0,,False,False,,False,0,This QID lists supported HTTP protocol (HTTP 1.x or HTTP 2) from remote web server.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:48065,Apache Default Installation/Welcome Page Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Apache default installation or &quot;Welcome&quot; page is installed on this server. This usually indicates a newly installed server which has not yet been configured properly and which may not be known about.<P>
+
+Detection Logic(unauthenticated):<BR>
+QID will check for the apache default Installation/Welcome Page on apache server.<P>",Customers are recommended to disable default Apache welcome configuration.
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:48118,HTTP Response Method and Header Information Collected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"This QID prints the information, in the form of a text record, that a web server sends back to a client's browser in response to receiving a single HTTP GET request. <P>
+QID Detection Logic:<BR>
+This QID returns the HTTP response method and header information returned by a web server.<P>",N/A<P>
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:48131,Referrer-Policy HTTP Security Header Not Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"No Referrer Policy is specified for the link. It checks for one of the following Referrer Policy in the response headers:<P>
+1) no-referrer<BR>
+2) no-referrer-when-downgrade<BR>
+3) same-origin<BR>
+4) origin<BR>
+5) origin-when-cross-origin<BR>
+6) strict-origin<BR>
+7) strict-origin-when-cross-origin<BR><P>
+
+QID Detection Logic(Unauthenticated):<BR>
+If the Referrer Policy header is not found , checks in response body for meta tag containing tag name as &quot;referrer&quot; and one of the above Referrer Policy.","Referrer Policy header improves security by ensuring websites don't leak sensitive information via the referrer header. It's recommended to add secure Referrer Policies as a part of a defense-in-depth approach.<P>
+
+References:<BR>
+- <A HREF=""https://www.w3.org/TR/referrer-policy/"" TARGET=""_blank"">https://www.w3.org/TR/referrer-policy/</A><BR>
+- <A HREF=""https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"" TARGET=""_blank"">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:45056,HTTP Methods Returned by OPTIONS Request,Information gathering,Log,2.0,,,0,,False,False,,False,0,The HTTP methods returned in response to an OPTIONS request to the Web server detected on the target host are listed.,N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:48001,Content-Security-Policy HTTP Security Header Not Detected,Information gathering,Log,6.0,,,0,,False,False,,False,0,"The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. This helps guard against cross-site scripting attacks (XSS).<P>
+QID Detection Logic:<BR>
+This QID detects the absence of the Content-Security-Policy HTTP header by transmitting a GET request.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:82023,Open TCP Services List,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+<P>
+The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected).","Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF=""http://www.cert.org"" TARGET=""_blank"">CERT Web site</A>."
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:86000,Web Server Version,Web server,Log,2.0,,,0,,False,False,,False,0,"A web server is server software, or hardware dedicated to running this software, that can satisfy client requests on the World Wide Web. <P>",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:11827,HTTP Security Header Not Detected,CGI,Low,4.0,,,0,,False,False,,False,0,"This QID reports the absence of the following <A HREF=""https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#tab=Headers"" TARGET=""_blank"">HTTP headers</A> according to <A HREF=""https://cwe.mitre.org/data/definitions/693.html"" TARGET=""_blank"">CWE-693: Protection Mechanism Failure</A>:<BR>
+
+X-Content-Type-Options: This HTTP header will prevent the browser from interpreting files as a different MIME type to what is specified in the Content-Type HTTP header. <BR>
+Strict-Transport-Security: The HTTP Strict-Transport-Security response header (HSTS) allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections, and never via the insecure HTTP protocol.<P>
+
+<P>QID Detection Logic:<BR>
+This unauthenticated QID will send a GET request sent to '/' (default) endpoint and looks for the presence of the following HTTP Headers in the received response:<BR>
+The Valid directives are as belows:
+X-Content-Type-Options: nosniff<P>
+Strict-Transport-Security: max-age=&lt; [;includeSubDomains]<P>","<B>Note:</B> To better debug the results of this QID, it is requested that customers execute commands to simulate the following functionality: curl -lkL --verbose.<P>
+CWE-693: Protection Mechanism Failure mentions the following - The product does not use or incorrectly uses a protection mechanism that provides sufficient defense against directed attacks against the product. A &quot;missing&quot; protection mechanism occurs when the application does not define any mechanism against a certain class of attack. An &quot;insufficient&quot; protection mechanism might provide some defenses - for example, against the most common attacks - but it does not protect against everything that is intended. Finally, an &quot;ignored&quot; mechanism occurs when a mechanism is available and in active use within the product, but the developer has not applied it in some code path.<P>
+Customers are advised to set proper <A HREF=""https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Option"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,general/tcp,qualys:87383,Apache HTTP Server Privilege Escalation From Modules Scripts,Web server,High,8.0,,,6,CVE-2019-0211;CVE-2019-0217;CVE-2019-0215;CVE-2019-0197;CVE-2019-0196;CVE-2019-0220,True,False,CVE-2019-0211,True,0,"In Apache HTTP Server 2.4 releases 2.4.17 to 2.4.38, with MPM event, worker or prefork, code executing in less-privileged child processes or threads (including scripts executed by an in-process scripting interpreter) could execute arbitrary code with the privileges of the parent process (usually root) by manipulating the scoreboard. Non-Unix systems are not affected.
+<P>Affected Versions:<BR>
+2.4.38, 2.4.37, 2.4.35, 2.4.34, 2.4.33, 2.4.30, 2.4.29, 2.4.28, 2.4.27, 2.4.26, 2.4.25, 2.4.23, 2.4.20, 2.4.18, 2.4.17<P>
+
+QID Detection Logic (Unauthenticated):<BR>
+This QID Checks for the vulnerable versions based on the exposed banner information under the HTTP service.<P>
+
+QID Detection Logic (Authenticated):<BR>
+This QID Checks for the vulnerable versions of Apache HTTP Server based on version detected from the command.<P>","This vulnerability have been patched in Apache. Refer to  <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd 2.4.39 Changelog</A> or your Linux distro for further details.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd 2.4.39</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730109,Apache HTTP Server Multiple Vulnerabilities,CGI,High,8.0,,,7,CVE-2019-17567;CVE-2020-13938;CVE-2020-13950;CVE-2020-35452;CVE-2021-26690;CVE-2021-26691;CVE-2021-30641,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.46.<P>
+
+<B>NOTE:</B><BR>
+CVE-2021-26691, CVE-2021-26690, CVE-2020-35452, CVE-2020-13938 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41, 2.4.39, 2.4.38, 2.4.37, 2.4.35, 2.4.34, 2.4.33, 2.4.29, 2.4.28, 2.4.27, 2.4.26, 2.4.25, 2.4.23, 2.4.20, 2.4.18, 2.4.17, 2.4.16, 2.4.12, 2.4.10, 2.4.9, 2.4.7, 2.4.6, 2.4.4, 2.4.3, 2.4.2, 2.4.1, 2.4.0.<BR>
+CVE-2019-17567 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41, 2.4.39, 2.4.38, 2.4.37, 2.4.35, 2.4.34, 2.4.33, 2.4.29, 2.4.28, 2.4.27, 2.4.26, 2.4.25, 2.4.23, 2.4.20, 2.4.18, 2.4.17, 2.4.16, 2.4.12, 2.4.10, 2.4.9, 2.4.7, 2.4.6<BR>
+CVE-2021-30641 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41, 2.4.39<BR>
+CVE-2020-13950 affects to Apache HTTP Server versions 2.4.46, 2.4.43, 2.4.41<BR>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd. The version is identified based on network-visible behavior and based on the web server banner<P>","Customers are advised to update Apache httpd 2.4.48.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server 2.4.47</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730210,Apache Hypertext Transfer Protocol Server (HTTP Server) HTTP/2 Method Injection Vulnerability,CGI,Low,4.0,,,1,CVE-2021-33193,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+A crafted method sent through HTTP/2 will bypass validation and be forwarded by mod_proxy, which can lead to request splitting or cache poisoning.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.17 to 2.4.48.<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update to Apache HTTP Server 2.4.49 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">NA</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:13745,Apache HTTP Server multiple vulnerabilities,CGI,Medium,6.0,,,2,CVE-2020-1934;CVE-2020-1927,True,False,,False,0,"<P>Apache HTTP Server is an HTTP web server application.
+
+<P>CVE-2020-1934: In Apache HTTP Server, mod_proxy_ftp may use uninitialized memory when proxying to a malicious FTP server.<BR>
+<P>CVE-2020-1927: In Apache HTTP Server, redirects configured with mod_rewrite that were intended to be self-referential might be fooled by encoded newlines and redirect instead to an an unexpected URL within the request URL.<BR>
+
+<P>Affected Versions:<BR>
+Apache httpd 2.4.0 to 2.4.41<BR>
+
+<P>QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<BR>","Customers are advised to update Apache httpd to 2.4.42 or later.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache httpd 2.4.42 or later 2.4.</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730313,Apache Hypertext Transfer Protocol (HTTP) Server NULL Pointer Dereference and Server Side Request Forgery (SSRF) Vulnerability,CGI,High,8.0,,,1,CVE-2021-44224,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+A crafted URI sent to httpd configured as a forward proxy (ProxyRequests on) can cause a crash (NULL pointer dereference) or, for configurations mixing forward and reverse proxy declarations, can allow for requests to be directed to a declared Unix Domain Socket endpoint (Server Side Request Forgery).<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.7 - 2.4.51<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for vulnerable Apache Version by grabbing the banner from HTTP response<P>","Customers are advised to update to Apache HTTP Server 2.4.52 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730312,Apache Hypertext Transfer Protocol (HTTP) Server Buffer Overflow Vulnerability,CGI,High,8.0,,,1,CVE-2021-44790,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+A carefully crafted request body can cause a buffer overflow in the mod_lua multipart parser (r:parsebody() called from Lua scripts).<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.51 and earlier<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for vulnerable Apache Version by grabbing the banner from HTTP response<P>","Customers are advised to update to Apache HTTP Server 2.4.52 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730403,Apache Hypertext Transfer Protocol (HTTP) Server Out-of-bounds Write Vulnerability,CGI,High,8.0,,,4,CVE-2022-23943;CVE-2022-22721;CVE-2022-22720;CVE-2022-22719,True,False,,False,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+CVE-2022-22719 - A carefully crafted request body can cause a read to a random memory area which could cause the process to crash. <BR>
+CVE-2022-22720 - Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are encountered discarding the request body, exposing the server to HTTP Request Smuggling <BR>
+CVE-2022-22721 - If LimitXMLRequestBody is set to allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later causes out of bounds writes.<BR>
+CVE-2022-23943 - Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows an attacker to overwrite heap memory with possibly attacker provided data.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4 - 2.4.52<P>","Customers are advised to update to Apache HTTP Server 2.4.53 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730529,Apache Hypertext Transfer Protocol Server (HTTP Server) mod_proxy X-Forwarded-For dropped by hop-by-hop mechanism Vulnerability,CGI,High,10.0,,,1,CVE-2022-31813,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.53 and earlier <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache httpd</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730758,Apache Hypertext Transfer Protocol (HTTP) Server Request Smuggling Vulnerability,CGI,High,8.0,,,1,CVE-2023-25690,True,False,,False,0,"Some mod_proxy configurations on Apache HTTP Server versions 2.4.0 through 2.4.55 allow a HTTP Request Smuggling attack.<P>
+Configurations are affected when mod_proxy is enabled along with some form of RewriteRule or ProxyPassMatch in which a non-specific pattern matches some portion of the user-supplied request-target (URL) data and is then re-inserted into the proxied request-target using variable substitution.<P><P>
+
+Affected Versions:<BR>
+Apache HTTP Server Versions 2.4.0 through 2.4.55 (including)<P>
+
+QID Detection Logic(Unauthenticated): <BR>
+This QID checks for vulnerable version of Apache HTTP Server by sending a GET request to a target and extracting the version from the response header. <P>","Customers are advised to upgrade to Apache HTTP Server version 2.4.56 or later. For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html#2.4.56"" TARGET=""_BLANK""> Apache HTTP Server Security Advisory</A>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html#2.4.56"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731355,"Apache Hypertext Transfer Protocol Server (HTTP Server) Multiple Security Vulnerabilities (CVE-2023-38709, CVE-2024-24795)",CGI,Medium,6.0,,,2,CVE-2023-38709;CVE-2024-24795,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2023-38709: Faulty input validation in the core of Apache allows malicious or exploitable backend/content generators to split HTTP responses.<BR>
+CVE-2024-24795: HTTP Response splitting in multiple modules in Apache HTTP Server allows an attacker that can inject malicious response headers into backend applications to cause an HTTP desynchronization attack.<BR><P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.59<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache versions respectively.<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731513,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.55 Multiple Security Vulnerabilities,CGI,High,8.0,,,2,CVE-2006-20001;CVE-2022-37436,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2006-20001: A carefully crafted If: request header can cause a memory read, or write of a single zero byte, in a pool (heap) memory location beyond the header value sent. This could cause the process to crash.<BR>
+CVE-2022-37436: A malicious backend can cause the response headers to be truncated early, resulting in some headers being incorporated into the response body. If the later headers have any security purpose, they will not be interpreted by the client.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.55<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache HTTP Server versions 2.4.55 or later.<BR>
+For further information, please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731514,"Apache Hypertext Transfer Protocol Server (HTTP Server) Multiple Security Vulnerabilities (CVE-2022-28330, CVE-2022-28614, CVE-2022-28615, CVE-2022-29404, CVE-2022-30556)",CGI,High,10.0,,,5,CVE-2022-28330;CVE-2022-28614;CVE-2022-28615;CVE-2022-29404;CVE-2022-30556,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2022-28330: Apache HTTP Server 2.4.53 and earlier on Windows may read beyond bounds when configured to process requests with the mod_isapi module.<BR>
+CVE-2022-28614: The ap_rwrite() function in Apache HTTP Server 2.4.53 and earlier may read unintended memory if an attacker can cause the server to reflect very large input using ap_rwrite() or ap_rputs(), such as with mod_luas r:puts() function.<BR>
+CVE-2022-28615: Apache HTTP Server 2.4.53 and earlier may crash or disclose information due to a read beyond bounds in ap_strcmp_match() when provided with an extremely large input buffer.<BR>
+CVE-2022-29404: In Apache HTTP Server 2.4.53 and earlier, a malicious request to a lua script that calls r:parsebody(0) may cause a denial of service due to no default limit on possible input size.<BR>
+CVE-2022-30556: Apache HTTP Server 2.4.53 and earlier may return lengths to applications calling r:wsread() that point past the end of the storage allocated for the buffer.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4.53 and earlier <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banners to detect if the target is running the vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731521,Apache Hypertext Transfer Protocol Server (HTTP Server) Request Smuggling Vulnerability (CVE-2022-26377),CGI,High,8.0,,,1,CVE-2022-26377,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2022-26377: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions 2.4 to 2.4.53 <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banners to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731520,Apache Hypertext Transfer Protocol Server (HTTP Server) Request Smuggling Vulnerability (CVE-2022-36760),CGI,High,8.0,,,1,CVE-2022-36760,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2022-36760: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to. <P>
+
+Affected Versions:<BR>
+Apache HTTP Server from 2.4 through 2.4.54 <P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache HTTP Server versions 2.4.55 or later.<BR>
+For further information, please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731517,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.58 Multiple Security Vulnerabilities,CGI,High,8.0,,,2,CVE-2023-31122;CVE-2023-45802,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2023-31122: Out-of-bounds Read vulnerability in mod_macro of Apache HTTP Server.This issue affects Apache HTTP Server<BR>
+CVE-2023-45802: A client could send new requests and resets, keeping the connection busy and open and causing the memory footprint to keep on growing. On connection close, all resources were reclaimed, but the process might run out of memory before that.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.58<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banner to detect if the target is running vulnerable version of apache httpd.<P>","Customers are advised to update the latest Apache HTTP Server versions 2.4.58 or later.<BR>
+For further information, please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server Security Advisory</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:731613,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.60 Multiple Security Vulnerabilities,CGI,High,8.0,,,7,CVE-2024-38472;CVE-2024-38473;CVE-2024-38474;CVE-2024-38475;CVE-2024-38476;CVE-2024-38477;CVE-2024-39573,True,False,CVE-2024-38475,True,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2024-38472: SSRF in Apache HTTP Server on Windows allows to potentially leak NTML hashes to a malicious server via SSRF and malicious requests or content<P>
+CVE-2024-38473: Apache HTTP Server proxy encoding problem<P>
+CVE-2024-38474: Apache HTTP Server weakness with encoded question marks in backreferences<P>
+CVE-2024-38475: Apache HTTP Server weakness in mod_rewrite when first segment of substitution matches filesystem path.<P>
+CVE-2024-38476: Apache HTTP Server may use exploitable/malicious backend application output to run local handlers via internal redirect<P>
+CVE-2024-38477: Apache HTTP Server Crash resulting in Denial of Service in mod_proxy via a malicious request<P>
+CVE-2024-39573: Apache HTTP Server mod_rewrite proxy handler substitution<BR>
+
+Affected Versions:<BR>
+Apache HTTP Server versions prior to 2.4.60<P>
+
+QID Detection Logic:(Unauthenticated)<BR>
+This QID checks for server banners to detect if the target is running the vulnerable version of apache httpd.<P>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information, visit <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">here</A>.<P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/download.cgi"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732749,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2025-49812),CGI,Medium,6.0,,,1,CVE-2025-49812,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2025-49812:  Apache HTTP Server: mod_ssl TLS upgrade attack<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732750,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-47252),CGI,High,8.0,,,1,CVE-2024-47252,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2024-47252:  Apache HTTP Server: mod_ssl error log variable escaping<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732752,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-43394),CGI,Medium,6.0,,,1,CVE-2024-43394,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2024-43394:  Apache HTTP Server: SSRF on Windows due to UNC paths<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732754,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-43204),CGI,Low,4.0,,,1,CVE-2024-43204,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2024-43204:  Apache HTTP Server: SSRF with mod_headers setting Content-Type header<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732755,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2025-49630),CGI,Low,4.0,,,1,CVE-2025-49630,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2025-49630:  Apache HTTP Server: mod_proxy_http2 denial of service<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.26 through 2.4.63<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732756,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.64 Security Vulnerabilities (CVE-2024-42516),CGI,Medium,6.0,,,1,CVE-2024-42516,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2024-42516:  Apache HTTP Server: HTTP response splitting<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.64<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:732751,Apache Hypertext Transfer Protocol Server (HTTP Server) Security Vulnerabilities,CGI,Medium,6.0,,,1,CVE-2025-53020,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2025-53020:  Apache HTTP Server: HTTP/2 DoS by Memory Increase<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.17 through 2.4.63<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:733485,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.66 Security Vulnerabilities,CGI,Medium,6.0,,,1,CVE-2025-58098,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2025-58098:  Apache HTTP Server: Server Side Includes adds query string to #exec cmd=...<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.66<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734123,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.67 Security Vulnerabilities,CGI,Low,4.0,,,1,CVE-2026-34032,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2026-34032:  Apache HTTP Server: mod_proxy_ajp: Heap Buffer Over-Read Due to Missing Null-Termination Check (ajp_msg_get_string)<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.67<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+<B>Note</B>: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734375,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-29170),CGI,Low,4.0,,,1,CVE-2026-29170,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-29170:  mod_proxy_ftp XSS<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734376,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44119),CGI,Medium,6.0,,,1,CVE-2026-44119,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44119:  escalation of privilege through expressions in .htaccess in multiple modules<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734377,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-29167),CGI,Low,4.0,,,1,CVE-2026-29167,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-29167:  mod_ldap per-dir use-after-free<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734378,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-42536),CGI,Low,4.0,,,1,CVE-2026-42536,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-42536:  mod_xml2enc heap overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734379,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44185),CGI,Low,4.0,,,1,CVE-2026-44185,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44185:  Stack Buffer Over-Read in mod_ssl OCSP `send_request`<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734380,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44186),CGI,Medium,6.0,,,1,CVE-2026-44186,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44186:  Loop in `proxy_ftp_handler` in mod_proxy_ftp<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734381,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-49975),CGI,Medium,6.0,,,1,CVE-2026-49975,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-49975:  mod_http2 denial of service<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734382,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-34355),CGI,Medium,6.0,,,1,CVE-2026-34355,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-34355:  mod_proxy_html buffer overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734383,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-43951),CGI,Medium,6.0,,,1,CVE-2026-43951,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-43951:  OOB Read in `merge_response_headers` can cause crash<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734385,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-42535),CGI,Medium,6.0,,,1,CVE-2026-42535,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-42535:  mod_dav_fs protected directory access<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734386,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-34356),CGI,Low,4.0,,,1,CVE-2026-34356,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-34356:  ProxyPassReverseCookieMap buffer overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:734387,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.68 Security Vulnerabilities (CVE-2026-44631),CGI,Low,4.0,,,1,CVE-2026-44631,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+CVE-2026-44631:  Heap Underflow in `ap_regname` via Signed Char Overflow<P>
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.68<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:735677,Apache Hypertext Transfer Protocol Server (HTTP Server) Prior to 2.4.69 Security Vulnerabilities,CGI,High,10.0,,,1,CVE-2026-56154,True,False,,False,0,"Apache HTTP Server is an HTTP web server application.<P>
+
+CVE-2026-56154:  mod_rewrite use-after-free via %{LA-U:HTTP:...}<P>
+
+
+Affected Versions:<BR>
+Apache httpd 2.4.x before 2.4.69<P>
+
+QID Detection Logic:<BR>
+The remote detection reviews the Apache version from the banner of the HTTP Server.<BR>
+The authenticated detections reviews Apache version from the command &quot;httpd -v&quot;.<P>
+Note: Detection is made practice as it checks for server banners only<P>","Customers are advised to update latest Apache httpd<BR>
+For more information please refer to <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_BLANK"">Apachehttpserver</A><BR>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.111,,80/tcp,qualys:730209,Apache Hypertext Transfer Protocol Server (HTTP Server) Multiple Vulnerabilities,CGI,High,8.0,,,3,CVE-2021-34798;CVE-2021-39275;CVE-2021-40438,True,False,CVE-2021-40438,True,0,"Apache HTTP Server is a free and open-source cross-platform web server software, released under the terms of Apache License 2.0.<P>
+
+Affected Versions:<BR>
+Apache HTTP Server 2.4.48 and earlier<P>
+
+QID Detection Logic:(Unauthenticated)
+This QID sends an HTTP GET request to the default page and checks for a match for a string &quot;(Server:.*)(Apache)&quot;; then checks for vulnerable versions of Apache HTTP.","Customers are advised to update to Apache HTTP Server 2.4.49 or later. For more information, check <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache Security Advisory</A><P>
+<P>Patch:<BR>
+Following are links for downloading patches to fix the vulnerabilities:
+<P> <A HREF=""https://httpd.apache.org/security/vulnerabilities_24.html"" TARGET=""_blank"">Apache HTTP Server</A>"
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:82040,ICMP Replies Received,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"ICMP (Internet Control and Error Message Protocol) is a protocol encapsulated in IP packets. ICMP's principal purpose is to provide a protocol layer that informs gateways of the inter-connectivity and accessibility of other gateways or hosts. 
+<P>
+We have sent the following types of packets to trigger the host to send us ICMP replies: 
+<P>
+Echo Request (to trigger Echo Reply)<br>
+Timestamp Request (to trigger Timestamp Reply)<br>
+Address Mask Request (to trigger Address Mask Reply)<br>
+UDP Packet (to trigger Port Unreachable Reply)<br>
+IP Packet with Protocol >= 250 (to trigger Protocol Unreachable Reply)
+<P>
+Listed in the ""Result"" section are the ICMP replies that we have received.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:82056,Host Name Not Available,TCP/IP,Log,2.0,,,0,,False,False,,False,0,Attempts to obtain the fully-qualified domain name (FQDN) or the Netbios name failed for this host.,
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:82042,Option to Use Three-Way Handshake TCP Port Scanning Enabled,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"You have enabled three-way handshake TCP port scanning. This option may be selected to protect the host against some potential issues with half-open TCP port scanning.
+<P>
+When this option is enabled, you may experience some increase in the scanning time. No attempt is made to detect the presence of a firewall and the version of the operating system. Consequently, the host is not tested for vulnerabilities, whose detection is dependent on the detection of a firewall or the operating system.",
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:6,DNS Host Name,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The fully qualified domain name of this host, if it was obtained from a DNS server, is displayed in the RESULT section.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:48263,MySQL Service Detected,Information gathering,Log,2.0,,,0,,False,False,,False,0,"MySQL server running MySQL service detected.<BR>
+
+QID Detection Logic (Unauthenticated): This QID detects versions of MySQL via the banner exposed by the service on tcp port.<BR>
+QID Detection Logic - Linux (Authenticated): This QID detects versions of MySQL via the mysqld -V command and also checks if mysql service is up and running.<P>",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:45038,Host Scan Time - Scanner,Information gathering,Log,2.0,,,0,,False,False,,False,0,"The Host Scan Time is the period of time it takes the scanning engine to perform the vulnerability assessment of a single target host. The Host Scan Time for this host is reported in the Result section below. 
+<P>
+The Host Scan Time does not have a direct correlation to the Duration time as displayed in the Report Summary section of a scan results report. The Duration is the period of time it takes the service to perform a scan task. The Duration includes the time it takes the service to scan all hosts, which may involve parallel scanning. It also includes the time it takes for a scanner appliance to pick up the scan task and transfer the results back to the service's Secure Operating Center. Further, when a scan task is distributed across multiple scanners, the Duration includes the time it takes to perform parallel host scanning on all scanners.
+<P>",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:45426,Scan Activity per Port,Information gathering,Log,2.0,,,0,,False,False,,False,0,"Scan activity per port is an estimate of the amount of internal process time the scanner engine spent scanning a particular TCP or UDP port. This information can be useful to determine the reason for long scan times. The individual time values represent internal process time, not elapsed time, and can be longer than the total scan time because of internal parallelism. High values are often caused by slowly responding services or services on which requests time out.",N/A
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:82023,Open TCP Services List,TCP/IP,Log,2.0,,,0,,False,False,,False,0,"The port scanner enables unauthorized users with the appropriate tools to draw a map of all services on this host that can be accessed from the Internet.  The test was carried out with a &quot;stealth&quot; port scanner so that the server does not log real connections.
+<P>
+The Results section displays the port number (Port), the default service listening on the port (IANA Assigned Ports/Services), the description of the service (Description) and the service that the scanner detected using service discovery (Service Detected).","Shut down any unknown or unused service on the list.  If you have difficulty figuring out which service is provided by which process or program, contact your provider's support team.  For more information about commercial and open-source Intrusion Detection Systems available for detecting port scanners of this kind, visit the <A HREF=""http://www.cert.org"" TARGET=""_blank"">CERT Web site</A>."
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,3306/tcp,qualys:19000,MySQL Banner,Database,Log,4.0,,,0,,False,False,,False,0,"MySQL is an open-source relational database management system. <P>
+
+QID Detection Logic:<BR>
+Checks the MYSQL service<P>",NA
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,general/tcp,qualys:105820,EOL/Obsolete Software: MySQL 5.5.x Detected,Security Policy,High,10.0,,,0,,False,False,,False,0,"MySQL version 5.5 is detected on the host. 
+<P>
+Product Support for MySQL 5.5 ended in December 2018. No further bug fixes, enhancements, security updates or technical support will be available for this release.
+<P>
+QID Detection Logic:<BR>
+This unauthenticated QID flags vulnerable installations based on the version reported by the MySQL service.",Customers are advised to update to the latest supported version of MySQL.<P>
+2026-10-06_qualys_lab3.xml,b2,qualys,172.18.0.112,,3306/tcp,qualys:19568,Database Instance Detected,Database,Low,4.0,,,0,,False,False,,False,0,"The service detected a database installation on the target. Databases like Oracle, MS-SQL, MySQL, IBM DB2, PostGgresql, Firebird and other are detected. The database instance is listed in the result section below.",Users are recommended to encrypt the database information and handle the situations where any error is leading to disclose some sensitive information like database type and its version.

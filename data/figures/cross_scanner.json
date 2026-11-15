@@ -1,0 +1,20 @@
+{
+ "confidentiality": {
+  "within_openvas": 0.4291,
+  "to_nessus_all_features": 0.46,
+  "to_nessus_shared_only": 0.46,
+  "majority_on_nessus": 0.1408
+ },
+ "integrity": {
+  "within_openvas": 0.4761,
+  "to_nessus_all_features": 0.5455,
+  "to_nessus_shared_only": 0.5455,
+  "majority_on_nessus": 0.2222
+ },
+ "availability": {
+  "within_openvas": 0.463,
+  "to_nessus_all_features": 0.5537,
+  "to_nessus_shared_only": 0.5422,
+  "majority_on_nessus": 0.2058
+ }
+}

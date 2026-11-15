@@ -1,0 +1,20 @@
+{
+ "confidentiality": {
+  "scan_only": 0.5531,
+  "feed_only": 0.6376,
+  "both": 0.9207,
+  "majority": 0.1777
+ },
+ "integrity": {
+  "scan_only": 0.539,
+  "feed_only": 0.5764,
+  "both": 0.948,
+  "majority": 0.1464
+ },
+ "availability": {
+  "scan_only": 0.4994,
+  "feed_only": 0.6403,
+  "both": 0.9711,
+  "majority": 0.2198
+ }
+}

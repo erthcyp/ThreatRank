@@ -1,0 +1,37 @@
+host,port,nvt_name,confidentiality,integrity,availability,source
+172.18.0.101,80/tcp,web.config File Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.101,80/tcp,PHP < 7.3.28 Email Header Injection,LOW,NONE,NONE,estimated
+172.18.0.101,80/tcp,PHP < 7.3.24 Multiple Vulnerabilities,NONE,NONE,HIGH,estimated
+172.18.0.101,80/tcp,PHP 7.2.x / 7.3.x < 7.3.22 Memory Leak Vulnerability,NONE,NONE,HIGH,estimated
+172.18.0.101,80/tcp,PHP Unsupported Version Detection,HIGH,HIGH,NONE,estimated
+172.18.0.104,6379/tcp,Redis Server Unprotected by Password Authentication,HIGH,HIGH,NONE,estimated
+172.18.0.110,80/tcp,PHP < 7.3.28 Email Header Injection,LOW,NONE,NONE,estimated
+172.18.0.110,80/tcp,PHP < 7.3.24 Multiple Vulnerabilities,NONE,NONE,HIGH,estimated
+172.18.0.110,80/tcp,PHP Unsupported Version Detection,HIGH,HIGH,NONE,estimated
+172.18.0.110,80/tcp,Debian Linux SEoL (8.x),HIGH,HIGH,NONE,estimated
+172.18.0.113,8080/tcp,Apache Tomcat Default Files,HIGH,NONE,NONE,estimated
+172.18.0.113,8080/tcp,Apache Tomcat SEoL (8.0.x),HIGH,HIGH,NONE,estimated
+172.18.0.102,8080/tcp,Mort Bay / Eclipse Jetty End of Life (EOL) Detection - Linux,HIGH,HIGH,HIGH,estimated
+172.18.0.101,general/tcp,Operating System (OS) End of Life (EOL) Detection,HIGH,NONE,NONE,estimated
+172.18.0.104,6379/tcp,Redis Server No Password (TCP),HIGH,NONE,NONE,estimated
+172.18.0.102,8080/tcp,Missing 'HttpOnly' Cookie Attribute (HTTP),NONE,NONE,NONE,estimated
+172.18.0.102,8080/tcp,Eclipse Jetty XXE Vulnerability (GHSA-58qw-p7qm-5rvh) - Linux,NONE,NONE,PARTIAL,estimated
+172.18.0.101,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.102,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.103,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.104,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.114,80/tcp,Nginx End of Life (EOL) Detection,HIGH,NONE,NONE,estimated
+172.18.0.110,general/tcp,Operating System (OS) End of Life (EOL) Detection,HIGH,NONE,NONE,estimated
+172.18.0.110,80/tcp,PHP End of Life (EOL) Detection - Linux,NONE,LOW,NONE,estimated
+172.18.0.110,80/tcp,WordPress Multiple Vulnerabilities (May 2017) - Linux,NONE,LOW,NONE,estimated
+172.18.0.110,80/tcp,PHP Heap Use-After-Free Vulnerability (Sep 2019) - Linux,LOW,NONE,NONE,estimated
+172.18.0.110,80/tcp,PHP Multiple Vulnerabilities (Sep 2019) - Linux,LOW,NONE,LOW,estimated
+172.18.0.110,80/tcp,"PHP < 7.3.30, 7.4.x < 7.4.23, 8.0.x < 8.0.10 Security Update (Aug 2021) - Linux",LOW,NONE,NONE,estimated
+172.18.0.110,80/tcp,"PHP < 7.3.28, 7.4.x < 7.4.18 IMAP Header Injection Vulnerability (Apr 2021) - Linux",LOW,NONE,NONE,estimated
+172.18.0.110,80/tcp,Unprotected Web App / Device Installers (HTTP),NONE,NONE,NONE,estimated
+172.18.0.110,80/tcp,WordPress Unspecified Vulnerability (May 2023) - Linux,NONE,NONE,NONE,estimated
+172.18.0.113,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.110,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.112,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.111,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated
+172.18.0.114,general/tcp,TCP Timestamps Information Disclosure,LOW,NONE,NONE,estimated

@@ -1,0 +1,34 @@
+{
+ "hops": {
+  "3": {
+   "tier": "vmDb",
+   "exploit": "unauthenticated access",
+   "predicted": "execCode(vmDb,_)",
+   "observed": "unauthenticated admin control confirmed",
+   "walked": true,
+   "proof": "redis 4.0.14, unauth CONFIG/INFO, marker write+read+delete"
+  },
+  "1": {
+   "tier": "vmWeb",
+   "exploit": "CVE-2017-5638 (S2-045)",
+   "predicted": "execCode(vmWeb,root)",
+   "observed": "OGNL code execution confirmed (JVM runs as root)",
+   "walked": true,
+   "proof": "vulhub benign check: Content-Type OGNL addHeader('vulhub',233*233) returned header vulhub: 54289; server-side expression evaluation. Process check: JVM uid 0 (root)."
+  },
+  "2": {
+   "tier": "vmApp",
+   "exploit": "CVE-2017-12635 + CVE-2017-12636",
+   "predicted": "execCode(vmApp,root)",
+   "observed": "code execution as root",
+   "walked": true,
+   "proof": "CVE-2017-12635 unauthenticated admin takeover (duplicate-roles PUT created admin 'hacker' with no credentials, HTTP 201), then CVE-2017-12636 RCE as that admin via query_servers on node nonode@nohost: id ran and returned uid=0(root). The _users system database had to be created first (standard vulhub config) -- as initially deployed it was absent and the exploit returned 404."
+  }
+ },
+ "goal": "execCode(vmDb,_)",
+ "verdict": {
+  "declared_chain_walks": true,
+  "goal_reached_in_reality": true,
+  "summary": "All three declared hops walk to code execution: Struts2 S2-045 on the web tier (OGNL evaluation, JVM as root), CouchDB CVE-2017-12635 + -12636 on the application tier (unauthenticated admin takeover then arbitrary command execution as root), and Redis on the database (unauthenticated full control). The chain the graph predicted, internet->web->app->db, is confirmed end to end. One deployment caveat: CouchDB walked only after its system databases were created to the service's standard configuration; as first deployed the _users database was absent and the documented exploit returned 404, which a version-based scanner cannot see. The bridge is also flat, so the goal is additionally reachable by a shorter path (web reaches the database directly), the same over-segmentation the declared topology showed on the main corpus."
+ }
+}

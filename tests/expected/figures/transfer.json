@@ -1,0 +1,22 @@
+{
+ "CVE-grouped split, the headline": [
+  0.5948,
+  363
+ ],
+ "shifted hold-out, most CVE-like": [
+  0.6372,
+  91
+ ],
+ "random hold-out, same size": [
+  0.6899,
+  91
+ ],
+ "leave-one-family-out, 8 families": [
+  0.4688,
+  363
+ ],
+ "train high QoD, test low QoD": [
+  0.6732,
+  44
+ ]
+}

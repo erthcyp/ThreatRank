@@ -1,0 +1,44 @@
+{
+ "confidentiality": {
+  "macro_f1": 0.4169,
+  "macro_f1_majority": 0.1534,
+  "macro_f1_text": 0.3973,
+  "accuracy": 0.5787,
+  "accuracy_majority": 0.4427,
+  "classes": {
+   "NONE": 166,
+   "HIGH": 133,
+   "LOW": 73,
+   "PARTIAL": 3
+  },
+  "beats_baseline": true
+ },
+ "integrity": {
+  "macro_f1": 0.3848,
+  "macro_f1_majority": 0.1634,
+  "macro_f1_text": 0.3672,
+  "accuracy": 0.5973,
+  "accuracy_majority": 0.4853,
+  "classes": {
+   "NONE": 182,
+   "HIGH": 103,
+   "LOW": 86,
+   "PARTIAL": 4
+  },
+  "beats_baseline": true
+ },
+ "availability": {
+  "macro_f1": 0.4656,
+  "macro_f1_majority": 0.1622,
+  "macro_f1_text": 0.5558,
+  "accuracy": 0.664,
+  "accuracy_majority": 0.48,
+  "classes": {
+   "HIGH": 180,
+   "NONE": 148,
+   "LOW": 43,
+   "PARTIAL": 4
+  },
+  "beats_baseline": true
+ }
+}

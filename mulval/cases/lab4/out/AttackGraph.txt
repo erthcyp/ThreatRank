@@ -1,0 +1,222 @@
+1,"execCode(vmDb,redis)","OR",0
+2,"RULE 2 (remote exploit of a server program)","AND",0
+3,"netAccess(vmDb,tcp,6379)","OR",0
+4,"RULE 5 (multi-hop access)","AND",0
+5,"hacl(vmApp,vmDb,tcp,6379)","LEAF",1
+4,5,-1
+6,"execCode(vmApp,root)","OR",0
+7,"RULE 2 (remote exploit of a server program)","AND",0
+8,"netAccess(vmApp,tcp,5984)","OR",0
+9,"RULE 5 (multi-hop access)","AND",0
+10,"hacl(vmWeb,vmApp,tcp,5984)","LEAF",1
+9,10,-1
+11,"execCode(vmWeb,root)","OR",0
+12,"RULE 2 (remote exploit of a server program)","AND",0
+13,"netAccess(vmWeb,tcp,8080)","OR",0
+14,"RULE 6 (direct network access)","AND",0
+15,"hacl(internet,vmWeb,tcp,8080)","LEAF",1
+14,15,-1
+16,"attackerLocated(internet)","LEAF",1
+14,16,-1
+13,14,-1
+12,13,-1
+17,"networkServiceInfo(vmWeb,tomcat,tcp,8080,root)","LEAF",1
+12,17,-1
+18,"vulExists(vmWeb,'CVE-2017-5638',tomcat,remoteExploit,privEscalation)","LEAF",1
+12,18,-1
+11,12,-1
+19,"RULE 2 (remote exploit of a server program)","AND",0
+19,13,-1
+19,17,-1
+20,"vulExists(vmWeb,'CVE-2017-7658',tomcat,remoteExploit,privEscalation)","LEAF",1
+19,20,-1
+11,19,-1
+21,"RULE 2 (remote exploit of a server program)","AND",0
+21,13,-1
+21,17,-1
+22,"vulExists(vmWeb,'CVE-2018-12536',tomcat,remoteExploit,privEscalation)","LEAF",1
+21,22,-1
+11,21,-1
+23,"RULE 2 (remote exploit of a server program)","AND",0
+23,13,-1
+23,17,-1
+24,"vulExists(vmWeb,'CVE-2019-10247',tomcat,remoteExploit,privEscalation)","LEAF",1
+23,24,-1
+11,23,-1
+25,"RULE 2 (remote exploit of a server program)","AND",0
+25,13,-1
+25,17,-1
+26,"vulExists(vmWeb,'CVE-2021-28169',tomcat,remoteExploit,privEscalation)","LEAF",1
+25,26,-1
+11,25,-1
+27,"RULE 2 (remote exploit of a server program)","AND",0
+27,13,-1
+27,17,-1
+28,"vulExists(vmWeb,'CVE-2022-2047',tomcat,remoteExploit,privEscalation)","LEAF",1
+27,28,-1
+11,27,-1
+29,"RULE 2 (remote exploit of a server program)","AND",0
+29,13,-1
+29,17,-1
+30,"vulExists(vmWeb,'CVE-2023-26048',tomcat,remoteExploit,privEscalation)","LEAF",1
+29,30,-1
+11,29,-1
+31,"RULE 2 (remote exploit of a server program)","AND",0
+31,13,-1
+31,17,-1
+32,"vulExists(vmWeb,'CVE-2023-36479',tomcat,remoteExploit,privEscalation)","LEAF",1
+31,32,-1
+11,31,-1
+33,"RULE 2 (remote exploit of a server program)","AND",0
+33,13,-1
+33,17,-1
+34,"vulExists(vmWeb,'CVE-2023-40167',tomcat,remoteExploit,privEscalation)","LEAF",1
+33,34,-1
+11,33,-1
+35,"RULE 2 (remote exploit of a server program)","AND",0
+35,13,-1
+35,17,-1
+36,"vulExists(vmWeb,'CVE-2024-6763',tomcat,remoteExploit,privEscalation)","LEAF",1
+35,36,-1
+11,35,-1
+37,"RULE 2 (remote exploit of a server program)","AND",0
+37,13,-1
+37,17,-1
+38,"vulExists(vmWeb,'oid_1.3.6.1.4.1.25623.1.0.105925',tomcat,remoteExploit,privEscalation)","LEAF",1
+37,38,-1
+11,37,-1
+39,"RULE 2 (remote exploit of a server program)","AND",0
+39,13,-1
+39,17,-1
+40,"vulExists(vmWeb,'oid_1.3.6.1.4.1.25623.1.0.117294',tomcat,remoteExploit,privEscalation)","LEAF",1
+39,40,-1
+11,39,-1
+41,"RULE 2 (remote exploit of a server program)","AND",0
+41,13,-1
+41,17,-1
+42,"vulExists(vmWeb,'oid_1.3.6.1.4.1.25623.1.0.151573',tomcat,remoteExploit,privEscalation)","LEAF",1
+41,42,-1
+11,41,-1
+9,11,-1
+8,9,-1
+7,8,-1
+43,"networkServiceInfo(vmApp,couchdb,tcp,5984,root)","LEAF",1
+7,43,-1
+44,"vulExists(vmApp,'CVE-2017-12635',couchdb,remoteExploit,privEscalation)","LEAF",1
+7,44,-1
+6,7,-1
+45,"RULE 2 (remote exploit of a server program)","AND",0
+45,8,-1
+45,43,-1
+46,"vulExists(vmApp,'CVE-2018-11769',couchdb,remoteExploit,privEscalation)","LEAF",1
+45,46,-1
+6,45,-1
+47,"RULE 2 (remote exploit of a server program)","AND",0
+47,8,-1
+47,43,-1
+48,"vulExists(vmApp,'CVE-2018-17188',couchdb,remoteExploit,privEscalation)","LEAF",1
+47,48,-1
+6,47,-1
+49,"RULE 2 (remote exploit of a server program)","AND",0
+49,8,-1
+49,43,-1
+50,"vulExists(vmApp,'CVE-2018-8007',couchdb,remoteExploit,privEscalation)","LEAF",1
+49,50,-1
+6,49,-1
+51,"RULE 2 (remote exploit of a server program)","AND",0
+51,8,-1
+51,43,-1
+52,"vulExists(vmApp,'CVE-2022-24706',couchdb,remoteExploit,privEscalation)","LEAF",1
+51,52,-1
+6,51,-1
+4,6,-1
+3,4,-1
+2,3,-1
+53,"networkServiceInfo(vmDb,redis,tcp,6379,redis)","LEAF",1
+2,53,-1
+54,"vulExists(vmDb,'CVE-2021-21309',redis,remoteExploit,privEscalation)","LEAF",1
+2,54,-1
+1,2,-1
+55,"RULE 2 (remote exploit of a server program)","AND",0
+55,3,-1
+55,53,-1
+56,"vulExists(vmDb,'CVE-2021-32626',redis,remoteExploit,privEscalation)","LEAF",1
+55,56,-1
+1,55,-1
+57,"RULE 2 (remote exploit of a server program)","AND",0
+57,3,-1
+57,53,-1
+58,"vulExists(vmDb,'CVE-2021-32628',redis,remoteExploit,privEscalation)","LEAF",1
+57,58,-1
+1,57,-1
+59,"RULE 2 (remote exploit of a server program)","AND",0
+59,3,-1
+59,53,-1
+60,"vulExists(vmDb,'CVE-2021-32672',redis,remoteExploit,privEscalation)","LEAF",1
+59,60,-1
+1,59,-1
+61,"RULE 2 (remote exploit of a server program)","AND",0
+61,3,-1
+61,53,-1
+62,"vulExists(vmDb,'CVE-2021-32761',redis,remoteExploit,privEscalation)","LEAF",1
+61,62,-1
+1,61,-1
+63,"RULE 2 (remote exploit of a server program)","AND",0
+63,3,-1
+63,53,-1
+64,"vulExists(vmDb,'CVE-2025-46817',redis,remoteExploit,privEscalation)","LEAF",1
+63,64,-1
+1,63,-1
+65,"RULE 2 (remote exploit of a server program)","AND",0
+65,3,-1
+65,53,-1
+66,"vulExists(vmDb,'oid_1.3.6.1.4.1.25623.1.0.105291',redis,remoteExploit,privEscalation)","LEAF",1
+65,66,-1
+1,65,-1
+67,"RULE 2 (remote exploit of a server program)","AND",0
+67,3,-1
+67,53,-1
+68,"vulExists(vmDb,oid_100634,redis,remoteExploit,privEscalation)","LEAF",1
+67,68,-1
+1,67,-1
+69,"execCode(vmDb,root)","OR",0
+70,"RULE 1 (local exploit)","AND",0
+71,"vulExists(vmDb,'CVE-1999-0524',ubuntu,localExploit,privEscalation)","LEAF",1
+70,71,-1
+70,1,-1
+69,70,-1
+72,"RULE 1 (local exploit)","AND",0
+73,"vulExists(vmDb,'CVE-2022-24735',redis,localExploit,privEscalation)","LEAF",1
+72,73,-1
+72,1,-1
+69,72,-1
+74,"RULE 1 (local exploit)","AND",0
+75,"vulExists(vmDb,'CVE-2022-24834',redis,localExploit,privEscalation)","LEAF",1
+74,75,-1
+74,1,-1
+69,74,-1
+76,"RULE 1 (local exploit)","AND",0
+77,"vulExists(vmDb,'CVE-2023-45145',redis,localExploit,privEscalation)","LEAF",1
+76,77,-1
+76,1,-1
+69,76,-1
+78,"RULE 1 (local exploit)","AND",0
+79,"vulExists(vmDb,'CVE-2024-31449',redis,localExploit,privEscalation)","LEAF",1
+78,79,-1
+78,1,-1
+69,78,-1
+80,"RULE 1 (local exploit)","AND",0
+81,"vulExists(vmDb,'CVE-2024-46981',redis,localExploit,privEscalation)","LEAF",1
+80,81,-1
+80,1,-1
+69,80,-1
+82,"RULE 1 (local exploit)","AND",0
+83,"vulExists(vmDb,'CVE-2025-32023',redis,localExploit,privEscalation)","LEAF",1
+82,83,-1
+82,1,-1
+69,82,-1
+84,"RULE 1 (local exploit)","AND",0
+85,"vulExists(vmDb,'oid_1.3.6.1.4.1.25623.1.0.80091',ubuntu,localExploit,privEscalation)","LEAF",1
+84,85,-1
+84,1,-1
+69,84,-1

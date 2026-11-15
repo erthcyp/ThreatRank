@@ -1,0 +1,238 @@
+{
+ "verdict": "SENSITIVE",
+ "surrogate_findings": 12,
+ "surrogate_on_path": 12,
+ "actions": 47,
+ "actions_touched": 10,
+ "actions_surrogate_only": 8,
+ "results": {
+  "surrogate": [
+   {
+    "budget": 0.01,
+    "kev": 0,
+    "jaccard": 1.0,
+    "exposure": 0.0
+   },
+   {
+    "budget": 0.02,
+    "kev": 2,
+    "jaccard": 1.0,
+    "exposure": 22.3
+   },
+   {
+    "budget": 0.03,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 43.0
+   },
+   {
+    "budget": 0.05,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 57.5
+   },
+   {
+    "budget": 0.1,
+    "kev": 7,
+    "jaccard": 1.0,
+    "exposure": 85.0
+   },
+   {
+    "budget": 0.25,
+    "kev": 7,
+    "jaccard": 1.0,
+    "exposure": 95.9
+   }
+  ],
+  "median": [
+   {
+    "budget": 0.01,
+    "kev": 0,
+    "jaccard": 1.0,
+    "exposure": 0.0
+   },
+   {
+    "budget": 0.02,
+    "kev": 2,
+    "jaccard": 1.0,
+    "exposure": 22.3
+   },
+   {
+    "budget": 0.03,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 43.0
+   },
+   {
+    "budget": 0.05,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 57.5
+   },
+   {
+    "budget": 0.1,
+    "kev": 7,
+    "jaccard": 1.0,
+    "exposure": 85.0
+   },
+   {
+    "budget": 0.25,
+    "kev": 7,
+    "jaccard": 0.889,
+    "exposure": 95.8
+   }
+  ],
+  "severity": [
+   {
+    "budget": 0.01,
+    "kev": 0,
+    "jaccard": 1.0,
+    "exposure": 0.0
+   },
+   {
+    "budget": 0.02,
+    "kev": 2,
+    "jaccard": 1.0,
+    "exposure": 22.3
+   },
+   {
+    "budget": 0.03,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 43.0
+   },
+   {
+    "budget": 0.05,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 57.5
+   },
+   {
+    "budget": 0.1,
+    "kev": 7,
+    "jaccard": 0.714,
+    "exposure": 83.6
+   },
+   {
+    "budget": 0.25,
+    "kev": 7,
+    "jaccard": 0.737,
+    "exposure": 94.7
+   }
+  ],
+  "zero": [
+   {
+    "budget": 0.01,
+    "kev": 0,
+    "jaccard": 1.0,
+    "exposure": 0.0
+   },
+   {
+    "budget": 0.02,
+    "kev": 2,
+    "jaccard": 1.0,
+    "exposure": 22.3
+   },
+   {
+    "budget": 0.03,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 43.0
+   },
+   {
+    "budget": 0.05,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 57.5
+   },
+   {
+    "budget": 0.1,
+    "kev": 7,
+    "jaccard": 1.0,
+    "exposure": 85.0
+   },
+   {
+    "budget": 0.25,
+    "kev": 7,
+    "jaccard": 0.889,
+    "exposure": 95.8
+   }
+  ],
+  "one": [
+   {
+    "budget": 0.01,
+    "kev": 0,
+    "jaccard": 1.0,
+    "exposure": 0.0
+   },
+   {
+    "budget": 0.02,
+    "kev": 2,
+    "jaccard": 1.0,
+    "exposure": 22.3
+   },
+   {
+    "budget": 0.03,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 43.0
+   },
+   {
+    "budget": 0.05,
+    "kev": 7,
+    "jaccard": 0.5,
+    "exposure": 54.6
+   },
+   {
+    "budget": 0.1,
+    "kev": 7,
+    "jaccard": 0.714,
+    "exposure": 83.6
+   },
+   {
+    "budget": 0.25,
+    "kev": 7,
+    "jaccard": 0.789,
+    "exposure": 95.3
+   }
+  ],
+  "shuffled": [
+   {
+    "budget": 0.01,
+    "kev": 0,
+    "jaccard": 1.0,
+    "exposure": 0.0
+   },
+   {
+    "budget": 0.02,
+    "kev": 2,
+    "jaccard": 1.0,
+    "exposure": 22.3
+   },
+   {
+    "budget": 0.03,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 43.0
+   },
+   {
+    "budget": 0.05,
+    "kev": 5,
+    "jaccard": 1.0,
+    "exposure": 57.5
+   },
+   {
+    "budget": 0.1,
+    "kev": 7,
+    "jaccard": 1.0,
+    "exposure": 85.0
+   },
+   {
+    "budget": 0.25,
+    "kev": 7,
+    "jaccard": 0.889,
+    "exposure": 95.8
+   }
+  ]
+ }
+}
