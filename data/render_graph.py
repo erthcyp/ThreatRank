@@ -256,9 +256,16 @@ input[type=range] {{ width:180px; accent-color:var(--accent) }}
 .stats b {{ color:var(--ink) }}
 .wrap {{ display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:14px; margin-top:6px }}
 @media (max-width:900px) {{ .wrap {{ grid-template-columns:1fr }} }}
-.canvas {{ background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:auto;
-          max-height:78vh; padding:8px }}
-.canvas svg {{ height:auto; min-width:1100px; width:100% }}
+.canvas {{ position:relative; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+          overflow:hidden; height:72vh; min-height:420px; cursor:grab; touch-action:none }}
+.canvas.dragging {{ cursor:grabbing }}
+.canvas svg {{ width:100%; height:100%; display:block; user-select:none }}
+.zoom {{ position:absolute; right:10px; top:10px; display:flex; flex-direction:column; gap:4px; z-index:2 }}
+.zoom button {{ width:34px; height:34px; border:1px solid var(--line); background:var(--panel); color:var(--ink);
+               border-radius:6px; font:600 18px/1 system-ui,sans-serif; cursor:pointer }}
+.zoom button.fit {{ font-size:11px }}
+.hint {{ position:absolute; left:10px; bottom:8px; font-size:12px; color:var(--muted); background:var(--panel);
+        padding:2px 6px; border-radius:4px; z-index:2 }}
 .panel {{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px;
          align-self:start; position:sticky; top:12px; font-size:14px }}
 .panel h3 {{ margin:0 0 6px; font-size:16px }}
@@ -286,7 +293,11 @@ the remediation action that removes them. Click a node for details.</p>
 </div>
 <div class="stats" id="stats"></div>
 <div class="wrap">
-  <div class="canvas" id="canvas">{svg}</div>
+  <div class="canvas" id="canvas">
+    <div class="zoom"><button id="zin" title="Zoom in">+</button><button id="zout" title="Zoom out">&minus;</button><button id="zfit" class="fit" title="Fit to view">Fit</button></div>
+    <div class="hint">Scroll or pinch to zoom &middot; drag to move &middot; click a node for details</div>
+    {svg}
+  </div>
   <aside class="panel" id="panel"><h3>Details</h3><p class="muted">Click a node in the graph.</p>
     <div class="legend">
       <span><i class="sw" style="background:#e8f0fb;border-color:#2b6cb0"></i>Conclusion</span>
@@ -360,7 +371,54 @@ Object.entries(GOALS).forEach(([k, g]) => {{
   const b = document.createElement("button"); b.textContent = g.label; b.dataset.g = k;
   b.onclick = () => {{ goal = k; render(); }}; document.getElementById("goals").appendChild(b);
 }});
-svg.querySelectorAll("g.node").forEach(el => el.addEventListener("click", () => show(el.id)));
+// ---- pan and zoom, by moving the SVG viewBox ----------------------------------------
+const canvas = document.getElementById("canvas");
+svg.removeAttribute("width"); svg.removeAttribute("height");
+svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+const vb0 = svg.viewBox.baseVal, home = {{x: vb0.x, y: vb0.y, w: vb0.width, h: vb0.height}};
+let vb = {{...home}};
+const setVB = () => svg.setAttribute("viewBox", `${{vb.x}} ${{vb.y}} ${{vb.w}} ${{vb.h}}`);
+function toUser(cx, cy) {{
+  const pt = svg.createSVGPoint(); pt.x = cx; pt.y = cy;
+  return pt.matrixTransform(svg.getScreenCTM().inverse());
+}}
+function zoomAt(cx, cy, f) {{
+  const nw = vb.w * f;
+  if (nw < home.w * 0.04 || nw > home.w * 1.5) return;
+  const p = toUser(cx, cy);
+  vb = {{x: p.x - (p.x - vb.x) * f, y: p.y - (p.y - vb.y) * f, w: nw, h: vb.h * f}};
+  setVB();
+}}
+function zoomCenter(f) {{ const r = svg.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, f); }}
+canvas.addEventListener("wheel", e => {{
+  e.preventDefault();
+  zoomAt(e.clientX, e.clientY, Math.exp(e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)));
+}}, {{passive: false}});
+let drag = null, moved = false;
+canvas.addEventListener("pointerdown", e => {{
+  if (e.target.closest(".zoom")) return;
+  drag = {{x: e.clientX, y: e.clientY, vb: {{...vb}}, s: svg.getScreenCTM().a}}; moved = false;
+  canvas.setPointerCapture(e.pointerId);
+}});
+canvas.addEventListener("pointermove", e => {{
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (Math.abs(dx) + Math.abs(dy) > 4) {{ moved = true; canvas.classList.add("dragging"); }}
+  if (moved) {{ vb.x = drag.vb.x - dx / drag.s; vb.y = drag.vb.y - dy / drag.s; setVB(); }}
+}});
+canvas.addEventListener("pointerup", e => {{
+  canvas.classList.remove("dragging");
+  if (drag && !moved) {{
+    const hit = document.elementFromPoint(e.clientX, e.clientY);
+    const node = hit && hit.closest("g.node");
+    if (node) show(node.id);
+  }}
+  drag = null;
+}});
+document.getElementById("zin").onclick = () => zoomCenter(0.7);
+document.getElementById("zout").onclick = () => zoomCenter(1 / 0.7);
+document.getElementById("zfit").onclick = () => {{ vb = {{...home}}; setVB(); }};
+canvas.addEventListener("dblclick", e => zoomAt(e.clientX, e.clientY, 0.5));
 document.getElementById("budget").addEventListener("input", render);
 render();
 </script>
