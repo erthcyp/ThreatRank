@@ -156,6 +156,31 @@ Merges both scanners, groups findings into actions by the product NVD names, and
 exposure and how many KEV findings each ordering closes at budgets from 1% to 100%. The ordered
 plan, with the reason for each action's rank, is written to `processed/plan_merged.csv`.
 
+### The recommendation plan: what the output looks like
+
+`prioritise.py --out` writes the plan as a CSV, one row per remediation action in the order it
+should be done, ready to open in a spreadsheet or import into a ticketing system:
+
+```
+rank,host,port,product,tier,cost,findings_closed,known_exploited,risk_removed,cumulative_cost,
+remote_exploit,priv_escalation,reaches_goal,likelihood_from,scanners,top_finding
+```
+
+The columns after `risk_removed` explain the rank: how many of the action's findings can be
+exploited remotely, lead to privilege escalation or lie on a path to the goal, where the
+likelihood came from (EPSS or the surrogate), and which scanners reported it.
+
+`render_plan.py` turns that CSV into a one-page HTML report for a person to read: what a budget
+buys, then one card per action. It adds no number of its own.
+
+```bash
+python3 render_plan.py processed/plan_lab3.csv --budget 0.05 -o figures/plan_report.html
+```
+
+Open [`data/figures/plan_report.html`](data/figures/plan_report.html) in a browser (download it
+first if you are viewing this on GitHub). At a 5% budget it shows 3 actions, 58% of exposure
+removed and 5 of 7 KEV findings closed.
+
 ### 3. Prioritisation under a budget (Experiment 3)
 
 Produced by `make_figures.py` (`figures/fig1_budget_risk.pdf`, `fig2_budget_kev.pdf`, and the

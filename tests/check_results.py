@@ -24,7 +24,8 @@ EXPECTED = os.path.join(ROOT, "tests", "expected")
 TOLERANCE = 0.005
 
 QUICK = ["figures/tab_corpus.tex", "figures/tab_graphrank.tex",
-         "figures/tab_robustness.tex", "processed/plan_merged.csv"]
+         "figures/tab_robustness.tex", "processed/plan_merged.csv",
+         "processed/plan_lab3.csv"]
 FULL = QUICK + ["figures/impact.json", "figures/transfer.json",
                 "figures/sensitivity.json", "figures/tables.md"]
 NUMBER = re.compile(r"-?\d+\.\d+|-?\d+")

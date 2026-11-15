@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThreatRank Remediation Plan</title>
+<style>
+:root { --bg:#f6f7f9; --panel:#fff; --ink:#1d2433; --muted:#5b6475; --line:#e3e6ec;
+        --accent:#2b6cb0; --kev:#b42318; --kevbg:#fde8e7; --ok:#1f7a4d; --okbg:#e3f4ea; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14171d; --panel:#1c2029; --ink:#e7eaf0;
+        --muted:#a3abba; --line:#2c3240; --accent:#7fb2f0; --kev:#ff8a80; --kevbg:#3a1f1f;
+        --ok:#7ed3a4; --okbg:#1d3328; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+main { max-width:960px; margin:0 auto; padding:28px 16px 48px }
+header h1 { margin:0; font-size:26px }
+header p { margin:4px 0 0; color:var(--muted) }
+.summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px;
+           margin:22px 0 26px }
+.stat { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px }
+.stat .v { font-size:26px; font-weight:700 }
+.stat .l { color:var(--muted); font-size:13px }
+h2 { font-size:18px; margin:0 0 12px }
+.card { display:flex; gap:14px; background:var(--panel); border:1px solid var(--line);
+        border-radius:10px; padding:14px 16px; margin-bottom:10px }
+.card.dim { opacity:.72 }
+.rank { flex:0 0 36px; height:36px; border-radius:50%; background:var(--accent); color:#fff;
+        display:flex; align-items:center; justify-content:center; font-weight:700 }
+.body { flex:1; min-width:0 }
+.head { display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap }
+h3 { margin:0; font-size:17px }
+.where { color:var(--muted); font-weight:400; font-size:14px }
+.facts { display:flex; flex-wrap:wrap; gap:6px 14px; margin:6px 0; color:var(--muted); font-size:14px }
+.facts b { color:var(--ink) }
+.kev { color:var(--kev); background:var(--kevbg); border-radius:6px; padding:0 8px; font-weight:600 }
+.nokev { color:var(--muted) }
+.in { color:var(--ok); background:var(--okbg); border-radius:6px; padding:1px 8px; font-size:13px; font-weight:600 }
+.out { color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:0 8px; font-size:13px }
+ul { margin:6px 0 4px; padding-left:18px; font-size:14px }
+.example { margin:4px 0 0; color:var(--muted); font-size:13px; overflow-wrap:anywhere }
+footer { margin-top:22px; color:var(--muted); font-size:13px }
+</style></head>
+<body><main>
+<header>
+  <h1>ThreatRank Remediation Plan</h1>
+  <p>47 remediation actions over 3 hosts, ordered by risk removed per unit of
+     cost. Budget shown: 5% of the total (3.4 of 68 cost units).</p>
+</header>
+<section class="summary">
+  <div class="stat"><div class="v">3</div><div class="l">actions within budget</div></div>
+  <div class="stat"><div class="v">58%</div><div class="l">of exposure removed (L &times; C)</div></div>
+  <div class="stat"><div class="v">5 / 7</div><div class="l">known-exploited (CISA KEV) findings closed</div></div>
+  <div class="stat"><div class="v">92 / 229</div><div class="l">findings closed</div></div>
+</section>
+<h2>Actions, in the order to do them</h2>
+
+<article class="card">
+  <div class="rank">1</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache http server <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="in">In budget</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>26</b> findings</span>
+      <span class="kev">2 known-exploited</span>
+      <span>risk removed <b>12.43</b></span>
+    </div>
+    <ul><li><b>24</b> of 26 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 26</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. Apache HTTP Server &lt; 2.4.49 Multiple Vulnerabilities - Linux</p>
+  </div>
+</article>
+<article class="card">
+  <div class="rank">2</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache http server <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="in">In budget</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>31</b> findings</span>
+      <span class="kev">3 known-exploited</span>
+      <span>risk removed <b>11.49</b></span>
+    </div>
+    <ul><li><b>22</b> of 31 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 31</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. Apache HTTP Server &lt; 2.4.49 Multiple Vulnerabilities - Linux</p>
+  </div>
+</article>
+<article class="card">
+  <div class="rank">3</div>
+  <div class="body">
+    <div class="head">
+      <h3>Wordpress <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="in">In budget</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>35</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>8.07</b></span>
+    </div>
+    <ul><li><b>31</b> of 35 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 34 + surrogate 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. WordPress Multiple Vulnerabilities (Jan 2022) - Linux</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">4</div>
+  <div class="body">
+    <div class="head">
+      <h3>Oracle mysql server <span class="where">172.18.0.112:3306/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>47</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>7.92</b></span>
+    </div>
+    <ul><li><b>29</b> of 47 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 47</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. Oracle MySQL Server &lt;= 5.7.35 / 8.0 &lt;= 8.0.26 Security Update (cpuoct2</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">5</div>
+  <div class="body">
+    <div class="head">
+      <h3>Php <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>46</b> findings</span>
+      <span class="kev">2 known-exploited</span>
+      <span>risk removed <b>6.44</b></span>
+    </div>
+    <ul><li><b>34</b> of 46 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 43 + surrogate 3</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. PHP &lt; 8.1.29, 8.2.x &lt; 8.2.20, 8.3.x &lt; 8.3.8 Multiple Vulnerabilities -</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">6</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache http server options memory leak vulnerability (optionsbleed) <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.95</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed) - </p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">7</div>
+  <div class="body">
+    <div class="head">
+      <h3>Php 5.x <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>3</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.87</b></span>
+    </div>
+    <ul><li><b>1</b> of 3 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 3</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. PHP 5.x &lt; 5.6.34, 7.x &lt; 7.0.28, 7.1.x &lt; 7.1.15, 7.2.x &lt; 7.2.3 Stack Bu</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">8</div>
+  <div class="body">
+    <div class="head">
+      <h3>Wordpress / wordpress mu <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.85</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. WordPress / WordPress MU Multiple Vulnerabilities (Jul 2009)</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">9</div>
+  <div class="body">
+    <div class="head">
+      <h3>Wordpress rce vulnerability (cve-2019-8942) - linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.83</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. WordPress RCE Vulnerability (CVE-2019-8942) - Linux</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">10</div>
+  <div class="body">
+    <div class="head">
+      <h3>Wordpress xss vulnerability (apr 2024) - linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.71</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. WordPress XSS Vulnerability (Apr 2024) - Linux</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">11</div>
+  <div class="body">
+    <div class="head">
+      <h3>Wordpress arbitrary file deletion vulnerability (jun 2018) - linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.62</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. WordPress Arbitrary File Deletion Vulnerability (Jun 2018) - Linux</p>
+  </div>
+</article>
+<article class="card dim">
+  <div class="rank">12</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache http server &#x27;mod_auth_digest&#x27; <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="out">Next</span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.57</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li><b>0</b> can be exploited remotely, <b>0</b> lead to privilege escalation</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;mod_auth_digest&#x27; Multiple Vulnerabilities - Linux</p>
+  </div>
+</article>
+<footer>Generated 2026-11-15 by render_plan.py from plan_lab3.csv.
+Cost tiers: patch 1, configuration change 2, replace or remove 5. Exposure is ThreatRank's own
+L &times; C score; known-exploited counts use the CISA KEV catalogue.
+Showing the first 12 of 47 actions.</footer>
+</main></body></html>

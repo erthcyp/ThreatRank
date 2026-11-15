@@ -51,6 +51,10 @@ echo "== 2. Prioritise: the remediation plan (Experiment 1)"
 step "prioritise.py, two scanners, correlated" $PY prioritise.py $GRAPH \
     --findings processed/findings_openvas_b2.csv --findings processed/findings_nessus_b2.csv \
     --correlate -o processed/plan_merged.csv
+step "prioritise.py, attack-graph corpus" $PY prioritise.py $GRAPH \
+    --findings processed/findings_openvas_b2.csv -o processed/plan_lab3.csv
+step "render_plan.py  (HTML report, 5% budget)" $PY render_plan.py processed/plan_lab3.csv \
+    --budget 0.05 -o figures/plan_report.html
 
 echo "== 3. Tables (Experiments 3 and 4, corpus)"
 step "corpus_table.py"      $PY corpus_table.py -o figures/tab_corpus.tex
