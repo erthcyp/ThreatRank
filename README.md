@@ -27,7 +27,7 @@ as the final report.
 ## Team
 
 CSS453 senior project, Sirindhorn International Institute of Technology, Thammasat University.
-Advisor: Somchart Fugkeaw.
+Advisor: Somchart Fugkeaw (somchart@siit.tu.ac.th).
 
 | Student ID | Name | GitHub |
 |---|---|---|
