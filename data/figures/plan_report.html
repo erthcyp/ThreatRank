@@ -14,15 +14,26 @@ body { margin:0; background:var(--bg); color:var(--ink);
 main { max-width:960px; margin:0 auto; padding:28px 16px 48px }
 header h1 { margin:0; font-size:26px }
 header p { margin:4px 0 0; color:var(--muted) }
+.control { background:var(--panel); border:1px solid var(--line); border-radius:10px;
+           padding:14px 16px; margin:20px 0 0 }
+.control .row { display:flex; align-items:center; gap:14px; flex-wrap:wrap }
+.control label { font-weight:600 }
+.control input[type=range] { flex:1; min-width:180px; accent-color:var(--accent) }
+.control output { font-weight:700; font-size:20px; min-width:70px; text-align:right }
+.presets { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px }
+.presets button { border:1px solid var(--line); background:var(--bg); color:var(--ink);
+                  border-radius:6px; padding:4px 10px; font:inherit; font-size:13px; cursor:pointer }
+.presets button.on { background:var(--accent); border-color:var(--accent); color:#fff }
 .summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px;
-           margin:22px 0 26px }
+           margin:14px 0 26px }
 .stat { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px }
 .stat .v { font-size:26px; font-weight:700 }
 .stat .l { color:var(--muted); font-size:13px }
 h2 { font-size:18px; margin:0 0 12px }
 .card { display:flex; gap:14px; background:var(--panel); border:1px solid var(--line);
-        border-radius:10px; padding:14px 16px; margin-bottom:10px }
-.card.dim { opacity:.72 }
+        border-radius:10px; padding:14px 16px; margin-bottom:10px; transition:opacity .2s }
+.card.dim { opacity:.6 }
+.card.hide { display:none }
 .rank { flex:0 0 36px; height:36px; border-radius:50%; background:var(--accent); color:#fff;
         display:flex; align-items:center; justify-content:center; font-weight:700 }
 .body { flex:1; min-width:0 }
@@ -33,32 +44,42 @@ h3 { margin:0; font-size:17px }
 .facts b { color:var(--ink) }
 .kev { color:var(--kev); background:var(--kevbg); border-radius:6px; padding:0 8px; font-weight:600 }
 .nokev { color:var(--muted) }
-.in { color:var(--ok); background:var(--okbg); border-radius:6px; padding:1px 8px; font-size:13px; font-weight:600 }
-.out { color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:0 8px; font-size:13px }
+.state .in { color:var(--ok); background:var(--okbg); border-radius:6px; padding:1px 8px; font-size:13px; font-weight:600 }
+.state .out { color:var(--muted); border:1px solid var(--line); border-radius:6px; padding:0 8px; font-size:13px }
 ul { margin:6px 0 4px; padding-left:18px; font-size:14px }
 .example { margin:4px 0 0; color:var(--muted); font-size:13px; overflow-wrap:anywhere }
+#more { border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:8px;
+        padding:8px 14px; font:inherit; cursor:pointer }
 footer { margin-top:22px; color:var(--muted); font-size:13px }
 </style></head>
 <body><main>
 <header>
   <h1>ThreatRank Remediation Plan</h1>
   <p>47 remediation actions over 3 hosts, ordered by risk removed per unit of
-     cost. Budget shown: 5% of the total (3.4 of 68 cost units).</p>
+     cost. <span id="budgetText"></span></p>
 </header>
+<section class="control">
+  <div class="row">
+    <label for="budget">Remediation budget</label>
+    <input type="range" id="budget" min="1" max="100" step="1" value="5">
+    <output id="budgetOut" for="budget"></output>
+  </div>
+  <div class="presets"><button data-p="1">1%</button><button data-p="2">2%</button><button data-p="3">3%</button><button data-p="5">5%</button><button data-p="10">10%</button><button data-p="25">25%</button><button data-p="50">50%</button><button data-p="100">100%</button></div>
+</section>
 <section class="summary">
-  <div class="stat"><div class="v">3</div><div class="l">actions within budget</div></div>
-  <div class="stat"><div class="v">58%</div><div class="l">of exposure removed (L &times; C)</div></div>
-  <div class="stat"><div class="v">5 / 7</div><div class="l">known-exploited (CISA KEV) findings closed</div></div>
-  <div class="stat"><div class="v">92 / 229</div><div class="l">findings closed</div></div>
+  <div class="stat"><div class="v" id="sActions"></div><div class="l">actions within budget</div></div>
+  <div class="stat"><div class="v" id="sExposure"></div><div class="l">of exposure removed (L &times; C)</div></div>
+  <div class="stat"><div class="v" id="sKev"></div><div class="l">known-exploited (CISA KEV) findings closed</div></div>
+  <div class="stat"><div class="v" id="sFound"></div><div class="l">findings closed</div></div>
 </section>
 <h2>Actions, in the order to do them</h2>
-
-<article class="card">
+<div id="cards">
+<article class="card" data-i="0">
   <div class="rank">1</div>
   <div class="body">
     <div class="head">
-      <h3>Apache http server <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="in">In budget</span>
+      <h3>Apache HTTP Server <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -67,16 +88,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="kev">2 known-exploited</span>
       <span>risk removed <b>12.43</b></span>
     </div>
-    <ul><li><b>24</b> of 26 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 26</li><li>Reported by openvas</li></ul>
+    <ul><li><b>24</b> of 26 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 26 findings</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. Apache HTTP Server &lt; 2.4.49 Multiple Vulnerabilities - Linux</p>
   </div>
 </article>
-<article class="card">
+<article class="card" data-i="1">
   <div class="rank">2</div>
   <div class="body">
     <div class="head">
-      <h3>Apache http server <span class="where">172.18.0.111:80/tcp</span></h3>
-      <span class="in">In budget</span>
+      <h3>Apache HTTP Server <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -85,16 +106,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="kev">3 known-exploited</span>
       <span>risk removed <b>11.49</b></span>
     </div>
-    <ul><li><b>22</b> of 31 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 31</li><li>Reported by openvas</li></ul>
+    <ul><li><b>22</b> of 31 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 31 findings</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. Apache HTTP Server &lt; 2.4.49 Multiple Vulnerabilities - Linux</p>
   </div>
 </article>
-<article class="card">
+<article class="card" data-i="2">
   <div class="rank">3</div>
   <div class="body">
     <div class="head">
-      <h3>Wordpress <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="in">In budget</span>
+      <h3>WordPress <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -103,16 +124,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>8.07</b></span>
     </div>
-    <ul><li><b>31</b> of 35 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 34 + surrogate 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>31</b> of 35 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 34 findings, learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. WordPress Multiple Vulnerabilities (Jan 2022) - Linux</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="3">
   <div class="rank">4</div>
   <div class="body">
     <div class="head">
-      <h3>Oracle mysql server <span class="where">172.18.0.112:3306/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>Oracle MySQL Server <span class="where">172.18.0.112:3306/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -121,16 +142,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>7.92</b></span>
     </div>
-    <ul><li><b>29</b> of 47 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 47</li><li>Reported by openvas</li></ul>
+    <ul><li><b>29</b> of 47 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 47 findings</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. Oracle MySQL Server &lt;= 5.7.35 / 8.0 &lt;= 8.0.26 Security Update (cpuoct2</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="4">
   <div class="rank">5</div>
   <div class="body">
     <div class="head">
-      <h3>Php <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>PHP <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -139,16 +160,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="kev">2 known-exploited</span>
       <span>risk removed <b>6.44</b></span>
     </div>
-    <ul><li><b>34</b> of 46 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 43 + surrogate 3</li><li>Reported by openvas</li></ul>
+    <ul><li><b>34</b> of 46 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 43 findings, learned surrogate for 3 findings</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. PHP &lt; 8.1.29, 8.2.x &lt; 8.2.20, 8.3.x &lt; 8.3.8 Multiple Vulnerabilities -</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="5">
   <div class="rank">6</div>
   <div class="body">
     <div class="head">
-      <h3>Apache http server options memory leak vulnerability (optionsbleed) <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>Apache HTTP Server options memory leak vulnerability (optionsbleed) <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -157,16 +178,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.95</b></span>
     </div>
-    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed) - </p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="6">
   <div class="rank">7</div>
   <div class="body">
     <div class="head">
-      <h3>Php 5.x <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>PHP 5.x <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -175,16 +196,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.87</b></span>
     </div>
-    <ul><li><b>1</b> of 3 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 3</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 3 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 3 findings</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. PHP 5.x &lt; 5.6.34, 7.x &lt; 7.0.28, 7.1.x &lt; 7.1.15, 7.2.x &lt; 7.2.3 Stack Bu</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="7">
   <div class="rank">8</div>
   <div class="body">
     <div class="head">
-      <h3>Wordpress / wordpress mu <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>WordPress / WordPress MU <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -193,16 +214,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.85</b></span>
     </div>
-    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. WordPress / WordPress MU Multiple Vulnerabilities (Jul 2009)</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="8">
   <div class="rank">9</div>
   <div class="body">
     <div class="head">
-      <h3>Wordpress rce vulnerability (cve-2019-8942) - linux <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>WordPress RCE vulnerability (CVE-2019-8942) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -211,16 +232,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.83</b></span>
     </div>
-    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. WordPress RCE Vulnerability (CVE-2019-8942) - Linux</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="9">
   <div class="rank">10</div>
   <div class="body">
     <div class="head">
-      <h3>Wordpress xss vulnerability (apr 2024) - linux <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>WordPress XSS vulnerability (apr 2024) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -229,16 +250,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.71</b></span>
     </div>
-    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. WordPress XSS Vulnerability (Apr 2024) - Linux</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="10">
   <div class="rank">11</div>
   <div class="body">
     <div class="head">
-      <h3>Wordpress arbitrary file deletion vulnerability (jun 2018) - linux <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>WordPress arbitrary file deletion vulnerability (jun 2018) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -247,16 +268,16 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.62</b></span>
     </div>
-    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. WordPress Arbitrary File Deletion Vulnerability (Jun 2018) - Linux</p>
   </div>
 </article>
-<article class="card dim">
+<article class="card" data-i="11">
   <div class="rank">12</div>
   <div class="body">
     <div class="head">
-      <h3>Apache http server &#x27;mod_auth_digest&#x27; <span class="where">172.18.0.110:80/tcp</span></h3>
-      <span class="out">Next</span>
+      <h3>Apache HTTP Server &#x27;mod_auth_digest&#x27; <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
     </div>
     <div class="facts">
       <span><b>Patch</b></span>
@@ -265,12 +286,685 @@ footer { margin-top:22px; color:var(--muted); font-size:13px }
       <span class="nokev">no known-exploited</span>
       <span>risk removed <b>0.57</b></span>
     </div>
-    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood from epss 1</li><li>Reported by openvas</li></ul>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
     <p class="example">e.g. Apache HTTP Server &#x27;mod_auth_digest&#x27; Multiple Vulnerabilities - Linux</p>
   </div>
 </article>
+<article class="card" data-i="12">
+  <div class="rank">13</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server man-in-the-middle attack vulnerability (jul 2016) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.56</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server Man-in-the-Middle Attack Vulnerability (Jul 2016) -</p>
+  </div>
+</article>
+<article class="card" data-i="13">
+  <div class="rank">14</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server mod_session_crypto vulnerability (dec 2016) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.49</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server mod_session_crypto Vulnerability (Dec 2016) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="14">
+  <div class="rank">15</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server &#x27;mod_lua&#x27; denial of service vulnerability (may 2015) <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.22</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;mod_lua&#x27; Denial of Service Vulnerability (May 2015</p>
+  </div>
+</article>
+<article class="card" data-i="15">
+  <div class="rank">16</div>
+  <div class="body">
+    <div class="head">
+      <h3>PHP end of life (EOL) detection - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.17</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. PHP End of Life (EOL) Detection - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="16">
+  <div class="rank">17</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server memory access vulnerability - Linux <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.17</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server Memory Access Vulnerability - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="17">
+  <div class="rank">18</div>
+  <div class="body">
+    <div class="head">
+      <h3>ICMP timestamp reply information disclosure <span class="where">172.18.0.111:general/icmp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.32</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. ICMP Timestamp Reply Information Disclosure</p>
+  </div>
+</article>
+<article class="card" data-i="18">
+  <div class="rank">19</div>
+  <div class="body">
+    <div class="head">
+      <h3>ICMP timestamp reply information disclosure <span class="where">172.18.0.112:general/icmp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.32</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. ICMP Timestamp Reply Information Disclosure</p>
+  </div>
+</article>
+<article class="card" data-i="19">
+  <div class="rank">20</div>
+  <div class="body">
+    <div class="head">
+      <h3>ICMP timestamp reply information disclosure <span class="where">172.18.0.110:general/icmp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.32</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. ICMP Timestamp Reply Information Disclosure</p>
+  </div>
+</article>
+<article class="card" data-i="20">
+  <div class="rank">21</div>
+  <div class="body">
+    <div class="head">
+      <h3>WordPress password reset CVE-2017-8295 security bypass vulnerability - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.27</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability -</p>
+  </div>
+</article>
+<article class="card" data-i="21">
+  <div class="rank">22</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server &#x27;whitespace defects&#x27; <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.13</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;Whitespace Defects&#x27; Multiple Vulnerabilities</p>
+  </div>
+</article>
+<article class="card" data-i="22">
+  <div class="rank">23</div>
+  <div class="body">
+    <div class="head">
+      <h3>Operating system (OS) end of life (EOL) detection <span class="where">172.18.0.110:general/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.20</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Operating System (OS) End of Life (EOL) Detection</p>
+  </div>
+</article>
+<article class="card" data-i="23">
+  <div class="rank">24</div>
+  <div class="body">
+    <div class="head">
+      <h3>Oracle MySQL backronym vulnerability (jun 2016) - Linux <span class="where">172.18.0.112:3306/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.07</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Oracle MySQL Backronym Vulnerability (Jun 2016) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="24">
+  <div class="rank">25</div>
+  <div class="body">
+    <div class="head">
+      <h3>WordPress &#x27;esc_sql&#x27; function SQL injection vulnerability (nov 2017) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.07</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. WordPress &#x27;esc_sql&#x27; Function SQL Injection Vulnerability (Nov 2017) - </p>
+  </div>
+</article>
+<article class="card" data-i="25">
+  <div class="rank">26</div>
+  <div class="body">
+    <div class="head">
+      <h3>Unprotected web app / device installers (HTTP) <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.12</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Unprotected Web App / Device Installers (HTTP)</p>
+  </div>
+</article>
+<article class="card" data-i="26">
+  <div class="rank">27</div>
+  <div class="body">
+    <div class="head">
+      <h3>TCP timestamps information disclosure <span class="where">172.18.0.110:general/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.10</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. TCP Timestamps Information Disclosure</p>
+  </div>
+</article>
+<article class="card" data-i="27">
+  <div class="rank">28</div>
+  <div class="body">
+    <div class="head">
+      <h3>TCP timestamps information disclosure <span class="where">172.18.0.112:general/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.10</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. TCP Timestamps Information Disclosure</p>
+  </div>
+</article>
+<article class="card" data-i="28">
+  <div class="rank">29</div>
+  <div class="body">
+    <div class="head">
+      <h3>TCP timestamps information disclosure <span class="where">172.18.0.111:general/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Configuration change</b></span>
+      <span>cost <b>2</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.10</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. TCP Timestamps Information Disclosure</p>
+  </div>
+</article>
+<article class="card" data-i="29">
+  <div class="rank">30</div>
+  <div class="body">
+    <div class="head">
+      <h3>PHP &#x27;cve-2019-13224&#x27; use-after-free vulnerability - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.04</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. PHP &#x27;CVE-2019-13224&#x27; Use-After-Free Vulnerability - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="30">
+  <div class="rank">31</div>
+  <div class="body">
+    <div class="head">
+      <h3>WordPress unspecified vulnerability (may 2023) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.04</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. WordPress Unspecified Vulnerability (May 2023) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="31">
+  <div class="rank">32</div>
+  <div class="body">
+    <div class="head">
+      <h3>PHP heap use-after-free vulnerability (sep 2019) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.02</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: learned surrogate for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. PHP Heap Use-After-Free Vulnerability (Sep 2019) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="32">
+  <div class="rank">33</div>
+  <div class="body">
+    <div class="head">
+      <h3>PHP &#x27;cve-2017-7189&#x27; improper input validation vulnerability - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Replace or remove</b></span>
+      <span>cost <b>5</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.02</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. PHP &#x27;CVE-2017-7189&#x27; Improper Input Validation Vulnerability - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="33">
+  <div class="rank">34</div>
+  <div class="body">
+    <div class="head">
+      <h3>WordPress information disclosure vulnerability (jul 2025) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Replace or remove</b></span>
+      <span>cost <b>5</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>1</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. WordPress Information Disclosure Vulnerability (Jul 2025) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="34">
+  <div class="rank">35</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server &#x27;HTTP/2 connection&#x27; DoS vulnerability <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;HTTP/2 connection&#x27; DoS Vulnerability</p>
+  </div>
+</article>
+<article class="card" data-i="35">
+  <div class="rank">36</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server denial of service vulnerability-02 (apr 2018) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server Denial of Service Vulnerability-02 (Apr 2018) - Lin</p>
+  </div>
+</article>
+<article class="card" data-i="36">
+  <div class="rank">37</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server denial of service vulnerability-02 (apr 2018) - Linux <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server Denial of Service Vulnerability-02 (Apr 2018) - Lin</p>
+  </div>
+</article>
+<article class="card" data-i="37">
+  <div class="rank">38</div>
+  <div class="body">
+    <div class="head">
+      <h3>Oracle MySQL denial of service vulnerability (feb 2017) - Linux <span class="where">172.18.0.112:3306/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Oracle MySQL Denial Of Service Vulnerability (Feb 2017) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="38">
+  <div class="rank">39</div>
+  <div class="body">
+    <div class="head">
+      <h3>WordPress &#x27;load-scripts.php&#x27; DoS vulnerability - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Replace or remove</b></span>
+      <span>cost <b>5</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. WordPress &#x27;load-scripts.php&#x27; DoS Vulnerability - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="39">
+  <div class="rank">40</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server &#x27;mod_auth_digest&#x27; DoS vulnerability - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;mod_auth_digest&#x27; DoS Vulnerability - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="40">
+  <div class="rank">41</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server CRLF injection vulnerability (dec 2016) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server CRLF Injection Vulnerability (Dec 2016) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="41">
+  <div class="rank">42</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server HTTP/2 &#x27;settings&#x27; data processing DoS vulnerability - Linux <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server HTTP/2 &#x27;SETTINGS&#x27; Data Processing DoS Vulnerability</p>
+  </div>
+</article>
+<article class="card" data-i="42">
+  <div class="rank">43</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server denial of service vulnerability (apr 2018) - Linux <span class="where">172.18.0.111:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server Denial of Service Vulnerability (Apr 2018) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="43">
+  <div class="rank">44</div>
+  <div class="body">
+    <div class="head">
+      <h3>WordPress XSS vulnerability (may 2020) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. WordPress XSS Vulnerability (May 2020) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="44">
+  <div class="rank">45</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server &#x27;mod_proxy_fcgi&#x27; denial of service vulnerability (may 2015) <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;mod_proxy_fcgi&#x27; Denial of Service Vulnerability (M</p>
+  </div>
+</article>
+<article class="card" data-i="45">
+  <div class="rank">46</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server DoS vulnerability (sep 2014) - Linux <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server DoS Vulnerability (Sep 2014) - Linux</p>
+  </div>
+</article>
+<article class="card" data-i="46">
+  <div class="rank">47</div>
+  <div class="body">
+    <div class="head">
+      <h3>Apache HTTP Server &#x27;mod_lua&#x27; denial of service vulnerability -01 (may 2015) <span class="where">172.18.0.110:80/tcp</span></h3>
+      <span class="state"></span>
+    </div>
+    <div class="facts">
+      <span><b>Patch</b></span>
+      <span>cost <b>1</b></span>
+      <span>closes <b>1</b> findings</span>
+      <span class="nokev">no known-exploited</span>
+      <span>risk removed <b>0.00</b></span>
+    </div>
+    <ul><li><b>0</b> of 1 findings lie on a path to the security goal</li><li>Exploit likelihood: EPSS for 1 finding</li><li>Reported by OpenVAS</li></ul>
+    <p class="example">e.g. Apache HTTP Server &#x27;mod_lua&#x27; Denial of Service Vulnerability -01 (May </p>
+  </div>
+</article></div>
+<button id="more" type="button"></button>
 <footer>Generated 2026-11-15 by render_plan.py from plan_lab3.csv.
-Cost tiers: patch 1, configuration change 2, replace or remove 5. Exposure is ThreatRank's own
-L &times; C score; known-exploited counts use the CISA KEV catalogue.
-Showing the first 12 of 47 actions.</footer>
-</main></body></html>
+Cost tiers: patch 1, configuration change 2, replace or remove 5. Selection takes actions in plan
+order and skips any that no longer fit, the same rule prioritise.py uses. Exposure is ThreatRank's
+own L &times; C score; known-exploited counts use the CISA KEV catalogue.</footer>
+</main>
+<script>
+const ROWS = [{"cost": 1.0, "risk": 12.4293, "kev": 2, "found": 26}, {"cost": 1.0, "risk": 11.4889, "kev": 3, "found": 31}, {"cost": 1.0, "risk": 8.0698, "kev": 0, "found": 35}, {"cost": 1.0, "risk": 7.9173, "kev": 0, "found": 47}, {"cost": 1.0, "risk": 6.4359, "kev": 2, "found": 46}, {"cost": 1.0, "risk": 0.95, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.8735, "kev": 0, "found": 3}, {"cost": 1.0, "risk": 0.85, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.8274, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.7102, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.6216, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.5677, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.5572, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.4902, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.2202, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.1743, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.1655, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.3215, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.3215, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.3215, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.267, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.1325, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.2029, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0708, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.067, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.1223, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.1041, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.1041, "kev": 0, "found": 1}, {"cost": 2.0, "risk": 0.1041, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0405, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0391, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0231, "kev": 0, "found": 1}, {"cost": 5.0, "risk": 0.0249, "kev": 0, "found": 1}, {"cost": 5.0, "risk": 0.0032, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 5.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}, {"cost": 1.0, "risk": 0.0, "kev": 0, "found": 1}];
+const TOTAL_COST = 68.0, TOP = 12;
+const totalRisk = ROWS.reduce((s, r) => s + r.risk, 0) || 1e-9;
+const totalKev = ROWS.reduce((s, r) => s + r.kev, 0);
+const totalFound = ROWS.reduce((s, r) => s + r.found, 0);
+const cards = [...document.querySelectorAll(".card")];
+const slider = document.getElementById("budget"), more = document.getElementById("more");
+let showAll = false;
+const fmt = x => (Math.round(x * 10) / 10).toString();
+
+function update() {
+  const pct = +slider.value, budget = TOTAL_COST * pct / 100;
+  let spent = 0, n = 0, risk = 0, kev = 0, found = 0;
+  ROWS.forEach((r, i) => {
+    const fits = spent + r.cost <= budget + 1e-9;
+    if (fits) { spent += r.cost; n++; risk += r.risk; kev += r.kev; found += r.found; }
+    const c = cards[i];
+    c.classList.toggle("dim", !fits);
+    c.querySelector(".state").innerHTML = fits ? '<span class="in">In budget</span>'
+                                               : '<span class="out">Next</span>';
+  });
+  document.getElementById("budgetOut").textContent = pct + "%";
+  document.getElementById("budgetText").textContent =
+    "Budget: " + pct + "% of the total (" + fmt(budget) + " of " + fmt(TOTAL_COST) + " cost units).";
+  document.getElementById("sActions").textContent = n;
+  document.getElementById("sExposure").textContent = Math.round(100 * risk / totalRisk) + "%";
+  document.getElementById("sKev").textContent = kev + " / " + totalKev;
+  document.getElementById("sFound").textContent = found + " / " + totalFound;
+  document.querySelectorAll(".presets button").forEach(b => b.classList.toggle("on", +b.dataset.p === pct));
+  const visible = showAll ? ROWS.length : Math.max(TOP, n);
+  cards.forEach((c, i) => c.classList.toggle("hide", i >= visible));
+  more.style.display = visible >= ROWS.length && !showAll ? "none" : "";
+  more.textContent = showAll ? "Show fewer actions" : "Show all " + ROWS.length + " actions";
+}
+slider.addEventListener("input", update);
+document.querySelectorAll(".presets button").forEach(b =>
+  b.addEventListener("click", () => { slider.value = b.dataset.p; update(); }));
+more.addEventListener("click", () => { showAll = !showAll; update(); });
+update();
+</script>
+</body></html>

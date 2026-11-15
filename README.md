@@ -171,7 +171,8 @@ exploited remotely, lead to privilege escalation or lie on a path to the goal, w
 likelihood came from (EPSS or the surrogate), and which scanners reported it.
 
 `render_plan.py` turns that CSV into a one-page HTML report for a person to read: what a budget
-buys, then one card per action. It adds no number of its own.
+buys, then one card per action. A slider changes the budget in the browser using the same
+selection rule as `prioritise.py`. It adds no number of its own.
 
 ```bash
 python3 render_plan.py processed/plan_lab3.csv --budget 0.05 -o figures/plan_report.html
