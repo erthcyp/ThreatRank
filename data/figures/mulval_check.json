@@ -1,0 +1,39 @@
+{
+ "published": {
+  "label_accuracy": 1.0,
+  "label_macro_f1": 1.0,
+  "vertices": 357,
+  "goal_derived": true,
+  "findings_compared": 229,
+  "c_wrong": 0,
+  "false_reach": 0,
+  "lost_reach": 0,
+  "facts_added": [],
+  "facts_lost": []
+ },
+ "model": {
+  "label_accuracy": 0.8157,
+  "label_macro_f1": 0.7196,
+  "vertices": 361,
+  "goal_derived": true,
+  "findings_compared": 229,
+  "c_wrong": 38,
+  "false_reach": 20,
+  "lost_reach": 18,
+  "facts_added": [],
+  "facts_lost": []
+ },
+ "constant": {
+  "label_accuracy": 0.7926,
+  "label_macro_f1": 0.4422,
+  "vertices": 447,
+  "goal_derived": true,
+  "findings_compared": 229,
+  "c_wrong": 45,
+  "false_reach": 45,
+  "lost_reach": 0,
+  "facts_added": [],
+  "facts_lost": []
+ },
+ "passed": true
+}
