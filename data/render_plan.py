@@ -58,13 +58,14 @@ def card(r, within):
     kev = num(r, "known_exploited", int)
     goal = r.get("reaches_goal", "")
     reached = goal.split("/")[0] if "/" in goal else goal
-    reasons = [
-        f"<b>{e(reached)}</b> of {closed} findings lie on a path to the security goal",
-        f"<b>{num(r, 'remote_exploit', int)}</b> can be exploited remotely, "
-        f"<b>{num(r, 'priv_escalation', int)}</b> lead to privilege escalation",
-        f"Exploit likelihood from {e(r.get('likelihood_from', '').replace('+', ' + '))}",
-        f"Reported by {e(r.get('scanners', '').replace('+', ' and '))}",
-    ]
+    reasons = [f"<b>{e(reached)}</b> of {closed} findings lie on a path to the security goal"]
+    # Written only when prioritise.py ran with --correlate; blank otherwise, and a blank must not
+    # be shown as zero.
+    if (r.get("remote_exploit") or "").strip() and (r.get("priv_escalation") or "").strip():
+        reasons.append(f"<b>{num(r, 'remote_exploit', int)}</b> can be exploited remotely, "
+                       f"<b>{num(r, 'priv_escalation', int)}</b> lead to privilege escalation")
+    reasons += [f"Exploit likelihood from {e(r.get('likelihood_from', '').replace('+', ' + '))}",
+                f"Reported by {e(r.get('scanners', '').replace('+', ' and '))}"]
     badge = (f'<span class="kev">{kev} known-exploited</span>' if kev
              else '<span class="nokev">no known-exploited</span>')
     state = '<span class="in">In budget</span>' if within else '<span class="out">Next</span>'
