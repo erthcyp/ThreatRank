@@ -46,3 +46,6 @@ mulval/cases/*/running_rules.P
 mulval/cases/*/trace_output.P
 mulval/cases/*/translated_rules.P
 mulval/cases/*/xsb_log.txt
+
+# Live outputs of the step-by-step demo (demo/)
+demo/out/

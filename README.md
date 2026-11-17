@@ -42,6 +42,7 @@ reproduce.sh            reruns the pipeline and regenerates every result (see "R
 tests/check_results.py  compares a run's results with the recorded ones (see "Test")
 requirements.txt        pinned Python dependencies
 Dockerfile              the exact environment the recorded results were produced in
+demo/                   the pipeline one stage at a time, for a walkthrough (see "Step-by-step demo")
 
 data/
   raw/                  the scanners' original reports (OpenVAS XML, Nessus JSON, Qualys XML)
@@ -109,6 +110,18 @@ docker run --rm -v "$PWD":/work threatrank python3 tests/check_results.py
 byte for byte, builds the remediation plan, and regenerates the three tables. The full run adds
 the learned models, the sensitivity analysis and the figures. Each step prints `ok` or `FAIL`
 with its running time. Results are written over the copies in `data/figures/`.
+
+## Step-by-step demo
+
+```bash
+./demo/run_all.sh        # one stage at a time; press Enter between stages
+```
+
+Eight numbered scripts, `demo/0_parse_and_normalize.sh` to `demo/7_report.sh`, run the pipeline
+one stage at a time and print what each stage produces, from the raw reports to the HTML report.
+They call the same code as `reproduce.sh` and write only to `demo/out/`. Training the models and
+building the MulVAL graph are shown from their recorded results. [demo/DEMO.md](demo/DEMO.md) lists
+each step with links to the code it runs.
 
 ## Test
 
