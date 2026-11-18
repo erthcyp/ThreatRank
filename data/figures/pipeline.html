@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThreatRank Pipeline</title>
+<style>
+:root { --bg:#f6f7f9; --panel:#fff; --ink:#1d2433; --muted:#5b6475; --line:#e3e6ec;
+        --accent:#2b6cb0; --accentbg:#e8f0fa; --kev:#b42318; --kevbg:#fde8e7; --ml:#6b46c1; --mlbg:#efe9fb;
+        --code:#f1f3f6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#14171d; --panel:#1c2029;
+        --ink:#e7eaf0; --muted:#a3abba; --line:#2c3240; --accent:#7fb2f0; --accentbg:#1d2a3d;
+        --kev:#ff8a80; --kevbg:#3a1f1f; --ml:#b79cf2; --mlbg:#2a2140; --code:#232835; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line) }
+.hin { max-width:1100px; margin:0 auto; padding:14px 16px 10px }
+h1 { margin:0; font-size:22px }
+.pills { display:flex; gap:6px; overflow-x:auto; padding:10px 0 2px }
+.pill { flex:0 0 auto; display:flex; align-items:center; gap:7px; border:1px solid var(--line);
+        background:var(--panel); color:var(--muted); border-radius:999px; padding:5px 12px 5px 5px;
+        font:inherit; font-size:13px; cursor:pointer; white-space:nowrap }
+.pill span { width:22px; height:22px; border-radius:50%; background:var(--line); color:var(--ink);
+             display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:12px }
+.pill.done span { background:var(--accentbg); color:var(--accent) }
+.pill.on { border-color:var(--accent); color:var(--ink); font-weight:600 }
+.pill.on span { background:var(--accent); color:#fff }
+main { max-width:1100px; margin:0 auto; padding:22px 16px 90px }
+.stage { display:none; background:var(--panel); border:1px solid var(--line); border-radius:12px;
+         padding:22px 24px }
+.stage.on { display:block; animation:fade .25s }
+@keyframes fade { from { opacity:0; transform:translateY(4px) } to { opacity:1 } }
+.sh { display:flex; gap:16px; align-items:center; margin-bottom:12px }
+.num { flex:0 0 54px; height:54px; border-radius:14px; background:var(--accent); color:#fff;
+       display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:800 }
+.kick { color:var(--accent); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase }
+h2 { margin:0; font-size:24px }
+.sub { color:var(--muted) }
+h3 { margin:22px 0 6px; font-size:18px }
+h4 { margin:18px 0 8px; font-size:15px }
+.lead { font-size:16px; max-width:80ch }
+.ml { display:inline-block; background:var(--mlbg); color:var(--ml); border-radius:6px;
+      padding:1px 10px; font-size:13px; font-weight:700 }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; margin:14px 0 }
+.stat { border:1px solid var(--line); border-radius:10px; padding:12px 14px }
+.stat .v { font-size:26px; font-weight:750 }
+.stat .l { color:var(--muted); font-size:13px }
+.stat.hi { background:var(--accentbg); border-color:transparent }
+.stat.hi .v { color:var(--accent) }
+.two { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px }
+pre { background:var(--code); border-radius:8px; padding:12px 14px; overflow-x:auto; font-size:12.5px;
+      line-height:1.45; margin:0 }
+code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9em }
+.tw { overflow-x:auto }
+table { border-collapse:collapse; width:100%; font-size:14px }
+th { text-align:left; color:var(--muted); font-weight:600; font-size:12.5px; border-bottom:1px solid var(--line);
+     padding:6px 10px }
+td { border-bottom:1px solid var(--line); padding:6px 10px; vertical-align:top }
+tr:last-child td { border-bottom:0 }
+.kev { color:var(--kev); background:var(--kevbg); border-radius:6px; padding:0 7px; font-weight:700 }
+.note { color:var(--muted); font-size:13.5px }
+.code { margin:22px 0 0; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:13px }
+.tabs { display:flex; gap:6px; align-items:center; margin:8px 0 10px; flex-wrap:wrap }
+.tab { border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px;
+       padding:6px 14px; font:inherit; cursor:pointer }
+.tab.on { background:var(--accent); border-color:var(--accent); color:#fff }
+#openNew { margin-left:auto; color:var(--accent); font-size:14px }
+iframe { width:100%; height:78vh; border:1px solid var(--line); border-radius:10px; background:var(--bg) }
+nav { position:fixed; bottom:0; left:0; right:0; background:var(--bg); border-top:1px solid var(--line) }
+.nin { max-width:1100px; margin:0 auto; padding:10px 16px; display:flex; gap:10px; align-items:center }
+nav button { border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:8px;
+             padding:8px 16px; font:inherit; cursor:pointer }
+nav button.primary { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600 }
+nav button:disabled { opacity:.4; cursor:default }
+.prog { flex:1; height:4px; background:var(--line); border-radius:2px; overflow:hidden }
+.prog i { display:block; height:100%; background:var(--accent); transition:width .25s }
+.hint { color:var(--muted); font-size:12px }
+@media (max-width:640px) { .stage { padding:16px } .hint { display:none } }
+</style></head>
+<body>
+<header><div class="hin"><h1>ThreatRank: from scanner reports to a remediation plan</h1>
+<div class="pills"><button class="pill" data-i="0"><span>0</span>Input</button><button class="pill" data-i="1"><span>1</span>Parsing &amp; Normalization</button><button class="pill" data-i="2"><span>2</span>Attribute Completion</button><button class="pill" data-i="3"><span>3</span>Vulnerability Correlation</button><button class="pill" data-i="4"><span>4</span>Dual-Head Risk Scoring</button><button class="pill" data-i="5"><span>5</span>Budget-Aware Prioritization</button><button class="pill" data-i="6"><span>6</span>Recommendation Plan</button></div></div></header>
+<main><section class="stage" data-i="0">
+<div class="sh"><div class="num">0</div><div><div class="kick">Stage 0</div><h2>Input</h2>
+<div class="sub">Raw scanner reports</div></div></div>
+<p class="lead">Two vulnerability scanners scan the same group of containers. Each exports
+results in its own format, with its own field names and severity scale.</p>
+<div class="stats"><div class="stat "><div class="v">306</div><div class="l">OpenVAS results (XML)</div></div><div class="stat "><div class="v">109</div><div class="l">Nessus results (JSON)</div></div><div class="stat "><div class="v">5</div><div class="l">hosts in group B</div></div></div>
+<div class="two">
+ <div><h4>OpenVAS: one &lt;result&gt; from the XML report</h4><pre>&lt;result id=&quot;239c19d2…&quot;&gt;
+  &lt;name&gt;WordPress &lt; 4.7.5 Multiple Security Vulnerabilities - Linux&lt;/name&gt;
+  &lt;host&gt;172.18.0.110&lt;/host&gt;
+  &lt;port&gt;80/tcp&lt;/port&gt;
+  &lt;nvt oid=&quot;1.3.6.1.4.1.25623.1.0.107201&quot;&gt;
+    &lt;family&gt;Web application abuses&lt;/family&gt;
+    &lt;cvss_base&gt;8.8&lt;/cvss_base&gt;
+    &lt;ref type=&quot;cve&quot; id=&quot;CVE-2017-9061&quot;/&gt;
+    &lt;ref type=&quot;cve&quot; id=&quot;CVE-2017-9062&quot;/&gt;
+    &lt;ref type=&quot;cve&quot; id=&quot;CVE-2017-9063&quot;/&gt;
+  &lt;/nvt&gt;
+  &lt;threat&gt;High&lt;/threat&gt;
+  &lt;severity&gt;8.8&lt;/severity&gt;
+  &lt;qod&gt;&lt;value&gt;30&lt;/value&gt;&lt;/qod&gt;
+  …
+&lt;/result&gt;</pre>
+ <p class="note">Severity mix: Critical 53 · High 73 · Medium 105 · Low 15 · Log 60</p></div>
+ <div><h4>Nessus: one vulnerability from the JSON export</h4><pre>&quot;host-ip&quot;: &quot;172.18.0.110&quot;,
+&quot;vulnerabilities&quot;: [
+  {
+    &quot;plugin_id&quot;: 142591,
+    &quot;plugin_name&quot;: &quot;PHP &lt; 7.3.24 Multiple Vulnerabilities&quot;,
+    &quot;plugin_family&quot;: &quot;CGI abuses&quot;,
+    &quot;severity&quot;: 3,
+    &quot;score&quot;: &quot;7.5&quot;,
+    &quot;cpe&quot;: &quot;cpe:/a:php:php&quot;
+  },
+  …
+]</pre>
+ <p class="note">Different structure, different names: <code>plugin_name</code> instead of
+ <code>&lt;name&gt;</code>, a 0–4 severity instead of a CVSS score.</p></div>
+</div>
+<p class="code">code: <code>data/raw/</code></p></section><section class="stage" data-i="1">
+<div class="sh"><div class="num">1</div><div><div class="kick">Stage 1</div><h2>Parsing &amp; Normalization</h2>
+<div class="sub">One schema for every scanner</div></div></div>
+<p class="lead">One parser per scanner maps every finding into the same table. Service
+detections (OpenVAS <em>Log</em> level) are removed: they say a service is running, not that
+anything is wrong.</p>
+<div class="stats"><div class="stat "><div class="v">246</div><div class="l">OpenVAS findings kept (of 306)</div></div><div class="stat "><div class="v">33</div><div class="l">Nessus findings kept (of 109)</div></div><div class="stat hi"><div class="v">279</div><div class="l">findings in one schema</div></div></div>
+<h4>The unified schema (22 columns)</h4><p class="note"><code>source_file</code>, <code>group</code>, <code>scanner</code>, <code>host</code>, <code>hostname</code>, <code>port</code>, <code>nvt_oid</code>, <code>nvt_name</code>, <code>nvt_family</code>, <code>threat</code>, <code>severity</code>, <code>qod</code>, <code>solution_type</code>, <code>cve_count</code>, …</p>
+<div class="tw"><table class=""><thead><tr><th>host</th><th>port</th><th>severity</th><th>CVE</th><th>check</th><th>scanner</th></tr></thead><tbody><tr><td>172.18.0.114</td><td>80/tcp</td><td>10.0</td><td>–</td><td>Nginx End of Life (EOL) Detection</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>general/tcp</td><td>10.0</td><td>–</td><td>Operating System (OS) End of Life (EOL) Detection</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>10.0</td><td>–</td><td>PHP End of Life (EOL) Detection - Linux</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>9.8</td><td>CVE-2024-4577</td><td>PHP &lt; 8.1.29, 8.2.x &lt; 8.2.20, 8.3.x &lt; 8.3.8 Multiple Vulner…</td><td>openvas</td></tr><tr><td>172.18.0.113</td><td>8009/tcp</td><td>9.8</td><td>CVE-2020-1938</td><td>Apache Tomcat AJP RCE Vulnerability (Ghostcat) - Active Che…</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>9.8</td><td>CVE-2023-3823</td><td>PHP &lt; 8.0.30, 8.1.x &lt; 8.1.22, 8.2.x &lt; 8.2.9 Security Update…</td><td>openvas</td></tr></tbody></table></div>
+<p class="note">Re-running the parsers on the raw reports reproduces the committed CSVs byte
+for byte (<code>reproduce.sh</code> checks this).</p>
+<p class="code">code: <code>data/parse_openvas.py · fetch_nessus.py · parse_qualys.py</code></p></section><section class="stage" data-i="2">
+<div class="sh"><div class="num">2</div><div><div class="kick">Stage 2</div><h2>Attribute Completion</h2>
+<div class="sub">Filling in what NVD does not say</div></div></div>
+<p class="lead">The attack graph needs to know what each weakness gives an attacker: can they read
+data, change it, or take the service down? That is the CVSS impact (C / I / A). When NVD
+publishes a vector we use it; when it doesn't, a gradient-boosting classifier predicts it from
+the finding's text, family, solution type, severity, confidence and port.</p>
+<span class="ml">Machine learning #1</span>
+<div class="stats"><div class="stat "><div class="v">216</div><div class="l">facts from a published NVD vector</div></div><div class="stat hi"><div class="v">10</div><div class="l">estimated by the classifier</div></div><div class="stat "><div class="v">2</div><div class="l">no vector, no estimate</div></div></div>
+<h4>Classifier quality (macro-F1, CVE-grouped folds)</h4>
+<div class="tw"><table class=""><thead><tr><th>Impact axis</th><th>ThreatRank</th><th>Text classifier</th><th>Majority baseline</th></tr></thead><tbody><tr><td>Confidentiality</td><td><b>0.42</b></td><td>0.40</td><td>0.15</td></tr><tr><td>Integrity</td><td><b>0.38</b></td><td>0.37</td><td>0.16</td></tr><tr><td>Availability</td><td><b>0.47</b></td><td>0.56</td><td>0.16</td></tr></tbody></table></div>
+<h4>Facts handed to the attack graph</h4><pre>vulProperty(&#x27;oid_1.3.6.1.4.1.25623.1.0.103674&#x27;, localExploit, privEscalation).   /* ESTIMATED */
+vulProperty(&#x27;oid_1.3.6.1.4.1.25623.1.0.105889&#x27;, remoteExploit, privEscalation).   /* ESTIMATED */
+vulProperty(&#x27;CVE-2024-4577&#x27;, remoteExploit, privEscalation).
+vulProperty(&#x27;CVE-2023-3823&#x27;, remoteExploit, privEscalation).</pre>
+<p class="note">Every estimated fact is marked, so any conclusion that rests on an estimate can be
+traced. Published values always take priority.</p>
+<p class="code">code: <code>data/impact.py · findings_to_mulval.py</code></p></section><section class="stage" data-i="3">
+<div class="sh"><div class="num">3</div><div><div class="kick">Stage 3</div><h2>Vulnerability Correlation</h2>
+<div class="sub">Merge before scoring</div></div></div>
+<p class="lead">The same weakness is often reported more than once: by both scanners, or by
+several checks in one scanner. Findings on the same host and port are grouped by the product
+NVD lists as affected, so one upgrade becomes one job. Without a usable CVE, the check title is
+used instead.</p>
+<div class="stats"><div class="stat "><div class="v">279</div><div class="l">findings from both scanners</div></div><div class="stat "><div class="v">73</div><div class="l">groups if keyed by title</div></div><div class="stat hi"><div class="v">54</div><div class="l">groups keyed by NVD product</div></div></div>
+<div class="two"><div><h4>Reported by both scanners</h4><div class="tw"><table class=""><thead><tr><th>host</th><th>port</th><th>product</th><th>reports</th></tr></thead><tbody><tr><td>172.18.0.110</td><td>80/tcp</td><td>php</td><td>nessus 3, openvas 4</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>php:php</td><td>nessus 10, openvas 47</td></tr><tr><td>172.18.0.114</td><td>80/tcp</td><td>f5:nginx</td><td>nessus 1, openvas 8</td></tr></tbody></table></div></div>
+<div><h4>Largest groups: one job each</h4><div class="tw"><table class=""><thead><tr><th>findings</th><th>host</th><th>port</th><th>product</th></tr></thead><tbody><tr><td>57</td><td>172.18.0.110</td><td>80/tcp</td><td>php:php</td></tr><tr><td>38</td><td>172.18.0.110</td><td>80/tcp</td><td>wordpress:wordpress</td></tr><tr><td>37</td><td>172.18.0.110</td><td>80/tcp</td><td>apache:http_server</td></tr><tr><td>37</td><td>172.18.0.112</td><td>3306/tcp</td><td>oracle:mysql</td></tr><tr><td>35</td><td>172.18.0.111</td><td>80/tcp</td><td>apache:http_server</td></tr><tr><td>9</td><td>172.18.0.114</td><td>80/tcp</td><td>f5:nginx</td></tr></tbody></table></div></div></div>
+<p class="code">code: <code>data/correlate.py</code></p></section><section class="stage" data-i="4">
+<div class="sh"><div class="num">4</div><div><div class="kick">Stage 4</div><h2>Dual-Head Risk Scoring</h2>
+<div class="sub">How likely, and does it matter here</div></div></div>
+<p class="lead">Every finding is scored on two axes. From here on the network is the three-tier
+deployment the attack graph models: web server → app server → database, 229 findings.</p>
+<h3>Head 1 · Exploit likelihood (L)</h3>
+<span class="ml">Machine learning #2</span>
+<div class="stats"><div class="stat "><div class="v">217</div><div class="l">have a CVE: L = published EPSS</div></div><div class="stat hi"><div class="v">12</div><div class="l">no CVE: L = learned surrogate</div></div><div class="stat "><div class="v">0.59 vs 0.44</div><div class="l">surrogate vs severity (Spearman with EPSS)</div></div></div>
+<h4>Findings the surrogate scores</h4><div class="tw"><table class=""><thead><tr><th>L</th><th>host</th><th>finding</th></tr></thead><tbody><tr><td>0.203</td><td>Web server</td><td>Operating System (OS) End of Life (EOL) Detection</td></tr><tr><td>0.174</td><td>Web server</td><td>PHP End of Life (EOL) Detection - Linux</td></tr><tr><td>0.122</td><td>Web server</td><td>Unprotected Web App / Device Installers (HTTP)</td></tr><tr><td>0.104</td><td>Web server</td><td>TCP Timestamps Information Disclosure</td></tr><tr><td>0.104</td><td>Database</td><td>TCP Timestamps Information Disclosure</td></tr><tr><td>0.104</td><td>App server</td><td>TCP Timestamps Information Disclosure</td></tr></tbody></table></div>
+<h3>Head 2 · Attack consequence (C)</h3>
+<p>MulVAL derives every way an attacker can chain the findings to the goal, code execution on
+the database. The graph has 357 vertices and 676 arcs. C = 1 if a finding lies on a path to
+the goal, otherwise 0. Rule-based, no machine learning.</p>
+<div class="stats"><div class="stat hi"><div class="v">169 / 229</div><div class="l">findings on a path to the goal</div></div><div class="stat "><div class="v">60</div><div class="l">deferred: cannot reach the goal</div></div><div class="stat "><div class="v">10 / 10</div><div class="l">perturbation tests as predicted</div></div></div>
+<div class="tw"><table class=""><thead><tr><th>tier</th><th>host</th><th>findings</th><th>on a path (C = 1)</th><th>off path (C = 0)</th></tr></thead><tbody><tr><td>Web server</td><td>172.18.0.110</td><td>140</td><td>112</td><td>28</td></tr><tr><td>App server</td><td>172.18.0.111</td><td>38</td><td>25</td><td>13</td></tr><tr><td>Database</td><td>172.18.0.112</td><td>51</td><td>32</td><td>19</td></tr></tbody></table></div>
+<p class="code">code: <code>data/likelihood.py · consequence.py · prioritise.py</code></p></section><section class="stage" data-i="5">
+<div class="sh"><div class="num">5</div><div><div class="kick">Stage 5</div><h2>Budget-Aware Prioritization</h2>
+<div class="sub">Most risk removed per unit of effort</div></div></div>
+<p class="lead">The risk of a finding is <b>R = L × C</b>; the risk of an action is the sum over
+the findings it closes. Each action costs its tier: patch 1, configuration change 2,
+replacement 5. Actions are then taken greedily by risk removed per unit of cost until the
+budget runs out.</p>
+<div class="stats"><div class="stat "><div class="v">229</div><div class="l">findings</div></div><div class="stat hi"><div class="v">47</div><div class="l">remediation actions</div></div><div class="stat "><div class="v">68</div><div class="l">total cost units</div></div></div>
+<h4>Highest-risk actions</h4>
+<div class="tw"><table class=""><thead><tr><th>R</th><th>product</th><th>host</th><th>tier</th><th>findings</th><th>KEV</th></tr></thead><tbody><tr><td>12.43</td><td>apache http server</td><td>Web server</td><td>patch available</td><td>26</td><td><span class="kev">2</span></td></tr><tr><td>11.49</td><td>apache http server</td><td>App server</td><td>patch available</td><td>31</td><td><span class="kev">3</span></td></tr><tr><td>8.07</td><td>wordpress</td><td>Web server</td><td>patch available</td><td>35</td><td>0</td></tr><tr><td>7.92</td><td>oracle mysql server</td><td>Database</td><td>patch available</td><td>47</td><td>0</td></tr><tr><td>6.44</td><td>php</td><td>Web server</td><td>patch available</td><td>46</td><td><span class="kev">2</span></td></tr><tr><td>0.95</td><td>apache http server options memory leak vulnerability (optionsbleed)</td><td>Web server</td><td>patch available</td><td>1</td><td>0</td></tr><tr><td>0.87</td><td>php 5.x</td><td>Web server</td><td>patch available</td><td>3</td><td>0</td></tr><tr><td>0.85</td><td>wordpress / wordpress mu</td><td>Web server</td><td>patch available</td><td>1</td><td>0</td></tr></tbody></table></div>
+<h4>Same greedy selector, different orderings · 5% budget</h4>
+<div class="tw"><table class=""><thead><tr><th>Ordering</th><th>Exposure removed</th><th>Known-exploited closed</th></tr></thead><tbody><tr><td><b>ThreatRank (R = L × C)</b></td><td>58%</td><td>5 of 7</td></tr><tr><td>EPSS</td><td>55%</td><td>7 of 7</td></tr><tr><td>SSVC</td><td>55%</td><td>7 of 7</td></tr><tr><td>Severity, grouped</td><td>34%</td><td>4 of 7</td></tr><tr><td>Severity, scanner list</td><td>1%</td><td>0 of 7</td></tr></tbody></table></div>
+<p class="note">CISA KEV is the answer key only, never an input. EPSS and SSVC close all 7 at
+this budget; ThreatRank removes the most exposure.</p>
+<p class="code">code: <code>data/prioritise.py</code></p></section><section class="stage" data-i="6">
+<div class="sh"><div class="num">6</div><div><div class="kick">Stage 6</div><h2>Recommendation Plan</h2>
+<div class="sub">What the Blue Team receives</div></div></div>
+<p class="lead">What the Blue Team receives: an ordered list of fixes with an adjustable budget,
+and the attack graph that explains why each one matters.</p>
+<div class="tabs"><button class="tab on" data-f="plan_report.html">Remediation plan</button>
+<button class="tab" data-f="attack_graph.html">Attack graph</button>
+<a id="openNew" href="plan_report.html" target="_blank">Open in a new tab ↗</a></div>
+<iframe id="frame" src="plan_report.html" title="ThreatRank output"></iframe>
+<p class="code">code: <code>data/render_plan.py · render_graph.py</code></p></section></main>
+<nav><div class="nin"><button id="prev">← Back</button><div class="prog"><i id="bar"></i></div>
+<span class="hint">← → keys</span><button id="next" class="primary">Next →</button></div></nav>
+<script>
+const S=[...document.querySelectorAll('.stage')], P=[...document.querySelectorAll('.pill')];
+let cur=0;
+function show(i){
+  cur=Math.max(0,Math.min(S.length-1,i));
+  S.forEach((s,k)=>s.classList.toggle('on',k===cur));
+  P.forEach((p,k)=>{p.classList.toggle('on',k===cur);p.classList.toggle('done',k<cur);});
+  P[cur].scrollIntoView({block:'nearest',inline:'center'});
+  document.getElementById('prev').disabled=cur===0;
+  const n=document.getElementById('next'); n.disabled=cur===S.length-1;
+  document.getElementById('bar').style.width=(cur/(S.length-1)*100)+'%';
+  try{history.replaceState(null,'','#stage'+cur)}catch(e){}
+  window.scrollTo({top:0});
+}
+P.forEach((p,k)=>p.onclick=()=>show(k));
+document.getElementById('prev').onclick=()=>show(cur-1);
+document.getElementById('next').onclick=()=>show(cur+1);
+document.addEventListener('keydown',ev=>{
+  if(ev.target.tagName==='INPUT')return;
+  if(ev.key==='ArrowRight'||ev.key==='PageDown')show(cur+1);
+  if(ev.key==='ArrowLeft'||ev.key==='PageUp')show(cur-1);
+});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+  document.getElementById('frame').src=t.dataset.f;
+  document.getElementById('openNew').href=t.dataset.f;
+});
+const m=location.hash.match(/stage(\d+)/); show(m?+m[1]:0);
+</script>
+</body></html>

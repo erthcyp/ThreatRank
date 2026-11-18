@@ -113,6 +113,11 @@ with its running time. Results are written over the copies in `data/figures/`.
 
 ## Step-by-step demo
 
+`data/figures/pipeline.html` shows the same walkthrough as one page in the browser: stage 0
+(the raw scanner reports) to stage 6 (the remediation plan and attack graph, embedded), with
+Back/Next buttons or the arrow keys. `python3 data/render_pipeline.py` regenerates it from the
+committed data.
+
 ```bash
 ./demo/run_all.sh        # one stage at a time; press Enter between stages
 ```

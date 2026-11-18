@@ -62,6 +62,8 @@ if command -v dot >/dev/null; then
 else
     echo "render_graph.py skipped: Graphviz (dot) is not installed"
 fi
+step "render_pipeline.py (stage-by-stage walkthrough)" $PY render_pipeline.py \
+    -o figures/pipeline.html
 
 echo "== 3. Tables (Experiments 3 and 4, corpus)"
 step "corpus_table.py"      $PY corpus_table.py -o figures/tab_corpus.tex
