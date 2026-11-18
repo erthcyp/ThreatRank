@@ -46,6 +46,12 @@ h4 { margin:18px 0 8px; font-size:15px }
 .stat .l { color:var(--muted); font-size:13px }
 .stat.hi { background:var(--accentbg); border-color:transparent }
 .stat.hi .v { color:var(--accent) }
+.three { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px }
+.stat.eval { border-style:dashed }
+.evtag { display:inline-block; margin-left:6px; border:1px dashed var(--muted); color:var(--muted);
+         border-radius:6px; padding:0 7px; font-size:11.5px; font-weight:600; vertical-align:middle }
+.callout { margin:16px 0 0; padding:12px 16px; border-left:4px solid var(--accent); background:var(--accentbg);
+           border-radius:0 8px 8px 0; font-size:14.5px }
 .two { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px }
 pre { background:var(--code); border-radius:8px; padding:12px 14px; overflow-x:auto; font-size:12.5px;
       line-height:1.45; margin:0 }
@@ -82,10 +88,10 @@ nav button:disabled { opacity:.4; cursor:default }
 <main><section class="stage" data-i="0">
 <div class="sh"><div class="num">0</div><div><div class="kick">Stage 0</div><h2>Input</h2>
 <div class="sub">Raw scanner reports</div></div></div>
-<p class="lead">Two vulnerability scanners scan the same group of containers. Each exports
-results in its own format, with its own field names and severity scale.</p>
-<div class="stats"><div class="stat "><div class="v">306</div><div class="l">OpenVAS results (XML)</div></div><div class="stat "><div class="v">109</div><div class="l">Nessus results (JSON)</div></div><div class="stat "><div class="v">5</div><div class="l">hosts in group B</div></div></div>
-<div class="two">
+<p class="lead">Three vulnerability scanners scan the same containers. Each exports results in
+its own format, with its own field names and severity scale.</p>
+<div class="stats"><div class="stat "><div class="v">306</div><div class="l">OpenVAS results (XML)</div></div><div class="stat "><div class="v">109</div><div class="l">Nessus results (JSON)</div></div><div class="stat eval"><div class="v">185</div><div class="l">Qualys results (XML), 3 hosts</div></div><div class="stat "><div class="v">5</div><div class="l">hosts in group B</div></div></div>
+<div class="three">
  <div><h4>OpenVAS: one &lt;result&gt; from the XML report</h4><pre>&lt;result id=&quot;239c19d2…&quot;&gt;
   &lt;name&gt;WordPress &lt; 4.7.5 Multiple Security Vulnerabilities - Linux&lt;/name&gt;
   &lt;host&gt;172.18.0.110&lt;/host&gt;
@@ -117,7 +123,23 @@ results in its own format, with its own field names and severity scale.</p>
 ]</pre>
  <p class="note">Different structure, different names: <code>plugin_name</code> instead of
  <code>&lt;name&gt;</code>, a 0–4 severity instead of a CVSS score.</p></div>
+ <div><h4>Qualys: one &lt;VULN&gt; from the XML report <span class="evtag">evaluation only</span></h4><pre>&lt;IP value=&quot;172.18.0.110&quot;&gt;
+  &lt;VULNS&gt;
+    &lt;CAT value=&quot;CGI&quot; port=&quot;80&quot;&gt;
+      &lt;VULN number=&quot;11878&quot; severity=&quot;4&quot;
+            cveid=&quot;CVE-2017-16510,CVE-2016-9263,CVE-2012-6707&quot;&gt;
+        &lt;TITLE&gt;WordPress Prior to 4.8.3 Multiple Security Vulnerabilities&lt;/TITLE&gt;
+        …
+      &lt;/VULN&gt;
+  …
+&lt;/IP&gt;</pre>
+ <p class="note">A third structure again: CVEs packed into one attribute, a 1–5 severity.</p></div>
 </div>
+<div class="callout"><b>Why Qualys is kept apart.</b> Qualys is parsed the same way, but it is used only as
+an independent scanner in the cross-scanner experiment and never trains any model or feeds the
+plan. Its results are therefore a fair test on data the models have never seen: there,
+ThreatRank ranks the first known-exploited finding at position 1, versus 33 for Qualys' own
+severity.</div>
 <p class="code">code: <code>data/raw/</code></p></section><section class="stage" data-i="1">
 <div class="sh"><div class="num">1</div><div><div class="kick">Stage 1</div><h2>Parsing &amp; Normalization</h2>
 <div class="sub">One schema for every scanner</div></div></div>
@@ -127,8 +149,10 @@ anything is wrong.</p>
 <div class="stats"><div class="stat "><div class="v">246</div><div class="l">OpenVAS findings kept (of 306)</div></div><div class="stat "><div class="v">33</div><div class="l">Nessus findings kept (of 109)</div></div><div class="stat hi"><div class="v">279</div><div class="l">findings in one schema</div></div></div>
 <h4>The unified schema (22 columns)</h4><p class="note"><code>source_file</code>, <code>group</code>, <code>scanner</code>, <code>host</code>, <code>hostname</code>, <code>port</code>, <code>nvt_oid</code>, <code>nvt_name</code>, <code>nvt_family</code>, <code>threat</code>, <code>severity</code>, <code>qod</code>, <code>solution_type</code>, <code>cve_count</code>, …</p>
 <div class="tw"><table class=""><thead><tr><th>host</th><th>port</th><th>severity</th><th>CVE</th><th>check</th><th>scanner</th></tr></thead><tbody><tr><td>172.18.0.114</td><td>80/tcp</td><td>10.0</td><td>–</td><td>Nginx End of Life (EOL) Detection</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>general/tcp</td><td>10.0</td><td>–</td><td>Operating System (OS) End of Life (EOL) Detection</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>10.0</td><td>–</td><td>PHP End of Life (EOL) Detection - Linux</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>9.8</td><td>CVE-2024-4577</td><td>PHP &lt; 8.1.29, 8.2.x &lt; 8.2.20, 8.3.x &lt; 8.3.8 Multiple Vulner…</td><td>openvas</td></tr><tr><td>172.18.0.113</td><td>8009/tcp</td><td>9.8</td><td>CVE-2020-1938</td><td>Apache Tomcat AJP RCE Vulnerability (Ghostcat) - Active Che…</td><td>openvas</td></tr><tr><td>172.18.0.110</td><td>80/tcp</td><td>9.8</td><td>CVE-2023-3823</td><td>PHP &lt; 8.0.30, 8.1.x &lt; 8.1.22, 8.2.x &lt; 8.2.9 Security Update…</td><td>openvas</td></tr></tbody></table></div>
-<p class="note">Re-running the parsers on the raw reports reproduces the committed CSVs byte
-for byte (<code>reproduce.sh</code> checks this).</p>
+<p class="note">Qualys goes through its own parser into the same schema
+(136 findings after removing informational rows) and is set aside for the
+cross-scanner evaluation. Re-running the parsers on the raw reports reproduces the committed
+CSVs byte for byte (<code>reproduce.sh</code> checks this).</p>
 <p class="code">code: <code>data/parse_openvas.py · fetch_nessus.py · parse_qualys.py</code></p></section><section class="stage" data-i="2">
 <div class="sh"><div class="num">2</div><div><div class="kick">Stage 2</div><h2>Attribute Completion</h2>
 <div class="sub">Filling in what NVD does not say</div></div></div>

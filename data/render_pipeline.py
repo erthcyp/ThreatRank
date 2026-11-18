@@ -34,6 +34,8 @@ OPENVAS_RAW = "raw/openvas/2026-09-08_openvas_B_group-b-old-images.xml"
 NESSUS_RAW = "raw/nessus/2026-09-29_nessus_B_group-b-nessus.json"
 OPENVAS_CSV = "processed/findings_openvas_b2.csv"
 NESSUS_CSV = "processed/findings_nessus_b2.csv"
+QUALYS_RAW = "raw/qualys/2026-10-06_qualys_lab3.xml"
+QUALYS_CSV = "processed/findings_qualys_b2.csv"
 HOSTS = {"172.18.0.110": "Web server", "172.18.0.111": "App server", "172.18.0.112": "Database"}
 
 e = html.escape
@@ -97,6 +99,29 @@ def raw_nessus_sample():
             + json.dumps(keep, indent=2).replace("\n", "\n  ") + ",\n  …\n]")
 
 
+def raw_qualys_sample():
+    root = ET.parse(QUALYS_RAW).getroot()
+    for ip in root.findall("IP"):
+        for cat in ip.iter("CAT"):
+            for v in cat.findall("VULN"):
+                if v.get("severity") in ("4", "5") and v.get("cveid"):
+                    cves = v.get("cveid").split(",")[:3]
+                    port = cat.get("port", "")
+                    return "\n".join([
+                        f'<IP value="{ip.get("value")}">',
+                        "  <VULNS>",
+                        f'    <CAT value="{cat.get("value")}"' + (f' port="{port}"' if port else "") + ">",
+                        f'      <VULN number="{v.get("number")}" severity="{v.get("severity")}"',
+                        f'            cveid="{",".join(cves)}">',
+                        f"        <TITLE>{v.findtext('TITLE').strip()}</TITLE>",
+                        "        …",
+                        "      </VULN>",
+                        "  …",
+                        "</IP>",
+                    ])
+    return ""
+
+
 def collect():
     import prioritise as P
     D = {}
@@ -111,6 +136,10 @@ def collect():
     D["sample"] = sorted((r for r in ov if r["threat"] != "Log"),
                          key=lambda r: -float(r["severity"] or 0))[:6]
     D["raw_ov"], D["raw_ne"] = raw_openvas_sample(), raw_nessus_sample()
+    qu = load_csv(QUALYS_CSV)
+    D["raw_qu"], D["qu_rows"] = raw_qualys_sample(), len(qu)
+    D["qu_kept"] = sum(1 for r in qu if r["threat"] != "Log")
+    D["qu_hosts"] = len({r["host"] for r in qu})
 
     D["correlate"] = run("correlate.py", "--findings", OPENVAS_CSV, "--findings", NESSUS_CSV,
                          "-o", os.devnull)
@@ -154,16 +183,23 @@ def stage0(D):
     t = D["ov_threat"]
     sev = " · ".join(f"{k} {t[k]}" for k in ("Critical", "High", "Medium", "Low", "Log") if t.get(k))
     return f"""
-<p class="lead">Two vulnerability scanners scan the same group of containers. Each exports
-results in its own format, with its own field names and severity scale.</p>
-<div class="stats">{stat(D['ov_rows'], 'OpenVAS results (XML)')}{stat(sum(D['ne_threat'].values()), 'Nessus results (JSON)')}{stat(D['n_hosts'], 'hosts in group B')}</div>
-<div class="two">
+<p class="lead">Three vulnerability scanners scan the same containers. Each exports results in
+its own format, with its own field names and severity scale.</p>
+<div class="stats">{stat(D['ov_rows'], 'OpenVAS results (XML)')}{stat(sum(D['ne_threat'].values()), 'Nessus results (JSON)')}{stat(D['qu_rows'], f"Qualys results (XML), {D['qu_hosts']} hosts", 'eval')}{stat(D['n_hosts'], 'hosts in group B')}</div>
+<div class="three">
  <div><h4>OpenVAS: one &lt;result&gt; from the XML report</h4><pre>{e(D['raw_ov'])}</pre>
  <p class="note">Severity mix: {sev}</p></div>
  <div><h4>Nessus: one vulnerability from the JSON export</h4><pre>{e(D['raw_ne'])}</pre>
  <p class="note">Different structure, different names: <code>plugin_name</code> instead of
  <code>&lt;name&gt;</code>, a 0–4 severity instead of a CVSS score.</p></div>
-</div>"""
+ <div><h4>Qualys: one &lt;VULN&gt; from the XML report <span class="evtag">evaluation only</span></h4><pre>{e(D['raw_qu'])}</pre>
+ <p class="note">A third structure again: CVEs packed into one attribute, a 1–5 severity.</p></div>
+</div>
+<div class="callout"><b>Why Qualys is kept apart.</b> Qualys is parsed the same way, but it is used only as
+an independent scanner in the cross-scanner experiment and never trains any model or feeds the
+plan. Its results are therefore a fair test on data the models have never seen: there,
+ThreatRank ranks the first known-exploited finding at position 1, versus 33 for Qualys' own
+severity.</div>"""
 
 
 def stage1(D):
@@ -177,8 +213,10 @@ anything is wrong.</p>
 <div class="stats">{stat(D['ov_kept'], f"OpenVAS findings kept (of {D['ov_rows']})")}{stat(D['ne_kept'], f"Nessus findings kept (of {D['ne_rows']})")}{stat(D['ov_kept'] + D['ne_kept'], 'findings in one schema', 'hi')}</div>
 <h4>The unified schema ({len(D['columns'])} columns)</h4><p class="note">{cols}, …</p>
 {table(['host', 'port', 'severity', 'CVE', 'check', 'scanner'], rows)}
-<p class="note">Re-running the parsers on the raw reports reproduces the committed CSVs byte
-for byte (<code>reproduce.sh</code> checks this).</p>"""
+<p class="note">Qualys goes through its own parser into the same schema
+({D['qu_kept']} findings after removing informational rows) and is set aside for the
+cross-scanner evaluation. Re-running the parsers on the raw reports reproduces the committed
+CSVs byte for byte (<code>reproduce.sh</code> checks this).</p>"""
 
 
 def stage2(D):
@@ -361,6 +399,12 @@ h4 {{ margin:18px 0 8px; font-size:15px }}
 .stat .l {{ color:var(--muted); font-size:13px }}
 .stat.hi {{ background:var(--accentbg); border-color:transparent }}
 .stat.hi .v {{ color:var(--accent) }}
+.three {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px }}
+.stat.eval {{ border-style:dashed }}
+.evtag {{ display:inline-block; margin-left:6px; border:1px dashed var(--muted); color:var(--muted);
+         border-radius:6px; padding:0 7px; font-size:11.5px; font-weight:600; vertical-align:middle }}
+.callout {{ margin:16px 0 0; padding:12px 16px; border-left:4px solid var(--accent); background:var(--accentbg);
+           border-radius:0 8px 8px 0; font-size:14.5px }}
 .two {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px }}
 pre {{ background:var(--code); border-radius:8px; padding:12px 14px; overflow-x:auto; font-size:12.5px;
       line-height:1.45; margin:0 }}
